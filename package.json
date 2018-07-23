@@ -1,0 +1,31 @@
+{
+  "name": "indie-makers",
+  "version": "1.0.0",
+  "description": "A community for people that build beautiful things on the internet.",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serranoarevalo/indie-makers.git"
+  },
+  "author": "Nicolás Serrano Arévalo <itnico.las.me@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serranoarevalo/indie-makers/issues"
+  },
+  "homepage": "https://github.com/serranoarevalo/indie-makers#readme",
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "styled-components": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/next": "^6.0.4",
+    "@zeit/next-typescript": "^1.1.0",
+    "babel-plugin-styled-components": "^1.5.1"
+  }
+}
