@@ -2,7 +2,7 @@ import styled from "styled-components";
 import "../globalStyles";
 
 const Hello = styled.div`
-  color: red;
+  color: ${props => props.theme.blackColor};
 `;
 
 export default () => <Hello>home</Hello>;

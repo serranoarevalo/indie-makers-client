@@ -7,7 +7,8 @@ const theme = {
   yellowColor: "#FEF48B",
   redColor: "#E8674A",
   lightBlueColor: "#F2FEFE",
-  darkBlueColor: "#DBE9F1"
+  darkBlueColor: "#DBE9F1",
+  blackColor: "#34495e"
 };
 
 export default class MyApp extends App {
