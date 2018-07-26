@@ -19,6 +19,7 @@
   "homepage": "https://github.com/serranoarevalo/indie-makers#readme",
   "dependencies": {
     "next": "^6.1.1",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "styled-components": "^3.3.3",

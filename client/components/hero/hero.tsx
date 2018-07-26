@@ -32,7 +32,7 @@ const CTAs = styled.div`
 
 const FakeLink = styled.span`
   margin-left: 30px;
-  color: #bdc3c7;
+  color: ${props => props.theme.greyColor};
   font-size: 22px;
 `;
 

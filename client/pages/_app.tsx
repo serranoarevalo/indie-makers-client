@@ -4,14 +4,15 @@ import { ThemeProvider } from "../typed-components";
 import Header from "../components/header";
 
 const theme = {
-  greyColor: "#EAEAEA",
+  greyColor: "#bdc3c7",
   whiteColor: "white",
   yellowColor: "#FEF48B",
   redColor: "#E8674A",
   lightBlueColor: "#F2FEFE",
   darkBlueColor: "#DBE9F1",
   blackColor: "#34495e",
-  maxWidth: "1200px"
+  maxWidth: "1200px",
+  borderRadius: "5px"
 };
 
 export default class MyApp extends App {

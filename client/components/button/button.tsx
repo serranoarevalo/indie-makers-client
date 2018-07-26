@@ -11,7 +11,7 @@ const Container = styled<{ accent: boolean; fontSize: number }, any>("span")`
   background-color: ${props =>
     props.accent ? props.theme.yellowColor : props.theme.darkBlueColor};
   padding: 15px;
-  border-radius: 5px;
+  border-radius: ${props => props.theme.borderRadius};
   font-weight: 700;
   font-family: "Karla", sans-serif;
   font-size: ${props => props.fontSize}px;

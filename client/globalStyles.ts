@@ -8,6 +8,7 @@ injectGlobal`
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     color:#34495e;
+    padding-bottom:50px;
   }
   h1,
   h2,
