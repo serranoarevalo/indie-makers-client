@@ -1,12 +1,15 @@
 import Link from "next/link";
 import styled from "../../typed-components";
+import Button from "../button";
 
 const Container = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 25px 5px;
   background-color: white;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
 `;
 
 const Wrapper = styled.div`
@@ -14,34 +17,71 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Logo = styled.h1`
-  font-family: "Nunito";
+  font-family: "Karla";
   font-weight: 700;
   font-size: 20px;
   margin-right: 10%;
-  & span:first-child {
-    color: #f19938;
-  }
-  span {
-    color: #113654;
+`;
+
+const Navigation = styled.nav`
+  & ul {
+    display: flex;
+    & li:first-child {
+      margin-right: 25px;
+    }
   }
 `;
 
-const Navigation = styled.nav``;
+const NavColumn = styled.div`
+  display: flex;
+  align-items: center;
+  width: 50%;
+  &:last-child {
+    justify-content: flex-end;
+    & *:first-child {
+      margin-right: 25px;
+    }
+  }
+`;
 
 const Header = () => (
   <Container>
     <Wrapper>
-      <Logo>
-        <span>I</span>ndie <span>M</span>akers
-      </Logo>
-      <Navigation>
-        <ul>
-          <li>Hi</li>
-        </ul>
-      </Navigation>
+      <NavColumn>
+        <Logo>
+          <Link href="/">
+            <a>Indie Makers</a>
+          </Link>
+        </Logo>
+        <Navigation>
+          <ul>
+            <li>
+              <Link href="/products">
+                <a>Products</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/makers">
+                <a>Makers</a>
+              </Link>
+            </li>
+          </ul>
+        </Navigation>
+      </NavColumn>
+      <NavColumn>
+        <Link href={"/login"}>
+          <a>Log In</a>
+        </Link>
+        <Link href={"/join"}>
+          <a>
+            <Button accent={true} text={"Join Indie Makers"} />
+          </a>
+        </Link>
+      </NavColumn>
     </Wrapper>
   </Container>
 );
