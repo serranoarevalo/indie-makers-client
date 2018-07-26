@@ -1,5 +1,5 @@
 import App, { Container } from "next/app";
-import { ThemeProvider } from "../styled-components";
+import { ThemeProvider } from "../typed-components";
 
 const theme = {
   greyColor: "#EAEAEA",

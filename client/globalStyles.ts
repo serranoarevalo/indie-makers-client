@@ -5,7 +5,7 @@ injectGlobal`
   @import url("https://fonts.googleapis.com/css?family=Karla:400,700|Open+Sans:400,600");
   ${reset};
   body {
-    background-color: ${(props: any) => props.theme.greyColor};
+    background-color: #EAEAEA;
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
   }
