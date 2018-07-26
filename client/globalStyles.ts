@@ -2,7 +2,7 @@ import { injectGlobal } from "styled-components";
 import reset from "styled-reset";
 
 injectGlobal`
-  @import url("https://fonts.googleapis.com/css?family=Karla:400,700|Open+Sans:400,600");
+  @import url("https://fonts.googleapis.com/css?family=Karla:400,700|Open+Sans:400,600|Nunito:700");
   ${reset};
   body {
     background-color: #EAEAEA;

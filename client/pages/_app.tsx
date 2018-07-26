@@ -1,5 +1,7 @@
+import React from "react";
 import App, { Container } from "next/app";
 import { ThemeProvider } from "../typed-components";
+import Header from "../components/header";
 
 const theme = {
   greyColor: "#EAEAEA",
@@ -27,7 +29,10 @@ export default class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <React.Fragment>
+            <Header />
+            <Component {...pageProps} />
+          </React.Fragment>
         </ThemeProvider>
       </Container>
     );
