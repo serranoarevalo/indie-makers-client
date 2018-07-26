@@ -10,7 +10,8 @@ const theme = {
   redColor: "#E8674A",
   lightBlueColor: "#F2FEFE",
   darkBlueColor: "#DBE9F1",
-  blackColor: "#34495e"
+  blackColor: "#34495e",
+  maxWidth: "1200px"
 };
 
 export default class MyApp extends App {

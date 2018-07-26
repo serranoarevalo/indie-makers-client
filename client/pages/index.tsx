@@ -1,8 +1,19 @@
 import styled from "styled-components";
 import "../globalStyles";
+import Wrapper from "../components/wrapper";
+import Hero from "../components/hero";
 
-const Hello = styled.div`
-  color: ${props => props.theme.blackColor};
+const Container = styled.div``;
+const HeroWrapper = styled.div`
+  margin-top: 15vh;
 `;
 
-export default () => <Hello>home</Hello>;
+export default () => (
+  <Container>
+    <Wrapper>
+      <HeroWrapper>
+        <Hero />
+      </HeroWrapper>
+    </Wrapper>
+  </Container>
+);

@@ -6,4 +6,5 @@ export default interface ITheme {
   lightBlueColor: string;
   darkBlueColor: string;
   blackColor: string;
+  maxWidth: string;
 }

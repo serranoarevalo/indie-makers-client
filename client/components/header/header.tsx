@@ -1,19 +1,20 @@
 import Link from "next/link";
 import styled from "../../typed-components";
 import Button from "../button";
+import routes from "../../routes";
 
 const Container = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px 5px;
+  padding: 30px 5px;
   background-color: white;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
 `;
 
 const Wrapper = styled.div`
-  max-width: 1200px;
+  max-width: ${props => props.theme.maxWidth};
   display: flex;
   width: 100%;
   align-items: center;
@@ -21,10 +22,12 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.h1`
-  font-family: "Karla";
+  font-family: "Nunito";
   font-weight: 700;
   font-size: 20px;
-  margin-right: 10%;
+  margin-right: 25px;
+  border-right: 1px solid ${props => props.theme.blackColor};
+  padding-right: 25px;
 `;
 
 const Navigation = styled.nav`
@@ -43,7 +46,7 @@ const NavColumn = styled.div`
   &:last-child {
     justify-content: flex-end;
     & *:first-child {
-      margin-right: 25px;
+      margin-right: 30px;
     }
   }
 `;
@@ -53,19 +56,19 @@ const Header = () => (
     <Wrapper>
       <NavColumn>
         <Logo>
-          <Link href="/">
+          <Link href={routes.home}>
             <a>Indie Makers</a>
           </Link>
         </Logo>
         <Navigation>
           <ul>
             <li>
-              <Link href="/products">
+              <Link href={routes.products}>
                 <a>Products</a>
               </Link>
             </li>
             <li>
-              <Link href="/makers">
+              <Link href={routes.makers}>
                 <a>Makers</a>
               </Link>
             </li>
@@ -73,10 +76,10 @@ const Header = () => (
         </Navigation>
       </NavColumn>
       <NavColumn>
-        <Link href={"/login"}>
+        <Link href={routes.login}>
           <a>Log In</a>
         </Link>
-        <Link href={"/join"}>
+        <Link href={routes.login}>
           <a>
             <Button accent={true} text={"Join Indie Makers"} />
           </a>
