@@ -3,5 +3,7 @@ export default {
   join: "/join",
   products: "/products",
   makers: "/makers",
-  home: "/"
+  home: "/",
+  about: "/about",
+  blog: "/blog"
 };

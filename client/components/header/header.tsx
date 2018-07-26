@@ -72,6 +72,11 @@ const Header = () => (
                 <a>Makers</a>
               </Link>
             </li>
+            <li>
+              <Link href={routes.blog}>
+                <a>Blog</a>
+              </Link>
+            </li>
           </ul>
         </Navigation>
       </NavColumn>
