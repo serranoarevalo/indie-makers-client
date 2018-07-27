@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styled from "styled-components";
 import FeaturedPosts from "../components/featuredPosts";
 import Hero from "../components/hero";
@@ -21,6 +22,9 @@ const HeroWrapper = styled.div`
 
 export default () => (
   <Container>
+    <Head>
+      <title>Indie Makers | Build products, together.</title>
+    </Head>
     <HeroWrapper>
       <Wrapper>
         <Hero />

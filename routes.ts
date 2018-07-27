@@ -5,5 +5,6 @@ export default {
   products: "/products",
   makers: "/makers",
   about: "/about",
-  blog: "/blog"
+  blog: "/blog",
+  new: "/new"
 };

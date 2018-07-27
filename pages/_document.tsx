@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Indie Makers | People building beautiful stuff.</title>
+          <title>Indie Makers | Build products, together</title>
           {this.props.styleTags}
           <link
             rel="apple-touch-icon"

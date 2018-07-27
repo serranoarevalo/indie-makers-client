@@ -21,7 +21,11 @@ const newProducts = () => (
   <Section
     titleElements={[
       <Title key={1}>Products added recently</Title>,
-      <AddButton key={3} accent={false} text={"Add yours now"} size={"xs"} />,
+      <Link key={3} href={routes.new}>
+        <a>
+          <AddButton accent={false} text={"Add yours now"} size={"xs"} />
+        </a>
+      </Link>,
       <Link key={2} href={routes.products}>
         <a>
           <FakeLink>See more</FakeLink>
