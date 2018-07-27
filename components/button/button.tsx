@@ -1,3 +1,4 @@
+import { lighten } from "polished";
 import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
@@ -20,6 +21,14 @@ const Container = styled<{ accent: boolean; fontSize: number }, any>("span")`
     props.accent
       ? "0px 0px 30px 0px rgba(254,244,139, 1)"
       : "0px 0px 30px 0px rgba(0, 0, 0, 0.1)"};
+  transition: background-color 0.3s linear;
+  &:hover {
+    background-color: ${props =>
+      lighten(
+        0.05,
+        props.accent ? props.theme.yellowColor : props.theme.darkBlueColor
+      )};
+  }
 `;
 
 const Button: React.SFC<IProps> = ({ accent, text, fontSize = 16 }) => (

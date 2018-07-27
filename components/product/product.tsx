@@ -1,5 +1,6 @@
 import styled from "../../typed-components";
 import Badge from "../badge";
+import RoundImage from "../roundImage";
 
 const Container = styled.div`
   border-radius: ${props => props.theme.borderRadius};
@@ -12,11 +13,8 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
-const Icon = styled.img`
-  width: 80px;
+const Icon = RoundImage.extend`
   height: 80px;
-  border: 5px solid ${props => props.theme.darkBlueColor};
-  border-radius: 40px;
   display: block;
   margin-bottom: 15px;
 `;

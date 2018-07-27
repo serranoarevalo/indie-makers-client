@@ -1,6 +1,8 @@
 import styled from "../../typed-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-bottom: 100px;
+`;
 
 const TitleContainer = styled.div`
   display: flex;

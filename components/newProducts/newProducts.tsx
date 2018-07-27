@@ -18,7 +18,7 @@ const newProducts = () => (
       <Title key={1}>Products added recently</Title>,
       <Link key={2} href={routes.products}>
         <a>
-          <FakeLink>See all</FakeLink>
+          <FakeLink>See more</FakeLink>
         </a>
       </Link>
     ]}

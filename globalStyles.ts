@@ -1,6 +1,7 @@
 import { injectGlobal } from "styled-components";
 import reset from "styled-reset";
 
+// tslint:disable-next-line
 injectGlobal`
   @import url("https://fonts.googleapis.com/css?family=Karla:400,700|Open+Sans:400,600|Nunito:700");
   ${reset};
@@ -10,6 +11,7 @@ injectGlobal`
     color:#34495e;
     padding-bottom:50px;
     background-color:#F6F9FC;
+    line-height:1.5;
   }
   h1,
   h2,
