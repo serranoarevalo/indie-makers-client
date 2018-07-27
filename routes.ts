@@ -1,9 +1,9 @@
 export default {
-  login: "/login",
+  home: "/",
   join: "/join",
+  login: "/login",
   products: "/products",
   makers: "/makers",
-  home: "/",
   about: "/about",
   blog: "/blog"
 };

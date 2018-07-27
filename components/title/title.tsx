@@ -4,6 +4,7 @@ import styled from "../../typed-components";
 interface IProps {
   children: any;
   marginBottom?: number;
+  className?: string;
 }
 
 const Container = styled<{ marginBottom: number }, any>("h3")`
@@ -13,8 +14,14 @@ const Container = styled<{ marginBottom: number }, any>("h3")`
   margin-bottom: ${props => props.marginBottom}px;
 `;
 
-const Title: React.SFC<IProps> = ({ children, marginBottom = 0 }) => (
-  <Container marginBottom={marginBottom}>{children}</Container>
+const Title: React.SFC<IProps> = ({
+  children,
+  marginBottom = 0,
+  className
+}) => (
+  <Container marginBottom={marginBottom} className={className}>
+    {children}
+  </Container>
 );
 
 Title.propTypes = {

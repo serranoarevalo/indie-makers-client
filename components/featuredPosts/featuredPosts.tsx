@@ -17,7 +17,7 @@ const GridColumn = styled.div``;
 const PostsColumn = styled.div`
   display: grid;
   grid-template-rows: repat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 30px;
 `;
 
 const FeaturedPosts = () => (

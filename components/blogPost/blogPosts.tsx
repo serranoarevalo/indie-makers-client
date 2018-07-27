@@ -56,9 +56,10 @@ const Container = styled.div`
   place-items: top center;
   padding: 20px;
   grid-gap: 15px;
+  height: 100%;
 `;
 
-const Icon = RoundImage.extend`
+const Icon = styled(RoundImage)`
   height: 60px;
 `;
 

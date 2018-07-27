@@ -1,6 +1,7 @@
 import Link from "next/link";
 import routes from "../../routes";
 import styled from "../../typed-components";
+import Button from "../button";
 import FakeLink from "../fakeLink";
 import Product from "../product";
 import Section from "../section";
@@ -12,10 +13,15 @@ const Grid = styled.div`
   grid-gap: 30px;
 `;
 
+const AddButton = styled(Button)`
+  margin-left: 30px;
+`;
+
 const newProducts = () => (
   <Section
     titleElements={[
       <Title key={1}>Products added recently</Title>,
+      <AddButton key={3} accent={false} text={"Add yours now"} size={"xs"} />,
       <Link key={2} href={routes.products}>
         <a>
           <FakeLink>See more</FakeLink>
@@ -24,9 +30,9 @@ const newProducts = () => (
     ]}
   >
     <Grid>
-      <Product />
-      <Product />
-      <Product />
+      <Product href={"#"} />
+      <Product href={"#"} />
+      <Product href={"#"} />
     </Grid>
   </Section>
 );

@@ -2,16 +2,18 @@ import { lighten } from "polished";
 import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
-interface IProps {
-  accent: boolean;
-  text: string;
-  fontSize?: number;
-}
+type sizeType = "md" | "xs";
 
-const Container = styled<{ accent: boolean; fontSize: number }, any>("span")`
+const Container = styled<
+  {
+    accent: boolean;
+    fontSize: number;
+    size?: sizeType;
+  },
+  any
+>("span")`
   background-color: ${props =>
-    props.accent ? props.theme.yellowColor : props.theme.darkBlueColor};
-  padding: 15px;
+    props.accent ? props.theme.yellowColor : props.theme.lightBlueColor};
   border-radius: ${props => props.theme.borderRadius};
   font-weight: 700;
   font-family: "Karla", sans-serif;
@@ -20,19 +22,46 @@ const Container = styled<{ accent: boolean; fontSize: number }, any>("span")`
   box-shadow: ${props =>
     props.accent
       ? "0px 0px 30px 0px rgba(254,244,139, 1)"
-      : "0px 0px 30px 0px rgba(0, 0, 0, 0.1)"};
+      : "0px 0px 30px 0px rgba(219,233,241,1)"};
   transition: background-color 0.3s linear;
   &:hover {
     background-color: ${props =>
       lighten(
         0.05,
-        props.accent ? props.theme.yellowColor : props.theme.darkBlueColor
+        props.accent ? props.theme.yellowColor : props.theme.lightBlueColor
       )};
   }
+  ${props => {
+    if (props.size === "md") {
+      return "padding:15px;";
+    } else if (props.size === "xs") {
+      return "padding:7px;";
+    }
+    return;
+  }};
 `;
 
-const Button: React.SFC<IProps> = ({ accent, text, fontSize = 16 }) => (
-  <Container accent={accent} fontSize={fontSize}>
+interface IProps {
+  accent: boolean;
+  text: string;
+  fontSize?: number;
+  size?: sizeType;
+  className?: string;
+}
+
+const Button: React.SFC<IProps> = ({
+  accent,
+  text,
+  fontSize = 16,
+  size = "md",
+  className
+}) => (
+  <Container
+    className={className}
+    accent={accent}
+    fontSize={fontSize}
+    size={size}
+  >
     {text}
   </Container>
 );

@@ -7,7 +7,7 @@ const Container = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   margin-bottom: 60px;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 interface IProps {
