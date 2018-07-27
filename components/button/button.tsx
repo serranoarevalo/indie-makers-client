@@ -31,7 +31,7 @@ const Button: React.SFC<IProps> = ({ accent, text, fontSize = 16 }) => (
 Button.propTypes = {
   accent: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  fontSize: PropTypes.number.isRequired
+  fontSize: PropTypes.number
 };
 
 export default Button;
