@@ -9,6 +9,7 @@ injectGlobal`
     font-size: 14px;
     color:#34495e;
     padding-bottom:50px;
+    background-color:#F6F9FC;
   }
   h1,
   h2,

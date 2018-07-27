@@ -1,7 +1,7 @@
-import styled from "../../typed-components";
 import Link from "next/link";
-import Button from "../button";
 import routes from "../../routes";
+import styled from "../../typed-components";
+import Button from "../button";
 
 const Container = styled.div`
   display: flex;
@@ -9,7 +9,6 @@ const Container = styled.div`
   align-items: flex-start;
   width: 75%;
   line-height: 1.5;
-  margin: 15vh 0;
 `;
 
 const Title = styled.h2`

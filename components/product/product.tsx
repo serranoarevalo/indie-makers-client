@@ -1,9 +1,11 @@
 import styled from "../../typed-components";
+import Badge from "../badge";
 
 const Container = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   padding: 40px;
   box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,11 +29,21 @@ const Title = styled.h4`
 
 const Pitch = styled.p``;
 
+const Badges = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+`;
+
 const Product = () => (
   <Container>
     <Icon src={"static/demo.jpg"} />
     <Title>Great Product</Title>
-    <Pitch>The best website</Pitch>
+    <Pitch>The best website is gonna be here.</Pitch>
+    <Badges>
+      <Badge type={"counter"} text={"10/25"} />
+      <Badge type={"help"} text={"Need help!"} />
+    </Badges>
   </Container>
 );
 

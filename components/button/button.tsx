@@ -18,7 +18,7 @@ const Container = styled<{ accent: boolean; fontSize: number }, any>("span")`
   cursor: pointer;
   box-shadow: ${props =>
     props.accent
-      ? "0px 0px 30px 0px rgba(254,244,139, 0.5)"
+      ? "0px 0px 30px 0px rgba(254,244,139, 1)"
       : "0px 0px 30px 0px rgba(0, 0, 0, 0.1)"};
 `;
 

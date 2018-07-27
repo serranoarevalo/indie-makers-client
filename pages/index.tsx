@@ -12,10 +12,20 @@ const IndexColumns = styled.div`
   grid-gap: 60px;
 `;
 
+const HeroWrapper = styled.div`
+  background-color: white;
+  padding: 15vh 0;
+  margin-bottom: 10vh;
+`;
+
 export default () => (
   <Container>
+    <HeroWrapper>
+      <Wrapper>
+        <Hero />
+      </Wrapper>
+    </HeroWrapper>
     <Wrapper>
-      <Hero />
       <IndexColumns>
         <NewProducts />
       </IndexColumns>
