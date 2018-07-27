@@ -2,6 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import FeaturedPosts from "../components/featuredPosts";
 import Hero from "../components/hero";
+import NewGoals from "../components/newGoals";
 import NewProducts from "../components/newProducts";
 import Wrapper from "../components/wrapper";
 import "../globalStyles";
@@ -11,7 +12,7 @@ const Container = styled.div``;
 const IndexColumns = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-gap: 30px;
+  grid-gap: 40px;
 `;
 
 const HeroWrapper = styled.div`
@@ -34,6 +35,7 @@ export default () => (
       <FeaturedPosts />
       <IndexColumns>
         <NewProducts />
+        <NewGoals />
       </IndexColumns>
     </Wrapper>
   </Container>
