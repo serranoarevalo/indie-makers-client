@@ -5,7 +5,7 @@ import RoundImage from "../roundImage";
 
 const Container = styled.div`
   border-radius: ${props => props.theme.borderRadius};
-  padding: 40px;
+  padding: 40px 20px;
   ${props => props.theme.cardShadow};
   background-color: white;
   display: flex;
@@ -31,7 +31,20 @@ const Pitch = styled.p``;
 const Badges = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 10px;
+`;
+
+const Footer = styled.footer`
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+const Maker = styled(RoundImage)`
+  height: 30px;
+  width: 30px;
+  border: 0;
 `;
 
 interface IProps {
@@ -45,10 +58,13 @@ const Product: React.SFC<IProps> = ({ href }) => (
         <Icon src={"static/demo.jpg"} />
         <Title>Great Product</Title>
         <Pitch>The best website is gonna be here.</Pitch>
-        <Badges>
-          <Badge type={"counter"} text={"10/25"} />
-          <Badge type={"help"} text={"Need help!"} />
-        </Badges>
+        <Footer>
+          <Badges>
+            <Badge text={"10/25 ✅"} />
+            <Badge warning={true} text={"Need help! ⚠️"} />
+          </Badges>
+          <Maker src={"static/demo.jpg"} />
+        </Footer>
       </Container>
     </a>
   </Link>
