@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import "../globalStyles";
-import Wrapper from "../components/wrapper";
 import Hero from "../components/hero";
 import NewProducts from "../components/newProducts";
+import Wrapper from "../components/wrapper";
+import "../globalStyles";
 
 const Container = styled.div``;
 

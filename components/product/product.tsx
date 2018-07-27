@@ -4,7 +4,7 @@ import Badge from "../badge";
 const Container = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   padding: 40px;
-  box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
+  ${props => props.theme.cardShadow};
   background-color: white;
   display: flex;
   flex-direction: column;

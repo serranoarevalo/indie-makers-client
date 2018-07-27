@@ -2,6 +2,7 @@ import Link from "next/link";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import Button from "../button";
+import FakeLink from "../fakeLink";
 
 const Container = styled.div`
   display: flex;
@@ -27,12 +28,6 @@ const CTAs = styled.div`
   margin-top: 50px;
   display: flex;
   align-items: center;
-`;
-
-const FakeLink = styled.span`
-  margin-left: 30px;
-  color: ${props => props.theme.greyColor};
-  font-size: 22px;
 `;
 
 const Hero = () => (

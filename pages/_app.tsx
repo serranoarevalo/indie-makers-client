@@ -1,7 +1,7 @@
-import React from "react";
 import App, { Container } from "next/app";
-import { ThemeProvider } from "../typed-components";
+import React from "react";
 import Header from "../components/header";
+import { ThemeProvider } from "../typed-components";
 
 const theme = {
   greyColor: "#bdc3c7",
@@ -12,7 +12,8 @@ const theme = {
   darkBlueColor: "#DBE9F1",
   blackColor: "#34495e",
   maxWidth: "1200px",
-  borderRadius: "5px"
+  borderRadius: "5px",
+  cardShadow: "box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);"
 };
 
 export default class MyApp extends App {

@@ -8,4 +8,5 @@ export default interface ITheme {
   blackColor: string;
   maxWidth: string;
   borderRadius: string;
+  cardShadow: string;
 }
