@@ -33,12 +33,12 @@ const FeaturedPosts = () => (
   >
     <PostGrid>
       <GridColumn>
-        <BlogPost featured={true} />
+        <BlogPost href={"#"} featured={true} />
       </GridColumn>
       <PostsColumn>
-        <BlogPost />
-        <BlogPost />
-        <BlogPost />
+        <BlogPost href={"#"} />
+        <BlogPost href={"#"} />
+        <BlogPost href={"#"} />
       </PostsColumn>
     </PostGrid>
   </Section>

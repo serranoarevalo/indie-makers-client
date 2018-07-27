@@ -1,3 +1,4 @@
+import Link from "next/link";
 import PropTypes from "prop-types";
 import styled from "../../typed-components";
 import RoundImage from "../roundImage";
@@ -69,38 +70,40 @@ const Title = styled.h4`
 
 interface IProps {
   featured?: boolean;
+  href: string;
 }
 
-const BlogPosts: React.SFC<IProps> = ({ featured = false }) => {
-  if (featured) {
-    return (
-      <FContainer>
-        <Column>
-          <FImage src={"static/appDemo.png"} />
-        </Column>
-        <FText>
-          <FTitle>Alex's project</FTitle>
-          <Intro>
-            He did and app for his thing and now he's married, I personally
-            think this should be longer so it looks awesome.
-          </Intro>
-        </FText>
-      </FContainer>
-    );
-  } else {
-    return (
-      <Container>
-        <Icon src="static/demo.jpg" />
-        <span>
-          <Title>Alex's project</Title>
-          <p>He did and app for his thing and now he's married</p>
-        </span>
-      </Container>
-    );
-  }
-};
+const BlogPosts: React.SFC<IProps> = ({ featured = false, href }) => (
+  <Link href={href}>
+    <a>
+      {featured ? (
+        <FContainer>
+          <Column>
+            <FImage src={"static/appDemo.png"} />
+          </Column>
+          <FText>
+            <FTitle>Alex's project</FTitle>
+            <Intro>
+              He did and app for his thing and now he's married, I personally
+              think this should be longer so it looks awesome.
+            </Intro>
+          </FText>
+        </FContainer>
+      ) : (
+        <Container>
+          <Icon src="static/demo.jpg" />
+          <span>
+            <Title>Alex's project</Title>
+            <p>He did and app for his thing and now he's married</p>
+          </span>
+        </Container>
+      )}
+    </a>
+  </Link>
+);
 
 BlogPosts.propTypes = {
-  featured: PropTypes.bool
+  featured: PropTypes.bool,
+  href: PropTypes.string.isRequired
 };
 export default BlogPosts;
