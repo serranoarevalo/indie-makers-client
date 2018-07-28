@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { lighten } from "polished";
+import routes from "../../routes";
 import styled from "../../typed-components";
 import GoalText from "../goalText";
 import RoundImage from "../roundImage";
@@ -14,7 +16,13 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  & ~ * {
+    margin-left: 6px;
+    & .em {
+      margin-right: 5px;
+    }
+  }
 `;
 
 const MakerAvatar = styled(RoundImage)`
@@ -31,9 +39,18 @@ const CompleteGoal = () => (
   <Container>
     <Header>
       <MakerAvatar src="static/demo.jpg" />
-      <Title>Nicolás Serrano Arévalo</Title>
+      <Title>
+        <Link href={routes.userDetail("serranoarevalo")}>
+          <a>Nicolás Serrano Arévalo</a>
+        </Link>
+      </Title>
     </Header>
-    <GoalText lineThrough={false} isCompleted={true} text={"Go to bebek"} />
+    <GoalText
+      lineThrough={false}
+      isCompleted={true}
+      text={"Go to bebek"}
+      goalName={"Indie Makers"}
+    />
   </Container>
 );
 
