@@ -2,6 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import CompletedGoals from "../components/completedGoals";
 import FeaturedPosts from "../components/featuredPosts";
+import FireMakers from "../components/fireMakers";
 import Hero from "../components/hero";
 import NewProducts from "../components/newProducts";
 import Wrapper from "../components/wrapper";
@@ -39,6 +40,9 @@ export default () => (
         <Column>
           <NewProducts />
           <CompletedGoals />
+        </Column>
+        <Column>
+          <FireMakers />
         </Column>
       </IndexColumns>
     </Wrapper>

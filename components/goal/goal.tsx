@@ -4,6 +4,7 @@ import routes from "../../routes";
 import styled from "../../typed-components";
 import GoalText from "../goalText";
 import RoundImage from "../roundImage";
+import UserDetail from "../userDetail";
 
 const Container = styled.div`
   padding: 15px 0px;
@@ -39,26 +40,33 @@ const Title = styled.h5`
 const Timestamp = styled.span`
   font-size: 12px;
   color: ${props => props.theme.greyColor};
-  font-weight: 600;
+  margin-left: 10px;
+`;
+
+const Section = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 const Goal = () => (
   <Container>
     <Header>
-      <MakerAvatar src="static/demo.jpg" />
-      <Title>
-        <Link href={routes.userDetail("serranoarevalo")}>
-          <a>Nicolás Serrano Arévalo</a>
-        </Link>
-      </Title>
-      <Timestamp>25 minutes ago</Timestamp>
+      <UserDetail
+        avatarURL={"/static/demo.jpg"}
+        name={"Nicolás Serrano Arévalo"}
+        username={"@serranoarevalo"}
+        streak={50}
+      />
     </Header>
-    <GoalText
-      lineThrough={false}
-      isCompleted={true}
-      text={"Go to bebek"}
-      goalName={"Indie Makers"}
-    />
+    <Section>
+      <GoalText
+        lineThrough={false}
+        isCompleted={true}
+        text={"Go to bebek"}
+        goalName={"Indie Makers"}
+      />
+      <Timestamp>25 minutes ago</Timestamp>
+    </Section>
   </Container>
 );
 

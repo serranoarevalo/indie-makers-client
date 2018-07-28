@@ -2,21 +2,22 @@ import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
 interface IProps {
-  warning?: boolean;
   icon?: any;
   text: any;
+  bgColor: string;
 }
 
-const Container = styled<{ warning?: boolean }, any>("div")`
+const Container = styled<{ bgColor: any }, any>("div")`
   display: flex;
   align-items: center;
   padding: 5px 7px;
   text-transform: uppercase;
-  background-color: ${props => props.theme.darkBlueColor};
+  background-color: ${props =>
+    props.bgColor ? props.bgColor : props.theme.darkBlueColor};
   margin-right: 10px;
   border-radius: ${props => props.theme.borderRadius};
   font-size: 12px;
-  font-weight: 600;
+
   &:last-child {
     margin-right: 0px;
   }
@@ -25,15 +26,15 @@ const Container = styled<{ warning?: boolean }, any>("div")`
   }
 `;
 
-const Badge: React.SFC<IProps> = ({ icon, text, warning = false }) => (
-  <Container warning={warning}>
+const Badge: React.SFC<IProps> = ({ icon, text, bgColor = null }) => (
+  <Container bgColor={bgColor}>
     {icon}
     {text}
   </Container>
 );
 
 Badge.propTypes = {
-  warning: PropTypes.bool,
+  bgColor: PropTypes.any,
   text: PropTypes.any,
   icon: PropTypes.any
 };
