@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styled from "styled-components";
+import CompletedGoals from "../components/completedGoals";
 import FeaturedPosts from "../components/featuredPosts";
 import Hero from "../components/hero";
-import NewGoals from "../components/newGoals";
 import NewProducts from "../components/newProducts";
 import Wrapper from "../components/wrapper";
 import "../globalStyles";
@@ -21,6 +21,8 @@ const HeroWrapper = styled.div`
   margin-bottom: 10vh;
 `;
 
+const Column = styled.div``;
+
 export default () => (
   <Container>
     <Head>
@@ -34,8 +36,10 @@ export default () => (
     <Wrapper>
       <FeaturedPosts />
       <IndexColumns>
-        <NewProducts />
-        <NewGoals />
+        <Column>
+          <NewProducts />
+          <CompletedGoals />
+        </Column>
       </IndexColumns>
     </Wrapper>
   </Container>

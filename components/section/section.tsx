@@ -6,7 +6,7 @@ const Container = styled.div`
 
 const TitleContainer = styled.div`
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   align-items: center;
 `;
 

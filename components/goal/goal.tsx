@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Header = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin-bottom: 15px;
   & ~ * {
     margin-left: 6px;
@@ -33,9 +33,16 @@ const MakerAvatar = styled(RoundImage)`
 const Title = styled.h5`
   font-weight: 600;
   font-size: 16px;
+  margin-right: 10px;
 `;
 
-const CompleteGoal = () => (
+const Timestamp = styled.span`
+  font-size: 12px;
+  color: ${props => props.theme.greyColor};
+  font-weight: 600;
+`;
+
+const Goal = () => (
   <Container>
     <Header>
       <MakerAvatar src="static/demo.jpg" />
@@ -44,6 +51,7 @@ const CompleteGoal = () => (
           <a>Nicolás Serrano Arévalo</a>
         </Link>
       </Title>
+      <Timestamp>25 minutes ago</Timestamp>
     </Header>
     <GoalText
       lineThrough={false}
@@ -54,4 +62,4 @@ const CompleteGoal = () => (
   </Container>
 );
 
-export default CompleteGoal;
+export default Goal;
