@@ -3,10 +3,13 @@ import styled from "../../typed-components";
 
 interface IProps {
   warning?: boolean;
-  text: string;
+  icon?: any;
+  text: any;
 }
 
 const Container = styled<{ warning?: boolean }, any>("div")`
+  display: flex;
+  align-items: center;
   padding: 5px 7px;
   text-transform: uppercase;
   background-color: ${props => props.theme.darkBlueColor};
@@ -17,16 +20,22 @@ const Container = styled<{ warning?: boolean }, any>("div")`
   &:last-child {
     margin-right: 0px;
   }
-  }};
+  & *:first-child {
+    margin-right: 5px;
+  }
 `;
 
-const Badge: React.SFC<IProps> = ({ text, warning = false }) => (
-  <Container warning={warning}>{text}</Container>
+const Badge: React.SFC<IProps> = ({ icon, text, warning = false }) => (
+  <Container warning={warning}>
+    {icon}
+    {text}
+  </Container>
 );
 
 Badge.propTypes = {
-  warning: PropTypes.boolean,
-  text: PropTypes.string.isRequired
+  warning: PropTypes.bool,
+  text: PropTypes.any,
+  icon: PropTypes.any
 };
 
 export default Badge;

@@ -1,5 +1,5 @@
 import styled from "../../typed-components";
-import Goal from "../goal";
+import CompletedGoal from "../completedGoals";
 import Section from "../section";
 import Title from "../title";
 
@@ -11,13 +11,13 @@ const Container = styled.div`
 `;
 
 const NewGoals = () => (
-  <Section titleElements={<Title>New Goals</Title>}>
+  <Section titleElements={<Title>Completed Goals</Title>}>
     <Container>
-      <Goal />
-      <Goal />
-      <Goal />
-      <Goal />
-      <Goal />
+      <CompletedGoal />
+      <CompletedGoal />
+      <CompletedGoal />
+      <CompletedGoal />
+      <CompletedGoal />
     </Container>
   </Section>
 );

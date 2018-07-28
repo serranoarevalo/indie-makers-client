@@ -28,4 +28,8 @@ injectGlobal`
     color:inherit;
     text-decoration:none; 
   }
+  .em{
+    width:1em;
+    height:1em;
+  }
 `;

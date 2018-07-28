@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@types/next": "^6.0.4",
+    "@types/prop-types": "^15.5.4",
     "@zeit/next-typescript": "^1.1.0",
     "babel-plugin-styled-components": "^1.5.1",
     "tslint-config-prettier": "^1.14.0",

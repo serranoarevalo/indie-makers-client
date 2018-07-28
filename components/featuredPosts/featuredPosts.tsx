@@ -9,7 +9,7 @@ import Title from "../title";
 const PostGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-gap: 40px;
+  grid-gap: 50px;
 `;
 
 const GridColumn = styled.div``;

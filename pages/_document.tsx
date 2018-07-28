@@ -16,6 +16,10 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Indie Makers | Build products, together</title>
+          <link
+            href="https://afeld.github.io/emoji-css/emoji.css"
+            rel="stylesheet"
+          />
           {this.props.styleTags}
           <link
             rel="apple-touch-icon"

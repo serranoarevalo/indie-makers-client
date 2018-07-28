@@ -4,7 +4,7 @@ import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
 
 const theme = {
-  greyColor: "#bdc3c7",
+  greyColor: "#95a5a6",
   whiteColor: "white",
   yellowColor: "#FEF48B",
   redColor: "#E8674A",
