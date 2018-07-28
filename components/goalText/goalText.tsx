@@ -14,7 +14,7 @@ const Text = styled<
 >("span")`
   text-decoration: ${props =>
     props.isCompleted && props.lineThrough ? "line-through" : "inherit"};
-  color: ${props => (props.isCompleted ? props.theme.greyColor : "black")};
+  color: ${props => props.theme.blackColor};
 `;
 
 const Icon = styled.span`

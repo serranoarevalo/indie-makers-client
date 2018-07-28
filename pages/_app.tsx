@@ -11,7 +11,7 @@ const theme = {
   lightBlueColor: "#F2FEFE",
   darkBlueColor: "#DBE9F1",
   blackColor: "#34495e",
-  maxWidth: "1200px",
+  maxWidth: "1400px",
   borderRadius: "5px",
   cardShadow: "box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);"
 };

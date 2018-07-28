@@ -6,21 +6,38 @@ import Badge from "../badge";
 import RoundImage from "../roundImage";
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 48px 2fr;
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  width: 100%;
+  &:first-child {
+    width: 40px;
+    height: 40px;
+  }
+`;
 
 const Avatar = styled(RoundImage)`
+  height: 40px;
   width: 40px;
-  border: none;
 `;
 
-const Name = styled.h5``;
+const Name = styled.h5`
+  font-size: 18px;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+`;
 
-const NameContainer = styled.div``;
+const NameContainer = styled.div`
+  display: flex;
+  white-space: nowrap;
+`;
 
-const UserName = styled.h6``;
+const UserName = styled.h6`
+  color: ${props => props.theme.greyColor};
+`;
 
 interface IProps {
   avatarURL: string;
@@ -44,7 +61,7 @@ const UserDetail: React.SFC<IProps> = ({
         <Column>
           <NameContainer>
             <Name>{name}</Name>
-            <Badge bgColor={"#FEF48B"} text={streak} />
+            <Badge bgColor={"#FEF48B"} text={streak} icon={"🔥"} />
           </NameContainer>
           <UserName>{username}</UserName>
         </Column>

@@ -64,11 +64,7 @@ const Product: React.SFC<IProps> = ({ href }) => (
               text={"10/25"}
               icon={<i className="em em-white_check_mark" />}
             />
-            <Badge
-              warning={true}
-              text={"Need help!"}
-              icon={<i className="em em-warning" />}
-            />
+            <Badge text={"Need help!"} icon={<i className="em em-warning" />} />
           </Badges>
           <Maker src={"static/demo.jpg"} />
         </Footer>

@@ -4,12 +4,10 @@ import styled from "../../typed-components";
 interface IProps {
   icon?: any;
   text: any;
-  bgColor: string;
+  bgColor?: string;
 }
 
 const Container = styled<{ bgColor: any }, any>("div")`
-  display: flex;
-  align-items: center;
   padding: 5px 7px;
   text-transform: uppercase;
   background-color: ${props =>
@@ -17,7 +15,10 @@ const Container = styled<{ bgColor: any }, any>("div")`
   margin-right: 10px;
   border-radius: ${props => props.theme.borderRadius};
   font-size: 12px;
-
+  min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:last-child {
     margin-right: 0px;
   }
@@ -28,8 +29,7 @@ const Container = styled<{ bgColor: any }, any>("div")`
 
 const Badge: React.SFC<IProps> = ({ icon, text, bgColor = null }) => (
   <Container bgColor={bgColor}>
-    {icon}
-    {text}
+    {icon} {text}
   </Container>
 );
 

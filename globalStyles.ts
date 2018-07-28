@@ -21,7 +21,7 @@ injectGlobal`
   h6 {
     font-family: "Karla", sans-serif;
   }
-  *{
+  * {
     box-sizing:border-box;
   }
   a {

@@ -4,15 +4,27 @@ import Section from "../section";
 import Title from "../title";
 import UserDetail from "../userDetail";
 
+const Container = styled.div`
+  overflow: hidden;
+  display: grid;
+  & h5 {
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
 const FireMakers = () => (
   <Section titleElements={<Title>Makers on 🔥</Title>}>
-    <Card>
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-      />
+    <Card padding={"20px"}>
+      <Container>
+        <UserDetail
+          avatarURL={"/static/demo.jpg"}
+          name={"Nicolás Serrano Arévalo"}
+          username={"@serranoarevalo"}
+          streak={50}
+        />
+      </Container>
     </Card>
   </Section>
 );

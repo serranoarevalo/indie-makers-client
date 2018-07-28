@@ -1,4 +1,3 @@
-import styled from "../../typed-components";
 import Card from "../card";
 import Goal from "../goal";
 import Section from "../section";
@@ -6,7 +5,7 @@ import Title from "../title";
 
 const CompletedGoals = () => (
   <Section titleElements={<Title>Completed Goals</Title>}>
-    <Card>
+    <Card padding={"0px 20px"}>
       <Goal />
       <Goal />
       <Goal />

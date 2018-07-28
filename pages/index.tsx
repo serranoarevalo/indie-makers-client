@@ -12,7 +12,7 @@ const Container = styled.div``;
 
 const IndexColumns = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr minmax(340px, 1fr);
   grid-gap: 50px;
 `;
 
@@ -22,7 +22,9 @@ const HeroWrapper = styled.div`
   margin-bottom: 10vh;
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  width: 100%;
+`;
 
 export default () => (
   <Container>

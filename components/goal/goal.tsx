@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { lighten } from "polished";
-import routes from "../../routes";
+
 import styled from "../../typed-components";
 import GoalText from "../goalText";
-import RoundImage from "../roundImage";
 import UserDetail from "../userDetail";
 
 const Container = styled.div`
@@ -24,17 +22,6 @@ const Header = styled.div`
       margin-right: 5px;
     }
   }
-`;
-
-const MakerAvatar = styled(RoundImage)`
-  width: 25px;
-  margin-right: 10px;
-`;
-
-const Title = styled.h5`
-  font-weight: 600;
-  font-size: 16px;
-  margin-right: 10px;
 `;
 
 const Timestamp = styled.span`
