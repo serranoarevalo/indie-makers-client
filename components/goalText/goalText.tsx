@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import routes from "../../routes";
 import styled from "../../typed-components";
 
-const Container = styled.div``;
+const Container = styled.span``;
 
 const Text = styled<
   {
@@ -41,13 +41,7 @@ const GoalText: React.SFC<IProps> = ({
   goalName
 }) => (
   <Container>
-    <Icon>
-      {isCompleted ? (
-        <i className="em em-white_check_mark" />
-      ) : (
-        <i className="em em-white_medium_square" />
-      )}
-    </Icon>
+    <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
     <Text isCompleted={isCompleted} lineThrough={lineThrough}>
       {text}
     </Text>{" "}

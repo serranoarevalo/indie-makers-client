@@ -9,10 +9,13 @@ const Container = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 48px 2fr;
+  grid-gap: 10px;
+  place-items: center center;
 `;
 
 const Column = styled.div`
   width: 100%;
+  height: 100%;
   &:first-child {
     width: 40px;
     height: 40px;
@@ -20,8 +23,8 @@ const Column = styled.div`
 `;
 
 const Avatar = styled(RoundImage)`
-  height: 40px;
-  width: 40px;
+  height: 100%;
+  width: 100%;
 `;
 
 const Name = styled.h5`

@@ -60,11 +60,8 @@ const Product: React.SFC<IProps> = ({ href }) => (
         <Pitch>The best website is gonna be here.</Pitch>
         <Footer>
           <Badges>
-            <Badge
-              text={"10/25"}
-              icon={<i className="em em-white_check_mark" />}
-            />
-            <Badge text={"Need help!"} icon={<i className="em em-warning" />} />
+            <Badge text={"10/25"} icon={"✅"} />
+            <Badge text={"Need help!"} icon={"⚠️"} />
           </Badges>
           <Maker src={"static/demo.jpg"} />
         </Footer>

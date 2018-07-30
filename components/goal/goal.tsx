@@ -30,10 +30,7 @@ const Timestamp = styled.span`
   margin-left: 10px;
 `;
 
-const Section = styled.div`
-  display: flex;
-  align-items: flex-end;
-`;
+const Section = styled.div``;
 
 const Goal = () => (
   <Container>

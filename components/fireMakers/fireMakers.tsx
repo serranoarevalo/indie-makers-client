@@ -12,12 +12,27 @@ const Container = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  & > a:not(:last-child) {
+    margin-bottom: 30px;
+  }
 `;
 
 const FireMakers = () => (
   <Section titleElements={<Title>Makers on 🔥</Title>}>
     <Card padding={"20px"}>
       <Container>
+        <UserDetail
+          avatarURL={"/static/demo.jpg"}
+          name={"Nicolás Serrano Arévalo"}
+          username={"@serranoarevalo"}
+          streak={50}
+        />
+        <UserDetail
+          avatarURL={"/static/demo.jpg"}
+          name={"Nicolás Serrano Arévalo"}
+          username={"@serranoarevalo"}
+          streak={50}
+        />
         <UserDetail
           avatarURL={"/static/demo.jpg"}
           name={"Nicolás Serrano Arévalo"}
