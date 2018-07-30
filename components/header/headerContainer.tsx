@@ -3,11 +3,13 @@ import Header, { FixedHeader } from "./headerPresenter";
 
 interface IState {
   scrolled: boolean;
+  showingModal: boolean;
 }
 
 class HeaderContainer extends React.Component<{}, IState> {
   state = {
-    scrolled: false
+    scrolled: false,
+    showingModal: false
   };
   componentDidMount() {
     window.addEventListener("scroll", () => {
@@ -23,14 +25,25 @@ class HeaderContainer extends React.Component<{}, IState> {
     });
   }
   render() {
-    const { scrolled } = this.state;
+    const { scrolled, showingModal } = this.state;
     return (
       <React.Fragment>
-        <Header />
-        {scrolled && <FixedHeader />}
+        <Header onLoginClick={this._onLoginClick} />
+        {scrolled && <FixedHeader onLoginClick={this._onLoginClick} />}
       </React.Fragment>
     );
   }
+  private _onLoginClick = () => {
+    this.setState({
+      showingModal: true
+    });
+  };
+
+  private _onOverlayClick = () => {
+    this.setState({
+      showingModal: false
+    });
+  };
 }
 
 export default HeaderContainer;
