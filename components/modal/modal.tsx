@@ -35,6 +35,15 @@ const ModalContainer = styled.div`
   z-index: 15;
 `;
 
+const CloseBtn = styled.div`
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+`;
+
 interface IProps {
   clickClose: () => void;
   children: any;
@@ -44,6 +53,7 @@ interface IProps {
 const Modal: React.SFC<IProps> = ({ clickClose, children, showing }) => (
   <Wrapper showing={showing}>
     <Overlay onClick={clickClose} />
+    <CloseBtn onClick={clickClose}>✕</CloseBtn>
     <ModalContainer>{children}</ModalContainer>
   </Wrapper>
 );
