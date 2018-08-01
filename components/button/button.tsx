@@ -9,6 +9,7 @@ const Container = styled<
     accent: boolean;
     fontSize: number;
     size?: sizeType;
+    shadowColor: string;
   },
   any
 >("span")`
@@ -22,7 +23,7 @@ const Container = styled<
   box-shadow: ${props =>
     props.accent
       ? "0px 0px 30px 0px rgba(254,244,139, 1)"
-      : "0px 0px 30px 0px rgba(219,233,241,1)"};
+      : `0px 0px 30px 0px ${props.shadowColor}`};
   transition: background-color 0.3s linear;
   &:hover {
     background-color: ${props =>
@@ -43,10 +44,11 @@ const Container = styled<
 
 interface IProps {
   accent: boolean;
-  text: string;
+  text: any;
   fontSize?: number;
   size?: sizeType;
   className?: string;
+  shadowColor?: string;
 }
 
 const Button: React.SFC<IProps> = ({
@@ -54,13 +56,15 @@ const Button: React.SFC<IProps> = ({
   text,
   fontSize = 16,
   size = "md",
-  className
+  className,
+  shadowColor = "rgba(219,233,241,1)"
 }) => (
   <Container
     className={className}
     accent={accent}
     fontSize={fontSize}
     size={size}
+    shadowColor={shadowColor}
   >
     {text}
   </Container>
@@ -68,7 +72,6 @@ const Button: React.SFC<IProps> = ({
 
 Button.propTypes = {
   accent: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
   fontSize: PropTypes.number
 };
 

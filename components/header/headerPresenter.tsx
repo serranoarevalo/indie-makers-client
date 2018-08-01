@@ -88,7 +88,7 @@ const Header: React.SFC<IProps> = ({ onLoginClick }) => (
       </NavColumn>
       <NavColumn>
         <span onClick={onLoginClick}>
-          <a>Log In</a>
+          <a>Login</a>
         </span>
         <Link href={routes.join}>
           <a>

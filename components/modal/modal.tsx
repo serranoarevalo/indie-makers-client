@@ -31,7 +31,9 @@ const Overlay = styled.div`
   position: absolute;
 `;
 
-const ModalContainer = styled.div``;
+const ModalContainer = styled.div`
+  z-index: 15;
+`;
 
 interface IProps {
   clickClose: () => void;
