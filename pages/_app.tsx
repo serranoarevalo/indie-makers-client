@@ -36,7 +36,6 @@ export default class MyApp extends App {
       pageProps,
       router: { asPath }
     } = this.props;
-    console.log(this.props);
     return (
       <Container>
         <ThemeProvider theme={theme}>
@@ -53,6 +52,12 @@ export default class MyApp extends App {
   }
 
   private _goBack = () => {
-    window.history.back();
+    if (
+      document.referrer.indexOf(location.protocol + "//" + location.host) === 0
+    ) {
+      Router.back();
+    } else {
+      Router.push("/");
+    }
   };
 }

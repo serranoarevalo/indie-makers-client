@@ -34,7 +34,7 @@ const Text = styled.span`
   }
 `;
 
-const Subtitle = Title.extend`
+const Subtitle = styled.h4`
   font-size: 22px;
   margin-bottom: 15px;
 `;
