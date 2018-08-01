@@ -1,5 +1,6 @@
 import React from "react";
 import Header, { FixedHeader } from "./headerPresenter";
+import LoginModal from "../logInModal";
 
 interface IState {
   scrolled: boolean;
@@ -28,6 +29,7 @@ class HeaderContainer extends React.Component<{}, IState> {
     const { scrolled, showingModal } = this.state;
     return (
       <React.Fragment>
+        {showingModal && <LoginModal clickClose={this._onOverlayClick} />}
         <Header onLoginClick={this._onLoginClick} />
         {scrolled && <FixedHeader onLoginClick={this._onLoginClick} />}
       </React.Fragment>

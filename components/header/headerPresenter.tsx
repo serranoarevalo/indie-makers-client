@@ -48,6 +48,9 @@ const NavColumn = styled.div`
       margin-right: 30px;
     }
   }
+  span {
+    cursor: pointer;
+  }
 `;
 
 interface IProps {
