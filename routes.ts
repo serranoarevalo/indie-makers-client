@@ -1,6 +1,7 @@
 export default {
   home: "/",
-  join: "/join",
+  join: "/?join",
+  asJoin: "/join",
   login: "/login",
   products: "/products",
   makers: "/makers",

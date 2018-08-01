@@ -10,6 +10,7 @@ const Container = styled("header")`
   align-items: center;
   padding: 30px 5px;
   background-color: white;
+  box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
 `;
 
 const Wrapper = styled.div`
@@ -53,11 +54,9 @@ const NavColumn = styled.div`
   }
 `;
 
-interface IProps {
-  onLoginClick: () => void;
-}
+interface IProps {}
 
-const Header: React.SFC<IProps> = ({ onLoginClick }) => (
+const Header: React.SFC<IProps> = () => (
   <Container>
     <Wrapper>
       <NavColumn>
@@ -87,10 +86,10 @@ const Header: React.SFC<IProps> = ({ onLoginClick }) => (
         </Navigation>
       </NavColumn>
       <NavColumn>
-        <span onClick={onLoginClick}>
+        <span>
           <a>Login</a>
         </span>
-        <Link href={routes.join}>
+        <Link href={routes.join} as={routes.asJoin}>
           <a>
             <Button accent={true} text={"Join Indie Makers"} />
           </a>
@@ -118,9 +117,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = ({ onLoginClick }) => (
+export const FixedHeader: React.SFC<IProps> = () => (
   <FixedHeaderContainer>
-    <Header onLoginClick={onLoginClick} />
+    <Header />
   </FixedHeaderContainer>
 );
 

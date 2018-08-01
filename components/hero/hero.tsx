@@ -37,7 +37,7 @@ const Hero = () => (
       Join a community of 4,059 makers to make better products.
     </Subtitle>
     <CTAs>
-      <Link href={routes.join}>
+      <Link href={routes.join} as={routes.asJoin}>
         <a>
           <Button accent={true} text={"Join Indie Makers"} fontSize={28} />
         </a>

@@ -21,7 +21,7 @@ const Wrapper = styled<{ showing: boolean }, any>("div")`
   justify-content: center;
   z-index: ${props => (props.showing ? "99" : "0")};
   position: fixed;
-  animation: ${props => (props.showing ? enterAnimation : "")} 0.3s linear;
+  animation: ${props => (props.showing ? enterAnimation : "")} 0.1s linear;
 `;
 
 const Overlay = styled.div`
@@ -33,6 +33,7 @@ const Overlay = styled.div`
 
 const ModalContainer = styled.div`
   z-index: 15;
+  width: 50%;
 `;
 
 const CloseBtn = styled.div`

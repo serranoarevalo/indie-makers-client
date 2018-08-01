@@ -1,7 +1,10 @@
 import App, { Container } from "next/app";
 import React from "react";
+import Router from "next/router";
 import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
+import Modal from "../components/modal";
+import JoinModal from "../components/joinModal";
 
 const theme = {
   greyColor: "#95a5a6",
@@ -28,16 +31,28 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const {
+      Component,
+      pageProps,
+      router: { asPath }
+    } = this.props;
+    console.log(this.props);
     return (
       <Container>
         <ThemeProvider theme={theme}>
           <React.Fragment>
             <Header />
             <Component {...pageProps} />
+            <Modal clickClose={this._goBack} showing={asPath === "/join"}>
+              <JoinModal />
+            </Modal>
           </React.Fragment>
         </ThemeProvider>
       </Container>
     );
   }
+
+  private _goBack = () => {
+    window.history.back();
+  };
 }

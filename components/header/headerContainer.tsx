@@ -1,17 +1,13 @@
 import React from "react";
 import Header, { FixedHeader } from "./headerPresenter";
-import LoginModal from "../logInModal";
-import Modal from "../modal";
 
 interface IState {
   scrolled: boolean;
-  showingModal: boolean;
 }
 
 class HeaderContainer extends React.Component<{}, IState> {
   state = {
-    scrolled: false,
-    showingModal: false
+    scrolled: false
   };
   componentDidMount() {
     window.addEventListener("scroll", () => {
@@ -27,28 +23,14 @@ class HeaderContainer extends React.Component<{}, IState> {
     });
   }
   render() {
-    const { scrolled, showingModal } = this.state;
+    const { scrolled } = this.state;
     return (
       <React.Fragment>
-        <Header onLoginClick={this._onLoginClick} />
-        {scrolled && <FixedHeader onLoginClick={this._onLoginClick} />}
-        <Modal clickClose={this._onOverlayClick} showing={showingModal}>
-          <LoginModal />
-        </Modal>
+        <Header />
+        {scrolled && <FixedHeader />}
       </React.Fragment>
     );
   }
-  private _onLoginClick = () => {
-    this.setState({
-      showingModal: true
-    });
-  };
-
-  private _onOverlayClick = () => {
-    this.setState({
-      showingModal: false
-    });
-  };
 }
 
 export default HeaderContainer;
