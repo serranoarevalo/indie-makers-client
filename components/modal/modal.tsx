@@ -1,19 +1,27 @@
 import PropTypes from "prop-types";
-import styled from "../../typed-components";
+import styled, { keyframes } from "../../typed-components";
 
-interface IProps {
-  clickClose: () => void;
-  children: any;
-}
+const enterAnimation = keyframes`
+  from {
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+`;
 
-const Wrapper = styled.div`
+const Wrapper = styled<{ showing: boolean }, any>("div")`
   width: 100vw;
+  z-index: 11;
   overflow: hidden;
   height: 100vh;
   top: 0;
-  display: flex;
+  display: ${props => (props.showing ? "flex" : "none")};
   align-items: center;
   justify-content: center;
+  z-index: ${props => (props.showing ? "99" : "0")};
+  position: fixed;
+  animation: ${props => (props.showing ? enterAnimation : "")} 0.3s linear;
 `;
 
 const Overlay = styled.div`
@@ -25,8 +33,14 @@ const Overlay = styled.div`
 
 const ModalContainer = styled.div``;
 
-const Modal: React.SFC<IProps> = ({ clickClose, children }) => (
-  <Wrapper>
+interface IProps {
+  clickClose: () => void;
+  children: any;
+  showing: boolean;
+}
+
+const Modal: React.SFC<IProps> = ({ clickClose, children, showing }) => (
+  <Wrapper showing={showing}>
     <Overlay onClick={clickClose} />
     <ModalContainer>{children}</ModalContainer>
   </Wrapper>

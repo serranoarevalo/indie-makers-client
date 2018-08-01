@@ -115,7 +115,7 @@ const FixedHeaderContainer = styled.div`
   width: 100%;
   animation: ${animation} 0.2s linear;
   box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
-  z-index: 999;
+  z-index: 10;
 `;
 
 export const FixedHeader: React.SFC<IProps> = ({ onLoginClick }) => (
