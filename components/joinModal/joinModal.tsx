@@ -56,12 +56,18 @@ const ModalColumn = styled.div`
   }
 `;
 
-const JoinModal: React.SFC = () => (
+interface IProps {
+  showing: boolean;
+}
+
+const JoinModal: React.SFC<IProps> = ({ showing }) => (
   <Card padding={"40px"}>
     <Container>
-      <Head>
-        <title>Join Indie Makers</title>
-      </Head>
+      {showing && (
+        <Head>
+          <title>Join Indie Makers</title>
+        </Head>
+      )}
       <ModalColumn>
         <Subtitle>
           Enter a community of makers building products together.

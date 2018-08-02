@@ -43,7 +43,7 @@ export default class MyApp extends App {
             <Header />
             <Component {...pageProps} />
             <Modal clickClose={this._goBack} showing={asPath === "/join"}>
-              <JoinModal />
+              <JoinModal showing={asPath === "/join"} />
             </Modal>
           </React.Fragment>
         </ThemeProvider>
