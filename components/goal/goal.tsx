@@ -40,6 +40,7 @@ const Goal = () => (
         name={"Nicolás Serrano Arévalo"}
         username={"@serranoarevalo"}
         streak={50}
+        card={false}
       />
     </Header>
     <Section>

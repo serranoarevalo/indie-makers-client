@@ -5,12 +5,9 @@ import Title from "../title";
 import UserDetail from "../userDetail";
 
 const Container = styled.div`
-  overflow: hidden;
   display: grid;
-  & h5 {
-    width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  & .launched {
+    display: none;
   }
   & > a:not(:last-child) {
     margin-bottom: 30px;
@@ -19,28 +16,26 @@ const Container = styled.div`
 
 const FireMakers = () => (
   <Section titleElements={<Title>Makers on 🔥</Title>}>
-    <Card padding={"20px"}>
-      <Container>
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-        />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-        />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-        />
-      </Container>
-    </Card>
+    <Container>
+      <UserDetail
+        avatarURL={"/static/demo.jpg"}
+        name={"Nicolás Serrano Arévalo"}
+        username={"@serranoarevalo"}
+        streak={50}
+      />
+      <UserDetail
+        avatarURL={"/static/demo.jpg"}
+        name={"Nicolás Serrano Arévalo"}
+        username={"@serranoarevalo"}
+        streak={50}
+      />
+      <UserDetail
+        avatarURL={"/static/demo.jpg"}
+        name={"Nicolás Serrano Arévalo"}
+        username={"@serranoarevalo"}
+        streak={50}
+      />
+    </Container>
   </Section>
 );
 export default FireMakers;

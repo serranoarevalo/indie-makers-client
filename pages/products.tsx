@@ -1,17 +1,10 @@
 import Head from "next/head";
 import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
+import Tabs from "../components/tabs";
 import Tab from "../components/tab";
 import Product from "../components/product";
 import Pagination from "../components/pagination";
-
-const Header = styled.header`
-  display: flex;
-  margin: 50px 0;
-  & > div {
-    margin-right: 20px;
-  }
-`;
 
 const ProductGrid = styled.div`
   display: grid;
@@ -25,11 +18,12 @@ export default () => (
     <Head>
       <title>Products | Indie Makers</title>
     </Head>
-    <Header>
+    <Tabs>
       <Tab text={"All"} selected={true} />
       <Tab text={"Launched"} />
       <Tab text={"Need Help"} />
-    </Header>
+      <Tab text={"Featured"} />
+    </Tabs>
     <ProductGrid>
       <Product href={"#"} />
       <Product href={"#"} />
