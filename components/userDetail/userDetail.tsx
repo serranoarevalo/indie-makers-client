@@ -37,7 +37,7 @@ const Name = styled.h5`
 
 const NameContainer = styled.div`
   display: grid;
-  grid-template-columns: 70% 1fr;
+  grid-template-columns: auto auto;
   white-space: nowrap;
 `;
 

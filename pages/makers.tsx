@@ -9,9 +9,6 @@ const MakersGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   grid-gap: 50px;
-  & > a > div {
-    box-sizing: content-box;
-  }
 `;
 
 export default () => (
