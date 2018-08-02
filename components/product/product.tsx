@@ -5,7 +5,7 @@ import RoundImage from "../roundImage";
 
 const Container = styled.div`
   border-radius: ${props => props.theme.borderRadius};
-  padding: 40px 20px;
+  padding: 20px;
   ${props => props.theme.cardShadow};
   background-color: white;
   display: flex;
@@ -34,7 +34,7 @@ const Badges = styled.div`
 `;
 
 const Footer = styled.footer`
-  margin-top: 20px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

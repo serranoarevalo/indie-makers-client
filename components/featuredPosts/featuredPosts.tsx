@@ -23,7 +23,7 @@ const PostsColumn = styled.div`
 const FeaturedPosts = () => (
   <Section
     titleElements={[
-      <Title key={1}>Finished Products</Title>,
+      <Title key={1}>Launched Products</Title>,
       <Link key={2} href={routes.blog}>
         <a>
           <FakeLink>See more</FakeLink>
