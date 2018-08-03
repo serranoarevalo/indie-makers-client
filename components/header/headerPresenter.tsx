@@ -2,23 +2,13 @@ import Link from "next/link";
 import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
+import Wrapper from "../wrapper";
 
 const Container = styled("header")`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 30px 5px;
   background-color: white;
   box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
-`;
-
-const Wrapper = styled.div`
-  max-width: ${props => props.theme.maxWidth};
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const Logo = styled.h1`
@@ -45,7 +35,7 @@ const NavColumn = styled.div`
   width: 50%;
   &:last-child {
     justify-content: flex-end;
-    & *:first-child {
+    & > *:first-child {
       margin-right: 30px;
     }
   }
@@ -54,47 +44,55 @@ const NavColumn = styled.div`
   }
 `;
 
+const FlexWidthContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 interface IProps {}
 
 const Header: React.SFC<IProps> = () => (
   <Container>
     <Wrapper>
-      <NavColumn>
-        <Logo>
-          <Link href={routes.home}>
-            <a>Indie Makers</a>
+      <FlexWidthContainer>
+        <NavColumn>
+          <Logo>
+            <Link href={routes.home}>
+              <a>Indie Makers</a>
+            </Link>
+          </Logo>
+          <Navigation>
+            <ul>
+              <li>
+                <Link href={routes.products}>
+                  <a>Products</a>
+                </Link>
+              </li>
+              <li>
+                <Link href={routes.makers}>
+                  <a>Makers</a>
+                </Link>
+              </li>
+              <li>
+                <Link href={routes.blog}>
+                  <a>Blog</a>
+                </Link>
+              </li>
+            </ul>
+          </Navigation>
+        </NavColumn>
+        <NavColumn>
+          <span>
+            <a>Login</a>
+          </span>
+          <Link href={routes.join} as={routes.asJoin}>
+            <a>
+              <Button accent={true} text={"Join Indie Makers"} />
+            </a>
           </Link>
-        </Logo>
-        <Navigation>
-          <ul>
-            <li>
-              <Link href={routes.products}>
-                <a>Products</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={routes.makers}>
-                <a>Makers</a>
-              </Link>
-            </li>
-            <li>
-              <Link href={routes.blog}>
-                <a>Blog</a>
-              </Link>
-            </li>
-          </ul>
-        </Navigation>
-      </NavColumn>
-      <NavColumn>
-        <span>
-          <a>Login</a>
-        </span>
-        <Link href={routes.join} as={routes.asJoin}>
-          <a>
-            <Button accent={true} text={"Join Indie Makers"} />
-          </a>
-        </Link>
-      </NavColumn>
+        </NavColumn>
+      </FlexWidthContainer>
     </Wrapper>
   </Container>
 );

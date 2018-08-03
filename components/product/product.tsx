@@ -9,10 +9,13 @@ const Container = styled.div`
   padding: 20px;
   ${props => props.theme.cardShadow};
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   cursor: pointer;
+  width: 100%;
+  & a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Icon = styled(RoundImage)`
@@ -53,25 +56,25 @@ interface IProps {
 }
 
 const Product: React.SFC<IProps> = ({ href }) => (
-  <Link
-    href={routes.productDetail("something")}
-    as={routes.asProductDetail("something")}
-  >
-    <a>
-      <Container>
-        <Icon src={"static/demo.jpg"} />
+  <Container>
+    <Link
+      href={routes.productDetail("something")}
+      as={routes.asProductDetail("something")}
+    >
+      <a>
+        <Icon src={"/static/demo.jpg"} />
         <Title>Great Product</Title>
         <Pitch>The best website is gonna be here.</Pitch>
         <Footer>
           <Badges>
             <Badge text={"10/25"} icon={"✅"} />
-            <Badge text={"Need help!"} icon={"⚠️"} />
+            <Badge text={"Need Help!"} icon={"⚠️"} />
           </Badges>
-          <Maker src={"static/demo.jpg"} />
+          <Maker src={"/static/demo.jpg"} />
         </Footer>
-      </Container>
-    </a>
-  </Link>
+      </a>
+    </Link>
+  </Container>
 );
 
 export default Product;

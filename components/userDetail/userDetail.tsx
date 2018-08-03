@@ -84,7 +84,7 @@ const UserDetail: React.SFC<IProps> = ({
                       bgColor={"#FEF48B"}
                       text={streak}
                       icon={"🔥"}
-                      title={"Daily streak"}
+                      title={"Daily Streak"}
                     />
                     <span className={"launched"}>
                       <Badge
