@@ -80,9 +80,19 @@ const UserDetail: React.SFC<IProps> = ({
                 <NameContainer>
                   <Name>{name}</Name>
                   <Badges>
-                    <Badge bgColor={"#FEF48B"} text={streak} icon={"🔥"} />
+                    <Badge
+                      bgColor={"#FEF48B"}
+                      text={streak}
+                      icon={"🔥"}
+                      title={"Daily streak"}
+                    />
                     <span className={"launched"}>
-                      <Badge bgColor={"#DBE9F1"} text={launched} icon={"🚀"} />
+                      <Badge
+                        bgColor={"#DBE9F1"}
+                        text={launched}
+                        icon={"🚀"}
+                        title={"Products Finished"}
+                      />
                     </span>
                   </Badges>
                 </NameContainer>
@@ -105,9 +115,19 @@ const UserDetail: React.SFC<IProps> = ({
               <NameContainer>
                 <Name>{name}</Name>
                 <Badges>
-                  <Badge bgColor={"#FEF48B"} text={streak} icon={"🔥"} />
+                  <Badge
+                    bgColor={"#FEF48B"}
+                    text={streak}
+                    icon={"🔥"}
+                    title={"Daily Streak"}
+                  />
                   <span className={"launched"}>
-                    <Badge bgColor={"#DBE9F1"} text={launched} icon={"🚀"} />
+                    <Badge
+                      bgColor={"#DBE9F1"}
+                      text={launched}
+                      icon={"🚀"}
+                      title={"Products Finished"}
+                    />
                   </span>
                 </Badges>
               </NameContainer>

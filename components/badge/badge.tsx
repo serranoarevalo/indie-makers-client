@@ -5,6 +5,7 @@ interface IProps {
   icon?: any;
   text: any;
   bgColor?: string;
+  title?: string;
 }
 
 const Container = styled<{ bgColor: any }, any>("div")`
@@ -27,8 +28,13 @@ const Container = styled<{ bgColor: any }, any>("div")`
   }
 `;
 
-const Badge: React.SFC<IProps> = ({ icon, text, bgColor = null }) => (
-  <Container bgColor={bgColor}>
+const Badge: React.SFC<IProps> = ({
+  title = "",
+  icon,
+  text,
+  bgColor = null
+}) => (
+  <Container title={title} bgColor={bgColor}>
     {icon} {text}
   </Container>
 );

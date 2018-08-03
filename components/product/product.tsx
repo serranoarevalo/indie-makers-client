@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "../../typed-components";
+import routes from "../../routes";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
 
@@ -52,7 +53,10 @@ interface IProps {
 }
 
 const Product: React.SFC<IProps> = ({ href }) => (
-  <Link href={href}>
+  <Link
+    href={routes.productDetail("something")}
+    as={routes.asProductDetail("something")}
+  >
     <a>
       <Container>
         <Icon src={"static/demo.jpg"} />

@@ -1,5 +1,4 @@
 import styled from "../../typed-components";
-import Card from "../card";
 import Section from "../section";
 import Title from "../title";
 import UserDetail from "../userDetail";
