@@ -8,4 +8,13 @@ const Container = styled.header`
   }
 `;
 
-export default ({ children }) => <Container>{children}</Container>;
+interface IProps {
+  className?: string;
+  children: any;
+}
+
+const Tabs: React.SFC<IProps> = ({ children, className }) => (
+  <Container className={className}>{children}</Container>
+);
+
+export default Tabs;

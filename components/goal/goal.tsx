@@ -24,12 +24,6 @@ const Header = styled.div`
   }
 `;
 
-const Timestamp = styled.span`
-  font-size: 12px;
-  color: ${props => props.theme.greyColor};
-  margin-left: 10px;
-`;
-
 const Section = styled.div``;
 
 const Goal = () => (
@@ -50,7 +44,6 @@ const Goal = () => (
         text={"Go to bebek"}
         productName={"Indie Makers"}
       />
-      <Timestamp>25 minutes ago</Timestamp>
     </Section>
   </Container>
 );

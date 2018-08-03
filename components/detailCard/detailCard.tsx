@@ -4,7 +4,6 @@ import styled from "../../typed-components";
 import routes from "../../routes";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
-import { checkPropTypes } from "../../node_modules/@types/prop-types";
 
 const Span = styled.span``;
 
@@ -58,17 +57,40 @@ const Maker = styled(RoundImage)`
 interface IProps {
   href: string;
   disableLink?: boolean;
+  kind?: "user" | "product";
 }
 
-const CardContent: React.SFC = props => (
+const CardContent: any = ({ kind = "product", streak, launched }) => (
   <React.Fragment>
     <Icon src={"/static/demo.jpg"} />
     <Title>Great Product</Title>
     <Pitch>The best website is gonna be here.</Pitch>
     <Footer>
       <Badges>
-        <Badge text={"10/25"} icon={"✅"} />
-        <Badge text={"Need Help!"} icon={"⚠️"} />
+        {kind === "product" && (
+          <React.Fragment>
+            <Badge text={"10/25"} icon={"✅"} />
+            <Badge text={"Need Help!"} icon={"⚠️"} />
+          </React.Fragment>
+        )}
+        {kind === "user" && (
+          <React.Fragment>
+            <Badge
+              bgColor={"#FEF48B"}
+              text={streak}
+              icon={"🔥"}
+              title={"Daily Streak"}
+            />
+            <span className={"launched"}>
+              <Badge
+                bgColor={"#DBE9F1"}
+                text={launched}
+                icon={"🚀"}
+                title={"Products Finished"}
+              />
+            </span>
+          </React.Fragment>
+        )}
       </Badges>
       <Maker src={"/static/demo.jpg"} />
     </Footer>

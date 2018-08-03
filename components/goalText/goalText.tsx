@@ -28,6 +28,12 @@ const Goal = styled.span`
   font-weight: 600;
 `;
 
+const Timestamp = styled.span`
+  font-size: 12px;
+  color: ${props => props.theme.greyColor};
+  margin-left: 10px;
+`;
+
 interface IProps {
   text: string;
   isCompleted?: boolean;
@@ -61,6 +67,7 @@ const GoalText: React.SFC<IProps> = ({
         </Goal>
       </React.Fragment>
     )}
+    <Timestamp>25 minutes ago</Timestamp>
   </Container>
 );
 

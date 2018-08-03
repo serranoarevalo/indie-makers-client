@@ -10,7 +10,7 @@ const Container = styled.div`
   margin: 50px 0px;
   display: grid;
   grid-template-columns: 320px 3fr;
-  grid-gap: 25px;
+  grid-gap: 50px;
 `;
 
 const ToDos = styled.div`
@@ -79,7 +79,7 @@ const Product = () => (
         <ToDos>
           <ToDosColumn>
             <Header>
-              <Title>To Do</Title>
+              <Title>Doing</Title>
             </Header>
             <GoalsContainer>
               <GoalText
