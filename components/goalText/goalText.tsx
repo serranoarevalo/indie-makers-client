@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import routes from "../../routes";
@@ -31,26 +32,35 @@ interface IProps {
   text: string;
   isCompleted?: boolean;
   lineThrough?: boolean;
-  goalName: string;
+  productName: string;
+  onProductPage?: boolean;
 }
 
 const GoalText: React.SFC<IProps> = ({
   text,
   isCompleted = false,
   lineThrough,
-  goalName
+  productName,
+  onProductPage = false
 }) => (
   <Container>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
     <Text isCompleted={isCompleted} lineThrough={lineThrough}>
       {text}
     </Text>{" "}
-    on{" "}
-    <Goal>
-      <Link href={routes.productDetail(goalName)}>
-        <a>{goalName}</a>
-      </Link>
-    </Goal>
+    {!onProductPage && (
+      <React.Fragment>
+        on{" "}
+        <Goal>
+          <Link
+            href={routes.productDetail(productName)}
+            as={routes.asProductDetail(productName)}
+          >
+            <a>{productName}</a>
+          </Link>
+        </Goal>
+      </React.Fragment>
+    )}
   </Container>
 );
 
@@ -58,7 +68,7 @@ GoalText.propTypes = {
   text: PropTypes.string.isRequired,
   isCompleted: PropTypes.bool,
   lineThrough: PropTypes.bool,
-  goalName: PropTypes.string.isRequired
+  productName: PropTypes.string.isRequired
 };
 
 export default GoalText;

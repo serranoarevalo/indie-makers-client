@@ -48,7 +48,7 @@ const Goal = () => (
         lineThrough={false}
         isCompleted={true}
         text={"Go to bebek"}
-        goalName={"Indie Makers"}
+        productName={"Indie Makers"}
       />
       <Timestamp>25 minutes ago</Timestamp>
     </Section>
