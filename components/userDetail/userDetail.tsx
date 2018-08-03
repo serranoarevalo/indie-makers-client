@@ -69,7 +69,10 @@ const UserDetail: React.SFC<IProps> = ({
 }) => {
   if (card) {
     return (
-      <Link href={routes.userDetail(username)}>
+      <Link
+        href={routes.userDetail(username)}
+        as={routes.asUserDetail(username)}
+      >
         <a>
           <Card padding={"15px"}>
             <Container>
@@ -105,7 +108,10 @@ const UserDetail: React.SFC<IProps> = ({
     );
   } else {
     return (
-      <Link href={routes.userDetail(username)}>
+      <Link
+        href={routes.userDetail(username)}
+        as={routes.asUserDetail(username)}
+      >
         <a>
           <Container>
             <Column>

@@ -3,7 +3,7 @@ import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import Tabs from "../components/tabs";
 import Tab from "../components/tab";
-import Product from "../components/product";
+import DetailCard from "../components/detailCard";
 import Pagination from "../components/pagination";
 
 const ProductGrid = styled.div`
@@ -25,22 +25,22 @@ export default () => (
       <Tab text={"Featured"} />
     </Tabs>
     <ProductGrid>
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
     </ProductGrid>
     <Pagination currentPage={0} totalPages={5} />
   </Wrapper>

@@ -3,7 +3,7 @@ import routes from "../../routes";
 import styled from "../../typed-components";
 import Button from "../button";
 import FakeLink from "../fakeLink";
-import Product from "../product";
+import DetailCard from "../detailCard";
 import Section from "../section";
 import Title from "../title";
 
@@ -34,9 +34,9 @@ const newProducts = () => (
     ]}
   >
     <Grid>
-      <Product href={"#"} />
-      <Product href={"#"} />
-      <Product href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
+      <DetailCard href={"#"} />
     </Grid>
   </Section>
 );

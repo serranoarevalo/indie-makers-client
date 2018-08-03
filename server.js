@@ -12,7 +12,13 @@ app
 
     server.get("/product/:id", (req, res) => {
       const actualPage = "/product";
-      const queryParams = { title: req.params.id };
+      const queryParams = { name: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
+    server.get("/maker/:id", (req, res) => {
+      const actualPage = "/maker";
+      const queryParams = { username: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 

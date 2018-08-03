@@ -16,5 +16,6 @@ export default {
     const formatted = name.toLowerCase().replace(" ", "-");
     return `/product/${formatted}/`;
   },
-  userDetail: (name: string) => `/user/${name}`
+  userDetail: (username: string) => `/maker?username${username}`,
+  asUserDetail: (username: string) => `/maker/${username}`
 };
