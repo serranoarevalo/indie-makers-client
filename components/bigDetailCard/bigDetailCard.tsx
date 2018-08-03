@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import styled from "../../typed-components";
-import routes from "../../routes";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
 
@@ -54,51 +53,79 @@ const Maker = styled(RoundImage)`
   border: 0;
 `;
 
-interface IProps {
-  href: string;
-  disableLink?: boolean;
-  kind?: "user" | "product";
+interface IPresenterProps {
+  icon: string;
+  title: string;
+  subtitle: string;
+  showSubtitle: boolean;
+  hasAuthor: boolean;
+  authorAvatar?: string;
+  streakNumber?: number;
+  launchedNumber?: number;
+  toDoNumber?: string;
+  needsHelp?: boolean;
+  authorUsername?: string;
 }
 
-const CardContent: any = ({ kind = "product", streak, launched }) => (
+const CardContent: React.SFC<IPresenterProps> = ({
+  icon,
+  title,
+  subtitle,
+  showSubtitle,
+  hasAuthor,
+  authorAvatar,
+  needsHelp,
+  streakNumber,
+  toDoNumber,
+  launchedNumber
+}) => (
   <React.Fragment>
-    <Icon src={"/static/demo.jpg"} />
-    <Title>Great Product</Title>
-    <Pitch>The best website is gonna be here.</Pitch>
+    <Icon src={icon} />
+    <Title>{title}</Title>
+    {showSubtitle && <Pitch>{subtitle}</Pitch>}
     <Footer>
       <Badges>
-        {kind === "product" && (
-          <React.Fragment>
-            <Badge text={"10/25"} icon={"✅"} />
-            <Badge text={"Need Help!"} icon={"⚠️"} />
-          </React.Fragment>
-        )}
-        {kind === "user" && (
-          <React.Fragment>
+        <React.Fragment>
+          {toDoNumber !== undefined && <Badge text={toDoNumber} icon={"✅"} />}
+          {needsHelp && <Badge text={"Need Help!"} icon={"⚠️"} />}
+        </React.Fragment>
+        <React.Fragment>
+          {streakNumber !== undefined && (
             <Badge
               bgColor={"#FEF48B"}
-              text={streak}
+              text={streakNumber}
               icon={"🔥"}
               title={"Daily Streak"}
             />
-            <span className={"launched"}>
-              <Badge
-                bgColor={"#DBE9F1"}
-                text={launched}
-                icon={"🚀"}
-                title={"Products Finished"}
-              />
-            </span>
-          </React.Fragment>
-        )}
+          )}
+          {launchedNumber !== undefined && (
+            <Badge
+              bgColor={"#DBE9F1"}
+              text={launchedNumber}
+              icon={"🚀"}
+              title={"Products Finished"}
+            />
+          )}
+        </React.Fragment>
       </Badges>
-      <Maker src={"/static/demo.jpg"} />
+      {hasAuthor && <Maker src={authorAvatar!} />}
     </Footer>
   </React.Fragment>
 );
 
-const DetailCard: React.SFC<IProps> = ({ href, disableLink, ...rest }) => {
-  if (disableLink) {
+interface IContainerProps {
+  isLink: boolean;
+  link?: string;
+  linkAs?: string;
+}
+
+const BigDetailCardContainer: React.SFC<IContainerProps & IPresenterProps> = ({
+  isLink,
+  link,
+  linkAs,
+  ...rest
+}) => {
+  if (!isLink) {
     return (
       <Container>
         <Span>
@@ -109,10 +136,7 @@ const DetailCard: React.SFC<IProps> = ({ href, disableLink, ...rest }) => {
   } else {
     return (
       <Container>
-        <Link
-          href={!disableLink ? routes.productDetail("something") : ""}
-          as={!disableLink ? routes.asProductDetail("something") : ""}
-        >
+        <Link href={link} as={linkAs}>
           <a>
             <Span>
               <CardContent {...rest} />
@@ -124,4 +148,4 @@ const DetailCard: React.SFC<IProps> = ({ href, disableLink, ...rest }) => {
   }
 };
 
-export default DetailCard;
+export default BigDetailCardContainer;

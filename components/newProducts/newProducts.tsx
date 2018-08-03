@@ -3,7 +3,7 @@ import routes from "../../routes";
 import styled from "../../typed-components";
 import Button from "../button";
 import FakeLink from "../fakeLink";
-import DetailCard from "../detailCard";
+import BigDetailCard from "../bigDetailCard";
 import Section from "../section";
 import Title from "../title";
 
@@ -34,9 +34,19 @@ const newProducts = () => (
     ]}
   >
     <Grid>
-      <DetailCard href={"#"} />
-      <DetailCard href={"#"} />
-      <DetailCard href={"#"} />
+      <BigDetailCard
+        isLink={true}
+        link={routes.productDetail("something")}
+        linkAs={routes.asProductDetail("something")}
+        icon={"/static/demo.jpg"}
+        authorAvatar={"/static/demo.jpg"}
+        title={"Best Product"}
+        showSubtitle={true}
+        toDoNumber={"10/30"}
+        subtitle={"Gonna make millions with this"}
+        hasAuthor={true}
+        needsHelp={true}
+      />
     </Grid>
   </Section>
 );

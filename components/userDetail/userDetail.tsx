@@ -48,6 +48,7 @@ const UserName = styled.h6`
 const Badges = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 interface IProps {

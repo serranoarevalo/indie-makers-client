@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
-import DetailCard from "../components/detailCard";
+import BigDetailCard from "../components/bigDetailCard";
 import UserDetail from "../components/userDetail";
 
 const Container = styled.div`
@@ -27,7 +27,18 @@ export default () => (
         <title>Maker Name | Indie Makers</title>
       </Head>
       <Column>
-        <DetailCard href="" disableLink={true} kind={"user"} />
+        <BigDetailCard
+          isLink={false}
+          icon={"/static/demo.jpg"}
+          authorAvatar={"/static/demo.jpg"}
+          title={"Nicolás Serrano Arévalo"}
+          showSubtitle={true}
+          subtitle={"Building pretty stuff"}
+          hasAuthor={false}
+          needsHelp={false}
+          streakNumber={40}
+          launchedNumber={20}
+        />
       </Column>
       <Grid>
         <UserDetail

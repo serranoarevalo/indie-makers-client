@@ -3,7 +3,7 @@ import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import Card from "../components/card";
 import UserDetail from "../components/userDetail";
-import DetailCard from "../components/detailCard";
+import BigDetailCard from "../components/bigDetailCard";
 import GoalText from "../components/goalText";
 
 const Container = styled.div`
@@ -66,7 +66,16 @@ const Product = () => (
     </Head>
     <Container>
       <DetailsContainer>
-        <DetailCard href={"#"} disableLink={true} />
+        <BigDetailCard
+          isLink={false}
+          icon={"/static/demo.jpg"}
+          title={"Best Product"}
+          showSubtitle={true}
+          toDoNumber={"10/30"}
+          subtitle={"Gonna make millions with this"}
+          hasAuthor={false}
+          needsHelp={true}
+        />
         <Divider />
         <UserDetail
           avatarURL={"/static/demo.jpg"}

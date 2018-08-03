@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const Container = styled<{ bgColor: any }, any>("div")`
-  padding: 5px 7px;
+  padding: 5px;
   text-transform: uppercase;
   background-color: ${props =>
     props.bgColor ? props.bgColor : props.theme.darkBlueColor};
@@ -21,6 +21,7 @@ const Container = styled<{ bgColor: any }, any>("div")`
   align-items: center;
   justify-content: center;
   cursor: help;
+  height: auto;
   &:last-child {
     margin-right: 0px;
   }
@@ -32,7 +33,7 @@ const Container = styled<{ bgColor: any }, any>("div")`
 const Badge: React.SFC<IProps> = ({
   title = "",
   icon,
-  text,
+  text = "ext",
   bgColor = null
 }) => (
   <Container title={title} bgColor={bgColor}>
