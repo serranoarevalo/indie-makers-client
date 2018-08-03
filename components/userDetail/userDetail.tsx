@@ -59,14 +59,43 @@ interface IProps {
   launched?: number;
 }
 
-const UserDetail: React.SFC<IProps> = ({
+const DetailContent: any = ({
   avatarURL,
-  name,
   username,
+  name,
   streak,
-  launched = 50,
-  card = true
-}) => {
+  launched
+}) => (
+  <Container>
+    <Column>
+      <Avatar src={avatarURL} />
+    </Column>
+    <Column>
+      <NameContainer>
+        <Name>{name}</Name>
+        <Badges>
+          <Badge
+            bgColor={"#FEF48B"}
+            text={streak}
+            icon={"🔥"}
+            title={"Daily Streak"}
+          />
+          <span className={"launched"}>
+            <Badge
+              bgColor={"#DBE9F1"}
+              text={launched}
+              icon={"🚀"}
+              title={"Products Finished"}
+            />
+          </span>
+        </Badges>
+      </NameContainer>
+      <UserName>{username}</UserName>
+    </Column>
+  </Container>
+);
+
+const UserDetail: React.SFC<IProps> = ({ card = true, username, ...rest }) => {
   if (card) {
     return (
       <Link
@@ -75,33 +104,7 @@ const UserDetail: React.SFC<IProps> = ({
       >
         <a>
           <Card padding={"15px"}>
-            <Container>
-              <Column>
-                <Avatar src={avatarURL} />
-              </Column>
-              <Column>
-                <NameContainer>
-                  <Name>{name}</Name>
-                  <Badges>
-                    <Badge
-                      bgColor={"#FEF48B"}
-                      text={streak}
-                      icon={"🔥"}
-                      title={"Daily Streak"}
-                    />
-                    <span className={"launched"}>
-                      <Badge
-                        bgColor={"#DBE9F1"}
-                        text={launched}
-                        icon={"🚀"}
-                        title={"Products Finished"}
-                      />
-                    </span>
-                  </Badges>
-                </NameContainer>
-                <UserName>{username}</UserName>
-              </Column>
-            </Container>
+            <DetailContent {...rest} username={username} />
           </Card>
         </a>
       </Link>
@@ -113,33 +116,7 @@ const UserDetail: React.SFC<IProps> = ({
         as={routes.asUserDetail(username)}
       >
         <a>
-          <Container>
-            <Column>
-              <Avatar src={avatarURL} />
-            </Column>
-            <Column>
-              <NameContainer>
-                <Name>{name}</Name>
-                <Badges>
-                  <Badge
-                    bgColor={"#FEF48B"}
-                    text={streak}
-                    icon={"🔥"}
-                    title={"Daily Streak"}
-                  />
-                  <span className={"launched"}>
-                    <Badge
-                      bgColor={"#DBE9F1"}
-                      text={launched}
-                      icon={"🚀"}
-                      title={"Products Finished"}
-                    />
-                  </span>
-                </Badges>
-              </NameContainer>
-              <UserName>{username}</UserName>
-            </Column>
-          </Container>
+          <DetailContent {...rest} username={username} />
         </a>
       </Link>
     );

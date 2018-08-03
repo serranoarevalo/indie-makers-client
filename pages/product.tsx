@@ -9,7 +9,7 @@ import GoalText from "../components/goalText";
 const Container = styled.div`
   margin: 50px 0px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 320px 3fr;
   grid-gap: 25px;
 `;
 
@@ -66,7 +66,7 @@ const Product = () => (
     </Head>
     <Container>
       <DetailsContainer>
-        <DetailCard href={"#"} />
+        <DetailCard href={"#"} disableLink={true} />
         <Divider />
         <UserDetail
           avatarURL={"/static/demo.jpg"}

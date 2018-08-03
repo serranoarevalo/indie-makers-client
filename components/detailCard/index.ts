@@ -1,2 +1,2 @@
-import Product from "./product";
-export default Product;
+import DetailCard from "./detailCard";
+export default DetailCard;
