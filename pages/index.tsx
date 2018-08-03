@@ -6,7 +6,6 @@ import FireMakers from "../components/fireMakers";
 import Hero from "../components/hero";
 import NewProducts from "../components/newProducts";
 import Wrapper from "../components/wrapper";
-import "../globalStyles";
 
 const Container = styled.div``;
 
