@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styled from "../typed-components";
+import routes from "../routes";
 import Wrapper from "../components/wrapper";
 import Card from "../components/card";
-import UserDetail from "../components/userDetail";
+import SmallDetailCard from "../components/smallDetailCard";
 import BigDetailCard from "../components/bigDetailCard";
 import GoalText from "../components/goalText";
 
@@ -77,11 +78,15 @@ const Product = () => (
           needsHelp={true}
         />
         <Divider />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
+        <SmallDetailCard
+          icon={"/static/demo.jpg"}
+          title={"Nicolás Serrano Arévalo"}
+          subtitle={"@serranoarevalo"}
+          streakNumber={50}
+          isLink={true}
+          link={routes.userDetail("@serranoarevalo")}
+          linkAs={routes.asUserDetail("@serranoarevalo")}
+          isCard={true}
         />
       </DetailsContainer>
       <Card>

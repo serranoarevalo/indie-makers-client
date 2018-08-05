@@ -1,9 +1,10 @@
 import Head from "next/head";
 import styled from "../typed-components";
+import routes from "../routes";
 import Wrapper from "../components/wrapper";
 import Tabs from "../components/tabs";
 import Tab from "../components/tab";
-import UserDetail from "../components/userDetail";
+import SmallDetailCard from "../components/smallDetailCard";
 
 const MakersGrid = styled.div`
   display: grid;
@@ -22,39 +23,16 @@ export default () => (
       <Tab text={"All"} />
     </Tabs>
     <MakersGrid>
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-      />
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-        card={true}
-      />
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-        card={true}
-      />
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-        card={true}
-      />
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-        card={true}
+      <SmallDetailCard
+        icon={"/static/demo.jpg"}
+        title={"Nicolás Serrano Arévalo"}
+        subtitle={"@serranoarevalo"}
+        streakNumber={50}
+        launchedNumber={20}
+        isLink={true}
+        link={routes.userDetail("@serranoarevalo")}
+        linkAs={routes.asUserDetail("@serranoarevalo")}
+        isCard={true}
       />
     </MakersGrid>
   </Wrapper>

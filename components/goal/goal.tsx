@@ -1,8 +1,8 @@
 import { lighten } from "polished";
-
 import styled from "../../typed-components";
+import routes from "../../routes";
 import GoalText from "../goalText";
-import UserDetail from "../userDetail";
+import SmallDetailCard from "../smallDetailCard";
 
 const Container = styled.div`
   padding: 15px 0px;
@@ -29,12 +29,16 @@ const Section = styled.div``;
 const Goal = () => (
   <Container>
     <Header>
-      <UserDetail
-        avatarURL={"/static/demo.jpg"}
-        name={"Nicolás Serrano Arévalo"}
-        username={"@serranoarevalo"}
-        streak={50}
-        card={false}
+      <SmallDetailCard
+        icon={"/static/demo.jpg"}
+        title={"Nicolás Serrano Arévalo"}
+        subtitle={"@serranoarevalo"}
+        streakNumber={50}
+        launchedNumber={20}
+        isLink={true}
+        link={routes.userDetail("@serranoarevalo")}
+        linkAs={routes.asUserDetail("@serranoarevalo")}
+        isCard={false}
       />
     </Header>
     <Section>

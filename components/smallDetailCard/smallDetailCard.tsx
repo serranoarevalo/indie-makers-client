@@ -1,6 +1,4 @@
 import Link from "next/link";
-import PropTypes from "prop-types";
-import routes from "../../routes";
 import styled from "../../typed-components";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
@@ -39,10 +37,12 @@ const NameContainer = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   white-space: nowrap;
+  margin-bottom: 5px;
 `;
 
-const UserName = styled.h6`
-  color: ${props => props.theme.greyColor};
+const UserName = styled<{ light: boolean }, any>("h6")`
+  color: ${props =>
+    props.light ? props.theme.greyColor : props.theme.blackColor};
 `;
 
 const Badges = styled.div`
@@ -54,23 +54,23 @@ const Badges = styled.div`
 interface IPresenterProps {
   icon: string;
   title: string;
-  subtitle: string;
-  showSubtitle?: boolean;
+  subtitle?: string;
   streakNumber?: number;
   launchedNumber?: number;
-  toDoNumber?: number;
+  toDoNumber?: string;
   needsHelp?: boolean;
+  lightSubtitle?: boolean;
 }
 
 const DetailContent: React.SFC<IPresenterProps> = ({
   icon,
   title,
   subtitle,
-  showSubtitle,
   streakNumber,
   launchedNumber,
   toDoNumber,
-  needsHelp
+  needsHelp,
+  lightSubtitle = true
 }) => (
   <Container>
     <Column>
@@ -100,16 +100,16 @@ const DetailContent: React.SFC<IPresenterProps> = ({
           {needsHelp && <Badge text={""} icon={"⚠️"} />}
         </Badges>
       </NameContainer>
-      {showSubtitle && <UserName>{subtitle}</UserName>}
+      {subtitle && <UserName light={lightSubtitle}>{subtitle}</UserName>}
     </Column>
   </Container>
 );
 
 interface IContainerProps {
   isLink: boolean;
+  isCard: boolean;
   link?: string;
   linkAs?: string;
-  isCard?: boolean;
 }
 
 const SmallDetailContainer: React.SFC<IContainerProps & IPresenterProps> = ({

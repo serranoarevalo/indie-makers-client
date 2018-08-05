@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styled from "../typed-components";
+import routes from "../routes";
 import Wrapper from "../components/wrapper";
 import BigDetailCard from "../components/bigDetailCard";
-import UserDetail from "../components/userDetail";
+import SmallDetailCard from "../components/smallDetailCard";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -41,33 +42,16 @@ export default () => (
         />
       </Column>
       <Grid>
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-          card={true}
-        />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-          card={true}
-        />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-          card={true}
-        />
-        <UserDetail
-          avatarURL={"/static/demo.jpg"}
-          name={"Nicolás Serrano Arévalo"}
-          username={"@serranoarevalo"}
-          streak={50}
-          card={true}
+        <SmallDetailCard
+          icon={"/static/demo.jpg"}
+          title={"Best project ever"}
+          toDoNumber={"20/10"}
+          subtitle={"Use this life changing product when you're on the toilet"}
+          isLink={true}
+          link={routes.productDetail("indie-makers")}
+          linkAs={routes.asProductDetail("indie-makers")}
+          isCard={true}
+          lightSubtitle={false}
         />
       </Grid>
     </Container>
