@@ -7,6 +7,8 @@ import BigDetailCard from "../components/bigDetailCard";
 import SmallDetailCard from "../components/smallDetailCard";
 import Tabs from "../components/tabs";
 import Tab from "../components/tab";
+import Card from "../components/card";
+import GoalText from "../components/goalText";
 
 const Container = styled.div`
   display: grid;
@@ -27,8 +29,17 @@ const Grid = styled.div`
   grid-gap: 40px;
 `;
 
+const Goals = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  & > span {
+    margin-bottom: 10px;
+  }
+`;
+
 interface IProps {
-  tab?: "todos";
+  tab?: "todo" | "done";
 }
 
 class Maker extends React.Component<IProps> {
@@ -39,7 +50,6 @@ class Maker extends React.Component<IProps> {
   }
   render() {
     const { tab } = this.props;
-    console.log(tab);
     return (
       <Wrapper>
         <Container>
@@ -69,26 +79,82 @@ class Maker extends React.Component<IProps> {
                 selected={tab === undefined}
               />
               <Tab
-                link={routes.makerToDos("@serranoarevalo")}
-                linkAs={routes.asMakerToDos("@serranoarevalo")}
-                text={"Todo's"}
-                selected={tab === "todos"}
+                link={routes.makerDone("@serranoarevalo")}
+                linkAs={routes.asMakerDone("@serranoarevalo")}
+                text={"Done"}
+                selected={tab === "done"}
+              />
+              <Tab
+                link={routes.makerToDo("@serranoarevalo")}
+                linkAs={routes.asMakerToDo("@serranoarevalo")}
+                text={"To Do"}
+                selected={tab === "todo"}
               />
             </Tabs>
-            <Grid>
-              <SmallDetailCard
-                icon={"/static/demo.jpg"}
-                title={"Best project ever"}
-                subtitle={
-                  "Use this life changing product when you're on the toilet"
-                }
-                isLink={true}
-                link={routes.productDetail("indie-makers")}
-                linkAs={routes.asProductDetail("indie-makers")}
-                isCard={true}
-                lightSubtitle={false}
-              />
-            </Grid>
+            {tab === undefined && (
+              <Grid>
+                <SmallDetailCard
+                  icon={"/static/demo.jpg"}
+                  title={"Best project ever"}
+                  subtitle={
+                    "Use this life changing product when you're on the toilet"
+                  }
+                  isLink={true}
+                  link={routes.productDetail("indie-makers")}
+                  linkAs={routes.asProductDetail("indie-makers")}
+                  isCard={true}
+                  lightSubtitle={false}
+                />
+              </Grid>
+            )}
+            {tab === "todo" && (
+              <Card>
+                <Goals>
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                  />
+                </Goals>
+              </Card>
+            )}
+            {tab === "done" && (
+              <Card>
+                <Goals>
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                    isCompleted={true}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                    isCompleted={true}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                    isCompleted={true}
+                  />
+                  <GoalText
+                    text={"Order nice food"}
+                    productName={"Indie Makers"}
+                    isCompleted={true}
+                  />
+                </Goals>
+              </Card>
+            )}
           </Column>
         </Container>
       </Wrapper>
