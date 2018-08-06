@@ -6,6 +6,7 @@ import Card from "../components/card";
 import SmallDetailCard from "../components/smallDetailCard";
 import BigDetailCard from "../components/bigDetailCard";
 import GoalText from "../components/goalText";
+import Button from "../components/button";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -24,6 +25,11 @@ const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  & > a {
+    width: 100%;
+    display: block;
+  }
 `;
 
 const Divider = styled.div`
@@ -60,6 +66,11 @@ const GoalsFooter = styled.div`
   width: 100%;
 `;
 
+const LinkBtn = styled(Button)`
+  width: 100%;
+  display: block;
+`;
+
 const Product = () => (
   <Wrapper>
     <Head>
@@ -77,6 +88,10 @@ const Product = () => (
           hasAuthor={false}
           needsHelp={true}
         />
+        <Divider />
+        <a href={"https://indiemakers.net"} target={"_blank"}>
+          <LinkBtn accent={false} text={"indiemakers.net"} />
+        </a>
         <Divider />
         <SmallDetailCard
           icon={"/static/demo.jpg"}

@@ -45,7 +45,6 @@ export default () => (
         <SmallDetailCard
           icon={"/static/demo.jpg"}
           title={"Best project ever"}
-          toDoNumber={"20/10"}
           subtitle={"Use this life changing product when you're on the toilet"}
           isLink={true}
           link={routes.productDetail("indie-makers")}

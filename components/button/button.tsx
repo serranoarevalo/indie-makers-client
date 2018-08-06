@@ -20,6 +20,7 @@ const Container = styled<
   font-family: "Karla", sans-serif;
   font-size: ${props => props.fontSize}px;
   cursor: pointer;
+
   box-shadow: ${props =>
     props.accent
       ? "0px 0px 30px 0px rgba(254,244,139, 1)"
