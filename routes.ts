@@ -17,7 +17,7 @@ export default {
   },
   userDetail: (username: string) => `/maker?username${username}`,
   asUserDetail: (username: string) => `/maker/${username}`,
-  todos: "/to-dos",
+  todos: "/todos",
   productsLaunched: "/products?tab=launched",
   asProductsLaunched: "/products/launched",
   products: "/products",
@@ -32,5 +32,7 @@ export default {
   makerToDo: (username: string) => `/maker?username=${username}&tab=todo`,
   asMakerToDo: (username: string) => `/maker/${username}/todo`,
   makerDone: (username: string) => `/maker?username=${username}&tab=done`,
-  asMakerDone: (username: string) => `/maker/${username}/done`
+  asMakerDone: (username: string) => `/maker/${username}/done`,
+  pendindToDo: "/todos?tab=pending",
+  asPendindToDo: "/todos/pending"
 };

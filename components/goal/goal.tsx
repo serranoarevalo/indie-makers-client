@@ -1,7 +1,6 @@
 import { lighten } from "polished";
 import styled from "../../typed-components";
 import routes from "../../routes";
-import GoalText from "../goalText";
 import SmallDetailCard from "../smallDetailCard";
 
 const Container = styled.div`
@@ -26,7 +25,7 @@ const Header = styled.div`
 
 const Section = styled.div``;
 
-const Goal = () => (
+const Goal = ({ children }) => (
   <Container>
     <Header>
       <SmallDetailCard
@@ -41,14 +40,7 @@ const Goal = () => (
         isCard={false}
       />
     </Header>
-    <Section>
-      <GoalText
-        lineThrough={false}
-        isCompleted={true}
-        text={"Go to bebek"}
-        productName={"Indie Makers"}
-      />
-    </Section>
+    <Section>{children}</Section>
   </Container>
 );
 

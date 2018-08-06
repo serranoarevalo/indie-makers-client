@@ -35,7 +35,7 @@ class Products extends React.Component<IProps> {
         <Tabs>
           <Tab
             link={routes.products}
-            text={"All"}
+            text={"Updated"}
             selected={tab === undefined}
           />
           <Tab

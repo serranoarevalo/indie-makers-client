@@ -45,6 +45,13 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/todos/:tab", (req, res) => {
+      const actualPage = "/todos";
+      const { params } = req;
+      const queryParams = { tab: params.tab };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
