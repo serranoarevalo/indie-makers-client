@@ -27,8 +27,19 @@ const Grid = styled.div`
   grid-gap: 40px;
 `;
 
-class Maker extends React.Component {
+interface IProps {
+  tab?: "todos";
+}
+
+class Maker extends React.Component<IProps> {
+  static getInitialProps(props) {
+    const { query } = props;
+    const { tab } = query;
+    return { tab };
+  }
   render() {
+    const { tab } = this.props;
+    console.log(tab);
     return (
       <Wrapper>
         <Container>
@@ -51,8 +62,18 @@ class Maker extends React.Component {
           </Column>
           <Column>
             <Tabs>
-              <Tab text={"Products"} selected={true} />
-              <Tab text={"Todo's"} selected={false} />
+              <Tab
+                link={routes.userDetail("@serranoarevalo")}
+                linkAs={routes.asUserDetail("@serranoarevalo")}
+                text={"Products"}
+                selected={tab === undefined}
+              />
+              <Tab
+                link={routes.makerToDos("@serranoarevalo")}
+                linkAs={routes.asMakerToDos("@serranoarevalo")}
+                text={"Todo's"}
+                selected={tab === "todos"}
+              />
             </Tabs>
             <Grid>
               <SmallDetailCard

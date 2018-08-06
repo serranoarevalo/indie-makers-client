@@ -12,25 +12,36 @@ app
 
     server.get("/product/:id", (req, res) => {
       const actualPage = "/product";
-      const queryParams = { name: req.params.id };
+      const { params } = req;
+      const queryParams = { name: params.id };
       app.render(req, res, actualPage, queryParams);
     });
 
     server.get("/maker/:id", (req, res) => {
       const actualPage = "/maker";
-      const queryParams = { username: req.params.id };
+      const { params } = req;
+      const queryParams = { username: params.id };
+      app.render(req, res, actualPage, queryParams);
+    });
+
+    server.get("/maker/:id/:tab", (req, res) => {
+      const actualPage = "/maker";
+      const { params } = req;
+      const queryParams = { username: params.id, tab: params.tab };
       app.render(req, res, actualPage, queryParams);
     });
 
     server.get("/products/:tab", (req, res) => {
       const actualPage = "/products";
-      const queryParams = { tab: req.params.tab };
+      const { params } = req;
+      const queryParams = { tab: params.tab };
       app.render(req, res, actualPage, queryParams);
     });
 
     server.get("/makers/:tab", (req, res) => {
       const actualPage = "/makers";
-      const queryParams = { tab: req.params.tab };
+      const { params } = req;
+      const queryParams = { tab: params.tab };
       app.render(req, res, actualPage, queryParams);
     });
 

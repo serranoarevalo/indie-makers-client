@@ -28,5 +28,7 @@ export default {
   makersSerial: "/makers?tab=serial",
   asMakersSerial: "/makers/serial",
   makersAll: "/makers?tab=all",
-  asMakersAll: "/makers/all"
+  asMakersAll: "/makers/all",
+  makerToDos: (username: string) => `/maker?username=${username}&tab=todos`,
+  asMakerToDos: (username: string) => `/maker/${username}/todos`
 };
