@@ -3,7 +3,6 @@ export default {
   join: "?join",
   asJoin: "/join",
   login: "/login",
-  products: "/products",
   makers: "/makers",
   about: "/about",
   blog: "/blog",
@@ -21,8 +20,13 @@ export default {
   todos: "/to-dos",
   productsLaunched: "/products?tab=launched",
   asProductsLaunched: "/products/launched",
+  products: "/products",
   productsHelp: "/products?tab=help",
   asProductsHelp: "/products/help",
   productsFeatured: "/products?tab=featured",
-  asProductsFeatured: "/products/featured"
+  asProductsFeatured: "/products/featured",
+  makersSerial: "/makers?tab=serial",
+  asMakersSerial: "/makers/serial",
+  makersAll: "/makers?tab=all",
+  asMakersAll: "/makers/all"
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import Tabs from "../components/tabs";
@@ -16,7 +15,11 @@ const ProductGrid = styled.div`
   margin-bottom: 60px;
 `;
 
-class Products extends React.Component<any> {
+interface IProps {
+  tab?: "launched" | "help" | "featured";
+}
+
+class Products extends React.Component<IProps> {
   static getInitialProps(props) {
     const { query } = props;
     const { tab } = query;

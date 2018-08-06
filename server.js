@@ -28,6 +28,12 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/makers/:tab", (req, res) => {
+      const actualPage = "/makers";
+      const queryParams = { tab: req.params.tab };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
