@@ -1,4 +1,6 @@
+import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import Tabs from "../components/tabs";
@@ -14,32 +16,63 @@ const ProductGrid = styled.div`
   margin-bottom: 60px;
 `;
 
-export default () => (
-  <Wrapper>
-    <Head>
-      <title>Products | Indie Makers</title>
-    </Head>
-    <Tabs>
-      <Tab text={"All"} selected={true} />
-      <Tab text={"Launched"} />
-      <Tab text={"Need Help"} />
-      <Tab text={"Featured"} />
-    </Tabs>
-    <ProductGrid>
-      <BigDetailCard
-        isLink={true}
-        link={routes.productDetail("something")}
-        linkAs={routes.asProductDetail("something")}
-        icon={"/static/demo.jpg"}
-        authorAvatar={"/static/demo.jpg"}
-        title={"Best Product"}
-        showSubtitle={true}
-        toDoNumber={"10/30"}
-        subtitle={"Gonna make millions with this"}
-        hasAuthor={true}
-        needsHelp={true}
-      />
-    </ProductGrid>
-    <Pagination currentPage={0} totalPages={5} />
-  </Wrapper>
-);
+class Products extends React.Component<any> {
+  static getInitialProps(props) {
+    const { query } = props;
+    const { tab } = query;
+    return { tab };
+  }
+  render() {
+    const { tab } = this.props;
+    return (
+      <Wrapper>
+        <Head>
+          <title>Products | Indie Makers</title>
+        </Head>
+        <Tabs>
+          <Tab
+            link={routes.products}
+            text={"All"}
+            selected={tab === undefined}
+          />
+          <Tab
+            link={routes.productsLaunched}
+            linkAs={routes.asProductsLaunched}
+            text={"Launched"}
+            selected={tab === "launched"}
+          />
+          <Tab
+            link={routes.productsHelp}
+            linkAs={routes.asProductsHelp}
+            text={"Need Help"}
+            selected={tab === "help"}
+          />
+          <Tab
+            link={routes.productsFeatured}
+            linkAs={routes.asProductsFeatured}
+            text={"Featured"}
+            selected={tab === "featured"}
+          />
+        </Tabs>
+        <ProductGrid>
+          <BigDetailCard
+            isLink={true}
+            link={routes.productDetail("something")}
+            linkAs={routes.asProductDetail("something")}
+            icon={"/static/demo.jpg"}
+            authorAvatar={"/static/demo.jpg"}
+            title={"Best Product"}
+            showSubtitle={true}
+            toDoNumber={"10/30"}
+            subtitle={"Gonna make millions with this"}
+            hasAuthor={true}
+            needsHelp={true}
+          />
+        </ProductGrid>
+        <Pagination currentPage={0} totalPages={5} />
+      </Wrapper>
+    );
+  }
+}
+
+export default Products;

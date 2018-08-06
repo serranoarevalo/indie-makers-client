@@ -17,5 +17,12 @@ export default {
     return `/product/${formatted}/`;
   },
   userDetail: (username: string) => `/maker?username${username}`,
-  asUserDetail: (username: string) => `/maker/${username}`
+  asUserDetail: (username: string) => `/maker/${username}`,
+  todos: "/to-dos",
+  productsLaunched: "/products?tab=launched",
+  asProductsLaunched: "/products/launched",
+  productsHelp: "/products?tab=help",
+  asProductsHelp: "/products/help",
+  productsFeatured: "/products?tab=featured",
+  asProductsFeatured: "/products/featured"
 };

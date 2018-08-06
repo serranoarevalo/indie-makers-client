@@ -4,15 +4,20 @@ import routes from "../routes";
 import Wrapper from "../components/wrapper";
 import BigDetailCard from "../components/bigDetailCard";
 import SmallDetailCard from "../components/smallDetailCard";
+import Tabs from "../components/tabs";
+import Tab from "../components/tab";
 
 const Container = styled.div`
-  margin: 50px 0px;
   display: grid;
   grid-template-columns: 320px 3fr;
   grid-gap: 50px;
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  &:first-child {
+    margin: 50px 0px;
+  }
+`;
 
 const Grid = styled.div`
   display: grid;
@@ -41,18 +46,26 @@ export default () => (
           launchedNumber={20}
         />
       </Column>
-      <Grid>
-        <SmallDetailCard
-          icon={"/static/demo.jpg"}
-          title={"Best project ever"}
-          subtitle={"Use this life changing product when you're on the toilet"}
-          isLink={true}
-          link={routes.productDetail("indie-makers")}
-          linkAs={routes.asProductDetail("indie-makers")}
-          isCard={true}
-          lightSubtitle={false}
-        />
-      </Grid>
+      <Column>
+        <Tabs>
+          <Tab text={"Products"} selected={true} />
+          <Tab text={"Todo's"} selected={false} />
+        </Tabs>
+        <Grid>
+          <SmallDetailCard
+            icon={"/static/demo.jpg"}
+            title={"Best project ever"}
+            subtitle={
+              "Use this life changing product when you're on the toilet"
+            }
+            isLink={true}
+            link={routes.productDetail("indie-makers")}
+            linkAs={routes.asProductDetail("indie-makers")}
+            isCard={true}
+            lightSubtitle={false}
+          />
+        </Grid>
+      </Column>
     </Container>
   </Wrapper>
 );

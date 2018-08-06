@@ -22,6 +22,12 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/products/:tab", (req, res) => {
+      const actualPage = "/products";
+      const queryParams = { tab: req.params.tab };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
