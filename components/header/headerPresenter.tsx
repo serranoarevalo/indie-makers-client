@@ -3,6 +3,7 @@ import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
 import Wrapper from "../wrapper";
+import RoundImage from "../roundImage";
 
 const Container = styled("header")`
   width: 100%;
@@ -50,9 +51,21 @@ const FlexWidthContainer = styled.div`
   align-items: center;
 `;
 
-interface IProps {}
+const Avatar = styled(RoundImage)`
+  width: 30px;
+  margin-right: 10px;
+`;
 
-const Header: React.SFC<IProps> = () => (
+const AvatarContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+interface IProps {
+  loggedIn: boolean;
+}
+
+const Header: React.SFC<IProps> = ({ loggedIn }) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -70,6 +83,11 @@ const Header: React.SFC<IProps> = () => (
                 </Link>
               </li>
               <li>
+                <Link href={routes.todos}>
+                  <a>Goals</a>
+                </Link>
+              </li>
+              <li>
                 <Link href={routes.makers}>
                   <a>Makers</a>
                 </Link>
@@ -82,16 +100,28 @@ const Header: React.SFC<IProps> = () => (
             </ul>
           </Navigation>
         </NavColumn>
-        <NavColumn>
-          <span>
-            <a>Login</a>
-          </span>
-          <Link href={routes.join} as={routes.asJoin}>
+        {!loggedIn && (
+          <NavColumn>
+            <span>
+              <a>Login</a>
+            </span>
+            <Link href={routes.join} as={routes.asJoin}>
+              <a>
+                <Button accent={true} text={"Join Indie Makers"} />
+              </a>
+            </Link>
+          </NavColumn>
+        )}
+        {loggedIn && (
+          <Link href={"/profile"}>
             <a>
-              <Button accent={true} text={"Join Indie Makers"} />
+              <AvatarContainer>
+                <Avatar src={"/static/demo.jpg"} />
+                Profile
+              </AvatarContainer>
             </a>
           </Link>
-        </NavColumn>
+        )}
       </FlexWidthContainer>
     </Wrapper>
   </Container>
@@ -115,9 +145,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = () => (
+export const FixedHeader: React.SFC<IProps> = ({ loggedIn }) => (
   <FixedHeaderContainer>
-    <Header />
+    <Header loggedIn={loggedIn} />
   </FixedHeaderContainer>
 );
 

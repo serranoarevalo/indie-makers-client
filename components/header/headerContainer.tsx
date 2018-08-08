@@ -26,8 +26,8 @@ class HeaderContainer extends React.Component<{}, IState> {
     const { scrolled } = this.state;
     return (
       <React.Fragment>
-        <Header />
-        {scrolled && <FixedHeader />}
+        <Header loggedIn={false} />
+        {scrolled && <FixedHeader loggedIn={false} />}
       </React.Fragment>
     );
   }
