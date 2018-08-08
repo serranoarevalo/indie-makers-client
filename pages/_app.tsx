@@ -5,6 +5,7 @@ import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
 import Modal from "../components/modal";
 import JoinModal from "../components/joinModal";
+import Footer from "../components/footer";
 
 const theme = {
   greyColor: "#95a5a6",
@@ -41,10 +42,13 @@ export default class MyApp extends App {
         <ThemeProvider theme={theme}>
           <React.Fragment>
             <Header />
-            <Component {...pageProps} />
+            <main>
+              <Component {...pageProps} />
+            </main>
             <Modal clickClose={this._goBack} showing={asPath === "/join"}>
               <JoinModal showing={asPath === "/join"} />
             </Modal>
+            <Footer />
           </React.Fragment>
         </ThemeProvider>
       </Container>

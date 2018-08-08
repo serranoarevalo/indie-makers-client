@@ -23,7 +23,7 @@ const CompletedGoals = () => (
   <Section
     titleElements={[
       <Title key={1}>Completed Goals</Title>,
-      <Link href={routes.todos}>
+      <Link key={2} href={routes.todos}>
         <a>
           <FakeLink key={2}>See more</FakeLink>
         </a>
