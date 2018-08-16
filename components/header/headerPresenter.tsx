@@ -78,6 +78,11 @@ const Header: React.SFC<IProps> = ({ loggedIn }) => (
           <Navigation>
             <ul>
               <li>
+                <Link href={routes.about}>
+                  <a>About</a>
+                </Link>
+              </li>
+              <li>
                 <Link href={routes.products}>
                   <a>Products</a>
                 </Link>
