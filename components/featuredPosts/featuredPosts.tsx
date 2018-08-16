@@ -9,6 +9,7 @@ import Title from "../title";
 const PostGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr minmax(340px, 1fr);
+  grid-auto-rows: 500px;
   grid-gap: 50px;
 `;
 
@@ -16,7 +17,7 @@ const GridColumn = styled.div``;
 
 const PostsColumn = styled.div`
   display: grid;
-  grid-template-rows: repat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
 `;
 
@@ -33,12 +34,12 @@ const FeaturedPosts = () => (
   >
     <PostGrid>
       <GridColumn>
-        <BlogPost href={"#"} featured={true} />
+        <BlogPost slug={"post"} featured={true} />
       </GridColumn>
       <PostsColumn>
-        <BlogPost href={"#"} />
-        <BlogPost href={"#"} />
-        <BlogPost href={"#"} />
+        <BlogPost slug={"post"} />
+        <BlogPost slug={"post"} />
+        <BlogPost slug={"post"} />
       </PostsColumn>
     </PostGrid>
   </Section>

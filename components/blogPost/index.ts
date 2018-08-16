@@ -1,2 +1,2 @@
-import BlogPost from "./blogPosts";
+import BlogPost from "./blogPost";
 export default BlogPost;

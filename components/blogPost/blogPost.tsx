@@ -2,13 +2,14 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import styled from "../../typed-components";
 import RoundImage from "../roundImage";
+import routes from "../../routes";
 
 const FImage = styled<{ src: string }, any>("div")`
-  height: 500px;
   background-image: url(${props => props.src});
   background-size: cover;
   background-position: center center;
   transition: transform 0.3s linear;
+  height: 100%;
 `;
 
 const FContainer = styled.div`
@@ -17,6 +18,7 @@ const FContainer = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   ${props => props.theme.cardShadow};
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
   &:hover ${FImage} {
@@ -36,6 +38,7 @@ const FText = styled.div`
   width: 70%;
   margin: 0 auto;
   text-align: center;
+  padding: 50px 0;
 `;
 
 const FTitle = styled.h4`
@@ -53,10 +56,11 @@ const Container = styled.div`
   cursor: pointer;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  place-items: top center;
-  padding: 20px;
   grid-gap: 15px;
   height: 100%;
+  align-items: center;
+  justify-items: center;
+  padding: 0px 10px;
 `;
 
 const Icon = styled(RoundImage)`
@@ -71,11 +75,11 @@ const Title = styled.h4`
 
 interface IProps {
   featured?: boolean;
-  href: string;
+  slug: string;
 }
 
-const BlogPosts: React.SFC<IProps> = ({ featured = false, href }) => (
-  <Link href={href}>
+const BlogPost: React.SFC<IProps> = ({ featured = false, slug }) => (
+  <Link href={routes.blogDetail(slug)} as={routes.asBlogDetail(slug)}>
     <a>
       {featured ? (
         <FContainer>
@@ -103,8 +107,8 @@ const BlogPosts: React.SFC<IProps> = ({ featured = false, href }) => (
   </Link>
 );
 
-BlogPosts.propTypes = {
+BlogPost.propTypes = {
   featured: PropTypes.bool,
-  href: PropTypes.string.isRequired
+  slug: PropTypes.string.isRequired
 };
-export default BlogPosts;
+export default BlogPost;

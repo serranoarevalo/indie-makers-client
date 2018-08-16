@@ -123,13 +123,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-html,
-body,
-main,
-#__next {
-  height: 100%;
-  min-height: 100%;
+
+main {
+  min-height: calc(100vh - 90px);
 }
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
