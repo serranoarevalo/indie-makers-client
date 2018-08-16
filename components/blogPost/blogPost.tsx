@@ -84,7 +84,7 @@ const BlogPost: React.SFC<IProps> = ({ featured = false, slug }) => (
       {featured ? (
         <FContainer>
           <Column>
-            <FImage src={"static/appDemo.png"} />
+            <FImage src={"/static/appDemo.png"} />
           </Column>
           <FText>
             <FTitle>Alex's project</FTitle>
@@ -96,7 +96,7 @@ const BlogPost: React.SFC<IProps> = ({ featured = false, slug }) => (
         </FContainer>
       ) : (
         <Container>
-          <Icon src="static/demo.jpg" />
+          <Icon src="/static/demo.jpg" />
           <span>
             <Title>Alex's project</Title>
             <p>He did and app for his thing and now he's married</p>

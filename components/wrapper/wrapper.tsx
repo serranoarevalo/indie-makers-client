@@ -2,6 +2,7 @@ import styled from "../../typed-components";
 
 interface IProps {
   children: any;
+  className?: string;
 }
 
 const Container = styled.div`
@@ -10,8 +11,8 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Wrapper: React.SFC<IProps> = ({ children }) => (
-  <Container>{children}</Container>
+const Wrapper: React.SFC<IProps> = ({ children, className }) => (
+  <Container className={className}>{children}</Container>
 );
 
 export default Wrapper;

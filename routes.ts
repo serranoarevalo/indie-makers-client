@@ -5,9 +5,9 @@ export default {
   login: "/login",
   makers: "/makers",
   about: "/about",
-  blog: "/blog",
-  blogDetail: (name: string) => `/post?slug=${name}`,
-  asBlogDetail: (name: string) => `/post/${name}`,
+  blog: "/reviews",
+  blogDetail: (name: string) => `/review?slug=${name}`,
+  asBlogDetail: (name: string) => `/review/${name}`,
   new: "/new",
   productDetail: (name: string) => {
     const formatted = name.toLowerCase().replace(" ", "-");

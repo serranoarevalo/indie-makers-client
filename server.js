@@ -52,6 +52,13 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/review/:slug", (req, res) => {
+      const actualPage = "/review";
+      const { params } = req;
+      const queryParams = { slug: params.slug };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
