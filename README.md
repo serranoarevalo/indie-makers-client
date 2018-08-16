@@ -1,3 +1,3 @@
-# indie-makers
+# Indie Makers Client
 
-People building beautiful stuff.
+NextJS Client for Indie Makers
