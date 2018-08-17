@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import CompletedGoals from "../components/completedGoals";
@@ -6,6 +7,7 @@ import FireMakers from "../components/fireMakers";
 import Hero from "../components/hero";
 import NewProducts from "../components/newProducts";
 import Wrapper from "../components/wrapper";
+import Dashboard from "../components/dashboard";
 
 const Container = styled.div``;
 
@@ -25,18 +27,26 @@ const Column = styled.div`
   width: 100%;
 `;
 
-export default () => (
+export default ({ isLoggedIn = true }) => (
   <Container>
     <Head>
       <title>Indie Makers | Build products, together.</title>
     </Head>
-    <HeroWrapper>
-      <Wrapper>
-        <Hero />
-      </Wrapper>
-    </HeroWrapper>
+    {isLoggedIn ? (
+      <Dashboard />
+    ) : (
+      <React.Fragment>
+        <HeroWrapper>
+          <Wrapper>
+            <Hero />
+          </Wrapper>
+        </HeroWrapper>
+        <Wrapper>
+          <FeaturedPosts />
+        </Wrapper>
+      </React.Fragment>
+    )}
     <Wrapper>
-      <FeaturedPosts />
       <IndexColumns>
         <Column>
           <NewProducts />
