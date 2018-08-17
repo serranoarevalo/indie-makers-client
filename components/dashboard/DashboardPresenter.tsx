@@ -136,11 +136,13 @@ const DashboardPresenter: React.SFC<IProps> = ({
             </Form>
             <Goals>
               <EGoalText
+                isMine={true}
                 fontSize={"18px"}
                 productName={"Indie Makers"}
                 text={"Go to pakistani restaurant"}
               />
               <EGoalText
+                isMine={true}
                 fontSize={"18px"}
                 productName={"Indie Makers"}
                 text={"Go to pakistani restaurant"}

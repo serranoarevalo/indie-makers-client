@@ -37,6 +37,11 @@ const Timestamp = styled.span`
   margin-left: 10px;
 `;
 
+const EditBtn = styled.span`
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
 interface IProps {
   text: string;
   isCompleted?: boolean;
@@ -45,6 +50,7 @@ interface IProps {
   onProductPage?: boolean;
   fontSize?: string;
   className?: string;
+  isMine?: boolean;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -54,7 +60,8 @@ const GoalText: React.SFC<IProps> = ({
   productName,
   onProductPage = false,
   fontSize = "14px",
-  className
+  className,
+  isMine = false
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
@@ -75,6 +82,7 @@ const GoalText: React.SFC<IProps> = ({
       </React.Fragment>
     )}
     <Timestamp>25 minutes ago</Timestamp>
+    {isMine && <EditBtn>✏️</EditBtn>}
   </Container>
 );
 
