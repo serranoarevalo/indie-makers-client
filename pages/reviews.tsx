@@ -39,7 +39,6 @@ const FeaturedTitle = styled.h3`
 const FeaturedSubtitle = styled.p``;
 
 const Posts = styled.div`
-  background-color: white;
   padding: 50px 0px;
   padding-bottom: 20vh;
 `;

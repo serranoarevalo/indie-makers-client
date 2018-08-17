@@ -29,7 +29,7 @@ const Icon = styled(RoundImage)`
 const Title = styled.h4`
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const Pitch = styled.p``;
@@ -53,6 +53,11 @@ const Maker = styled(RoundImage)`
   border: 0;
 `;
 
+const Small = styled.span`
+  color: ${props => props.theme.greyColor};
+  margin-bottom: 20px;
+`;
+
 interface IPresenterProps {
   icon: string;
   title: string;
@@ -66,6 +71,7 @@ interface IPresenterProps {
   needsHelp?: boolean;
   authorUsername?: string;
   isFinished?: boolean;
+  underTitle?: string;
 }
 
 const CardContent: React.SFC<IPresenterProps> = ({
@@ -79,11 +85,13 @@ const CardContent: React.SFC<IPresenterProps> = ({
   streakNumber,
   toDoNumber,
   launchedNumber,
-  isFinished
+  isFinished,
+  underTitle
 }) => (
   <React.Fragment>
     <Icon src={icon} />
     <Title>{title}</Title>
+    {underTitle && <Small>{underTitle}</Small>}
     {showSubtitle && <Pitch>{subtitle}</Pitch>}
     <Footer>
       <Badges>

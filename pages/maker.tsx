@@ -68,6 +68,7 @@ class Maker extends React.Component<IProps> {
               needsHelp={false}
               streakNumber={40}
               launchedNumber={20}
+              underTitle={"@serranoarevalo"}
             />
           </Column>
           <Column>
