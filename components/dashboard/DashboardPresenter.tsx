@@ -15,7 +15,7 @@ import SmallDetailCard from "../smallDetailCard";
 
 const Container = styled.div`
   margin: 50px 0px;
-  margin-bottom: 200px;
+
   padding: 15vh 0px;
 `;
 
@@ -23,6 +23,9 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 3fr minmax(340px, 1fr);
   grid-gap: 50px;
+  & > *:last-child {
+    margin-top: 87px;
+  }
 `;
 
 const Column = styled.div``;
@@ -53,7 +56,10 @@ const AddContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const Products = styled.div``;
+const Products = styled.div`
+  display: grid;
+  grid-gap: 30px;
+`;
 
 const Product = styled.option`
   color: ${props => props.theme.blackColor};
@@ -61,6 +67,14 @@ const Product = styled.option`
 
 const EGoalText = styled(GoalText)`
   margin-bottom: 15px;
+`;
+
+const Goals = styled.div``;
+
+const FLink = styled.span`
+  color: ${props => props.theme.greyColor};
+  text-decoration: underline;
+  margin-left: 10px;
 `;
 
 interface IProps {
@@ -120,29 +134,40 @@ const DashboardPresenter: React.SFC<IProps> = ({
                 </Select>
               </AddContainer>
             </Form>
-            <EGoalText
-              fontSize={"18px"}
-              productName={"Indie Makers"}
-              text={"Go to pakistani restaurant"}
-            />
-            <EGoalText
-              fontSize={"18px"}
-              productName={"Indie Makers"}
-              text={"Go to pakistani restaurant"}
-            />
+            <Goals>
+              <EGoalText
+                fontSize={"18px"}
+                productName={"Indie Makers"}
+                text={"Go to pakistani restaurant"}
+              />
+              <EGoalText
+                fontSize={"18px"}
+                productName={"Indie Makers"}
+                text={"Go to pakistani restaurant"}
+              />
+            </Goals>
           </List>
         </Column>
-        <Products>
-          <Section
-            titleElements={[
-              <Title key={1}>Your products </Title>,
-              <Link href={routes.addProduct} key={2}>
-                <a>
-                  <Button size={"xs"} text={"Add one"} />
-                </a>
-              </Link>
-            ]}
-          >
+        <Section
+          titleElements={[
+            <Title key={1}>Your products </Title>,
+            <Link href={routes.addProduct} key={2}>
+              <a>
+                <Button size={"xs"} text={"Add one"} />
+              </a>
+            </Link>,
+            <Link
+              href={routes.userDetail("serranoarevalo")}
+              as={routes.asUserDetail("serranoarevalo")}
+              key={2}
+            >
+              <a>
+                <FLink>See all</FLink>
+              </a>
+            </Link>
+          ]}
+        >
+          <Products>
             <SmallDetailCard
               icon={"/static/demo.jpg"}
               title={"Best project ever"}
@@ -155,8 +180,20 @@ const DashboardPresenter: React.SFC<IProps> = ({
               isCard={true}
               lightSubtitle={false}
             />
-          </Section>
-        </Products>
+            <SmallDetailCard
+              icon={"/static/demo.jpg"}
+              title={"Best project ever"}
+              subtitle={
+                "Use this life changing product when you're on the toilet"
+              }
+              isLink={true}
+              link={routes.productDetail("indie-makers")}
+              linkAs={routes.asProductDetail("indie-makers")}
+              isCard={true}
+              lightSubtitle={false}
+            />
+          </Products>
+        </Section>
       </Grid>
     </Wrapper>
   </Container>

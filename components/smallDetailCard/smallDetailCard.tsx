@@ -60,6 +60,7 @@ interface IPresenterProps {
   toDoNumber?: string;
   needsHelp?: boolean;
   lightSubtitle?: boolean;
+  className?: string;
 }
 
 const DetailContent: React.SFC<IPresenterProps> = ({
@@ -70,9 +71,10 @@ const DetailContent: React.SFC<IPresenterProps> = ({
   launchedNumber,
   toDoNumber,
   needsHelp,
+  className,
   lightSubtitle = true
 }) => (
-  <Container>
+  <Container className={className}>
     <Column>
       <Avatar src={icon} />
     </Column>
@@ -110,6 +112,7 @@ interface IContainerProps {
   isCard: boolean;
   link?: string;
   linkAs?: string;
+  className?: string;
 }
 
 const SmallDetailContainer: React.SFC<IContainerProps & IPresenterProps> = ({
