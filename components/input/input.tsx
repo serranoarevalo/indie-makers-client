@@ -25,8 +25,10 @@ interface IProps {
   onChange?: any;
   onBlur?: any;
   value: string;
-  fontSize: string;
+  fontSize?: string;
   name: string;
+  required?: boolean;
+  className?: string;
 }
 
 const Input: React.SFC<IProps> = ({
@@ -36,9 +38,13 @@ const Input: React.SFC<IProps> = ({
   onChange,
   value,
   fontSize = "16px",
-  name
+  name,
+  required,
+  className
 }) => (
   <Container
+    className={className}
+    required={required}
     name={name}
     type={type}
     placeholder={placeholder}
