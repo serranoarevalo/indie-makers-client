@@ -8,6 +8,9 @@ const TitleContainer = styled.div`
   display: flex;
   margin-bottom: 30px;
   align-items: center;
+  & > *:first-child {
+    margin-right: 10px;
+  }
 `;
 
 interface IProps {

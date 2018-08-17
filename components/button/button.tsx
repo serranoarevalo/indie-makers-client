@@ -1,5 +1,4 @@
 import { lighten } from "polished";
-import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
 type sizeType = "md" | "xs";
@@ -44,7 +43,7 @@ const Container = styled<
 `;
 
 interface IProps {
-  accent: boolean;
+  accent?: boolean;
   text: any;
   fontSize?: number;
   size?: sizeType;
@@ -53,7 +52,7 @@ interface IProps {
 }
 
 const Button: React.SFC<IProps> = ({
-  accent,
+  accent = false,
   text,
   fontSize = 16,
   size = "md",
@@ -70,10 +69,5 @@ const Button: React.SFC<IProps> = ({
     {text}
   </Container>
 );
-
-Button.propTypes = {
-  accent: PropTypes.bool.isRequired,
-  fontSize: PropTypes.number
-};
 
 export default Button;

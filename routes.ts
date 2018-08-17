@@ -36,5 +36,6 @@ export default {
   makerDone: (username: string) => `/maker?username=${username}&tab=done`,
   asMakerDone: (username: string) => `/maker/${username}/done`,
   pendindToDo: "/todos?tab=pending",
-  asPendindToDo: "/todos/pending"
+  asPendindToDo: "/todos/pending",
+  addProduct: "/new"
 };

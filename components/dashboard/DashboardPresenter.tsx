@@ -1,11 +1,17 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import styled from "../../typed-components";
 import Wrapper from "../wrapper";
 import Input from "../input";
 import Form from "../form/from";
 import Select from "../select";
 import GoalText from "../goalText";
+import Section from "../section";
+import Title from "../title";
+import Button from "../button";
+import routes from "../../routes";
+import SmallDetailCard from "../smallDetailCard";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -15,13 +21,13 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr minmax(340px, 1fr);
   grid-gap: 50px;
 `;
 
 const Column = styled.div``;
 
-const Title = styled.h2`
+const HTitle = styled.h2`
   font-weight: 600;
   font-size: 38px;
 `;
@@ -46,6 +52,8 @@ const AddContainer = styled.div`
   grid-gap: 20px;
   margin-bottom: 30px;
 `;
+
+const Products = styled.div``;
 
 const Product = styled.option`
   color: ${props => props.theme.blackColor};
@@ -89,7 +97,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
     <Wrapper>
       <Grid>
         <Column>
-          <Title>Good {getTime()} Nicolas!</Title>
+          <HTitle>Good {getTime()} Nicolas!</HTitle>
           <Subtitle>What are you gonna accomplish today?</Subtitle>
           <List>
             <Form>
@@ -124,6 +132,31 @@ const DashboardPresenter: React.SFC<IProps> = ({
             />
           </List>
         </Column>
+        <Products>
+          <Section
+            titleElements={[
+              <Title key={1}>Your products </Title>,
+              <Link href={routes.addProduct} key={2}>
+                <a>
+                  <Button size={"xs"} text={"Add one"} />
+                </a>
+              </Link>
+            ]}
+          >
+            <SmallDetailCard
+              icon={"/static/demo.jpg"}
+              title={"Best project ever"}
+              subtitle={
+                "Use this life changing product when you're on the toilet"
+              }
+              isLink={true}
+              link={routes.productDetail("indie-makers")}
+              linkAs={routes.asProductDetail("indie-makers")}
+              isCard={true}
+              lightSubtitle={false}
+            />
+          </Section>
+        </Products>
       </Grid>
     </Wrapper>
   </Container>
