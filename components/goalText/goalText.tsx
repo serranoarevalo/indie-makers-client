@@ -4,7 +4,10 @@ import PropTypes from "prop-types";
 import routes from "../../routes";
 import styled from "../../typed-components";
 
-const Container = styled.span``;
+const Container = styled<{ fontSize: string }, "span">("span")`
+  font-size: ${props => props.fontSize};
+  display: block;
+`;
 
 const Text = styled<
   {
@@ -40,6 +43,8 @@ interface IProps {
   lineThrough?: boolean;
   productName: string;
   onProductPage?: boolean;
+  fontSize?: string;
+  className?: string;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -47,9 +52,11 @@ const GoalText: React.SFC<IProps> = ({
   isCompleted = false,
   lineThrough,
   productName,
-  onProductPage = false
+  onProductPage = false,
+  fontSize = "14px",
+  className
 }) => (
-  <Container>
+  <Container className={className} fontSize={fontSize}>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
     <Text isCompleted={isCompleted} lineThrough={lineThrough}>
       {text}

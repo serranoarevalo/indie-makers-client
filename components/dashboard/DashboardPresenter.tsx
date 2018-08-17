@@ -5,6 +5,7 @@ import Wrapper from "../wrapper";
 import Input from "../input";
 import Form from "../form/from";
 import Select from "../select";
+import GoalText from "../goalText";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -43,10 +44,15 @@ const AddContainer = styled.div`
   grid-template-columns: 3fr 1fr;
   align-items: center;
   grid-gap: 20px;
+  margin-bottom: 30px;
 `;
 
 const Product = styled.option`
   color: ${props => props.theme.blackColor};
+`;
+
+const EGoalText = styled(GoalText)`
+  margin-bottom: 15px;
 `;
 
 interface IProps {
@@ -106,6 +112,16 @@ const DashboardPresenter: React.SFC<IProps> = ({
                 </Select>
               </AddContainer>
             </Form>
+            <EGoalText
+              fontSize={"18px"}
+              productName={"Indie Makers"}
+              text={"Go to pakistani restaurant"}
+            />
+            <EGoalText
+              fontSize={"18px"}
+              productName={"Indie Makers"}
+              text={"Go to pakistani restaurant"}
+            />
           </List>
         </Column>
       </Grid>

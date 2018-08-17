@@ -3,7 +3,9 @@ import styled from "../../typed-components";
 
 const Container = styled.div`
   position: relative;
-  justify-self: flex-end;
+  width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const Arrow = styled.span`
@@ -20,6 +22,7 @@ const SelectE = styled.select`
   font-weight: 400;
   color: ${props => props.theme.blackColor};
   position: relative;
+  width: 100%;
 `;
 
 interface IProps {
