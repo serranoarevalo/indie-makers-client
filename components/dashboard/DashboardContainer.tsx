@@ -3,26 +3,29 @@ import DashboardPresenter from "./DashboardPresenter";
 
 interface IState {
   newToDo: string;
+  product: string;
 }
 
 class DashboardContainer extends React.Component<{}, IState> {
   constructor(props) {
     super(props);
     this.state = {
-      newToDo: ""
+      newToDo: "",
+      product: "none"
     };
   }
   render() {
-    const { newToDo } = this.state;
+    const { newToDo, product } = this.state;
     return (
       <DashboardPresenter
         inputValue={newToDo}
         handleInputChange={this.handleInputChange}
+        product={product}
       />
     );
   }
   public handleInputChange: React.ChangeEventHandler<
-    HTMLInputElement
+    HTMLInputElement | HTMLSelectElement
   > = event => {
     const {
       target: { name, value }

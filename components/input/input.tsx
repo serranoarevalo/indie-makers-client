@@ -8,7 +8,7 @@ const Container = styled<{ fontSize: string }, "input">("input")`
   border-bottom: 1px solid ${props => lighten(0.1, props.theme.greyColor)};
   transition: border-bottom-color 0.2s linear;
   padding: 5px 0px;
-  width: 80%;
+  width: 100%;
   &::placeholder {
     color: ${props => props.theme.greyColor};
     font-weight: 300;
