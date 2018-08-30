@@ -1,4 +1,5 @@
 import App, { Container } from "next/app";
+import { ApolloProvider } from "react-apollo";
 import React from "react";
 import Router from "next/router";
 import Header from "../components/header";
@@ -6,6 +7,7 @@ import { ThemeProvider } from "../typed-components";
 import Modal from "../components/modal";
 import JoinModal from "../components/joinModal";
 import Footer from "../components/footer";
+import withApollo from "../lib/withApollo";
 
 const theme = {
   greyColor: "#95a5a6",
@@ -20,7 +22,7 @@ const theme = {
   cardShadow: "box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);"
 };
 
-export default class MyApp extends App {
+class MyApp extends App<any> {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
@@ -35,22 +37,25 @@ export default class MyApp extends App {
     const {
       Component,
       pageProps,
-      router: { asPath }
+      router: { asPath },
+      apollo
     } = this.props;
     return (
       <Container>
-        <ThemeProvider theme={theme}>
-          <React.Fragment>
-            <Header />
-            <main>
-              <Component {...pageProps} />
-            </main>
-            <Modal clickClose={this._goBack} showing={asPath === "/join"}>
-              <JoinModal showing={asPath === "/join"} />
-            </Modal>
-            <Footer />
-          </React.Fragment>
-        </ThemeProvider>
+        <ApolloProvider client={apollo}>
+          <ThemeProvider theme={theme}>
+            <React.Fragment>
+              <Header />
+              <main>
+                <Component {...pageProps} />
+              </main>
+              <Modal clickClose={this._goBack} showing={asPath === "/join"}>
+                <JoinModal showing={asPath === "/join"} />
+              </Modal>
+              <Footer />
+            </React.Fragment>
+          </ThemeProvider>
+        </ApolloProvider>
       </Container>
     );
   }
@@ -65,3 +70,5 @@ export default class MyApp extends App {
     }
   };
 }
+
+export default withApollo(MyApp);

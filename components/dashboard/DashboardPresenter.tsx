@@ -161,7 +161,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
             <Link
               href={routes.userDetail("serranoarevalo")}
               as={routes.asUserDetail("serranoarevalo")}
-              key={2}
+              key={3}
             >
               <a>
                 <FLink>See all</FLink>
