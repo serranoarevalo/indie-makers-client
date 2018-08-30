@@ -27,35 +27,44 @@ const Column = styled.div`
   width: 100%;
 `;
 
-export default ({ isLoggedIn = true }) => (
-  <Container>
-    <Head>
-      <title>Indie Makers | Build products, together.</title>
-    </Head>
-    {isLoggedIn ? (
-      <Dashboard />
-    ) : (
-      <React.Fragment>
-        <HeroWrapper>
-          <Wrapper>
-            <Hero />
-          </Wrapper>
-        </HeroWrapper>
+interface IProps {
+  isLoggedIn: boolean;
+}
+
+export default class extends React.Component<IProps> {
+  render() {
+    const { isLoggedIn = true } = this.props;
+    return (
+      <Container>
+        <Head>
+          <title>Indie Makers | Build products, together.</title>
+        </Head>
+        {isLoggedIn ? (
+          <Dashboard />
+        ) : (
+          <React.Fragment>
+            <HeroWrapper>
+              <Wrapper>
+                <Hero />
+              </Wrapper>
+            </HeroWrapper>
+            <Wrapper>
+              <FeaturedPosts />
+            </Wrapper>
+          </React.Fragment>
+        )}
         <Wrapper>
-          <FeaturedPosts />
+          <IndexColumns>
+            <Column>
+              <NewProducts />
+              <CompletedGoals />
+            </Column>
+            <Column>
+              <FireMakers />
+            </Column>
+          </IndexColumns>
         </Wrapper>
-      </React.Fragment>
-    )}
-    <Wrapper>
-      <IndexColumns>
-        <Column>
-          <NewProducts />
-          <CompletedGoals />
-        </Column>
-        <Column>
-          <FireMakers />
-        </Column>
-      </IndexColumns>
-    </Wrapper>
-  </Container>
-);
+      </Container>
+    );
+  }
+}
