@@ -5,6 +5,9 @@ import BlogPost from "../blogPost";
 import FakeLink from "../fakeLink";
 import Section from "../section";
 import Title from "../title";
+import { Query } from "react-apollo";
+import { GET_FEATURED_POST, GET_LATEST_THREE } from "./featuredPostsQueries";
+import { GRAPHQLCMS_URL } from "../../configs";
 
 const PostGrid = styled.div`
   display: grid;
@@ -34,13 +37,60 @@ const FeaturedPosts = () => (
   >
     <PostGrid>
       <GridColumn>
-        <BlogPost slug={"post"} featured={true} />
+        <Query
+          query={GET_FEATURED_POST}
+          context={{
+            uri: GRAPHQLCMS_URL
+          }}
+        >
+          {({ data, loading }) => {
+            if (!loading && data.productReviews) {
+              const {
+                heroImage: { url },
+                intro,
+                name,
+                id
+              } = data.productReviews[0];
+              return (
+                <BlogPost
+                  id={id}
+                  featuredImage={url}
+                  intro={intro}
+                  name={name}
+                  featured={true}
+                />
+              );
+            }
+            return null;
+          }}
+        </Query>
       </GridColumn>
-      <PostsColumn>
-        <BlogPost slug={"post"} />
-        <BlogPost slug={"post"} />
-        <BlogPost slug={"post"} />
-      </PostsColumn>
+      <Query
+        query={GET_LATEST_THREE}
+        context={{
+          uri: GRAPHQLCMS_URL
+        }}
+      >
+        {({ data, loading }) => {
+          if (!loading && data.productReviews) {
+            const { productReviews } = data;
+            return (
+              <PostsColumn>
+                {productReviews.map(review => (
+                  <BlogPost
+                    key={review.id}
+                    id={review.id}
+                    name={review.name}
+                    intro={review.intro}
+                    logo={review.logo.url}
+                  />
+                ))}
+              </PostsColumn>
+            );
+          }
+          return null;
+        }}
+      </Query>
     </PostGrid>
   </Section>
 );

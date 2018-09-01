@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import styled from "../typed-components";
 import routes from "../routes";
@@ -71,264 +72,266 @@ const LinkBtn = styled(Button)`
   display: block;
 `;
 
-const Product = () => (
-  <Wrapper>
-    <Head>
-      <title>Product Name | Indie Makers</title>
-    </Head>
-    <Container>
-      <DetailsContainer>
-        <BigDetailCard
-          isLink={false}
-          icon={"/static/demo.jpg"}
-          title={"Best Product"}
-          showSubtitle={true}
-          toDoNumber={"10/30"}
-          subtitle={"Gonna make millions with this"}
-          hasAuthor={false}
-          needsHelp={true}
-        />
-        <Divider />
-        <a href={"https://indiemakers.net"} target={"_blank"}>
-          <LinkBtn accent={false} text={"indiemakers.net"} />
-        </a>
-        <Divider />
-        <SmallDetailCard
-          icon={"/static/demo.jpg"}
-          title={"Nicolás Serrano Arévalo"}
-          subtitle={"@serranoarevalo"}
-          streakNumber={50}
-          isLink={true}
-          link={routes.userDetail("@serranoarevalo")}
-          linkAs={routes.asUserDetail("@serranoarevalo")}
-          isCard={true}
-        />
-      </DetailsContainer>
-      <Card>
-        <ToDos>
-          <ToDosColumn>
-            <Header>
-              <Title>Doing</Title>
-            </Header>
-            <GoalsContainer>
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={false}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-            </GoalsContainer>
-            <GoalsFooter />
-          </ToDosColumn>
-          <ToDosColumn>
-            <Header>
-              <Title>Done</Title>
-            </Header>
-            <GoalsContainer>
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-              <GoalText
-                lineThrough={false}
-                isCompleted={true}
-                text={"Go to bebek"}
-                productName={"Indie Makers"}
-                onProductPage={true}
-              />
-            </GoalsContainer>
-            <GoalsFooter />
-          </ToDosColumn>
-        </ToDos>
-      </Card>
-    </Container>
-  </Wrapper>
-);
-
-export default Product;
+export default class extends React.Component {
+  render() {
+    return (
+      <Wrapper>
+        <Head>
+          <title>Product Name | Indie Makers</title>
+        </Head>
+        <Container>
+          <DetailsContainer>
+            <BigDetailCard
+              isLink={false}
+              icon={"/static/demo.jpg"}
+              title={"Best Product"}
+              showSubtitle={true}
+              toDoNumber={"10/30"}
+              subtitle={"Gonna make millions with this"}
+              hasAuthor={false}
+              needsHelp={true}
+            />
+            <Divider />
+            <a href={"https://indiemakers.net"} target={"_blank"}>
+              <LinkBtn accent={false} text={"indiemakers.net"} />
+            </a>
+            <Divider />
+            <SmallDetailCard
+              icon={"/static/demo.jpg"}
+              title={"Nicolás Serrano Arévalo"}
+              subtitle={"@serranoarevalo"}
+              streakNumber={50}
+              isLink={true}
+              link={routes.userDetail("@serranoarevalo")}
+              linkAs={routes.asUserDetail("@serranoarevalo")}
+              isCard={true}
+            />
+          </DetailsContainer>
+          <Card>
+            <ToDos>
+              <ToDosColumn>
+                <Header>
+                  <Title>Doing</Title>
+                </Header>
+                <GoalsContainer>
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={false}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                </GoalsContainer>
+                <GoalsFooter />
+              </ToDosColumn>
+              <ToDosColumn>
+                <Header>
+                  <Title>Done</Title>
+                </Header>
+                <GoalsContainer>
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                  <GoalText
+                    lineThrough={false}
+                    isCompleted={true}
+                    text={"Go to bebek"}
+                    productName={"Indie Makers"}
+                    onProductPage={true}
+                  />
+                </GoalsContainer>
+                <GoalsFooter />
+              </ToDosColumn>
+            </ToDos>
+          </Card>
+        </Container>
+      </Wrapper>
+    );
+  }
+}

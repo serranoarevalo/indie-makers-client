@@ -1,5 +1,4 @@
 import Link from "next/link";
-import PropTypes from "prop-types";
 import styled from "../../typed-components";
 import RoundImage from "../roundImage";
 import routes from "../../routes";
@@ -75,31 +74,39 @@ const Title = styled.h4`
 
 interface IProps {
   featured?: boolean;
-  slug: string;
+  id: string;
+  name: string;
+  intro: string;
+  logo?: string;
+  featuredImage?: string;
 }
 
-const BlogPost: React.SFC<IProps> = ({ featured = false, slug }) => (
-  <Link href={routes.blogDetail(slug)} as={routes.asBlogDetail(slug)}>
+const BlogPost: React.SFC<IProps> = ({
+  featured = false,
+  id,
+  name,
+  intro,
+  logo,
+  featuredImage = ""
+}) => (
+  <Link href={routes.blogDetail(id)} as={routes.asBlogDetail(id)}>
     <a>
       {featured ? (
         <FContainer>
           <Column>
-            <FImage src={"/static/appDemo.png"} />
+            <FImage src={featuredImage} />
           </Column>
           <FText>
-            <FTitle>Alex's project</FTitle>
-            <Intro>
-              He did and app for his thing and now he's married, I personally
-              think this should be longer so it looks awesome.
-            </Intro>
+            <FTitle>{name}</FTitle>
+            <Intro>{intro}</Intro>
           </FText>
         </FContainer>
       ) : (
         <Container>
-          <Icon src="/static/demo.jpg" />
+          <Icon src={logo} />
           <span>
-            <Title>Alex's project</Title>
-            <p>He did and app for his thing and now he's married</p>
+            <Title>{name}</Title>
+            <p>{intro}</p>
           </span>
         </Container>
       )}
@@ -107,8 +114,4 @@ const BlogPost: React.SFC<IProps> = ({ featured = false, slug }) => (
   </Link>
 );
 
-BlogPost.propTypes = {
-  featured: PropTypes.bool,
-  slug: PropTypes.string.isRequired
-};
 export default BlogPost;

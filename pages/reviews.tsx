@@ -5,6 +5,7 @@ import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import BlogPost from "../components/blogPost";
 import routes from "../routes";
+import { Query } from "react-apollo";
 
 const Hero = styled.div`
   padding: 50px 0px;
@@ -71,6 +72,7 @@ const Blog = () => (
     <Head>
       <title>Blog | Indie Makers</title>
     </Head>
+
     <Hero>
       <Wrapper>
         <Link href={routes.blogDetail("slug")} as={routes.asBlogDetail("slug")}>
@@ -88,6 +90,7 @@ const Blog = () => (
         </Link>
       </Wrapper>
     </Hero>
+
     <Posts>
       <Wrapper>
         <LatestPosts>

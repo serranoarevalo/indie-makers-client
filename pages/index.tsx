@@ -33,7 +33,7 @@ interface IProps {
 
 export default class extends React.Component<IProps> {
   render() {
-    const { isLoggedIn = true } = this.props;
+    const { isLoggedIn = false } = this.props;
     return (
       <Container>
         <Head>
