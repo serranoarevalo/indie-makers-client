@@ -10,6 +10,7 @@ export const GET_FEATURED_POST = gql`
       id
       name
       intro
+      slug
       heroImage {
         url
       }
@@ -25,6 +26,7 @@ export const GET_LATEST_THREE = gql`
       where: { featured: false }
     ) {
       id
+      slug
       name
       intro
       logo {

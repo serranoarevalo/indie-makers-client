@@ -49,11 +49,11 @@ const FeaturedPosts = () => (
                 heroImage: { url },
                 intro,
                 name,
-                id
+                slug
               } = data.productReviews[0];
               return (
                 <BlogPost
-                  id={id}
+                  slug={slug}
                   featuredImage={url}
                   intro={intro}
                   name={name}
@@ -79,7 +79,7 @@ const FeaturedPosts = () => (
                 {productReviews.map(review => (
                   <BlogPost
                     key={review.id}
-                    id={review.id}
+                    slug={review.slug}
                     name={review.name}
                     intro={review.intro}
                     logo={review.logo.url}

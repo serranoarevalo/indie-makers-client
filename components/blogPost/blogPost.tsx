@@ -74,7 +74,7 @@ const Title = styled.h4`
 
 interface IProps {
   featured?: boolean;
-  id: string;
+  slug: string;
   name: string;
   intro: string;
   logo?: string;
@@ -83,13 +83,13 @@ interface IProps {
 
 const BlogPost: React.SFC<IProps> = ({
   featured = false,
-  id,
+  slug,
   name,
   intro,
   logo,
   featuredImage = ""
 }) => (
-  <Link href={routes.blogDetail(id)} as={routes.asBlogDetail(id)}>
+  <Link href={routes.blogDetail(slug)} as={routes.asBlogDetail(slug)}>
     <a>
       {featured ? (
         <FContainer>

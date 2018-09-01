@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import styled from "../typed-components";
-import Wrapper from "../components/wrapper";
+import styled from "../..//typed-components";
+import Wrapper from "../../components/wrapper";
 
 const Container = styled.div`
   padding-bottom: 200px;
@@ -91,7 +91,7 @@ const Image = styled.img`
   border-radius: ${props => props.theme.borderRadius};
 `;
 
-const Review = () => (
+export default () => (
   <Container>
     <Head>
       <title>Review | Indie Makers</title>
@@ -165,5 +165,3 @@ const Review = () => (
     </Content>
   </Container>
 );
-
-export default Review;
