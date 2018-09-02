@@ -5,12 +5,12 @@
 // GraphQL query operation: addedRecently
 // ====================================================
 
-export interface addedRecently_GetLatestProducts_products_maker {
+export interface addedRecently_FilterProducts_products_maker {
   __typename: "User";
   profilePhoto: string;
 }
 
-export interface addedRecently_GetLatestProducts_products {
+export interface addedRecently_FilterProducts_products {
   __typename: "Product";
   id: number;
   logo: string | null;
@@ -20,16 +20,16 @@ export interface addedRecently_GetLatestProducts_products {
   completedGoalCount: number;
   slug: string;
   needsHelp: boolean;
-  maker: addedRecently_GetLatestProducts_products_maker | null;
+  maker: addedRecently_FilterProducts_products_maker | null;
 }
 
-export interface addedRecently_GetLatestProducts {
-  __typename: "GetLatestProductsResponse";
-  products: (addedRecently_GetLatestProducts_products | null)[] | null;
+export interface addedRecently_FilterProducts {
+  __typename: "FilterProductsResponse";
+  products: (addedRecently_FilterProducts_products | null)[] | null;
 }
 
 export interface addedRecently {
-  GetLatestProducts: addedRecently_GetLatestProducts;
+  FilterProducts: addedRecently_FilterProducts;
 }
 
 /* tslint:disable */

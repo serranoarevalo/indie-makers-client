@@ -3,6 +3,7 @@ import Head from "next/head";
 import Markdown from "react-markdown";
 import styled from "../..//typed-components";
 import Wrapper from "../../components/wrapper";
+import { getReview } from "../../types/blog";
 
 const Container = styled.div`
   padding-bottom: 200px;
@@ -91,79 +92,85 @@ const Image = styled.img`
 `;
 
 interface IProps {
-  data: any;
+  data?: getReview;
 }
 
-const ReviewPresenter: React.SFC<IProps> = ({
-  data: {
-    productReview: {
-      heroImage = {},
-      intro = "",
-      name = "",
-      projectTypes = "",
-      review = "",
-      tech = [],
-      timeToMarket = ""
-    } = {}
-  } = {}
-}) => (
-  <Container>
-    <Head>
-      <title>{name} | Indie Makers</title>
-    </Head>
-    <Header bg={heroImage.url || ""}>
-      <EWrapper>
-        <Title>{name}</Title>
-        <Subtitle>{intro}</Subtitle>
-      </EWrapper>
-    </Header>
-    <EWrapper>
-      <TechCard>
-        <Column>
-          <ColumnTitle>Built with</ColumnTitle>
-          <ColumnText>
-            {tech.map((techName, index) => {
-              if (index === tech.length - 1) {
-                return `${techName.name}`;
-              } else if (tech.length > 1) {
-                return `${techName.name}, `;
-              }
-              return "";
-            })}
-          </ColumnText>
-        </Column>
-        <Column>
-          <ColumnTitle>Website</ColumnTitle>
-          <ColumnText>
-            {projectTypes.map((project, index) => {
-              if (index === projectTypes.length - 1) {
-                return `${project.name}`;
-              } else if (projectTypes.length > 1) {
-                return `${project.name}, `;
-              }
-              return "";
-            })}
-          </ColumnText>
-        </Column>
-        <Column>
-          <ColumnTitle>Time to Market</ColumnTitle>
-          <ColumnText>{timeToMarket}</ColumnText>
-        </Column>
-      </TechCard>
-    </EWrapper>
-    <Content>
-      <EWrapper>
-        <Markdown
-          source={review}
-          renderers={{
-            heading: QuestionTitle,
-            paragraph: QuestionAnswer,
-            image: Image
-          }}
-        />
-      </EWrapper>
-    </Content>
-  </Container>
-);
+const ReviewPresenter: React.SFC<IProps> = ({ data }) => {
+  if (data && data.productReview) {
+    const {
+      productReview: {
+        name,
+        heroImage,
+        intro,
+        tech,
+        timeToMarket,
+        projectTypes,
+        review
+      }
+    } = data;
+    return (
+      <Container>
+        <Head>
+          <title>{name} | Indie Makers</title>
+        </Head>
+        <Header bg={heroImage ? heroImage.url : ""}>
+          <EWrapper>
+            <Title>{name}</Title>
+            <Subtitle>{intro}</Subtitle>
+          </EWrapper>
+        </Header>
+        <EWrapper>
+          <TechCard>
+            <Column>
+              <ColumnTitle>Built with</ColumnTitle>
+              <ColumnText>
+                {tech &&
+                  tech.map((techName, index) => {
+                    if (index === tech!.length - 1) {
+                      return `${techName.name}`;
+                    } else if (tech!.length > 1) {
+                      return `${techName.name}, `;
+                    }
+                    return "";
+                  })}
+              </ColumnText>
+            </Column>
+            <Column>
+              <ColumnTitle>Website</ColumnTitle>
+              <ColumnText>
+                {projectTypes &&
+                  projectTypes.map((project, index) => {
+                    if (index === projectTypes!.length - 1) {
+                      return `${project.name}`;
+                    } else if (projectTypes!.length > 1) {
+                      return `${project.name}, `;
+                    }
+                    return "";
+                  })}
+              </ColumnText>
+            </Column>
+            <Column>
+              <ColumnTitle>Time to Market</ColumnTitle>
+              <ColumnText>{timeToMarket}</ColumnText>
+            </Column>
+          </TechCard>
+        </EWrapper>
+        <Content>
+          <EWrapper>
+            <Markdown
+              source={review}
+              renderers={{
+                heading: QuestionTitle,
+                paragraph: QuestionAnswer,
+                image: Image
+              }}
+            />
+          </EWrapper>
+        </Content>
+      </Container>
+    );
+  }
+  return null;
+};
 
 export default ReviewPresenter;

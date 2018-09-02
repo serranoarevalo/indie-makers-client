@@ -11,6 +11,7 @@ import {
   GET_LATEST_THREE
 } from "./featuredPostsQueries.blog";
 import { GRAPHQLCMS_URL } from "../../configs";
+import { getFeatured, getLatest } from "types/blog";
 
 const PostGrid = styled.div`
   display: grid;
@@ -27,6 +28,9 @@ const PostsColumn = styled.div`
   grid-gap: 30px;
 `;
 
+class FeaturedQuery extends Query<getFeatured> {}
+class LatestQuery extends Query<getLatest> {}
+
 const FeaturedPosts = () => (
   <Section
     titleElements={[
@@ -40,24 +44,19 @@ const FeaturedPosts = () => (
   >
     <PostGrid>
       <GridColumn>
-        <Query
+        <FeaturedQuery
           query={GET_FEATURED_POST}
           context={{
             uri: GRAPHQLCMS_URL
           }}
         >
           {({ data, loading }) => {
-            if (!loading && data.productReviews) {
-              const {
-                heroImage: { url },
-                intro,
-                name,
-                slug
-              } = data.productReviews[0];
+            if (!loading && data && data.productReviews) {
+              const { heroImage, intro, name, slug } = data!.productReviews[0]!;
               return (
                 <BlogPost
                   slug={slug}
-                  featuredImage={url}
+                  featuredImage={heroImage!.url}
                   intro={intro}
                   name={name}
                   featured={true}
@@ -66,34 +65,38 @@ const FeaturedPosts = () => (
             }
             return null;
           }}
-        </Query>
+        </FeaturedQuery>
       </GridColumn>
-      <Query
+      <LatestQuery
         query={GET_LATEST_THREE}
         context={{
           uri: GRAPHQLCMS_URL
         }}
       >
         {({ data, loading }) => {
-          if (!loading && data.productReviews) {
+          if (!loading && data && data.productReviews) {
             const { productReviews } = data;
             return (
               <PostsColumn>
-                {productReviews.map(review => (
-                  <BlogPost
-                    key={review.id}
-                    slug={review.slug}
-                    name={review.name}
-                    intro={review.intro}
-                    logo={review.logo.url}
-                  />
-                ))}
+                {productReviews &&
+                  productReviews.map(
+                    review =>
+                      review && (
+                        <BlogPost
+                          key={review.id}
+                          slug={review.slug}
+                          name={review.name}
+                          intro={review.intro}
+                          logo={review.logo!.url}
+                        />
+                      )
+                  )}
               </PostsColumn>
             );
           }
           return null;
         }}
-      </Query>
+      </LatestQuery>
     </PostGrid>
   </Section>
 );
