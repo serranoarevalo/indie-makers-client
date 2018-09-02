@@ -17,7 +17,7 @@ const AddButton = styled(Button)`
   margin-left: 30px;
 `;
 
-const newProducts = () => (
+export default () => (
   <Section
     titleElements={[
       <Title key={1}>Products added recently</Title>,
@@ -50,5 +50,3 @@ const newProducts = () => (
     </Grid>
   </Section>
 );
-
-export default newProducts;

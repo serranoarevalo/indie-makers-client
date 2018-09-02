@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export const GET_FEATURED_POST = gql`
-  {
+  query getFeatured {
     productReviews(
       orderBy: createdAt_DESC
       where: { featured: true }
@@ -19,7 +19,7 @@ export const GET_FEATURED_POST = gql`
 `;
 
 export const GET_LATEST_THREE = gql`
-  {
+  query getLatest {
     productReviews(
       orderBy: createdAt_DESC
       first: 3

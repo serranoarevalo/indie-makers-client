@@ -1,7 +1,7 @@
 import React from "react";
 import ReviewPresenter from "./reviewPresenter";
 import { Query } from "react-apollo";
-import { GET_REVIEW } from "./reviewQueries";
+import { GET_REVIEW } from "./reviewQueries.blog";
 import { GRAPHQLCMS_URL } from "../../configs";
 
 interface IProps {

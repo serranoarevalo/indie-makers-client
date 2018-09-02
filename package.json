@@ -5,6 +5,11 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
+    "predev": "yarn run codegen:blog && yarn run codegen:frontend",
+    "precodegen:blog": "apollo schema:download blogSchema.json --endpoint=https://api-apeast.graphcms.com/v1/cjl84xx290azv01fzax9fajt0/master",
+    "codegen:blog": "apollo codegen:generate types/blog.d.ts --queries='**/*.blog.ts' --addTypename --schema blogSchema.json --target typescript --outputFlat",
+    "codegen:frontend": "apollo codegen:generate types/api.d.ts --queries='**/!(*.local|*.blog).ts' --addTypename --schema frontendSchema.json --target typescript --outputFlat",
+    "precodegen:frontend": "apollo schema:download frontendSchema.json --endpoint=http://localhost:4000/graphql",
     "start": "NODE_ENV=production node server.js"
   },
   "repository": {

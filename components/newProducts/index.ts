@@ -1,2 +1,2 @@
-import NewProducts from "./newProducts";
-export default NewProducts;
+import newProductsContainer from "./newProductsContainer";
+export default newProductsContainer;

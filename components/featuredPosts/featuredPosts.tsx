@@ -6,7 +6,10 @@ import FakeLink from "../fakeLink";
 import Section from "../section";
 import Title from "../title";
 import { Query } from "react-apollo";
-import { GET_FEATURED_POST, GET_LATEST_THREE } from "./featuredPostsQueries";
+import {
+  GET_FEATURED_POST,
+  GET_LATEST_THREE
+} from "./featuredPostsQueries.blog";
 import { GRAPHQLCMS_URL } from "../../configs";
 
 const PostGrid = styled.div`

@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import ReviewsPresenter from "./ReviewPresenter";
-import { GET_BLOG } from "./ReviewQueries";
+import { GET_BLOG } from "./ReviewQueries.blog";
 import { GRAPHQLCMS_URL } from "../../configs";
 
 export default class extends React.Component {

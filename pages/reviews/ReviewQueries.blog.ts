@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 export const GET_BLOG = gql`
-  {
+  query getBlog {
     posts: productReviews(where: { featured: false }) {
       id
       slug
