@@ -6,6 +6,7 @@ import FakeLink from "../fakeLink";
 import BigDetailCard from "../bigDetailCard";
 import Section from "../section";
 import Title from "../title";
+import { addedRecently } from "types/api";
 
 const Grid = styled.div`
   display: grid;
@@ -17,7 +18,11 @@ const AddButton = styled(Button)`
   margin-left: 30px;
 `;
 
-export default () => (
+interface IProps {
+  data?: addedRecently;
+}
+
+const NewProductsPresenter: React.SFC<IProps> = ({ data }) => (
   <Section
     titleElements={[
       <Title key={1}>Products added recently</Title>,
@@ -34,19 +39,32 @@ export default () => (
     ]}
   >
     <Grid>
-      <BigDetailCard
-        isLink={true}
-        link={routes.productDetail("something")}
-        linkAs={routes.asProductDetail("something")}
-        icon={"/static/demo.jpg"}
-        authorAvatar={"/static/demo.jpg"}
-        title={"Best Product"}
-        showSubtitle={true}
-        toDoNumber={"10/30"}
-        subtitle={"Gonna make millions with this"}
-        hasAuthor={true}
-        needsHelp={true}
-      />
+      {data &&
+        data.FilterProducts &&
+        data.FilterProducts.products &&
+        data.FilterProducts.products.map(
+          product =>
+            product && (
+              <BigDetailCard
+                key={product.id}
+                isLink={true}
+                link={routes.productDetail(product.slug)}
+                linkAs={routes.asProductDetail(product.slug)}
+                icon={product.logo || ""}
+                authorAvatar={product.maker!.profilePhoto}
+                title={product.name}
+                showSubtitle={true}
+                toDoNumber={`${product.completedGoalCount}/${
+                  product.goalCount
+                }`}
+                subtitle={product.description}
+                hasAuthor={true}
+                needsHelp={product.needsHelp}
+              />
+            )
+        )}
     </Grid>
   </Section>
 );
+
+export default NewProductsPresenter;

@@ -2,13 +2,14 @@ import React from "react";
 import { Query } from "react-apollo";
 import NewProductsPresenter from "./newProductsPresenter";
 import { GET_NEW } from "./newProductsQueries";
+import { addedRecently } from "types/api";
 
-export default class extends React.Component {
-  render() {
-    return (
-      <Query query={GET_NEW}>
-        {({ data, loading }) => <NewProductsPresenter />}
-      </Query>
-    );
-  }
-}
+class LatestProducts extends Query<addedRecently> {}
+
+export default () => (
+  <LatestProducts query={GET_NEW}>
+    {({ data, loading }) =>
+      !loading ? <NewProductsPresenter data={data} /> : null
+    }
+  </LatestProducts>
+);
