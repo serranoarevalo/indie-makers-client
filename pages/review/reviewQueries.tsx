@@ -6,11 +6,14 @@ export const GET_REVIEW = gql`
       id
       name
       intro
-      timetomarket
-      projectType {
+      heroImage {
+        url
+      }
+      timeToMarket
+      projectTypes {
         name
       }
-      techs {
+      tech {
         name
       }
       review

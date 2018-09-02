@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Markdown from "react-markdown";
 import styled from "../..//typed-components";
 import Wrapper from "../../components/wrapper";
 
@@ -11,6 +12,8 @@ const Header = styled<{ bg: string }, "div">("div")`
   width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${props => props.bg});
+  background-size: 100%;
+  background-position: center center;
   height: 450px;
   display: flex;
   align-items: center;
@@ -70,98 +73,113 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Question = styled.div`
-  margin-bottom: 30px;
-`;
-
 const QuestionTitle = styled.h4`
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
 const QuestionAnswer = styled.p`
   font-size: 16px;
+  margin-bottom: 30px;
 `;
 
 const Image = styled.img`
-  height: 250px;
   width: 100%;
   margin: 25px 0px;
   border-radius: ${props => props.theme.borderRadius};
 `;
 
-export default () => (
+interface IProps {
+  loading: boolean;
+  data: any;
+}
+
+const ReviewPresenter: React.SFC<IProps> = ({
+  data: {
+    productReview: {
+      heroImage = {},
+      intro = "",
+      name = "",
+      projectTypes = "",
+      review = "",
+      tech = [],
+      timeToMarket = ""
+    } = {}
+  } = {},
+  loading
+}) => (
   <Container>
     <Head>
-      <title>Review | Indie Makers</title>
+      <title>{name} | Indie Makers</title>
     </Head>
-    <Header bg={"/static/appDemo.png"}>
+    <Header bg={heroImage.url || ""}>
       <EWrapper>
-        <Title>Alex's project</Title>
-        <Subtitle>He was a boy, now he turned into a girl</Subtitle>
+        <Title>{name}</Title>
+        <Subtitle>{intro}</Subtitle>
       </EWrapper>
     </Header>
     <EWrapper>
       <TechCard>
         <Column>
           <ColumnTitle>Built with</ColumnTitle>
-          <ColumnText>React, GraphQL, NodeJS</ColumnText>
+          <ColumnText>
+            {tech.map((techName, index) => {
+              if (index === tech.length - 1) {
+                return `${techName.name}`;
+              } else if (tech.length > 1) {
+                return `${techName.name}, `;
+              }
+            })}
+          </ColumnText>
         </Column>
         <Column>
-          <ColumnTitle>Type</ColumnTitle>
-          <ColumnText>Website</ColumnText>
+          <ColumnTitle>Website</ColumnTitle>
+          <ColumnText>
+            {projectTypes.map((project, index) => {
+              if (index === projectTypes.length - 1) {
+                return `${project.name}`;
+              } else if (projectTypes.length > 1) {
+                return `${project.name}, `;
+              }
+            })}
+          </ColumnText>
         </Column>
         <Column>
           <ColumnTitle>Time to Market</ColumnTitle>
-          <ColumnText>1 month</ColumnText>
+          <ColumnText>{timeToMarket}</ColumnText>
         </Column>
       </TechCard>
     </EWrapper>
     <Content>
       <EWrapper>
-        <Question>
-          <QuestionTitle>What is your fav food?</QuestionTitle>
-          <QuestionAnswer>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            aliquam sem. Suspendisse ut dui tellus. Morbi congue, ipsum non
-            ullamcorper sollicitudin, neque tellus tempor ipsum, viverra pretium
-            magna est id urna. Duis vulputate arcu mi, a cursus urna blandit ut.
-            Suspendisse fermentum nibh eget purus aliquet, maximus convallis
-            odio finibus. Morbi sollicitudin maximus fringilla. Morbi bibendum
-            ultricies maximus. Vivamus vitae lorem mauris. Ut egestas rutrum
-            libero et vestibulum.
-          </QuestionAnswer>
-        </Question>
-        <Question>
-          <Image src={"/static/appDemo.png"} />
-          <QuestionTitle>What is your fav food?</QuestionTitle>
-          <QuestionAnswer>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            aliquam sem. Suspendisse ut dui tellus. Morbi congue, ipsum non
-            ullamcorper sollicitudin, neque tellus tempor ipsum, viverra pretium
-            magna est id urna. Duis vulputate arcu mi, a cursus urna blandit ut.
-            Suspendisse fermentum nibh eget purus aliquet, maximus convallis
-            odio finibus. Morbi sollicitudin maximus fringilla. Morbi bibendum
-            ultricies maximus. Vivamus vitae lorem mauris. Ut egestas rutrum
-            libero et vestibulum.
-          </QuestionAnswer>
-        </Question>
-        <Question>
-          <Image src={"/static/appDemo.png"} />
-          <QuestionTitle>What is your fav food?</QuestionTitle>
-          <QuestionAnswer>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            aliquam sem. Suspendisse ut dui tellus. Morbi congue, ipsum non
-            ullamcorper sollicitudin, neque tellus tempor ipsum, viverra pretium
-            magna est id urna. Duis vulputate arcu mi, a cursus urna blandit ut.
-            Suspendisse fermentum nibh eget purus aliquet, maximus convallis
-            odio finibus. Morbi sollicitudin maximus fringilla. Morbi bibendum
-            ultricies maximus. Vivamus vitae lorem mauris. Ut egestas rutrum
-            libero et vestibulum.
-          </QuestionAnswer>
-        </Question>
+        <Markdown
+          source={review}
+          renderers={{
+            heading: QuestionTitle,
+            paragraph: QuestionAnswer,
+            image: Image
+          }}
+        />
       </EWrapper>
+      {/* <EWrapper>
+        <Question>
+          <Image src={"/static/appDemo.png"} />
+          <QuestionTitle>What is your fav food?</QuestionTitle>
+          <QuestionAnswer>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
+            aliquam sem. Suspendisse ut dui tellus. Morbi congue, ipsum non
+            ullamcorper sollicitudin, neque tellus tempor ipsum, viverra pretium
+            magna est id urna. Duis vulputate arcu mi, a cursus urna blandit ut.
+            Suspendisse fermentum nibh eget purus aliquet, maximus convallis
+            odio finibus. Morbi sollicitudin maximus fringilla. Morbi bibendum
+            ultricies maximus. Vivamus vitae lorem mauris. Ut egestas rutrum
+            libero et vestibulum.
+          </QuestionAnswer>
+        
+      </EWrapper> */}
     </Content>
   </Container>
 );
+
+export default ReviewPresenter;
