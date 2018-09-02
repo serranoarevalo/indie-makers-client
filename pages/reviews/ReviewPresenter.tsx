@@ -5,6 +5,7 @@ import styled from "../../typed-components";
 import Wrapper from "../../components/wrapper";
 import BlogPost from "../../components/blogPost";
 import routes from "../../routes";
+import { getBlog } from "types/blog";
 
 const Hero = styled.div`
   padding: 50px 0px;
@@ -67,7 +68,7 @@ const LatestPostsGrid = styled.div`
 `;
 
 interface IProps {
-  data: any;
+  data: getBlog;
 }
 
 const ReviewPresenter: React.SFC<IProps> = ({
@@ -79,20 +80,22 @@ const ReviewPresenter: React.SFC<IProps> = ({
     </Head>
     <Hero>
       <Wrapper>
-        <Link
-          href={routes.blogDetail(featured[0].slug)}
-          as={routes.asBlogDetail(featured[0].slug)}
-        >
-          <a>
-            <HeroContainer>
-              <FeaturedImage bg={featured[0].heroImage.url} />
-              <FeaturedContent>
-                <FeaturedTitle>{featured[0].name}</FeaturedTitle>
-                <FeaturedSubtitle>{featured[0].intro}</FeaturedSubtitle>
-              </FeaturedContent>
-            </HeroContainer>
-          </a>
-        </Link>
+        {featured && (
+          <Link
+            href={routes.blogDetail(featured[0]!.slug)}
+            as={routes.asBlogDetail(featured[0]!.slug)}
+          >
+            <a>
+              <HeroContainer>
+                <FeaturedImage bg={featured[0]!.heroImage!.url} />
+                <FeaturedContent>
+                  <FeaturedTitle>{featured[0]!.name}</FeaturedTitle>
+                  <FeaturedSubtitle>{featured[0]!.intro}</FeaturedSubtitle>
+                </FeaturedContent>
+              </HeroContainer>
+            </a>
+          </Link>
+        )}
       </Wrapper>
     </Hero>
 
@@ -105,14 +108,16 @@ const ReviewPresenter: React.SFC<IProps> = ({
               {featured.map((post, index) => {
                 if (index < 1) return;
                 return (
-                  <BlogPost
-                    key={post.id}
-                    featured={true}
-                    slug={post.slug}
-                    name={post.name}
-                    intro={post.intro}
-                    featuredImage={post.heroImage.url}
-                  />
+                  post && (
+                    <BlogPost
+                      key={post.id}
+                      featured={true}
+                      slug={post.slug}
+                      name={post.name}
+                      intro={post.intro}
+                      featuredImage={post.heroImage!.url}
+                    />
+                  )
                 );
               })}
             </LatestPostsGrid>
@@ -122,15 +127,19 @@ const ReviewPresenter: React.SFC<IProps> = ({
           <React.Fragment>
             <PostsTitle>All Reviews</PostsTitle>
             <Grid>
-              {posts.map(post => (
-                <BlogPost
-                  key={post.id}
-                  slug={post.slug}
-                  name={post.name}
-                  intro={post.intro}
-                  logo={post.logo.url}
-                />
-              ))}
+              {posts &&
+                posts.map(
+                  post =>
+                    post && (
+                      <BlogPost
+                        key={post.id}
+                        slug={post.slug}
+                        name={post.name}
+                        intro={post.intro}
+                        logo={post.logo!.url}
+                      />
+                    )
+                )}
             </Grid>
           </React.Fragment>
         )}
