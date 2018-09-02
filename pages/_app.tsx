@@ -2,6 +2,8 @@ import App, { Container } from "next/app";
 import { ApolloProvider } from "react-apollo";
 import React from "react";
 import Router from "next/router";
+import withNProgress from "next-nprogress";
+import NProgressStyles from "next-nprogress/styles";
 import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
 import Modal from "../components/modal";
@@ -42,6 +44,7 @@ class MyApp extends App<any> {
     } = this.props;
     return (
       <Container>
+        <NProgressStyles color={theme.blackColor} spinner={false} />
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
             <React.Fragment>
@@ -71,4 +74,4 @@ class MyApp extends App<any> {
   };
 }
 
-export default withApollo(MyApp);
+export default withNProgress()(withApollo(MyApp));
