@@ -33,7 +33,8 @@ const SellPointColumn = styled.div``;
 const SellPoint = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  place-items: center center;
+  align-items: center;
+  justify-items: center;
   margin-bottom: 30px;
   &:nth-child(even) {
     & ${SellPointColumn} {

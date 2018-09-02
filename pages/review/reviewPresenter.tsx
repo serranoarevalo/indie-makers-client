@@ -91,7 +91,6 @@ const Image = styled.img`
 `;
 
 interface IProps {
-  loading: boolean;
   data: any;
 }
 
@@ -106,8 +105,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
       tech = [],
       timeToMarket = ""
     } = {}
-  } = {},
-  loading
+  } = {}
 }) => (
   <Container>
     <Head>
@@ -130,6 +128,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
               } else if (tech.length > 1) {
                 return `${techName.name}, `;
               }
+              return "";
             })}
           </ColumnText>
         </Column>
@@ -142,6 +141,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
               } else if (projectTypes.length > 1) {
                 return `${project.name}, `;
               }
+              return "";
             })}
           </ColumnText>
         </Column>
@@ -162,22 +162,6 @@ const ReviewPresenter: React.SFC<IProps> = ({
           }}
         />
       </EWrapper>
-      {/* <EWrapper>
-        <Question>
-          <Image src={"/static/appDemo.png"} />
-          <QuestionTitle>What is your fav food?</QuestionTitle>
-          <QuestionAnswer>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in
-            aliquam sem. Suspendisse ut dui tellus. Morbi congue, ipsum non
-            ullamcorper sollicitudin, neque tellus tempor ipsum, viverra pretium
-            magna est id urna. Duis vulputate arcu mi, a cursus urna blandit ut.
-            Suspendisse fermentum nibh eget purus aliquet, maximus convallis
-            odio finibus. Morbi sollicitudin maximus fringilla. Morbi bibendum
-            ultricies maximus. Vivamus vitae lorem mauris. Ut egestas rutrum
-            libero et vestibulum.
-          </QuestionAnswer>
-        
-      </EWrapper> */}
     </Content>
   </Container>
 );

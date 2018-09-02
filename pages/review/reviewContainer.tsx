@@ -21,9 +21,9 @@ export default class extends React.Component<IProps> {
         variables={{ slug }}
         context={{ uri: GRAPHQLCMS_URL }}
       >
-        {({ loading, data }) => (
-          <ReviewPresenter loading={loading} data={data} />
-        )}
+        {({ loading, data }) =>
+          !loading ? <ReviewPresenter data={data} /> : null
+        }
       </Query>
     );
   }
