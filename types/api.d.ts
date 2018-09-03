@@ -12,14 +12,16 @@ export interface completedGoals_FilterGoals_makers_goals_product {
 
 export interface completedGoals_FilterGoals_makers_goals {
   __typename: "Goal";
+  id: number;
   text: string;
   isCompleted: boolean;
   product: completedGoals_FilterGoals_makers_goals_product | null;
-  updatedAt: string | null;
+  completedAt: string | null;
 }
 
 export interface completedGoals_FilterGoals_makers {
   __typename: "User";
+  id: number;
   fullName: string;
   profilePhoto: string;
   streak: number;

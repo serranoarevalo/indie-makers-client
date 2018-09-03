@@ -1054,6 +1054,18 @@
             "deprecationReason": null
           },
           {
+            "name": "completedAt",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "text",
             "description": "",
             "args": [],

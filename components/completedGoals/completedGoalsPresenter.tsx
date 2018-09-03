@@ -42,18 +42,19 @@ const CompletedGoals: React.SFC<IProps> = ({
         makers.map(
           maker =>
             maker && (
-              <Goal maker={maker}>
+              <Goal maker={maker} key={maker.id}>
                 <Goals>
                   {maker.goals &&
                     maker.goals.map(
                       goal =>
                         goal && (
                           <GoalText
+                            key={goal.id}
                             lineThrough={false}
                             isCompleted={goal.isCompleted}
                             text={goal.text}
                             productName={goal.product!.name}
-                            timeStamp={goal.updatedAt || ""}
+                            timeStamp={goal.completedAt || ""}
                           />
                         )
                     )}

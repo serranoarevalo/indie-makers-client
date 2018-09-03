@@ -3,6 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import routes from "../../routes";
 import styled from "../../typed-components";
+import timeAgo from "../../lib/timeAgo";
 
 const Container = styled<{ fontSize: string }, "span">("span")`
   font-size: ${props => props.fontSize};
@@ -83,7 +84,7 @@ const GoalText: React.SFC<IProps> = ({
         </Goal>
       </React.Fragment>
     )}
-    <Timestamp>{timeStamp}</Timestamp>
+    <Timestamp>{timeAgo.format(Date.parse(timeStamp || ""))}</Timestamp>
     {isMine && <EditBtn>✏️</EditBtn>}
   </Container>
 );
