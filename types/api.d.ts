@@ -101,9 +101,54 @@ export interface addedRecently {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: filterProducts
+// ====================================================
+
+export interface filterProducts_FilterProducts_products_maker {
+  __typename: "User";
+  profilePhoto: string;
+}
+
+export interface filterProducts_FilterProducts_products {
+  __typename: "Product";
+  id: number;
+  logo: string | null;
+  name: string;
+  description: string;
+  completedGoalCount: number;
+  goalCount: number;
+  needsHelp: boolean;
+  maker: filterProducts_FilterProducts_products_maker | null;
+}
+
+export interface filterProducts_FilterProducts {
+  __typename: "FilterProductsResponse";
+  products: (filterProducts_FilterProducts_products | null)[] | null;
+}
+
+export interface filterProducts {
+  FilterProducts: filterProducts_FilterProducts;
+}
+
+export interface filterProductsVariables {
+  status: ProductState;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export enum ProductState {
+  FEATURED = "FEATURED",
+  HELP = "HELP",
+  LAUNCHED = "LAUNCHED",
+  NEW = "NEW",
+  UPDATED = "UPDATED",
+}
 
 //==============================================================
 // END Enums and Input Objects
