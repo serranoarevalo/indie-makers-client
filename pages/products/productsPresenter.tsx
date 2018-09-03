@@ -78,17 +78,24 @@ const ProductPresenter: React.SFC<IProps> = ({
               />
             )
         )}
+      {products &&
+        products.length === 0 && (
+          <h1 className={"thickText"}>There are no products to show now.</h1>
+        )}
     </ProductGrid>
-    <Pagination
-      hasNext={page > totalPages}
-      currentPage={`${page + 1}`}
-      totalPages={`${totalPages + 1}`}
-      previousLink={routes.productsFn(page - 1, tab)}
-      nextLink={routes.productsFn(page + 1, tab)}
-      asPreviousLink={routes.asProductsFn(page - 1, tab)}
-      asNextLink={routes.asProductsFn(page + 1, tab)}
-      hasPrevious={page !== 0}
-    />
+    {products &&
+      products.length !== 0 && (
+        <Pagination
+          hasNext={page > totalPages}
+          currentPage={`${page + 1}`}
+          totalPages={`${totalPages + 1}`}
+          previousLink={routes.productsFn(page - 1, tab)}
+          nextLink={routes.productsFn(page + 1, tab)}
+          asPreviousLink={routes.asProductsFn(page - 1, tab)}
+          asNextLink={routes.asProductsFn(page + 1, tab)}
+          hasPrevious={page !== 0}
+        />
+      )}
   </Wrapper>
 );
 

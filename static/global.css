@@ -154,3 +154,7 @@ a {
   width: 1em;
   height: 1em;
 }
+.thickText {
+  font-size: 18px;
+  font-weight: 600;
+}
