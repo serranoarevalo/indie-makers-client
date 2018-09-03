@@ -25,18 +25,23 @@ const Header = styled.div`
 
 const Section = styled.div``;
 
-const Goal = ({ children }) => (
+interface IProps {
+  maker: any;
+  children: any;
+}
+
+const Goal: React.SFC<IProps> = ({ maker, children }) => (
   <Container>
     <Header>
       <SmallDetailCard
-        icon={"/static/demo.jpg"}
-        title={"Nicolás Serrano Arévalo"}
-        subtitle={"@serranoarevalo"}
-        streakNumber={50}
-        launchedNumber={20}
+        icon={maker.profilePhoto}
+        title={maker.fullName}
+        subtitle={maker.username}
+        streakNumber={maker.streak}
+        launchedNumber={maker.launchedProductCount}
         isLink={true}
-        link={routes.userDetail("@serranoarevalo")}
-        linkAs={routes.asUserDetail("@serranoarevalo")}
+        link={routes.userDetail(maker.username)}
+        linkAs={routes.asUserDetail(maker.username)}
         isCard={false}
       />
     </Header>

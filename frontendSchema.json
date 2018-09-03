@@ -40,6 +40,16 @@
                   "ofType": null
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "take",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
               }
             ],
             "type": {
@@ -375,7 +385,7 @@
             "deprecationReason": null
           },
           {
-            "name": "users",
+            "name": "makers",
             "description": "",
             "args": [],
             "type": {

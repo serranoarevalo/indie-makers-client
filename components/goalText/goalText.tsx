@@ -51,6 +51,7 @@ interface IProps {
   fontSize?: string;
   className?: string;
   isMine?: boolean;
+  timeStamp?: string;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -61,7 +62,8 @@ const GoalText: React.SFC<IProps> = ({
   onProductPage = false,
   fontSize = "14px",
   className,
-  isMine = false
+  isMine = false,
+  timeStamp
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
@@ -81,7 +83,7 @@ const GoalText: React.SFC<IProps> = ({
         </Goal>
       </React.Fragment>
     )}
-    <Timestamp>25 minutes ago</Timestamp>
+    <Timestamp>{timeStamp}</Timestamp>
     {isMine && <EditBtn>✏️</EditBtn>}
   </Container>
 );

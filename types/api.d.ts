@@ -2,6 +2,45 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: completedGoals
+// ====================================================
+
+export interface completedGoals_FilterGoals_makers_goals_product {
+  __typename: "Product";
+  name: string;
+}
+
+export interface completedGoals_FilterGoals_makers_goals {
+  __typename: "Goal";
+  text: string;
+  isCompleted: boolean;
+  product: completedGoals_FilterGoals_makers_goals_product | null;
+  updatedAt: string | null;
+}
+
+export interface completedGoals_FilterGoals_makers {
+  __typename: "User";
+  fullName: string;
+  profilePhoto: string;
+  streak: number;
+  launchedProductCount: number;
+  username: string | null;
+  goals: (completedGoals_FilterGoals_makers_goals | null)[] | null;
+}
+
+export interface completedGoals_FilterGoals {
+  __typename: "FilterGoalsResponse";
+  makers: (completedGoals_FilterGoals_makers | null)[] | null;
+}
+
+export interface completedGoals {
+  FilterGoals: completedGoals_FilterGoals;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: fireMakers
 // ====================================================
 
