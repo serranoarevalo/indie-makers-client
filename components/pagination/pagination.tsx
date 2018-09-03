@@ -29,11 +29,13 @@ const Divider = styled.span`
 
 interface IProps {
   currentPage: string;
-  totalPages: number;
+  totalPages: string;
   previousLink: string;
   asPreviousLink: string;
   nextLink: string;
   asNextLink: string;
+  hasNext: boolean;
+  hasPrevious: boolean;
 }
 
 const Pagination: React.SFC<IProps> = ({
@@ -42,22 +44,28 @@ const Pagination: React.SFC<IProps> = ({
   nextLink,
   asNextLink,
   currentPage,
-  totalPages
+  totalPages,
+  hasNext,
+  hasPrevious
 }) => (
   <Container>
-    <Link href={previousLink} as={asPreviousLink}>
-      <a>
-        <Btn>👈🏻</Btn>
-      </a>
-    </Link>
+    {hasPrevious && (
+      <Link href={previousLink} as={asPreviousLink}>
+        <a>
+          <Btn>👈🏻</Btn>
+        </a>
+      </Link>
+    )}
     <Page>{currentPage}</Page>
     <Divider>/</Divider>
     <Page>{totalPages}</Page>
-    <Link href={nextLink} as={asNextLink}>
-      <a>
-        <Btn>👉🏻</Btn>
-      </a>
-    </Link>
+    {hasNext && (
+      <Link href={nextLink} as={asNextLink}>
+        <a>
+          <Btn>👉🏻</Btn>
+        </a>
+      </Link>
+    )}
   </Container>
 );
 

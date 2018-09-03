@@ -15,7 +15,7 @@ interface IProps {
 
 export default class extends React.Component<IProps> {
   static async getInitialProps({ query }) {
-    const { tab = "NEW", page = 0 } = query;
+    const { tab = "UPDATED", page = 0 } = query;
     return { tab: tab.toUpperCase(), page: parseInt(page) };
   }
   render() {

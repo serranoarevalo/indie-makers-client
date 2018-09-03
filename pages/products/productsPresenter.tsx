@@ -23,7 +23,7 @@ interface IProps {
 }
 
 const ProductPresenter: React.SFC<IProps> = ({
-  tab = "NEW",
+  tab = "UPDATED",
   page,
   data: { FilterProducts: { products = [], totalPages = 0 } = {} } = {}
 }) => (
@@ -32,7 +32,11 @@ const ProductPresenter: React.SFC<IProps> = ({
       <title>Products | Indie Makers</title>
     </Head>
     <Tabs>
-      <Tab link={routes.products} text={"Updated"} selected={tab === "NEW"} />
+      <Tab
+        link={routes.products}
+        text={"Updated"}
+        selected={tab === "UPDATED"}
+      />
       <Tab
         link={routes.productsFn(page, "LAUNCHED")}
         linkAs={routes.asProductsFn(page, "LAUNCHED")}
@@ -76,12 +80,14 @@ const ProductPresenter: React.SFC<IProps> = ({
         )}
     </ProductGrid>
     <Pagination
+      hasNext={page > totalPages}
       currentPage={`${page + 1}`}
-      totalPages={totalPages}
+      totalPages={`${totalPages + 1}`}
       previousLink={routes.productsFn(page - 1, tab)}
       nextLink={routes.productsFn(page + 1, tab)}
       asPreviousLink={routes.asProductsFn(page - 1, tab)}
       asNextLink={routes.asProductsFn(page + 1, tab)}
+      hasPrevious={page !== 0}
     />
   </Wrapper>
 );

@@ -23,7 +23,7 @@ export default {
   productsFn: (page: number, tab: string) =>
     `/products?tab=${tab}&page=${page}`,
   asProductsFn: (page: number, tab: string) =>
-    `/products/${tab.toLowerCase()}?page=${page}`,
+    `/products/${tab.toLowerCase()}${page === 0 ? "" : `?page=${page}`}`,
   products: "/products",
   productsHelp: "/products?tab=help",
   asProductsHelp: "/products/help",
