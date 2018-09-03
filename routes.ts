@@ -20,8 +20,10 @@ export default {
   userDetail: (username: string) => `/maker?username${username}`,
   asUserDetail: (username: string) => `/maker/${username}`,
   todos: "/todos",
-  productsLaunched: "/products?tab=launched",
-  asProductsLaunched: "/products/launched",
+  productsFn: (page: number, tab: string) =>
+    `/products?tab=${tab}&page=${page}`,
+  asProductsFn: (page: number, tab: string) =>
+    `/products/${tab.toLowerCase()}?page=${page}`,
   products: "/products",
   productsHelp: "/products?tab=help",
   asProductsHelp: "/products/help",

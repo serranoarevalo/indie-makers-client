@@ -19,11 +19,13 @@ const ProductGrid = styled.div`
 interface IProps {
   tab?: "NEW" | "UPDATED" | "LAUNCHED" | "HELP" | "FEATURED";
   data?: filterProducts;
+  page: number;
 }
 
 const ProductPresenter: React.SFC<IProps> = ({
   tab = "NEW",
-  data: { FilterProducts: { products = [] } = {} } = {}
+  page,
+  data: { FilterProducts: { products = [], totalPages = 0 } = {} } = {}
 }) => (
   <Wrapper>
     <Head>
@@ -32,20 +34,20 @@ const ProductPresenter: React.SFC<IProps> = ({
     <Tabs>
       <Tab link={routes.products} text={"Updated"} selected={tab === "NEW"} />
       <Tab
-        link={routes.productsLaunched}
-        linkAs={routes.asProductsLaunched}
+        link={routes.productsFn(page, "LAUNCHED")}
+        linkAs={routes.asProductsFn(page, "LAUNCHED")}
         text={"Launched"}
         selected={tab === "LAUNCHED"}
       />
       <Tab
-        link={routes.productsHelp}
-        linkAs={routes.asProductsHelp}
+        link={routes.productsFn(page, "HELP")}
+        linkAs={routes.asProductsFn(page, "HELP")}
         text={"Need Help"}
         selected={tab === "HELP"}
       />
       <Tab
-        link={routes.productsFeatured}
-        linkAs={routes.asProductsFeatured}
+        link={routes.productsFn(page, "FEATURED")}
+        linkAs={routes.asProductsFn(page, "FEATURED")}
         text={"Featured"}
         selected={tab === "FEATURED"}
       />
@@ -73,7 +75,14 @@ const ProductPresenter: React.SFC<IProps> = ({
             )
         )}
     </ProductGrid>
-    <Pagination currentPage={0} totalPages={5} />
+    <Pagination
+      currentPage={`${page + 1}`}
+      totalPages={totalPages}
+      previousLink={routes.productsFn(page - 1, tab)}
+      nextLink={routes.productsFn(page + 1, tab)}
+      asPreviousLink={routes.asProductsFn(page - 1, tab)}
+      asNextLink={routes.asProductsFn(page + 1, tab)}
+    />
   </Wrapper>
 );
 

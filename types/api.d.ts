@@ -125,6 +125,8 @@ export interface filterProducts_FilterProducts_products {
 export interface filterProducts_FilterProducts {
   __typename: "FilterProductsResponse";
   products: (filterProducts_FilterProducts_products | null)[] | null;
+  page: number;
+  totalPages: number;
 }
 
 export interface filterProducts {
@@ -133,6 +135,7 @@ export interface filterProducts {
 
 export interface filterProductsVariables {
   status: ProductState;
+  page: number;
 }
 
 /* tslint:disable */

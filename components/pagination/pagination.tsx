@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import Link from "next/link";
 import styled from "../../typed-components";
 
 const Container = styled.div`
@@ -28,27 +28,37 @@ const Divider = styled.span`
 `;
 
 interface IProps {
-  currentPage: number;
+  currentPage: string;
   totalPages: number;
-  onNext?: () => void;
-  onPrevious?: () => void;
+  previousLink: string;
+  asPreviousLink: string;
+  nextLink: string;
+  asNextLink: string;
 }
 
-const Pagination: React.SFC<IProps> = ({ currentPage, totalPages }) => (
+const Pagination: React.SFC<IProps> = ({
+  previousLink,
+  asPreviousLink,
+  nextLink,
+  asNextLink,
+  currentPage,
+  totalPages
+}) => (
   <Container>
-    <Btn>👈🏻</Btn>
+    <Link href={previousLink} as={asPreviousLink}>
+      <a>
+        <Btn>👈🏻</Btn>
+      </a>
+    </Link>
     <Page>{currentPage}</Page>
     <Divider>/</Divider>
     <Page>{totalPages}</Page>
-    <Btn>👉🏻</Btn>
+    <Link href={nextLink} as={asNextLink}>
+      <a>
+        <Btn>👉🏻</Btn>
+      </a>
+    </Link>
   </Container>
 );
-
-Pagination.propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
-  onNext: PropTypes.func,
-  onPrevious: PropTypes.func
-};
 
 export default Pagination;
