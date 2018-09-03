@@ -2,6 +2,31 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: fireMakers
+// ====================================================
+
+export interface fireMakers_FilterUsers_makers {
+  __typename: "User";
+  id: number;
+  fullName: string;
+  profilePhoto: string;
+  streak: number;
+  username: string | null;
+}
+
+export interface fireMakers_FilterUsers {
+  __typename: "FilterUsersResponse";
+  makers: (fireMakers_FilterUsers_makers | null)[] | null;
+}
+
+export interface fireMakers {
+  FilterUsers: fireMakers_FilterUsers;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: addedRecently
 // ====================================================
 

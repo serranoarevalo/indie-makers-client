@@ -1,2 +1,2 @@
-import FireMakers from "./fireMakers";
-export default FireMakers;
+import FireMakersContainer from "./fireMakersContainer";
+export default FireMakersContainer;
