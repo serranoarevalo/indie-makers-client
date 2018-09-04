@@ -19,7 +19,7 @@ export default {
     const formatted = name.toLowerCase().replace(" ", "-");
     return `/product/${formatted}/`;
   },
-  userDetail: (username: string) => `/maker?username${username}`,
+  userDetail: (username: string) => `/maker?username=${username}`,
   asUserDetail: (username: string) => `/maker/${username}`,
   asProductsFn: (page: number, tab: string) =>
     `/products${tab !== "UPDATED" ? `/${tab.toLowerCase()}` : ""}${

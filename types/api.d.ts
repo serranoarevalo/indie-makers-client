@@ -102,6 +102,78 @@ export interface addedRecently {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getMaker
+// ====================================================
+
+export interface getMaker_GetMaker_maker_products {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  logo: string | null;
+  name: string;
+  description: string;
+}
+
+export interface getMaker_GetMaker_maker_completedGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface getMaker_GetMaker_maker_completedGoals {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  product: getMaker_GetMaker_maker_completedGoals_product | null;
+  completedAt: string | null;
+}
+
+export interface getMaker_GetMaker_maker_pendingGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface getMaker_GetMaker_maker_pendingGoals {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  product: getMaker_GetMaker_maker_pendingGoals_product | null;
+  createdAt: string;
+}
+
+export interface getMaker_GetMaker_maker {
+  __typename: "User";
+  profilePhoto: string;
+  fullName: string;
+  username: string | null;
+  bio: string | null;
+  streak: number;
+  launchedProductCount: number;
+  products: (getMaker_GetMaker_maker_products | null)[] | null;
+  completedGoals: (getMaker_GetMaker_maker_completedGoals | null)[] | null;
+  pendingGoals: (getMaker_GetMaker_maker_pendingGoals | null)[] | null;
+}
+
+export interface getMaker_GetMaker {
+  __typename: "GetMakerResponse";
+  maker: getMaker_GetMaker_maker | null;
+}
+
+export interface getMaker {
+  GetMaker: getMaker_GetMaker;
+}
+
+export interface getMakerVariables {
+  username: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: filterMakers
 // ====================================================
 
