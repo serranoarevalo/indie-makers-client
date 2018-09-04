@@ -22,7 +22,7 @@ interface IProps {
   page: number;
 }
 
-const ProductPresenter: React.SFC<IProps> = ({
+const ProductsPresenter: React.SFC<IProps> = ({
   tab = "UPDATED",
   page,
   data: { FilterProducts: { products = [], totalPages = 0 } = {} } = {}
@@ -62,9 +62,10 @@ const ProductPresenter: React.SFC<IProps> = ({
           product =>
             product && (
               <BigDetailCard
+                key={product.id}
                 isLink={true}
-                link={routes.productDetail(product.name)}
-                linkAs={routes.asProductDetail(product.name)}
+                link={routes.productDetail(`${product.id}`)}
+                linkAs={routes.asProductDetail(`${product.id}`)}
                 icon={product.logo || ""}
                 authorAvatar={product.maker!.profilePhoto}
                 title={product.name}
@@ -99,4 +100,4 @@ const ProductPresenter: React.SFC<IProps> = ({
   </Wrapper>
 );
 
-export default ProductPresenter;
+export default ProductsPresenter;

@@ -61,7 +61,7 @@ const ToDosPresenter: React.SFC<IProps> = ({
                             isCompleted={goal.isCompleted}
                             text={goal.text}
                             productName={goal.product!.name}
-                            timeStamp={goal.completedAt || ""}
+                            timeStamp={goal.updatedAt || ""}
                           />
                         )
                     )}

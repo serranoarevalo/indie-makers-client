@@ -55,6 +55,7 @@ const MakersPresenter: React.SFC<IProps> = ({
           maker =>
             maker && (
               <SmallDetailCard
+                key={maker.id}
                 icon={maker.profilePhoto}
                 title={maker.fullName}
                 subtitle={maker.username || ""}

@@ -17,7 +17,7 @@ export const FILTER_TODOS = gql`
           product {
             name
           }
-          completedAt
+          updatedAt
         }
       }
       page

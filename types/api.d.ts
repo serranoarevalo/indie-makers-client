@@ -84,7 +84,6 @@ export interface addedRecently_FilterProducts_products {
   description: string;
   goalCount: number;
   completedGoalCount: number;
-  slug: string;
   needsHelp: boolean;
   maker: addedRecently_FilterProducts_products_maker | null;
 }
@@ -129,6 +128,61 @@ export interface filterMakers {
 export interface filterMakersVariables {
   status: UserState;
   page: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: getProduct
+// ====================================================
+
+export interface getProduct_GetProduct_product_maker {
+  __typename: "User";
+  id: number;
+  username: string | null;
+  streak: number;
+  profilePhoto: string;
+  fullName: string;
+}
+
+export interface getProduct_GetProduct_product_pendingGoals {
+  __typename: "Goal";
+  text: string;
+  createdAt: string;
+}
+
+export interface getProduct_GetProduct_product_completedGoals {
+  __typename: "Goal";
+  text: string;
+  completedAt: string | null;
+}
+
+export interface getProduct_GetProduct_product {
+  __typename: "Product";
+  logo: string | null;
+  name: string;
+  description: string;
+  completedGoalCount: number;
+  goalCount: number;
+  needsHelp: boolean;
+  website: string | null;
+  maker: getProduct_GetProduct_product_maker | null;
+  pendingGoals: (getProduct_GetProduct_product_pendingGoals | null)[] | null;
+  completedGoals: (getProduct_GetProduct_product_completedGoals | null)[] | null;
+}
+
+export interface getProduct_GetProduct {
+  __typename: "GetProductResponse";
+  product: getProduct_GetProduct_product | null;
+}
+
+export interface getProduct {
+  GetProduct: getProduct_GetProduct;
+}
+
+export interface getProductVariables {
+  id: number;
 }
 
 /* tslint:disable */
@@ -189,7 +243,7 @@ export interface filterToDos_FilterGoals_makers_goals {
   text: string;
   isCompleted: boolean;
   product: filterToDos_FilterGoals_makers_goals_product | null;
-  completedAt: string | null;
+  updatedAt: string | null;
 }
 
 export interface filterToDos_FilterGoals_makers {

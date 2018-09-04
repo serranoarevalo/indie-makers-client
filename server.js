@@ -13,7 +13,7 @@ app
     server.get("/product/:id", (req, res) => {
       const actualPage = "/product";
       const { params } = req;
-      const queryParams = { name: params.id };
+      const queryParams = { id: params.id };
       app.render(req, res, actualPage, queryParams);
     });
 

@@ -10,7 +10,6 @@ export const GET_NEW = gql`
         description
         goalCount
         completedGoalCount
-        slug
         needsHelp
         maker {
           profilePhoto

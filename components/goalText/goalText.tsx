@@ -47,7 +47,7 @@ interface IProps {
   text: string;
   isCompleted?: boolean;
   lineThrough?: boolean;
-  productName: string;
+  productName?: string;
   onProductPage?: boolean;
   fontSize?: string;
   className?: string;
@@ -59,7 +59,7 @@ const GoalText: React.SFC<IProps> = ({
   text,
   isCompleted = false,
   lineThrough,
-  productName,
+  productName = "",
   onProductPage = false,
   fontSize = "14px",
   className,
