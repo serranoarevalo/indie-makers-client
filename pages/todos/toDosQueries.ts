@@ -16,6 +16,7 @@ export const FILTER_TODOS = gql`
           isCompleted
           product {
             name
+            id
           }
           updatedAt
         }

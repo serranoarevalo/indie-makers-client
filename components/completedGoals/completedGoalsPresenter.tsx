@@ -54,6 +54,7 @@ const CompletedGoals: React.SFC<IProps> = ({
                             isCompleted={goal.isCompleted}
                             text={goal.text}
                             productName={goal.product!.name}
+                            productId={goal.product!.id}
                             timeStamp={goal.completedAt || ""}
                           />
                         )

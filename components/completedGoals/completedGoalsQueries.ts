@@ -15,6 +15,7 @@ export const COMPLETED_GOALS = gql`
           text
           isCompleted
           product {
+            id
             name
           }
           completedAt

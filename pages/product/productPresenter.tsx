@@ -132,6 +132,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                       goal =>
                         goal && (
                           <GoalText
+                            key={goal.id}
                             lineThrough={false}
                             isCompleted={false}
                             text={goal.text}
@@ -153,6 +154,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                       goal =>
                         goal && (
                           <GoalText
+                            key={goal.id}
                             lineThrough={false}
                             isCompleted={true}
                             text={goal.text}

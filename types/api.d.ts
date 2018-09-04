@@ -7,6 +7,7 @@
 
 export interface completedGoals_FilterGoals_makers_goals_product {
   __typename: "Product";
+  id: number;
   name: string;
 }
 
@@ -148,12 +149,14 @@ export interface getProduct_GetProduct_product_maker {
 
 export interface getProduct_GetProduct_product_pendingGoals {
   __typename: "Goal";
+  id: number;
   text: string;
   createdAt: string;
 }
 
 export interface getProduct_GetProduct_product_completedGoals {
   __typename: "Goal";
+  id: number;
   text: string;
   completedAt: string | null;
 }
@@ -206,6 +209,7 @@ export interface filterProducts_FilterProducts_products {
   completedGoalCount: number;
   goalCount: number;
   needsHelp: boolean;
+  slug: string;
   maker: filterProducts_FilterProducts_products_maker | null;
 }
 
@@ -235,6 +239,7 @@ export interface filterProductsVariables {
 export interface filterToDos_FilterGoals_makers_goals_product {
   __typename: "Product";
   name: string;
+  id: number;
 }
 
 export interface filterToDos_FilterGoals_makers_goals {

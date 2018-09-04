@@ -11,6 +11,7 @@ export const FILTER_PRODUCTS = gql`
         completedGoalCount
         goalCount
         needsHelp
+        slug
         maker {
           profilePhoto
         }

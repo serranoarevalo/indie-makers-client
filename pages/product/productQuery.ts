@@ -19,10 +19,12 @@ export const GET_PRODUCT = gql`
           fullName
         }
         pendingGoals {
+          id
           text
           createdAt
         }
         completedGoals {
+          id
           text
           completedAt
         }

@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import timeAgo from "../../lib/timeAgo";
@@ -53,6 +52,7 @@ interface IProps {
   className?: string;
   isMine?: boolean;
   timeStamp?: string;
+  productId?: number;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -64,7 +64,8 @@ const GoalText: React.SFC<IProps> = ({
   fontSize = "14px",
   className,
   isMine = false,
-  timeStamp
+  timeStamp,
+  productId
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
@@ -76,8 +77,8 @@ const GoalText: React.SFC<IProps> = ({
         on{" "}
         <Goal>
           <Link
-            href={routes.productDetail(productName)}
-            as={routes.asProductDetail(productName)}
+            href={routes.productDetail(`${productId}`)}
+            as={routes.asProductDetail(`${productId}`)}
           >
             <a>{productName}</a>
           </Link>
@@ -88,12 +89,5 @@ const GoalText: React.SFC<IProps> = ({
     {isMine && <EditBtn>✏️</EditBtn>}
   </Container>
 );
-
-GoalText.propTypes = {
-  text: PropTypes.string.isRequired,
-  isCompleted: PropTypes.bool,
-  lineThrough: PropTypes.bool,
-  productName: PropTypes.string.isRequired
-};
 
 export default GoalText;
