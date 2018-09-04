@@ -8,6 +8,7 @@
 export interface completedGoals_FilterGoals_makers_goals_product {
   __typename: "Product";
   id: number;
+  slug: string;
   name: string;
 }
 
@@ -81,6 +82,7 @@ export interface addedRecently_FilterProducts_products {
   __typename: "Product";
   id: number;
   logo: string | null;
+  slug: string;
   name: string;
   description: string;
   goalCount: number;
@@ -257,7 +259,7 @@ export interface getProduct {
 }
 
 export interface getProductVariables {
-  id: number;
+  slug: string;
 }
 
 /* tslint:disable */
@@ -310,6 +312,7 @@ export interface filterProductsVariables {
 
 export interface filterToDos_FilterGoals_makers_goals_product {
   __typename: "Product";
+  slug: string;
   name: string;
   id: number;
 }

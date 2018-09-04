@@ -5,20 +5,20 @@ import { getProduct, getProductVariables } from "types/api";
 import { GET_PRODUCT } from "./productQuery";
 
 interface IProps {
-  id: number;
+  slug: string;
 }
 
 class ProductQuery extends Query<getProduct, getProductVariables> {}
 
 export default class extends React.Component<IProps> {
   static async getInitialProps({ query }) {
-    const { id } = query;
-    return { id };
+    const { slug } = query;
+    return { slug };
   }
   render() {
-    const { id } = this.props;
+    const { slug } = this.props;
     return (
-      <ProductQuery query={GET_PRODUCT} variables={{ id }}>
+      <ProductQuery query={GET_PRODUCT} variables={{ slug }}>
         {({ data, loading }) =>
           !loading ? <ProductPresenter data={data} /> : null
         }

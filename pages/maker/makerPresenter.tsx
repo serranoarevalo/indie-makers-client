@@ -107,8 +107,8 @@ const MakerPresenter: React.SFC<IProps> = ({
                           title={product.name}
                           subtitle={product.description}
                           isLink={true}
-                          link={routes.productDetail(`${product.id}`)}
-                          linkAs={routes.asProductDetail(`${product.id}`)}
+                          link={routes.productDetail(`${product.slug}`)}
+                          linkAs={routes.asProductDetail(`${product.slug}`)}
                           isCard={true}
                           lightSubtitle={false}
                         />
@@ -128,7 +128,7 @@ const MakerPresenter: React.SFC<IProps> = ({
                             text={goal.text}
                             isCompleted={true}
                             productName={goal.product!.name}
-                            productId={goal.product!.id}
+                            productSlug={goal.product!.slug}
                             timeStamp={goal.completedAt!}
                           />
                         )
@@ -150,7 +150,7 @@ const MakerPresenter: React.SFC<IProps> = ({
                             key={goal.id}
                             text={goal.text}
                             productName={goal.product!.name}
-                            productId={goal.product!.id}
+                            productSlug={goal.product!.slug}
                             isCompleted={false}
                             timeStamp={goal.createdAt}
                           />

@@ -15,6 +15,7 @@ export const FILTER_TODOS = gql`
           text
           isCompleted
           product {
+            slug
             name
             id
           }

@@ -52,7 +52,7 @@ interface IProps {
   className?: string;
   isMine?: boolean;
   timeStamp?: string;
-  productId?: number;
+  productSlug?: string;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -65,7 +65,7 @@ const GoalText: React.SFC<IProps> = ({
   className,
   isMine = false,
   timeStamp,
-  productId
+  productSlug
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
@@ -77,8 +77,8 @@ const GoalText: React.SFC<IProps> = ({
         on{" "}
         <Goal>
           <Link
-            href={routes.productDetail(`${productId}`)}
-            as={routes.asProductDetail(`${productId}`)}
+            href={routes.productDetail(`${productSlug}`)}
+            as={routes.asProductDetail(`${productSlug}`)}
           >
             <a>{productName}</a>
           </Link>

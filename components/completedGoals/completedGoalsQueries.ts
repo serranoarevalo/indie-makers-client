@@ -16,6 +16,7 @@ export const COMPLETED_GOALS = gql`
           isCompleted
           product {
             id
+            slug
             name
           }
           completedAt

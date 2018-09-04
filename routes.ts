@@ -13,7 +13,7 @@ export default {
   new: "/new",
   productDetail: (name: string) => {
     const formatted = name.toLowerCase().replace(" ", "-");
-    return `/product?id=${formatted}`;
+    return `/product?slug=${formatted}`;
   },
   asProductDetail: (name: string) => {
     const formatted = name.toLowerCase().replace(" ", "-");

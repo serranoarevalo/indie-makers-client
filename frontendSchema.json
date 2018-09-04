@@ -173,14 +173,14 @@
             "description": "",
             "args": [
               {
-                "name": "id",
+                "name": "slug",
                 "description": "",
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
                     "kind": "SCALAR",
-                    "name": "Int",
+                    "name": "String",
                     "ofType": null
                   }
                 },

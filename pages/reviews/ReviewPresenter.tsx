@@ -68,11 +68,11 @@ const LatestPostsGrid = styled.div`
 `;
 
 interface IProps {
-  data: getBlog;
+  data?: getBlog;
 }
 
 const ReviewPresenter: React.SFC<IProps> = ({
-  data: { posts = [], featured = [] }
+  data: { posts = [], featured = [] } = {}
 }) => (
   <React.Fragment>
     <Head>

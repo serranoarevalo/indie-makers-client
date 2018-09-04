@@ -6,6 +6,7 @@ export const GET_NEW = gql`
       products {
         id
         logo
+        slug
         name
         description
         goalCount

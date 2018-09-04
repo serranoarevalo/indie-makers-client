@@ -1,8 +1,8 @@
 import { gql } from "apollo-boost";
 
 export const GET_PRODUCT = gql`
-  query getProduct($id: Int!) {
-    GetProduct(id: $id) {
+  query getProduct($slug: String!) {
+    GetProduct(slug: $slug) {
       product {
         logo
         name

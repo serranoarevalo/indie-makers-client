@@ -49,8 +49,8 @@ const NewProductsPresenter: React.SFC<IProps> = ({
                 <BigDetailCard
                   key={product.id}
                   isLink={true}
-                  link={routes.productDetail(`${product.id}`)}
-                  linkAs={routes.asProductDetail(`${product.id}`)}
+                  link={routes.productDetail(`${product.slug}`)}
+                  linkAs={routes.asProductDetail(`${product.slug}`)}
                   icon={product.logo || ""}
                   authorAvatar={product.maker!.profilePhoto}
                   title={product.name}
