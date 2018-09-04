@@ -20,7 +20,6 @@ export default class extends React.Component<IProps> {
   }
   render() {
     const { tab, page } = this.props;
-    console.log(this.props);
     return (
       <ProductsQuery
         query={FILTER_PRODUCTS}

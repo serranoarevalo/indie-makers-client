@@ -1508,6 +1508,12 @@
         "interfaces": null,
         "enumValues": [
           {
+            "name": "UPDATED",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "FIRE",
             "description": "",
             "isDeprecated": false,

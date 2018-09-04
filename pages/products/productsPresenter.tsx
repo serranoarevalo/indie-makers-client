@@ -38,20 +38,20 @@ const ProductPresenter: React.SFC<IProps> = ({
         selected={tab === "UPDATED"}
       />
       <Tab
-        link={routes.productsFn(page, "LAUNCHED")}
-        linkAs={routes.asProductsFn(page, "LAUNCHED")}
+        link={routes.productsFn(0, "LAUNCHED")}
+        linkAs={routes.asProductsFn(0, "LAUNCHED")}
         text={"Launched"}
         selected={tab === "LAUNCHED"}
       />
       <Tab
-        link={routes.productsFn(page, "HELP")}
-        linkAs={routes.asProductsFn(page, "HELP")}
+        link={routes.productsFn(0, "HELP")}
+        linkAs={routes.asProductsFn(0, "HELP")}
         text={"Need Help"}
         selected={tab === "HELP"}
       />
       <Tab
-        link={routes.productsFn(page, "FEATURED")}
-        linkAs={routes.asProductsFn(page, "FEATURED")}
+        link={routes.productsFn(0, "FEATURED")}
+        linkAs={routes.asProductsFn(0, "FEATURED")}
         text={"Featured"}
         selected={tab === "FEATURED"}
       />

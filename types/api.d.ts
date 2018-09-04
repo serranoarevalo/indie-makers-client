@@ -102,6 +102,37 @@ export interface addedRecently {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: filterMakers
+// ====================================================
+
+export interface filterMakers_FilterUsers_makers {
+  __typename: "User";
+  id: number;
+  profilePhoto: string;
+  fullName: string;
+  username: string | null;
+  streak: number;
+  launchedProductCount: number;
+}
+
+export interface filterMakers_FilterUsers {
+  __typename: "FilterUsersResponse";
+  makers: (filterMakers_FilterUsers_makers | null)[] | null;
+}
+
+export interface filterMakers {
+  FilterUsers: filterMakers_FilterUsers;
+}
+
+export interface filterMakersVariables {
+  status: UserState;
+  page: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: filterProducts
 // ====================================================
 
@@ -150,6 +181,12 @@ export enum ProductState {
   HELP = "HELP",
   LAUNCHED = "LAUNCHED",
   NEW = "NEW",
+  UPDATED = "UPDATED",
+}
+
+export enum UserState {
+  FIRE = "FIRE",
+  SHIPPED = "SHIPPED",
   UPDATED = "UPDATED",
 }
 
