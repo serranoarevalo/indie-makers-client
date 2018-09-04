@@ -118,6 +118,8 @@ export interface filterMakers_FilterUsers_makers {
 export interface filterMakers_FilterUsers {
   __typename: "FilterUsersResponse";
   makers: (filterMakers_FilterUsers_makers | null)[] | null;
+  page: number;
+  totalPages: number;
 }
 
 export interface filterMakers {

@@ -11,6 +11,8 @@ export const FILTER_MAKERS = gql`
         streak
         launchedProductCount
       }
+      page
+      totalPages
     }
   }
 `;

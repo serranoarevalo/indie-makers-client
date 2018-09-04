@@ -5,6 +5,7 @@ import routes from "../../routes";
 import Wrapper from "../../components/wrapper";
 import Tabs from "../../components/tabs";
 import Tab from "../../components/tab";
+import Pagination from "../../components/pagination";
 import SmallDetailCard from "../../components/smallDetailCard";
 import { filterMakers } from "types/api";
 
@@ -22,8 +23,8 @@ interface IProps {
 
 const MakersPresenter: React.SFC<IProps> = ({
   tab,
-  page,
-  data: { FilterUsers: { makers = [] } = {} } = {}
+  data: { FilterUsers: { makers = [], totalPages = 0 } = {} } = {},
+  page
 }) => (
   <Wrapper>
     <Head>
@@ -66,7 +67,24 @@ const MakersPresenter: React.SFC<IProps> = ({
               />
             )
         )}
+      {makers &&
+        makers.length === 0 && (
+          <h1 className={"thickText"}>There are no products to show now.</h1>
+        )}
     </MakersGrid>
+    {makers &&
+      makers.length !== 0 && (
+        <Pagination
+          hasNext={page > totalPages}
+          currentPage={`${page + 1}`}
+          totalPages={`${totalPages + 1}`}
+          previousLink={routes.makersFn(page - 1, tab)}
+          nextLink={routes.makersFn(page + 1, tab)}
+          asPreviousLink={routes.asMakersFn(page - 1, tab)}
+          asNextLink={routes.asMakersFn(page + 1, tab)}
+          hasPrevious={page !== 0}
+        />
+      )}
   </Wrapper>
 );
 
