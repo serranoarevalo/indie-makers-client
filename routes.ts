@@ -21,18 +21,25 @@ export default {
   },
   userDetail: (username: string) => `/maker?username${username}`,
   asUserDetail: (username: string) => `/maker/${username}`,
+  asProductsFn: (page: number, tab: string) =>
+    `/products${tab !== "UPDATED" ? `/${tab.toLowerCase()}` : ""}${
+      page === 0 ? "" : `?page=${page}`
+    }`,
+  asMakersFn: (page: number, tab: string) =>
+    `/makers${tab !== "FIRE" ? `/${tab.toLowerCase()}` : ""}${
+      page === 0 ? "" : `?page=${page}`
+    }`,
+  asToDosFn: (page: number, tab: string) =>
+    `/todos${tab !== "COMPLETED" ? `/${tab.toLowerCase()}` : ""}${
+      page === 0 ? "" : `?page=${page}`
+    }`,
   productsFn: (page: number, tab: string) =>
     `/products?tab=${tab}&page=${page}`,
-  asProductsFn: (page: number, tab: string) =>
-    `/products/${tab.toLowerCase()}${page === 0 ? "" : `?page=${page}`}`,
   makersFn: (page: number, tab: string) => `/makers?tab=${tab}&page=${page}`,
-  asMakersFn: (page: number, tab: string) =>
-    `/makers/${tab.toLowerCase()}${page === 0 ? "" : `?page=${page}`}`,
   makerToDo: (username: string) => `/maker?username=${username}&tab=todo`,
   asMakerToDo: (username: string) => `/maker/${username}/todo`,
   makerDone: (username: string) => `/maker?username=${username}&tab=done`,
   asMakerDone: (username: string) => `/maker/${username}/done`,
-  pendindToDo: "/todos?tab=pending",
-  asPendindToDo: "/todos/pending",
+  toDosFn: (page: number, tab: string) => `/todos?tab=${tab}&page=${page}`,
   addProduct: "/new"
 };

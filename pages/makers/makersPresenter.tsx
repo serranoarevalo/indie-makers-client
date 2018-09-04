@@ -69,7 +69,7 @@ const MakersPresenter: React.SFC<IProps> = ({
         )}
       {makers &&
         makers.length === 0 && (
-          <h1 className={"thickText"}>There are no products to show now.</h1>
+          <h1 className={"thickText"}>There are no makers to show now.</h1>
         )}
     </MakersGrid>
     {makers &&

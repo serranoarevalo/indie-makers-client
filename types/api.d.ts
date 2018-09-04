@@ -174,9 +174,62 @@ export interface filterProductsVariables {
 /* tslint:disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: filterToDos
+// ====================================================
+
+export interface filterToDos_FilterGoals_makers_goals_product {
+  __typename: "Product";
+  name: string;
+}
+
+export interface filterToDos_FilterGoals_makers_goals {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  product: filterToDos_FilterGoals_makers_goals_product | null;
+  completedAt: string | null;
+}
+
+export interface filterToDos_FilterGoals_makers {
+  __typename: "User";
+  id: number;
+  fullName: string;
+  profilePhoto: string;
+  streak: number;
+  launchedProductCount: number;
+  username: string | null;
+  goals: (filterToDos_FilterGoals_makers_goals | null)[] | null;
+}
+
+export interface filterToDos_FilterGoals {
+  __typename: "FilterGoalsResponse";
+  makers: (filterToDos_FilterGoals_makers | null)[] | null;
+  page: number;
+  totalPages: number;
+}
+
+export interface filterToDos {
+  FilterGoals: filterToDos_FilterGoals;
+}
+
+export interface filterToDosVariables {
+  status: GoalStatus;
+  page: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
+
+export enum GoalStatus {
+  COMPLETED = "COMPLETED",
+  PENDING = "PENDING",
+}
 
 export enum ProductState {
   FEATURED = "FEATURED",
