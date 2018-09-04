@@ -22,49 +22,50 @@ interface IProps {
   data?: addedRecently;
 }
 
-const NewProductsPresenter: React.SFC<IProps> = ({ data }) => (
-  <Section
-    titleElements={[
-      <Title key={1}>Products added recently</Title>,
-      <Link key={3} href={routes.new}>
-        <a>
-          <AddButton accent={false} text={"Add yours now"} size={"xs"} />
-        </a>
-      </Link>,
-      <Link key={2} href={routes.products}>
-        <a>
-          <FakeLink>See more</FakeLink>
-        </a>
-      </Link>
-    ]}
-  >
-    <Grid>
-      {data &&
-        data.FilterProducts &&
-        data.FilterProducts.products &&
-        data.FilterProducts.products.map(
-          product =>
-            product && (
-              <BigDetailCard
-                key={product.id}
-                isLink={true}
-                link={routes.productDetail(`${product.id}`)}
-                linkAs={routes.asProductDetail(`${product.id}`)}
-                icon={product.logo || ""}
-                authorAvatar={product.maker!.profilePhoto}
-                title={product.name}
-                showSubtitle={true}
-                toDoNumber={`${product.completedGoalCount}/${
-                  product.goalCount
-                }`}
-                subtitle={product.description}
-                hasAuthor={true}
-                needsHelp={product.needsHelp}
-              />
-            )
-        )}
-    </Grid>
-  </Section>
-);
+const NewProductsPresenter: React.SFC<IProps> = ({
+  data: { FilterProducts: { products = [] } = {} } = {}
+}) =>
+  products && products.length !== 0 ? (
+    <Section
+      titleElements={[
+        <Title key={1}>Products added recently</Title>,
+        <Link key={3} href={routes.new}>
+          <a>
+            <AddButton accent={false} text={"Add yours now"} size={"xs"} />
+          </a>
+        </Link>,
+        <Link key={2} href={routes.products}>
+          <a>
+            <FakeLink>See more</FakeLink>
+          </a>
+        </Link>
+      ]}
+    >
+      <Grid>
+        {products &&
+          products.map(
+            product =>
+              product && (
+                <BigDetailCard
+                  key={product.id}
+                  isLink={true}
+                  link={routes.productDetail(`${product.id}`)}
+                  linkAs={routes.asProductDetail(`${product.id}`)}
+                  icon={product.logo || ""}
+                  authorAvatar={product.maker!.profilePhoto}
+                  title={product.name}
+                  showSubtitle={true}
+                  toDoNumber={`${product.completedGoalCount}/${
+                    product.goalCount
+                  }`}
+                  subtitle={product.description}
+                  hasAuthor={true}
+                  needsHelp={product.needsHelp}
+                />
+              )
+          )}
+      </Grid>
+    </Section>
+  ) : null;
 
 export default NewProductsPresenter;

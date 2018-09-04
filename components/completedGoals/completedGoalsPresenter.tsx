@@ -26,20 +26,20 @@ interface IProps {
 
 const CompletedGoals: React.SFC<IProps> = ({
   data: { FilterGoals: { makers = [] } = {} } = {}
-}) => (
-  <Section
-    titleElements={[
-      <Title key={1}>Completed Goals</Title>,
-      <Link key={2} href={routes.todos}>
-        <a>
-          <FakeLink key={2}>See more</FakeLink>
-        </a>
-      </Link>
-    ]}
-  >
-    <Card padding={"0px 20px"}>
-      {makers &&
-        makers.map(
+}) =>
+  makers && makers.length !== 0 ? (
+    <Section
+      titleElements={[
+        <Title key={1}>Completed Goals</Title>,
+        <Link key={2} href={routes.todos}>
+          <a>
+            <FakeLink key={2}>See more</FakeLink>
+          </a>
+        </Link>
+      ]}
+    >
+      <Card padding={"0px 20px"}>
+        {makers.map(
           maker =>
             maker && (
               <Goal maker={maker} key={maker.id}>
@@ -63,7 +63,7 @@ const CompletedGoals: React.SFC<IProps> = ({
               </Goal>
             )
         )}
-    </Card>
-  </Section>
-);
+      </Card>
+    </Section>
+  ) : null;
 export default CompletedGoals;
