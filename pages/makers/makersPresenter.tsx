@@ -1,12 +1,12 @@
 import React from "react";
 import Head from "next/head";
-import styled from "../../typed-components";
-import routes from "../../routes";
-import Wrapper from "../../components/wrapper";
-import Tabs from "../../components/tabs";
-import Tab from "../../components/tab";
-import Pagination from "../../components/pagination";
-import SmallDetailCard from "../../components/smallDetailCard";
+import styled from "typed-components";
+import routes from "routes";
+import Wrapper from "components/wrapper";
+import Tabs from "components/tabs";
+import Tab from "components/tab";
+import Pagination from "components/pagination";
+import SmallDetailCard from "components/smallDetailCard";
 import { filterMakers } from "types/api";
 
 const MakersGrid = styled.div`

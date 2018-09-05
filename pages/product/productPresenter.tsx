@@ -1,13 +1,13 @@
 import React from "react";
 import Head from "next/head";
-import styled from "../../typed-components";
-import routes from "../../routes";
-import Wrapper from "../../components/wrapper";
-import Card from "../../components/card";
-import SmallDetailCard from "../../components/smallDetailCard";
-import BigDetailCard from "../../components/bigDetailCard";
-import GoalText from "../../components/goalText";
-import Button from "../../components/button";
+import styled from "typed-components";
+import routes from "routes";
+import Wrapper from "components/wrapper";
+import Card from "components/card";
+import SmallDetailCard from "components/smallDetailCard";
+import BigDetailCard from "components/bigDetailCard";
+import GoalText from "components/goalText";
+import Button from "components/button";
 import { getProduct } from "types/api";
 
 const Container = styled.div`

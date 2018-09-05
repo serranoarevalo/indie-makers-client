@@ -1,6 +1,6 @@
 import React from "react";
 import { Query } from "react-apollo";
-import ProductPresenter from "../product/productPresenter";
+import ProductPresenter from "./productPresenter";
 import { getProduct, getProductVariables } from "types/api";
 import { GET_PRODUCT } from "./productQuery";
 

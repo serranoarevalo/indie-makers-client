@@ -4,12 +4,12 @@ import React from "react";
 import Router from "next/router";
 import withNProgress from "next-nprogress";
 import NProgressStyles from "next-nprogress/styles";
-import Header from "../components/header";
-import { ThemeProvider } from "../typed-components";
-import Modal from "../components/modal";
-import JoinModal from "../components/joinModal";
-import Footer from "../components/footer";
-import withApollo from "../lib/withApollo";
+import Header from "components/header";
+import { ThemeProvider } from "typed-components";
+import Modal from "components/modal";
+import JoinModal from "components/joinModal";
+import Footer from "components/footer";
+import withApollo from "lib/withApollo";
 
 const theme = {
   greyColor: "#95a5a6",

@@ -1,12 +1,12 @@
 import React from "react";
 import Head from "next/head";
-import styled from "../../typed-components";
-import Wrapper from "../../components/wrapper";
-import Tabs from "../../components/tabs";
-import Tab from "../../components/tab";
-import BigDetailCard from "../../components/bigDetailCard";
-import Pagination from "../../components/pagination";
-import routes from "../../routes";
+import styled from "typed-components";
+import Wrapper from "components/wrapper";
+import Tabs from "components/tabs";
+import Tab from "components/tab";
+import BigDetailCard from "components/bigDetailCard";
+import Pagination from "components/pagination";
+import routes from "routes";
 import { filterProducts } from "types/api";
 
 const ProductGrid = styled.div`
