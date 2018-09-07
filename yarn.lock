@@ -802,26 +802,6 @@ apollo-cache@1.1.16, apollo-cache@^1.1.16:
   dependencies:
     apollo-utilities "^1.0.20"
 
-apollo-cache@^1.1.15:
-  version "1.1.15"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.15.tgz#48d3a366047fc4b876c2036a79b0e070dee74cc1"
-  dependencies:
-    apollo-utilities "^1.0.19"
-
-apollo-client@^2.3.5:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.0.tgz#438d2dc84316ee76032ae70fb7febe3c3d62a2fb"
-  dependencies:
-    "@types/zen-observable" "^0.8.0"
-    apollo-cache "^1.1.15"
-    apollo-link "^1.0.0"
-    apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.19"
-    symbol-observable "^1.0.2"
-    zen-observable "^0.8.0"
-  optionalDependencies:
-    "@types/async" "2.0.49"
-
 apollo-client@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.1.tgz#d2ebaac1831fa170f7d0070bb9d581cccb5f64e3"
@@ -882,7 +862,7 @@ apollo-utilities@1.0.20, apollo-utilities@^1.0.20, apollo-utilities@^1.0.8:
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.19:
+apollo-utilities@^1.0.0:
   version "1.0.19"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.19.tgz#f2d253bb8aa1395b62ded2f7749884233b5838e2"
   dependencies:
@@ -3091,15 +3071,15 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-next-with-apollo@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/next-with-apollo/-/next-with-apollo-3.1.2.tgz#c6ea3e2c86d94865374887ee93aa274db7afd14a"
+next-with-apollo@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/next-with-apollo/-/next-with-apollo-3.1.3.tgz#6e4e98410fd713de026a793068aa0398f655cd51"
   dependencies:
     "@types/graphql" "0.12.7"
     "@types/next" "^6.0.4"
     "@types/prop-types" "^15.5.2"
     "@types/react" "^16.3.14"
-    apollo-client "^2.3.5"
+    apollo-client "^2.4.1"
     graphql "0.13.2"
     isomorphic-unfetch "^2.0.0"
     next "^6.0.0"
