@@ -10,7 +10,10 @@ class GetBlogQuery extends Query<getBlog> {}
 export default class extends React.Component {
   render() {
     return (
-      <GetBlogQuery query={GET_BLOG} context={{ uri: GRAPHQLCMS_URL }}>
+      <GetBlogQuery
+        query={GET_BLOG}
+        context={{ uri: GRAPHQLCMS_URL, credentials: "same-origin" }}
+      >
         {({ data, loading }) =>
           !loading ? <ReviewsPresenter data={data} /> : null
         }

@@ -22,7 +22,7 @@ export default class extends React.Component<IProps> {
       <GetReviewQuery
         query={GET_REVIEW}
         variables={{ slug }}
-        context={{ uri: GRAPHQLCMS_URL }}
+        context={{ uri: GRAPHQLCMS_URL, credentials: "same-origin" }}
       >
         {({ loading, data }) =>
           !loading ? <ReviewPresenter data={data} /> : null
