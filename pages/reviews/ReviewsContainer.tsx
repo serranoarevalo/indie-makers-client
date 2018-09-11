@@ -12,7 +12,7 @@ export default class extends React.Component {
     return (
       <GetBlogQuery
         query={GET_BLOG}
-        context={{ uri: GRAPHQLCMS_URL, credentials: "same-origin" }}
+        context={{ uri: GRAPHQLCMS_URL, credentials: "omit" }}
       >
         {({ data, loading }) =>
           !loading ? <ReviewsPresenter data={data} /> : null

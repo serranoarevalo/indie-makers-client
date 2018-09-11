@@ -48,7 +48,7 @@ const FeaturedPosts = () => (
           query={GET_FEATURED_POST}
           context={{
             uri: GRAPHQLCMS_URL,
-            credentials: "same-origin"
+            credentials: "omit"
           }}
         >
           {({ data, loading }) => {
