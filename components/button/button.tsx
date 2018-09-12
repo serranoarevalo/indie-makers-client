@@ -49,6 +49,7 @@ interface IProps {
   size?: sizeType;
   className?: string;
   shadowColor?: string;
+  onClick?: () => void;
 }
 
 const Button: React.SFC<IProps> = ({
@@ -57,7 +58,8 @@ const Button: React.SFC<IProps> = ({
   fontSize = 16,
   size = "md",
   className,
-  shadowColor = "rgba(219,233,241,1)"
+  shadowColor = "rgba(219,233,241,1)",
+  onClick
 }) => (
   <Container
     className={className}
@@ -65,6 +67,7 @@ const Button: React.SFC<IProps> = ({
     fontSize={fontSize}
     size={size}
     shadowColor={shadowColor}
+    onClick={onClick}
   >
     {text}
   </Container>
