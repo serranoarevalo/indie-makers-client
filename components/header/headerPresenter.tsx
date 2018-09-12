@@ -1,9 +1,11 @@
 import Link from "next/link";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
 import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
+import { FB_APP_ID } from "configs";
 
 const Container = styled("header")`
   width: 100%;
@@ -107,9 +109,16 @@ const Header: React.SFC<IProps> = ({ loggedIn }) => (
         </NavColumn>
         {!loggedIn && (
           <NavColumn>
-            <span>
-              <a>Login</a>
-            </span>
+            <FacebookLogin
+              appId={FB_APP_ID}
+              autoLoad
+              callback={null}
+              render={renderProps => (
+                <span onClick={renderProps.onClick}>
+                  <a>Login</a>
+                </span>
+              )}
+            />
             <Link href={routes.join} as={routes.asJoin}>
               <a>
                 <Button accent={true} text={"Join Indie Makers"} />
