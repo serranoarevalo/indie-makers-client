@@ -71,7 +71,8 @@ const FeaturedPosts = () => (
       <LatestQuery
         query={GET_LATEST_THREE}
         context={{
-          uri: GRAPHQLCMS_URL
+          uri: GRAPHQLCMS_URL,
+          credentials: "omit"
         }}
       >
         {({ data, loading }) => {

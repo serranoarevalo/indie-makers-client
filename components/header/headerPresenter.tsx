@@ -65,9 +65,10 @@ const AvatarContainer = styled.div`
 
 interface IProps {
   loggedIn: boolean;
+  afterLoginFn: () => void;
 }
 
-const Header: React.SFC<IProps> = ({ loggedIn }) => (
+const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -111,8 +112,8 @@ const Header: React.SFC<IProps> = ({ loggedIn }) => (
           <NavColumn>
             <FacebookLogin
               appId={FB_APP_ID}
-              autoLoad
-              callback={null}
+              autoLoad={false}
+              callback={afterLoginFn}
               render={renderProps => (
                 <span onClick={renderProps.onClick}>
                   <a>Login</a>
@@ -159,9 +160,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = ({ loggedIn }) => (
+export const FixedHeader: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
   <FixedHeaderContainer>
-    <Header loggedIn={loggedIn} />
+    <Header loggedIn={loggedIn} afterLoginFn={afterLoginFn} />
   </FixedHeaderContainer>
 );
 

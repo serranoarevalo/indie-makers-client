@@ -60,9 +60,10 @@ const ModalColumn = styled.div`
 
 interface IProps {
   showing: boolean;
+  afterLoginFn: () => void;
 }
 
-const JoinModal: React.SFC<IProps> = ({ showing }) => (
+const JoinModal: React.SFC<IProps> = ({ showing, afterLoginFn }) => (
   <Card padding={"40px"}>
     <Container>
       {showing && (
@@ -87,8 +88,8 @@ const JoinModal: React.SFC<IProps> = ({ showing }) => (
         <Title>Join Indie Makers</Title>
         <FacebookLogin
           appId={FB_APP_ID}
-          autoLoad
-          callback={null}
+          autoLoad={false}
+          callback={afterLoginFn}
           render={renderProps => (
             <LoginButton
               shadowColor={"rgb(69, 104, 178, 0.5)"}
