@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 export const GET_REVIEW = gql`
   query getReview($slug: String!) {
