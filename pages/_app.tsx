@@ -53,7 +53,10 @@ class MyApp extends App<any> {
                 <Component {...pageProps} />
               </main>
               <Modal clickClose={this._goBack} showing={asPath === "/join"}>
-                <JoinModal showing={asPath === "/join"} />
+                <JoinModal
+                  showing={asPath === "/join"}
+                  afterLoginFn={() => {}}
+                />
               </Modal>
               <Footer />
             </React.Fragment>

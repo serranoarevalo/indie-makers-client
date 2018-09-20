@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 export const FILTER_PRODUCTS = gql`
   query filterProducts($status: ProductState!, $page: Int!) {
