@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A community for people that build beautiful things on the internet.",
   "scripts": {
-    "dev": "NODE_PATH=. node server.js",
-    "build": "NODE_PATH=. next build",
+    "dev": "node server.js",
+    "build": "next build",
     "predev": "yarn run codegen",
     "precodegen:blog": "apollo schema:download blogSchema.json --endpoint=https://api-apeast.graphcms.com/v1/cjl84xx290azv01fzax9fajt0/master",
     "codegen:blog": "apollo codegen:generate types/blog.d.ts --queries='**/*.blog.ts' --addTypename --schema blogSchema.json --target typescript --outputFlat",

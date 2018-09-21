@@ -1,15 +1,15 @@
 import React from "react";
 import Head from "next/head";
-import routes from "routes";
-import styled from "typed-components";
-import Wrapper from "components/wrapper";
-import Tabs from "components/tabs";
-import Tab from "components/tab";
-import Goal from "components/goal";
-import GoalText from "components/goalText";
-import Card from "components/card";
+import routes from "../../routes";
+import styled from "../../typed-components";
+import Wrapper from "../../components/wrapper";
+import Tabs from "../../components/tabs";
+import Tab from "../../components/tab";
+import Goal from "../../components/goal";
+import GoalText from "../../components/goalText";
+import Card from "../../components/card";
 import { filterToDos } from "types/api";
-import Pagination from "components/pagination";
+import Pagination from "../../components/pagination";
 
 const Goals = styled.div`
   width: 100%;

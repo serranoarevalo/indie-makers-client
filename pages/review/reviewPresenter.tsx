@@ -1,9 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Markdown from "react-markdown";
-import styled from "typed-components";
-import Wrapper from "components/wrapper";
-import { getReview } from "types/blog";
+import styled from "../../typed-components";
+import Wrapper from "../../components/wrapper";
+import { getReview } from "../../types/blog";
 
 const Container = styled.div`
   padding-bottom: 200px;

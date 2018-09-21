@@ -4,7 +4,7 @@ import styled from "../../typed-components";
 import Card from "../card";
 import Button from "../button";
 import { lighten } from "../../node_modules/polished";
-import { FB_APP_ID } from "configs";
+import { FB_APP_ID } from "../../configs";
 
 const Container = styled.div`
   display: flex;

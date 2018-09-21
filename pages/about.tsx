@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import styled from "typed-components";
-import Wrapper from "components/wrapper";
-import Button from "components/button";
-import routes from "routes";
+import styled from "../typed-components";
+import Wrapper from "../components/wrapper";
+import Button from "../components/button";
+import routes from "../routes";
 
 const Container = styled.div`
   height: 50vh;

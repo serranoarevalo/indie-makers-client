@@ -1,14 +1,14 @@
 import React from "react";
 import Head from "next/head";
-import styled from "typed-components";
-import routes from "routes";
-import Wrapper from "components/wrapper";
-import BigDetailCard from "components/bigDetailCard";
-import SmallDetailCard from "components/smallDetailCard";
-import Tabs from "components/tabs";
-import Tab from "components/tab";
-import Card from "components/card";
-import GoalText from "components/goalText";
+import styled from "../../typed-components";
+import routes from "../../routes";
+import Wrapper from "../../components/wrapper";
+import BigDetailCard from "../../components/bigDetailCard";
+import SmallDetailCard from "../../components/smallDetailCard";
+import Tabs from "../../components/tabs";
+import Tab from "../../components/tab";
+import Card from "../../components/card";
+import GoalText from "../../components/goalText";
 import { getMaker } from "types/api";
 
 const Container = styled.div`

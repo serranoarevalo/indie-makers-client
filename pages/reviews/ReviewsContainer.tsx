@@ -2,7 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import ReviewsPresenter from "./ReviewPresenter";
 import { GET_BLOG } from "./ReviewQueries.blog";
-import { GRAPHQLCMS_URL } from "configs";
+import { GRAPHQLCMS_URL } from "../../configs";
 import { getBlog } from "types/blog";
 
 class GetBlogQuery extends Query<getBlog> {}

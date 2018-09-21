@@ -5,7 +5,7 @@ import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
 import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
-import { FB_APP_ID } from "configs";
+import { FB_APP_ID } from "../../configs";
 
 const Container = styled("header")`
   width: 100%;

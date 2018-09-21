@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
-import styled from "typed-components";
-import Wrapper from "components/wrapper";
-import BlogPost from "components/blogPost";
-import routes from "routes";
+import styled from "../../typed-components";
+import Wrapper from "../../components/wrapper";
+import BlogPost from "../../components/blogPost";
+import routes from "../../routes";
 import { getBlog } from "types/blog";
 
 const Hero = styled.div`
