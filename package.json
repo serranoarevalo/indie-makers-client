@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A community for people that build beautiful things on the internet.",
   "scripts": {
-    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node server.js",
+    "dev": "node server.js",
     "build": "next build",
     "predev": "yarn run codegen",
     "precodegen:blog": "apollo schema:download blogSchema.json --endpoint=https://api-apeast.graphcms.com/v1/cjl84xx290azv01fzax9fajt0/master",
@@ -27,6 +27,7 @@
     "apollo-boost": "^0.1.16",
     "compression": "^1.7.3",
     "express": "^4.16.3",
+    "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "javascript-time-ago": "^1.0.31",
     "js-cookie": "^2.2.0",
