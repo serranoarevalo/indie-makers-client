@@ -25,7 +25,7 @@ const theme = {
 };
 
 class MyApp extends App<any> {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -36,12 +36,7 @@ class MyApp extends App<any> {
   }
 
   render() {
-    const {
-      Component,
-      pageProps,
-      router: { asPath },
-      apollo
-    } = this.props;
+    const { Component, pageProps, apollo } = this.props;
     return (
       <Container>
         <NProgressStyles color={theme.blackColor} spinner={false} />
@@ -52,12 +47,6 @@ class MyApp extends App<any> {
               <main>
                 <Component {...pageProps} />
               </main>
-              <Modal clickClose={this._goBack} showing={asPath === "/join"}>
-                <JoinModal
-                  showing={asPath === "/join"}
-                  afterLoginFn={() => {}}
-                />
-              </Modal>
               <Footer />
             </React.Fragment>
           </ThemeProvider>
@@ -65,16 +54,6 @@ class MyApp extends App<any> {
       </Container>
     );
   }
-
-  private _goBack = () => {
-    if (
-      document.referrer.indexOf(location.protocol + "//" + location.host) === 0
-    ) {
-      Router.back();
-    } else {
-      Router.push("/");
-    }
-  };
 }
 
 export default withNProgress()(withApollo(MyApp));

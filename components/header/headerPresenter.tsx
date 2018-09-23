@@ -115,16 +115,13 @@ const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
               autoLoad={false}
               callback={afterLoginFn}
               render={renderProps => (
-                <span onClick={renderProps.onClick}>
-                  <a>Login</a>
-                </span>
+                <Button
+                  accent={true}
+                  onClick={renderProps.onClick}
+                  text={"Join Indie Makers"}
+                />
               )}
             />
-            <Link href={routes.join} as={routes.asJoin}>
-              <a>
-                <Button accent={true} text={"Join Indie Makers"} />
-              </a>
-            </Link>
           </NavColumn>
         )}
         {loggedIn && (
