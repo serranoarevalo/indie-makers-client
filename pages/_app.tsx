@@ -1,13 +1,11 @@
 import App, { Container } from "next/app";
 import { ApolloProvider } from "react-apollo";
+import { ToastContainer, toast } from "react-toastify";
 import React from "react";
-import Router from "next/router";
 import withNProgress from "next-nprogress";
 import NProgressStyles from "next-nprogress/styles";
 import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
-import Modal from "../components/modal";
-import JoinModal from "../components/joinModal";
 import Footer from "../components/footer";
 import withApollo from "../lib/withApollo";
 
@@ -48,6 +46,7 @@ class MyApp extends App<any> {
                 <Component {...pageProps} />
               </main>
               <Footer />
+              <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
             </React.Fragment>
           </ThemeProvider>
         </ApolloProvider>

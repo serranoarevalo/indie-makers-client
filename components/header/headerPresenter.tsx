@@ -9,7 +9,7 @@ import { FB_APP_ID } from "../../configs";
 
 const Container = styled("header")`
   width: 100%;
-  padding: 30px 5px;
+  padding: 20px 5px;
   background-color: white;
   box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
 `;
@@ -65,7 +65,7 @@ const AvatarContainer = styled.div`
 
 interface IProps {
   loggedIn: boolean;
-  afterLoginFn: () => void;
+  afterLoginFn: (response) => void;
 }
 
 const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
@@ -114,11 +114,12 @@ const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
               appId={FB_APP_ID}
               autoLoad={false}
               callback={afterLoginFn}
+              fields="name,first_name,last_name,email"
               render={renderProps => (
                 <Button
                   accent={true}
                   onClick={renderProps.onClick}
-                  text={"Join Indie Makers"}
+                  text={`Join Indie Makers`}
                 />
               )}
             />
