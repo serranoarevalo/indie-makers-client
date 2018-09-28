@@ -70,32 +70,6 @@ export interface fireMakers {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: logUserIn
-// ====================================================
-
-export interface logUserIn_ConnectFB {
-  __typename: "ConnectFBResponse";
-  ok: boolean;
-  error: string | null;
-  token: string | null;
-  new: boolean;
-}
-
-export interface logUserIn {
-  ConnectFB: logUserIn_ConnectFB;
-}
-
-export interface logUserInVariables {
-  firstName: string;
-  lastName: string;
-  email?: string | null;
-  fbId: string;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL query operation: addedRecently
 // ====================================================
 
@@ -377,6 +351,32 @@ export interface filterToDos {
 export interface filterToDosVariables {
   status: GoalStatus;
   page: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: logUserIn
+// ====================================================
+
+export interface logUserIn_ConnectFB {
+  __typename: "ConnectFBResponse";
+  ok: boolean;
+  error: string | null;
+  token: string | null;
+  isNew: boolean;
+}
+
+export interface logUserIn {
+  ConnectFB: logUserIn_ConnectFB;
+}
+
+export interface logUserInVariables {
+  firstName: string;
+  lastName: string;
+  email?: string | null;
+  fbId: string;
 }
 
 /* tslint:disable */

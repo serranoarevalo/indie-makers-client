@@ -1,8 +1,11 @@
 import Link from "next/link";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import Button from "../button";
 import FakeLink from "../fakeLink";
+import withLogin from "../../lib/withLogin";
+import { FB_APP_ID } from "../../configs";
 
 const Container = styled.div`
   display: flex;
@@ -30,18 +33,31 @@ const CTAs = styled.div`
   align-items: center;
 `;
 
-const Hero = () => (
+interface IProps {
+  loginFn: (response: any) => void;
+}
+
+const Hero: React.SFC<IProps> = ({ loginFn }) => (
   <Container>
     <Title>Build products, together.</Title>
     <Subtitle>
       Join a community of 4,059 makers to make better products.
     </Subtitle>
     <CTAs>
-      <Link href={routes.join} as={routes.asJoin}>
-        <a>
-          <Button accent={true} text={"Join Indie Makers"} fontSize={28} />
-        </a>
-      </Link>
+      <FacebookLogin
+        appId={FB_APP_ID}
+        autoLoad={false}
+        callback={loginFn}
+        fields="name,first_name,last_name,email"
+        render={renderProps => (
+          <Button
+            accent={true}
+            text={"Join Indie Makers"}
+            fontSize={28}
+            onClick={renderProps.onClick}
+          />
+        )}
+      />
       <Link href={routes.about}>
         <a>
           <FakeLink>Learn more</FakeLink>
@@ -50,4 +66,4 @@ const Hero = () => (
     </CTAs>
   </Container>
 );
-export default Hero;
+export default withLogin(Hero);

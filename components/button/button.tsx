@@ -49,7 +49,7 @@ interface IProps {
   size?: sizeType;
   className?: string;
   shadowColor?: string;
-  onClick?: () => void;
+  onClick?: (any) => void;
 }
 
 const Button: React.SFC<IProps> = ({

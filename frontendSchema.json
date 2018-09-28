@@ -2457,7 +2457,7 @@
             "deprecationReason": null
           },
           {
-            "name": "new",
+            "name": "isNew",
             "description": "",
             "args": [],
             "type": {
