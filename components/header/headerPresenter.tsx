@@ -1,11 +1,9 @@
 import Link from "next/link";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
 import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
-import { FB_APP_ID } from "../../configs";
 
 const Container = styled("header")`
   width: 100%;
@@ -65,10 +63,10 @@ const AvatarContainer = styled.div`
 
 interface IProps {
   loggedIn: boolean;
-  afterLoginFn: (response) => void;
+  fbLogin: () => void;
 }
 
-const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
+const Header: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -110,18 +108,10 @@ const Header: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
         </NavColumn>
         {!loggedIn && (
           <NavColumn>
-            <FacebookLogin
-              appId={FB_APP_ID}
-              autoLoad={false}
-              callback={afterLoginFn}
-              fields="name,first_name,last_name,email"
-              render={renderProps => (
-                <Button
-                  accent={true}
-                  onClick={renderProps.onClick}
-                  text={`Join Indie Makers`}
-                />
-              )}
+            <Button
+              accent={true}
+              onClick={fbLogin}
+              text={`Join Indie Makers`}
             />
           </NavColumn>
         )}
@@ -158,9 +148,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = ({ loggedIn, afterLoginFn }) => (
+export const FixedHeader: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
   <FixedHeaderContainer>
-    <Header loggedIn={loggedIn} afterLoginFn={afterLoginFn} />
+    <Header loggedIn={loggedIn} fbLogin={fbLogin} />
   </FixedHeaderContainer>
 );
 

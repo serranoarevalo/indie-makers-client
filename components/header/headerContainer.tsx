@@ -7,7 +7,7 @@ interface IState {
 }
 
 interface IProps {
-  loginFn: (response: any) => void;
+  fbLogin: () => void;
 }
 
 class HeaderContainer extends React.Component<IProps, IState> {
@@ -29,11 +29,11 @@ class HeaderContainer extends React.Component<IProps, IState> {
   }
   render() {
     const { scrolled } = this.state;
-    const { loginFn } = this.props;
+    const { fbLogin } = this.props;
     return (
       <React.Fragment>
-        <Header loggedIn={false} afterLoginFn={loginFn} />
-        {scrolled && <FixedHeader loggedIn={false} afterLoginFn={loginFn} />}
+        <Header loggedIn={false} fbLogin={fbLogin} />
+        {scrolled && <FixedHeader loggedIn={false} fbLogin={fbLogin} />}
       </React.Fragment>
     );
   }

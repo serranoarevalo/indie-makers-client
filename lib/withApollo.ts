@@ -19,7 +19,7 @@ export default withApollo(
         }
       },
       headers: {
-        cookie: headers && headers.cookie ? headers.cookie : " "
+        cookie: headers ? (headers.cookie ? headers.cookie : " ") : ""
       }
     })
 );

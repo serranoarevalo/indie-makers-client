@@ -1,9 +1,11 @@
 import React from "react";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { Mutation, MutationFn } from "react-apollo";
 import Cookie from "js-cookie";
 import { LOG_USER_IN } from "../sharedQueries";
 import { logUserIn, logUserInVariables } from "types/api";
 import { toast } from "react-toastify";
+import { FB_APP_ID } from "../configs";
 
 class LoginMutation extends Mutation<logUserIn, logUserInVariables> {}
 
@@ -18,7 +20,17 @@ const withLogin = Component =>
         >
           {logUserIn => {
             this.facebookLogin = logUserIn;
-            return <Component loginFn={this.postFacebookLogin} />;
+            return (
+              <FacebookLogin
+                appId={FB_APP_ID}
+                autoLoad={false}
+                callback={this.postFacebookLogin}
+                fields="name,first_name,last_name,email"
+                render={renderProps => (
+                  <Component fbLogin={renderProps.onClick} />
+                )}
+              />
+            );
           }}
         </LoginMutation>
       );

@@ -1,11 +1,9 @@
 import Link from "next/link";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import Button from "../button";
 import FakeLink from "../fakeLink";
 import withLogin from "../../lib/withLogin";
-import { FB_APP_ID } from "../../configs";
 
 const Container = styled.div`
   display: flex;
@@ -34,29 +32,21 @@ const CTAs = styled.div`
 `;
 
 interface IProps {
-  loginFn: (response: any) => void;
+  fbLogin: () => void;
 }
 
-const Hero: React.SFC<IProps> = ({ loginFn }) => (
+const Hero: React.SFC<IProps> = ({ fbLogin }) => (
   <Container>
     <Title>Build products, together.</Title>
     <Subtitle>
       Join a community of 4,059 makers to make better products.
     </Subtitle>
     <CTAs>
-      <FacebookLogin
-        appId={FB_APP_ID}
-        autoLoad={false}
-        callback={loginFn}
-        fields="name,first_name,last_name,email"
-        render={renderProps => (
-          <Button
-            accent={true}
-            text={"Join Indie Makers"}
-            fontSize={28}
-            onClick={renderProps.onClick}
-          />
-        )}
+      <Button
+        accent={true}
+        text={"Join Indie Makers"}
+        fontSize={28}
+        onClick={fbLogin}
       />
       <Link href={routes.about}>
         <a>
