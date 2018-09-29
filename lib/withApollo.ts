@@ -8,12 +8,17 @@ export default withApollo(
     new ApolloClient({
       uri: GRAPHQL_URL,
       credentials: "include",
+
       onError: ({ graphQLErrors }) => {
         if (graphQLErrors) {
           graphQLErrors.forEach(error => {
-            const JSONError = JSON.parse(error.message);
-            if (JSONError.status === 401) {
-              Cookies.remove("X-JWT");
+            try {
+              const JSONError = JSON.parse(error.message);
+              if (JSONError.status === 401) {
+                Cookies.remove("X-JWT");
+              }
+            } catch (error) {
+              console.log(error);
             }
           });
         }

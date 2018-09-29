@@ -45,6 +45,27 @@ export interface completedGoals {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: getDashboard
+// ====================================================
+
+export interface getDashboard_Me_user {
+  __typename: "User";
+  firstName: string;
+}
+
+export interface getDashboard_Me {
+  __typename: "MeResponse";
+  user: getDashboard_Me_user | null;
+}
+
+export interface getDashboard {
+  Me: getDashboard_Me;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: fireMakers
 // ====================================================
 

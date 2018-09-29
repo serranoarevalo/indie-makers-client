@@ -1,4 +1,5 @@
 import App, { Container } from "next/app";
+import { parseCookies } from "nookies";
 import { ApolloProvider } from "react-apollo";
 import { ToastContainer, toast } from "react-toastify";
 import React from "react";
@@ -25,25 +26,32 @@ const theme = {
 class MyApp extends App<any> {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
+    let isLoggedIn = false;
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    const cookies = parseCookies(ctx);
+
+    if (cookies["X-JWT"] !== null && cookies["X-JWT"] !== undefined) {
+      isLoggedIn = true;
+    }
+
+    return { pageProps, isLoggedIn };
   }
 
   render() {
-    const { Component, pageProps, apollo } = this.props;
+    const { Component, pageProps, apollo, isLoggedIn } = this.props;
     return (
       <Container>
         <NProgressStyles color={theme.blackColor} spinner={false} />
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
             <React.Fragment>
-              <Header />
+              <Header isLoggedIn={isLoggedIn} />
               <main>
-                <Component {...pageProps} />
+                <Component {...pageProps} isLoggedIn={isLoggedIn} />
               </main>
               <Footer />
               <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />

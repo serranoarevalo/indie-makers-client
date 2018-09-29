@@ -1,10 +1,15 @@
 import React from "react";
 import DashboardPresenter from "./DashboardPresenter";
+import { Query } from "react-apollo";
+import { getDashboard } from "types/api";
+import { GET_DASHBOARD } from "./DashboardQueries";
 
 interface IState {
   newToDo: string;
   product: string;
 }
+
+class DashboardQuery extends Query<getDashboard> {}
 
 class DashboardContainer extends React.Component<{}, IState> {
   constructor(props) {
@@ -17,11 +22,17 @@ class DashboardContainer extends React.Component<{}, IState> {
   render() {
     const { newToDo, product } = this.state;
     return (
-      <DashboardPresenter
-        inputValue={newToDo}
-        handleInputChange={this.handleInputChange}
-        product={product}
-      />
+      <DashboardQuery query={GET_DASHBOARD}>
+        {({ data, loading }) => (
+          <DashboardPresenter
+            inputValue={newToDo}
+            handleInputChange={this.handleInputChange}
+            product={product}
+            loading={loading}
+            data={data}
+          />
+        )}
+      </DashboardQuery>
     );
   }
   public handleInputChange: React.ChangeEventHandler<

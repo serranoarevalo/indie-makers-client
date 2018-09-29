@@ -10,7 +10,7 @@ import { FB_APP_ID } from "../configs";
 class LoginMutation extends Mutation<logUserIn, logUserInVariables> {}
 
 const withLogin = Component =>
-  class extends React.Component {
+  class extends React.Component<any> {
     public facebookLogin: MutationFn<logUserIn, logUserInVariables>;
     render() {
       return (
@@ -27,7 +27,7 @@ const withLogin = Component =>
                 callback={this.postFacebookLogin}
                 fields="name,first_name,last_name,email"
                 render={renderProps => (
-                  <Component fbLogin={renderProps.onClick} />
+                  <Component fbLogin={renderProps.onClick} {...this.props} />
                 )}
               />
             );

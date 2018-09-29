@@ -12,6 +12,7 @@ import Title from "../title";
 import Button from "../button";
 import routes from "../../routes";
 import SmallDetailCard from "../smallDetailCard";
+import { getDashboard } from "types/api";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -83,6 +84,8 @@ interface IProps {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
   product: string;
+  loading: boolean;
+  data?: getDashboard;
 }
 
 const getTime = () => {
@@ -102,7 +105,8 @@ const getTime = () => {
 const DashboardPresenter: React.SFC<IProps> = ({
   inputValue,
   handleInputChange,
-  product
+  product,
+  data
 }) => (
   <Container>
     <Head>
@@ -111,7 +115,10 @@ const DashboardPresenter: React.SFC<IProps> = ({
     <Wrapper>
       <Grid>
         <Column>
-          <HTitle>Good {getTime()} Nicolas!</HTitle>
+          <HTitle>
+            Good {getTime()}{" "}
+            {data && data.Me && data.Me.user && data.Me.user.firstName}!
+          </HTitle>
           <Subtitle>What are you gonna accomplish today?</Subtitle>
           <List>
             <Form>

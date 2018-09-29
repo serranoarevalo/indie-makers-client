@@ -62,11 +62,11 @@ const AvatarContainer = styled.div`
 `;
 
 interface IProps {
-  loggedIn: boolean;
   fbLogin: () => void;
+  isLoggedIn: boolean;
 }
 
-const Header: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
+const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn }) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -106,7 +106,7 @@ const Header: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
             </ul>
           </Navigation>
         </NavColumn>
-        {!loggedIn && (
+        {!isLoggedIn && (
           <NavColumn>
             <Button
               accent={true}
@@ -115,7 +115,7 @@ const Header: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
             />
           </NavColumn>
         )}
-        {loggedIn && (
+        {isLoggedIn && (
           <Link href={"/profile"}>
             <a>
               <AvatarContainer>
@@ -148,9 +148,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = ({ loggedIn, fbLogin }) => (
+export const FixedHeader: React.SFC<IProps> = ({ fbLogin, isLoggedIn }) => (
   <FixedHeaderContainer>
-    <Header loggedIn={loggedIn} fbLogin={fbLogin} />
+    <Header fbLogin={fbLogin} isLoggedIn={isLoggedIn} />
   </FixedHeaderContainer>
 );
 
