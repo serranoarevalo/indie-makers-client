@@ -137,23 +137,37 @@ const DashboardPresenter: React.SFC<IProps> = ({
                   onChange={handleInputChange}
                 >
                   <Product value={"none"}>Add to</Product>
-                  <Product value={"indie"}>Indie Makers</Product>
+                  {data &&
+                    data.GetAllProducts &&
+                    data.GetAllProducts.products &&
+                    data.GetAllProducts.products.map(
+                      product =>
+                        product && (
+                          <Product value={product.id} key={product.id}>
+                            {product.name}
+                          </Product>
+                        )
+                    )}
                 </Select>
               </AddContainer>
             </Form>
             <Goals>
-              <EGoalText
-                isMine={true}
-                fontSize={"18px"}
-                productName={"Indie Makers"}
-                text={"Go to pakistani restaurant"}
-              />
-              <EGoalText
-                isMine={true}
-                fontSize={"18px"}
-                productName={"Indie Makers"}
-                text={"Go to pakistani restaurant"}
-              />
+              {data &&
+                data.GetLatestGoals &&
+                data.GetLatestGoals.goals &&
+                data.GetLatestGoals.goals.map(
+                  goal =>
+                    goal && (
+                      <EGoalText
+                        key={goal.id}
+                        isMine={true}
+                        fontSize={"18px"}
+                        productName={(goal.product && goal.product.name) || ""}
+                        text={goal.text}
+                        timeStamp={goal.createdAt}
+                      />
+                    )
+                )}
             </Goals>
           </List>
         </Column>
@@ -177,30 +191,28 @@ const DashboardPresenter: React.SFC<IProps> = ({
           ]}
         >
           <Products>
-            <SmallDetailCard
-              icon={"/static/demo.jpg"}
-              title={"Best project ever"}
-              subtitle={
-                "Use this life changing product when you're on the toilet"
-              }
-              isLink={true}
-              link={routes.productDetail("indie-makers")}
-              linkAs={routes.asProductDetail("indie-makers")}
-              isCard={true}
-              lightSubtitle={false}
-            />
-            <SmallDetailCard
-              icon={"/static/demo.jpg"}
-              title={"Best project ever"}
-              subtitle={
-                "Use this life changing product when you're on the toilet"
-              }
-              isLink={true}
-              link={routes.productDetail("indie-makers")}
-              linkAs={routes.asProductDetail("indie-makers")}
-              isCard={true}
-              lightSubtitle={false}
-            />
+            {data &&
+              data.GetLatestProducts &&
+              data.GetLatestProducts.products &&
+              data.GetLatestProducts.products.map(
+                product =>
+                  product && (
+                    <SmallDetailCard
+                      key={product.id}
+                      icon={product.logo || "/static/demo.jpg"}
+                      title={product.name}
+                      subtitle={product.description}
+                      isLink={true}
+                      link={routes.productDetail(product.slug)}
+                      linkAs={routes.asProductDetail(product.slug)}
+                      isCard={true}
+                      lightSubtitle={false}
+                      toDoNumber={`${product.completedGoalCount}/${
+                        product.goalCount
+                      }`}
+                    />
+                  )
+              )}
           </Products>
         </Section>
       </Grid>

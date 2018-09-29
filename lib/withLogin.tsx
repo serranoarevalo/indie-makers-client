@@ -61,6 +61,7 @@ const withLogin = Component =>
       } else if (ok && token) {
         Cookie.set("X-JWT", token);
         toast.success("Welcome, we are loggin you in 👋🏻");
+        setTimeout(() => window.location.reload(), 2000);
       }
     };
   };

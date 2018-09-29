@@ -99,7 +99,7 @@ const DetailContent: React.SFC<IPresenterProps> = ({
             />
           )}
           {toDoNumber !== undefined && <Badge text={toDoNumber} icon={"✅"} />}
-          {needsHelp && <Badge text={""} icon={"⚠️"} />}
+          {needsHelp && <Badge text={"Needs help"} icon={"⚠️"} />}
         </Badges>
       </NameContainer>
       {subtitle && <UserName light={lightSubtitle}>{subtitle}</UserName>}

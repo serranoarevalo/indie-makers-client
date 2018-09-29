@@ -7,7 +7,7 @@ export const GET_DASHBOARD = gql`
         firstName
       }
     }
-    GetLatestProducts {
+    GetLatestProducts(take: 5) {
       products {
         id
         slug
@@ -18,7 +18,7 @@ export const GET_DASHBOARD = gql`
         goalCount
       }
     }
-    GetLatestGoals {
+    GetLatestGoals(take: 10) {
       goals {
         text
         createdAt
@@ -26,6 +26,12 @@ export const GET_DASHBOARD = gql`
         product {
           name
         }
+      }
+    }
+    GetAllProducts {
+      products {
+        id
+        name
       }
     }
   }

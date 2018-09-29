@@ -16,6 +16,7 @@ export default withApollo(
               const JSONError = JSON.parse(error.message);
               if (JSONError.status === 401) {
                 Cookies.remove("X-JWT");
+                window.location.reload();
               }
             } catch (error) {
               console.log(error);

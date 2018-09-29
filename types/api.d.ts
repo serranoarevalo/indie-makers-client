@@ -58,8 +58,56 @@ export interface getDashboard_Me {
   user: getDashboard_Me_user | null;
 }
 
+export interface getDashboard_GetLatestProducts_products {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  logo: string | null;
+  name: string;
+  description: string;
+  completedGoalCount: number;
+  goalCount: number;
+}
+
+export interface getDashboard_GetLatestProducts {
+  __typename: "GetLatestProductsResponse";
+  products: (getDashboard_GetLatestProducts_products | null)[] | null;
+}
+
+export interface getDashboard_GetLatestGoals_goals_product {
+  __typename: "Product";
+  name: string;
+}
+
+export interface getDashboard_GetLatestGoals_goals {
+  __typename: "Goal";
+  text: string;
+  createdAt: string;
+  id: number;
+  product: getDashboard_GetLatestGoals_goals_product | null;
+}
+
+export interface getDashboard_GetLatestGoals {
+  __typename: "GetLatestGoalsResponse";
+  goals: (getDashboard_GetLatestGoals_goals | null)[] | null;
+}
+
+export interface getDashboard_GetAllProducts_products {
+  __typename: "Product";
+  id: number;
+  name: string;
+}
+
+export interface getDashboard_GetAllProducts {
+  __typename: "GetAllProductsResponse";
+  products: (getDashboard_GetAllProducts_products | null)[] | null;
+}
+
 export interface getDashboard {
   Me: getDashboard_Me;
+  GetLatestProducts: getDashboard_GetLatestProducts;
+  GetLatestGoals: getDashboard_GetLatestGoals;
+  GetAllProducts: getDashboard_GetAllProducts;
 }
 
 /* tslint:disable */
