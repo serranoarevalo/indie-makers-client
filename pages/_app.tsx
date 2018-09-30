@@ -49,16 +49,18 @@ class MyApp extends App<any> {
         <NProgressStyles color={theme.blackColor} spinner={false} />
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
-            <WithUser isLoggedIn={isLoggedIn}>
-              <React.Fragment>
+            <React.Fragment>
+              <WithUser isLoggedIn={isLoggedIn}>
                 <Header isLoggedIn={isLoggedIn} />
-                <main>
+              </WithUser>
+              <main>
+                <WithUser isLoggedIn={isLoggedIn}>
                   <Component {...pageProps} isLoggedIn={isLoggedIn} />
-                </main>
-                <Footer />
-                <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
-              </React.Fragment>
-            </WithUser>
+                </WithUser>
+              </main>
+              <Footer />
+              <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
+            </React.Fragment>
           </ThemeProvider>
         </ApolloProvider>
       </Container>

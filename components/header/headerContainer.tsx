@@ -1,6 +1,7 @@
 import React from "react";
 import Header, { FixedHeader } from "./headerPresenter";
 import withLogin from "../../lib/withLogin";
+import { getMe } from "types/api";
 
 interface IState {
   scrolled: boolean;
@@ -9,6 +10,7 @@ interface IState {
 interface IProps {
   fbLogin: () => void;
   isLoggedIn: boolean;
+  user: getMe;
 }
 
 class HeaderContainer extends React.Component<IProps, IState> {
@@ -30,11 +32,14 @@ class HeaderContainer extends React.Component<IProps, IState> {
   }
   render() {
     const { scrolled } = this.state;
-    const { fbLogin, isLoggedIn } = this.props;
+    const { fbLogin, isLoggedIn, user } = this.props;
+
     return (
       <React.Fragment>
-        <Header fbLogin={fbLogin} isLoggedIn={isLoggedIn} />
-        {scrolled && <FixedHeader fbLogin={fbLogin} isLoggedIn={isLoggedIn} />}
+        <Header fbLogin={fbLogin} isLoggedIn={isLoggedIn} user={user} />
+        {scrolled && (
+          <FixedHeader fbLogin={fbLogin} isLoggedIn={isLoggedIn} user={user} />
+        )}
       </React.Fragment>
     );
   }

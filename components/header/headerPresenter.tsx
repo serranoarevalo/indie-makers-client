@@ -4,6 +4,7 @@ import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
 import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
+import { getMe } from "types/api";
 
 const Container = styled("header")`
   width: 100%;
@@ -64,9 +65,10 @@ const AvatarContainer = styled.div`
 interface IProps {
   fbLogin: () => void;
   isLoggedIn: boolean;
+  user: getMe;
 }
 
-const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn }) => (
+const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -119,7 +121,15 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn }) => (
           <Link href={"/profile"}>
             <a>
               <AvatarContainer>
-                <Avatar src={"/static/demo.jpg"} />
+                <Avatar
+                  src={
+                    (user &&
+                      user.Me &&
+                      user.Me.user &&
+                      user.Me.user.profilePhoto) ||
+                    "/static/demo.jpg"
+                  }
+                />
                 Profile
               </AvatarContainer>
             </a>
@@ -148,9 +158,9 @@ const FixedHeaderContainer = styled.div`
   z-index: 10;
 `;
 
-export const FixedHeader: React.SFC<IProps> = ({ fbLogin, isLoggedIn }) => (
+export const FixedHeader: React.SFC<IProps> = props => (
   <FixedHeaderContainer>
-    <Header fbLogin={fbLogin} isLoggedIn={isLoggedIn} />
+    <Header {...props} />
   </FixedHeaderContainer>
 );
 

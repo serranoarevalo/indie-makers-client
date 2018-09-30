@@ -4,6 +4,7 @@ export const GET_DASHBOARD = gql`
   query getDashboard {
     Me {
       user {
+        id
         firstName
       }
     }
