@@ -20,3 +20,15 @@ export const LOG_USER_IN = gql`
     }
   }
 `;
+
+export const GET_ME = gql`
+  query getMe {
+    Me {
+      user {
+        id
+        username
+        profilePhoto
+      }
+    }
+  }
+`;

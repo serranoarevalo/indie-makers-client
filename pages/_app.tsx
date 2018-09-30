@@ -1,14 +1,15 @@
 import App, { Container } from "next/app";
-import { parseCookies } from "nookies";
 import { ApolloProvider } from "react-apollo";
 import { ToastContainer, toast } from "react-toastify";
 import React from "react";
+import { parseCookies } from "nookies";
 import withNProgress from "next-nprogress";
 import NProgressStyles from "next-nprogress/styles";
 import Header from "../components/header";
 import { ThemeProvider } from "../typed-components";
 import Footer from "../components/footer";
 import withApollo from "../lib/withApollo";
+import WithUser from "../lib/withUser";
 
 const theme = {
   greyColor: "#95a5a6",
@@ -48,14 +49,16 @@ class MyApp extends App<any> {
         <NProgressStyles color={theme.blackColor} spinner={false} />
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
-            <React.Fragment>
-              <Header isLoggedIn={isLoggedIn} />
-              <main>
-                <Component {...pageProps} isLoggedIn={isLoggedIn} />
-              </main>
-              <Footer />
-              <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
-            </React.Fragment>
+            <WithUser isLoggedIn={isLoggedIn}>
+              <React.Fragment>
+                <Header isLoggedIn={isLoggedIn} />
+                <main>
+                  <Component {...pageProps} isLoggedIn={isLoggedIn} />
+                </main>
+                <Footer />
+                <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
+              </React.Fragment>
+            </WithUser>
           </ThemeProvider>
         </ApolloProvider>
       </Container>
