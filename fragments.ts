@@ -22,6 +22,7 @@ export const GOAL_FRAGMENT = gql`
       name
     }
     createdAt
+    completedAt
   }
 `;
 

@@ -97,11 +97,10 @@ const MakerPresenter: React.SFC<IProps> = ({
             </Tabs>
             {tab === "PRODUCTS" && (
               <>
-                <Card>
-                  {maker.products &&
-                    maker.products.length === 0 &&
-                    "This maker has no products yet!"}
-                </Card>
+                {maker.products &&
+                  maker.products.length === 0 && (
+                    <Card>This maker has no products yet!</Card>
+                  )}
                 <Grid>
                   {maker.products &&
                     maker.products.map(

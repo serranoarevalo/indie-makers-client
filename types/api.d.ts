@@ -19,6 +19,7 @@ export interface completedGoals_FilterGoals_goals {
   isCompleted: boolean;
   product: completedGoals_FilterGoals_goals_product | null;
   createdAt: string;
+  completedAt: string | null;
 }
 
 export interface completedGoals_FilterGoals {
@@ -79,6 +80,7 @@ export interface getDashboard_GetLatestGoals_goals {
   isCompleted: boolean;
   product: getDashboard_GetLatestGoals_goals_product | null;
   createdAt: string;
+  completedAt: string | null;
 }
 
 export interface getDashboard_GetLatestGoals {
@@ -194,6 +196,7 @@ export interface getMaker_GetMaker_maker_completedGoals {
   isCompleted: boolean;
   product: getMaker_GetMaker_maker_completedGoals_product | null;
   createdAt: string;
+  completedAt: string | null;
 }
 
 export interface getMaker_GetMaker_maker_pendingGoals_product {
@@ -210,6 +213,7 @@ export interface getMaker_GetMaker_maker_pendingGoals {
   isCompleted: boolean;
   product: getMaker_GetMaker_maker_pendingGoals_product | null;
   createdAt: string;
+  completedAt: string | null;
 }
 
 export interface getMaker_GetMaker_maker {
@@ -509,6 +513,7 @@ export interface GoalParts {
   isCompleted: boolean;
   product: GoalParts_product | null;
   createdAt: string;
+  completedAt: string | null;
 }
 
 /* tslint:disable */

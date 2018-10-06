@@ -20,6 +20,7 @@ const Goal = styled.div`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   &:last-child {
     margin-bottom: 0;
   }
