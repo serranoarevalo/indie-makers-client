@@ -341,6 +341,7 @@ export interface getProductVariables {
 
 export interface filterProducts_FilterProducts_products_maker {
   __typename: "User";
+  id: number;
   profilePhoto: string;
 }
 
@@ -380,9 +381,29 @@ export interface filterProductsVariables {
 // GraphQL query operation: filterToDos
 // ====================================================
 
+export interface filterToDos_FilterGoals_goals_product {
+  __typename: "Product";
+  logo: string | null;
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface filterToDos_FilterGoals_goals_maker {
+  __typename: "User";
+  username: string | null;
+  profilePhoto: string;
+}
+
 export interface filterToDos_FilterGoals_goals {
   __typename: "Goal";
   id: number;
+  text: string;
+  isCompleted: boolean;
+  product: filterToDos_FilterGoals_goals_product | null;
+  maker: filterToDos_FilterGoals_goals_maker | null;
+  createdAt: string;
+  completedAt: string | null;
 }
 
 export interface filterToDos_FilterGoals {

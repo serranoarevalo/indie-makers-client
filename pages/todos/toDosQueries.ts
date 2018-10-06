@@ -5,6 +5,20 @@ export const FILTER_TODOS = gql`
     FilterGoals(status: $status, page: $page) {
       goals {
         id
+        text
+        isCompleted
+        product {
+          logo
+          id
+          slug
+          name
+        }
+        maker {
+          username
+          profilePhoto
+        }
+        createdAt
+        completedAt
       }
       page
       totalPages
