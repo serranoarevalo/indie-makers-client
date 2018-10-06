@@ -118,7 +118,14 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
           </NavColumn>
         )}
         {isLoggedIn && (
-          <Link href={"/profile"}>
+          <Link
+            href={routes.userDetail(
+              (user && user.Me && user.Me.user && user.Me.user.username) || ""
+            )}
+            as={routes.asUserDetail(
+              (user && user.Me && user.Me.user && user.Me.user.username) || ""
+            )}
+          >
             <a>
               <AvatarContainer>
                 <Avatar

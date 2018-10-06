@@ -7,6 +7,7 @@ export const GET_NEW = gql`
       products {
         ...ProductParts
         maker {
+          id
           profilePhoto
         }
       }

@@ -8,7 +8,6 @@ export default withApollo(
     new ApolloClient({
       uri: GRAPHQL_URL,
       credentials: "include",
-
       onError: ({ graphQLErrors }) => {
         if (graphQLErrors) {
           graphQLErrors.forEach(error => {
@@ -25,7 +24,7 @@ export default withApollo(
         }
       },
       headers: {
-        cookie: headers ? (headers.cookie ? headers.cookie : " ") : ""
+        cookie: headers && headers.cookie
       }
     })
 );

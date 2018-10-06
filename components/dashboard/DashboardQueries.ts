@@ -14,7 +14,7 @@ export const GET_DASHBOARD = gql`
         ...ProductParts
       }
     }
-    GetLatestGoals(take: 10) {
+    GetLatestGoals {
       goals {
         ...GoalParts
       }
