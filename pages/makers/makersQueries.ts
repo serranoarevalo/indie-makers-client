@@ -1,18 +1,15 @@
 import gql from "graphql-tag";
+import { MAKER_FRAGMENT } from "../../fragments";
 
 export const FILTER_MAKERS = gql`
   query filterMakers($status: UserState!, $page: Int!) {
     FilterUsers(status: $status, page: $page) {
       makers {
-        id
-        profilePhoto
-        fullName
-        username
-        streak
-        launchedProductCount
+        ...MakerParts
       }
       page
       totalPages
     }
   }
+  ${MAKER_FRAGMENT}
 `;

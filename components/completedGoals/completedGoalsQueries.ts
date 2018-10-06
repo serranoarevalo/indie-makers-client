@@ -1,27 +1,13 @@
 import gql from "graphql-tag";
+import { GOAL_FRAGMENT } from "../../fragments";
 
 export const COMPLETED_GOALS = gql`
   query completedGoals {
     FilterGoals(status: COMPLETED) {
-      makers {
-        id
-        fullName
-        profilePhoto
-        streak
-        launchedProductCount
-        username
-        goals {
-          id
-          text
-          isCompleted
-          product {
-            id
-            slug
-            name
-          }
-          completedAt
-        }
+      goals {
+        ...GoalParts
       }
     }
   }
+  ${GOAL_FRAGMENT}
 `;

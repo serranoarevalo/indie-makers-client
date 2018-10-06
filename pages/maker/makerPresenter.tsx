@@ -96,25 +96,32 @@ const MakerPresenter: React.SFC<IProps> = ({
               />
             </Tabs>
             {tab === "PRODUCTS" && (
-              <Grid>
-                {maker.products &&
-                  maker.products.map(
-                    product =>
-                      product && (
-                        <SmallDetailCard
-                          key={product.id}
-                          icon={product.logo || ""}
-                          title={product.name}
-                          subtitle={product.description}
-                          isLink={true}
-                          link={routes.productDetail(`${product.slug}`)}
-                          linkAs={routes.asProductDetail(`${product.slug}`)}
-                          isCard={true}
-                          lightSubtitle={false}
-                        />
-                      )
-                  )}
-              </Grid>
+              <>
+                <Card>
+                  {maker.products &&
+                    maker.products.length === 0 &&
+                    "This maker has no products yet!"}
+                </Card>
+                <Grid>
+                  {maker.products &&
+                    maker.products.map(
+                      product =>
+                        product && (
+                          <SmallDetailCard
+                            key={product.id}
+                            icon={product.logo || ""}
+                            title={product.name}
+                            subtitle={product.description}
+                            isLink={true}
+                            link={routes.productDetail(`${product.slug}`)}
+                            linkAs={routes.asProductDetail(`${product.slug}`)}
+                            isCard={true}
+                            lightSubtitle={false}
+                          />
+                        )
+                    )}
+                </Grid>
+              </>
             )}
             {tab === "DONE" && (
               <Card>
@@ -158,7 +165,7 @@ const MakerPresenter: React.SFC<IProps> = ({
                     )}
                   {maker.pendingGoals &&
                     maker.pendingGoals.length === 0 &&
-                    `This maker has no completed goals yet!`}
+                    `This maker has no pending goals yet!`}
                 </Goals>
               </Card>
             )}

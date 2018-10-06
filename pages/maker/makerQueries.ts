@@ -1,15 +1,12 @@
-import gql from "graphql-tag";
+import { gql } from "apollo-boost";
+import { MAKER_FRAGMENT, GOAL_FRAGMENT } from "../../fragments";
 
 export const GET_MAKER = gql`
   query getMaker($username: String!) {
     GetMaker(username: $username) {
       maker {
-        profilePhoto
-        fullName
-        username
+        ...MakerParts
         bio
-        streak
-        launchedProductCount
         products {
           id
           slug
@@ -18,26 +15,14 @@ export const GET_MAKER = gql`
           description
         }
         completedGoals {
-          id
-          text
-          product {
-            id
-            slug
-            name
-          }
-          completedAt
+          ...GoalParts
         }
         pendingGoals {
-          id
-          text
-          product {
-            id
-            slug
-            name
-          }
-          createdAt
+          ...GoalParts
         }
       }
     }
   }
+  ${MAKER_FRAGMENT}
+  ${GOAL_FRAGMENT}
 `;

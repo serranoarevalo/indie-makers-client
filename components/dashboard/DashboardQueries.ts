@@ -1,4 +1,5 @@
 import { gql } from "apollo-boost";
+import { PRODUCT_FRAGMENT, GOAL_FRAGMENT } from "../../fragments";
 
 export const GET_DASHBOARD = gql`
   query getDashboard {
@@ -10,23 +11,12 @@ export const GET_DASHBOARD = gql`
     }
     GetLatestProducts(take: 5) {
       products {
-        id
-        slug
-        logo
-        name
-        description
-        completedGoalCount
-        goalCount
+        ...ProductParts
       }
     }
     GetLatestGoals(take: 10) {
       goals {
-        text
-        createdAt
-        id
-        product {
-          name
-        }
+        ...GoalParts
       }
     }
     GetAllProducts {
@@ -36,4 +26,6 @@ export const GET_DASHBOARD = gql`
       }
     }
   }
+  ${PRODUCT_FRAGMENT}
+  ${GOAL_FRAGMENT}
 `;

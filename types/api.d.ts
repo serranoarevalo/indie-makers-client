@@ -5,36 +5,25 @@
 // GraphQL query operation: completedGoals
 // ====================================================
 
-export interface completedGoals_FilterGoals_makers_goals_product {
+export interface completedGoals_FilterGoals_goals_product {
   __typename: "Product";
   id: number;
   slug: string;
   name: string;
 }
 
-export interface completedGoals_FilterGoals_makers_goals {
+export interface completedGoals_FilterGoals_goals {
   __typename: "Goal";
   id: number;
   text: string;
   isCompleted: boolean;
-  product: completedGoals_FilterGoals_makers_goals_product | null;
-  completedAt: string | null;
-}
-
-export interface completedGoals_FilterGoals_makers {
-  __typename: "User";
-  id: number;
-  fullName: string;
-  profilePhoto: string;
-  streak: number;
-  launchedProductCount: number;
-  username: string | null;
-  goals: (completedGoals_FilterGoals_makers_goals | null)[] | null;
+  product: completedGoals_FilterGoals_goals_product | null;
+  createdAt: string;
 }
 
 export interface completedGoals_FilterGoals {
   __typename: "FilterGoalsResponse";
-  makers: (completedGoals_FilterGoals_makers | null)[] | null;
+  goals: (completedGoals_FilterGoals_goals | null)[] | null;
 }
 
 export interface completedGoals {
@@ -50,6 +39,7 @@ export interface completedGoals {
 
 export interface getDashboard_Me_user {
   __typename: "User";
+  id: number;
   firstName: string;
 }
 
@@ -61,12 +51,13 @@ export interface getDashboard_Me {
 export interface getDashboard_GetLatestProducts_products {
   __typename: "Product";
   id: number;
-  slug: string;
   logo: string | null;
   name: string;
+  slug: string;
   description: string;
-  completedGoalCount: number;
   goalCount: number;
+  completedGoalCount: number;
+  needsHelp: boolean;
 }
 
 export interface getDashboard_GetLatestProducts {
@@ -76,15 +67,18 @@ export interface getDashboard_GetLatestProducts {
 
 export interface getDashboard_GetLatestGoals_goals_product {
   __typename: "Product";
+  id: number;
+  slug: string;
   name: string;
 }
 
 export interface getDashboard_GetLatestGoals_goals {
   __typename: "Goal";
-  text: string;
-  createdAt: string;
   id: number;
+  text: string;
+  isCompleted: boolean;
   product: getDashboard_GetLatestGoals_goals_product | null;
+  createdAt: string;
 }
 
 export interface getDashboard_GetLatestGoals {
@@ -122,8 +116,9 @@ export interface fireMakers_FilterUsers_makers {
   id: number;
   fullName: string;
   profilePhoto: string;
-  streak: number;
   username: string | null;
+  streak: number;
+  launchedProductCount: number;
 }
 
 export interface fireMakers_FilterUsers {
@@ -151,8 +146,8 @@ export interface addedRecently_FilterProducts_products {
   __typename: "Product";
   id: number;
   logo: string | null;
-  slug: string;
   name: string;
+  slug: string;
   description: string;
   goalCount: number;
   completedGoalCount: number;
@@ -196,8 +191,9 @@ export interface getMaker_GetMaker_maker_completedGoals {
   __typename: "Goal";
   id: number;
   text: string;
+  isCompleted: boolean;
   product: getMaker_GetMaker_maker_completedGoals_product | null;
-  completedAt: string | null;
+  createdAt: string;
 }
 
 export interface getMaker_GetMaker_maker_pendingGoals_product {
@@ -211,18 +207,20 @@ export interface getMaker_GetMaker_maker_pendingGoals {
   __typename: "Goal";
   id: number;
   text: string;
+  isCompleted: boolean;
   product: getMaker_GetMaker_maker_pendingGoals_product | null;
   createdAt: string;
 }
 
 export interface getMaker_GetMaker_maker {
   __typename: "User";
-  profilePhoto: string;
+  id: number;
   fullName: string;
+  profilePhoto: string;
   username: string | null;
-  bio: string | null;
   streak: number;
   launchedProductCount: number;
+  bio: string | null;
   products: (getMaker_GetMaker_maker_products | null)[] | null;
   completedGoals: (getMaker_GetMaker_maker_completedGoals | null)[] | null;
   pendingGoals: (getMaker_GetMaker_maker_pendingGoals | null)[] | null;
@@ -251,8 +249,8 @@ export interface getMakerVariables {
 export interface filterMakers_FilterUsers_makers {
   __typename: "User";
   id: number;
-  profilePhoto: string;
   fullName: string;
+  profilePhoto: string;
   username: string | null;
   streak: number;
   launchedProductCount: number;
@@ -284,10 +282,11 @@ export interface filterMakersVariables {
 export interface getProduct_GetProduct_product_maker {
   __typename: "User";
   id: number;
+  fullName: string;
+  profilePhoto: string;
   username: string | null;
   streak: number;
-  profilePhoto: string;
-  fullName: string;
+  launchedProductCount: number;
 }
 
 export interface getProduct_GetProduct_product_pendingGoals {
@@ -306,11 +305,13 @@ export interface getProduct_GetProduct_product_completedGoals {
 
 export interface getProduct_GetProduct_product {
   __typename: "Product";
+  id: number;
   logo: string | null;
   name: string;
+  slug: string;
   description: string;
-  completedGoalCount: number;
   goalCount: number;
+  completedGoalCount: number;
   needsHelp: boolean;
   website: string | null;
   maker: getProduct_GetProduct_product_maker | null;
@@ -348,11 +349,11 @@ export interface filterProducts_FilterProducts_products {
   id: number;
   logo: string | null;
   name: string;
-  description: string;
-  completedGoalCount: number;
-  goalCount: number;
-  needsHelp: boolean;
   slug: string;
+  description: string;
+  goalCount: number;
+  completedGoalCount: number;
+  needsHelp: boolean;
   maker: filterProducts_FilterProducts_products_maker | null;
 }
 
@@ -379,36 +380,14 @@ export interface filterProductsVariables {
 // GraphQL query operation: filterToDos
 // ====================================================
 
-export interface filterToDos_FilterGoals_makers_goals_product {
-  __typename: "Product";
-  slug: string;
-  name: string;
-  id: number;
-}
-
-export interface filterToDos_FilterGoals_makers_goals {
+export interface filterToDos_FilterGoals_goals {
   __typename: "Goal";
   id: number;
-  text: string;
-  isCompleted: boolean;
-  product: filterToDos_FilterGoals_makers_goals_product | null;
-  updatedAt: string | null;
-}
-
-export interface filterToDos_FilterGoals_makers {
-  __typename: "User";
-  id: number;
-  fullName: string;
-  profilePhoto: string;
-  streak: number;
-  launchedProductCount: number;
-  username: string | null;
-  goals: (filterToDos_FilterGoals_makers_goals | null)[] | null;
 }
 
 export interface filterToDos_FilterGoals {
   __typename: "FilterGoalsResponse";
-  makers: (filterToDos_FilterGoals_makers | null)[] | null;
+  goals: (filterToDos_FilterGoals_goals | null)[] | null;
   page: number;
   totalPages: number;
 }
@@ -469,6 +448,65 @@ export interface getMe_Me {
 
 export interface getMe {
   Me: getMe_Me;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL fragment: MakerParts
+// ====================================================
+
+export interface MakerParts {
+  __typename: "User";
+  id: number;
+  fullName: string;
+  profilePhoto: string;
+  username: string | null;
+  streak: number;
+  launchedProductCount: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL fragment: GoalParts
+// ====================================================
+
+export interface GoalParts_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface GoalParts {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  product: GoalParts_product | null;
+  createdAt: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL fragment: ProductParts
+// ====================================================
+
+export interface ProductParts {
+  __typename: "Product";
+  id: number;
+  logo: string | null;
+  name: string;
+  slug: string;
+  description: string;
+  goalCount: number;
+  completedGoalCount: number;
+  needsHelp: boolean;
 }
 
 /* tslint:disable */

@@ -1,21 +1,16 @@
 import gql from "graphql-tag";
+import { PRODUCT_FRAGMENT } from "../../fragments";
 
 export const GET_NEW = gql`
   query addedRecently {
     FilterProducts(status: NEW, take: 3, page: 0) {
       products {
-        id
-        logo
-        slug
-        name
-        description
-        goalCount
-        completedGoalCount
-        needsHelp
+        ...ProductParts
         maker {
           profilePhoto
         }
       }
     }
   }
+  ${PRODUCT_FRAGMENT}
 `;

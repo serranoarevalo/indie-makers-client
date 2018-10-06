@@ -1,22 +1,14 @@
 import gql from "graphql-tag";
+import { PRODUCT_FRAGMENT, MAKER_FRAGMENT } from "../../fragments";
 
 export const GET_PRODUCT = gql`
   query getProduct($slug: String!) {
     GetProduct(slug: $slug) {
       product {
-        logo
-        name
-        description
-        completedGoalCount
-        goalCount
-        needsHelp
+        ...ProductParts
         website
         maker {
-          id
-          username
-          streak
-          profilePhoto
-          fullName
+          ...MakerParts
         }
         pendingGoals {
           id
@@ -31,4 +23,6 @@ export const GET_PRODUCT = gql`
       }
     }
   }
+  ${PRODUCT_FRAGMENT}
+  ${MAKER_FRAGMENT}
 `;
