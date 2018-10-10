@@ -1,7 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import MakerPresenter from "./makerPresenter";
-import { getMaker, getMakerVariables } from "types/api";
+import { getMaker, getMakerVariables, getMe } from "../../types/api";
 import { GET_MAKER } from "./makerQueries";
 
 class MakerQuery extends Query<getMaker, getMakerVariables> {}
@@ -9,6 +9,7 @@ class MakerQuery extends Query<getMaker, getMakerVariables> {}
 interface IProps {
   tab: "PRODUCTS" | "DONE" | "TODO";
   username: string;
+  userQuery: getMe;
 }
 
 class MakerContainer extends React.Component<IProps> {
@@ -18,11 +19,20 @@ class MakerContainer extends React.Component<IProps> {
     return { username, tab: tab.toUpperCase() };
   }
   render() {
-    const { username, tab } = this.props;
+    const {
+      username,
+      tab,
+      userQuery: {
+        Me: { user }
+      }
+    } = this.props;
+
     return (
       <MakerQuery query={GET_MAKER} variables={{ username: username }}>
         {({ data, loading }) =>
-          !loading ? <MakerPresenter data={data} tab={tab} /> : null
+          !loading ? (
+            <MakerPresenter data={data} currentUser={user} tab={tab} />
+          ) : null
         }
       </MakerQuery>
     );
