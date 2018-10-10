@@ -11,7 +11,7 @@ interface IProps {
   username: string;
 }
 
-export default class extends React.Component<IProps> {
+class MakerContainer extends React.Component<IProps> {
   static getInitialProps(props) {
     const { query } = props;
     const { username, tab = "PRODUCTS" } = query;
@@ -28,3 +28,5 @@ export default class extends React.Component<IProps> {
     );
   }
 }
+
+export default MakerContainer;

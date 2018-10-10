@@ -141,6 +141,7 @@ export interface fireMakers {
 
 export interface addedRecently_FilterProducts_products_maker {
   __typename: "User";
+  id: number;
   profilePhoto: string;
 }
 

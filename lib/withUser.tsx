@@ -19,7 +19,7 @@ export default class extends React.Component<IProps> {
           React.Children.map(children, (child, index) =>
             React.cloneElement(child as any, {
               index,
-              user: data
+              userQuery: data
             })
           )
         }
