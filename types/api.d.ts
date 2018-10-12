@@ -465,6 +465,7 @@ export interface getMe_Me_user {
   id: number;
   username: string | null;
   profilePhoto: string;
+  bio: string | null;
 }
 
 export interface getMe_Me {

@@ -19,7 +19,7 @@ const IndexColumns = styled.div`
 
 const HeroWrapper = styled.div`
   background-color: white;
-  padding: 15vh 0;
+  padding: 15vh 0px;
   margin-bottom: 10vh;
 `;
 

@@ -19,20 +19,12 @@ class MakerContainer extends React.Component<IProps> {
     return { username, tab: tab.toUpperCase() };
   }
   render() {
-    const {
-      username,
-      tab,
-      userQuery: {
-        Me: { user }
-      }
-    } = this.props;
+    const { username, tab } = this.props;
 
     return (
       <MakerQuery query={GET_MAKER} variables={{ username: username }}>
         {({ data, loading }) =>
-          !loading ? (
-            <MakerPresenter data={data} currentUser={user} tab={tab} />
-          ) : null
+          !loading ? <MakerPresenter data={data} tab={tab} /> : null
         }
       </MakerQuery>
     );

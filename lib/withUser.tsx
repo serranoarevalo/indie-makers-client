@@ -2,6 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 import { getMe } from "types/api";
 import { GET_ME } from "../sharedQueries";
+import { Provider } from "./context";
 
 class MeQuery extends Query<getMe> {}
 
@@ -14,16 +15,21 @@ export default class extends React.Component<IProps> {
   render() {
     const { children, isLoggedIn } = this.props;
     return (
-      <MeQuery query={GET_ME} skip={!isLoggedIn}>
-        {({ data }) =>
-          React.Children.map(children, (child, index) =>
-            React.cloneElement(child as any, {
-              index,
-              userQuery: data
-            })
-          )
-        }
+      <MeQuery
+        query={GET_ME}
+        skip={!isLoggedIn}
+        onCompleted={this._onMeCompleted}
+      >
+        {({ data }) => (
+          <Provider value={{ userQuery: data }}>{children}</Provider>
+        )}
       </MeQuery>
     );
   }
+
+  public _onMeCompleted = (data: getMe) => {
+    const { Me } = data;
+    if (Me.user) {
+    }
+  };
 }

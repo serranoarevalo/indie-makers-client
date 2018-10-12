@@ -9,7 +9,7 @@ import Tabs from "../../components/tabs";
 import Tab from "../../components/tab";
 import Card from "../../components/card";
 import GoalText from "../../components/goalText";
-import { getMaker, getMe_Me_user } from "../../types/api";
+import { getMaker } from "../../types/api";
 
 const Container = styled.div`
   display: grid;
@@ -44,14 +44,12 @@ const Goals = styled.div`
 
 interface IProps {
   data?: getMaker;
-  currentUser: getMe_Me_user | null;
   tab: "PRODUCTS" | "DONE" | "TODO";
 }
 
 const MakerPresenter: React.SFC<IProps> = ({
   tab,
-  data: { GetMaker: { maker = null } = {} } = {},
-  currentUser
+  data: { GetMaker: { maker = null } = {} } = {}
 }) => (
   <Wrapper>
     <Container>

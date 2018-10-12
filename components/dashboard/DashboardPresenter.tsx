@@ -12,7 +12,8 @@ import Title from "../title";
 import Button from "../button";
 import routes from "../../routes";
 import SmallDetailCard from "../smallDetailCard";
-import { getDashboard } from "types/api";
+import { getDashboard, getMe } from "../../types/api";
+import { Consumer } from "../../lib/context";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -171,50 +172,64 @@ const DashboardPresenter: React.SFC<IProps> = ({
             </Goals>
           </List>
         </Column>
-        <Section
-          titleElements={[
-            <Title key={1}>Your products </Title>,
-            <Link href={routes.addProduct} key={2}>
-              <a>
-                <Button size={"xs"} text={"Add one"} />
-              </a>
-            </Link>,
-            <Link
-              href={routes.userDetail("serranoarevalo")}
-              as={routes.asUserDetail("serranoarevalo")}
-              key={3}
+        <Consumer>
+          {(userQuery: getMe) => (
+            <Section
+              titleElements={[
+                <Title key={1}>Your products </Title>,
+                <Link href={routes.addProduct} key={2}>
+                  <a>
+                    <Button size={"xs"} text={"Add one"} />
+                  </a>
+                </Link>,
+                <Link
+                  href={routes.userDetail(
+                    (userQuery.Me &&
+                      userQuery.Me.user &&
+                      userQuery.Me.user.username) ||
+                      ""
+                  )}
+                  as={routes.asUserDetail(
+                    (userQuery.Me &&
+                      userQuery.Me.user &&
+                      userQuery.Me.user.username) ||
+                      ""
+                  )}
+                  key={3}
+                >
+                  <a>
+                    <FLink>See all</FLink>
+                  </a>
+                </Link>
+              ]}
             >
-              <a>
-                <FLink>See all</FLink>
-              </a>
-            </Link>
-          ]}
-        >
-          <Products>
-            {data &&
-              data.GetLatestProducts &&
-              data.GetLatestProducts.products &&
-              data.GetLatestProducts.products.map(
-                product =>
-                  product && (
-                    <SmallDetailCard
-                      key={product.id}
-                      icon={product.logo || "/static/demo.jpg"}
-                      title={product.name}
-                      subtitle={product.description}
-                      isLink={true}
-                      link={routes.productDetail(product.slug)}
-                      linkAs={routes.asProductDetail(product.slug)}
-                      isCard={true}
-                      lightSubtitle={false}
-                      toDoNumber={`${product.completedGoalCount}/${
-                        product.goalCount
-                      }`}
-                    />
-                  )
-              )}
-          </Products>
-        </Section>
+              <Products>
+                {data &&
+                  data.GetLatestProducts &&
+                  data.GetLatestProducts.products &&
+                  data.GetLatestProducts.products.map(
+                    product =>
+                      product && (
+                        <SmallDetailCard
+                          key={product.id}
+                          icon={product.logo || "/static/demo.jpg"}
+                          title={product.name}
+                          subtitle={product.description}
+                          isLink={true}
+                          link={routes.productDetail(product.slug)}
+                          linkAs={routes.asProductDetail(product.slug)}
+                          isCard={true}
+                          lightSubtitle={false}
+                          toDoNumber={`${product.completedGoalCount}/${
+                            product.goalCount
+                          }`}
+                        />
+                      )
+                  )}
+              </Products>
+            </Section>
+          )}
+        </Consumer>
       </Grid>
     </Wrapper>
   </Container>
