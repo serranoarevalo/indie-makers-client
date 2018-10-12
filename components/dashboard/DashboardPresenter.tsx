@@ -12,7 +12,7 @@ import Title from "../title";
 import Button from "../button";
 import routes from "../../routes";
 import SmallDetailCard from "../smallDetailCard";
-import { getDashboard, getMe } from "../../types/api";
+import { getDashboard } from "../../types/api";
 import { Consumer } from "../../lib/context";
 
 const Container = styled.div`
@@ -173,7 +173,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
           </List>
         </Column>
         <Consumer>
-          {(userQuery: getMe) => (
+          {({ userQuery }) => (
             <Section
               titleElements={[
                 <Title key={1}>Your products </Title>,
@@ -184,13 +184,15 @@ const DashboardPresenter: React.SFC<IProps> = ({
                 </Link>,
                 <Link
                   href={routes.userDetail(
-                    (userQuery.Me &&
+                    (userQuery &&
+                      userQuery.Me &&
                       userQuery.Me.user &&
                       userQuery.Me.user.username) ||
                       ""
                   )}
                   as={routes.asUserDetail(
-                    (userQuery.Me &&
+                    (userQuery &&
+                      userQuery.Me &&
                       userQuery.Me.user &&
                       userQuery.Me.user.username) ||
                       ""
