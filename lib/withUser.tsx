@@ -15,21 +15,11 @@ export default class extends React.Component<IProps> {
   render() {
     const { children, isLoggedIn } = this.props;
     return (
-      <MeQuery
-        query={GET_ME}
-        skip={!isLoggedIn}
-        onCompleted={this._onMeCompleted}
-      >
+      <MeQuery query={GET_ME} skip={!isLoggedIn}>
         {({ data }) => (
           <Provider value={{ userQuery: data }}>{children}</Provider>
         )}
       </MeQuery>
     );
   }
-
-  public _onMeCompleted = (data: getMe) => {
-    const { Me } = data;
-    if (Me.user) {
-    }
-  };
 }

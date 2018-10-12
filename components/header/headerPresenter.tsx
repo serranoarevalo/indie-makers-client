@@ -5,6 +5,7 @@ import Button from "../button";
 import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
 import { getMe } from "types/api";
+import { Consumer } from "../../lib/context";
 
 const Container = styled("header")`
   width: 100%;
@@ -118,29 +119,41 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
           </NavColumn>
         )}
         {isLoggedIn && (
-          <Link
-            href={routes.userDetail(
-              (user && user.Me && user.Me.user && user.Me.user.username) || ""
+          <Consumer>
+            {({ userQuery }) => (
+              <Link
+                href={routes.userDetail(
+                  (userQuery &&
+                    userQuery.Me &&
+                    userQuery.Me.user &&
+                    userQuery.Me.user.username) ||
+                    ""
+                )}
+                as={routes.asUserDetail(
+                  (userQuery &&
+                    userQuery.Me &&
+                    userQuery.Me.user &&
+                    userQuery.Me.user.username) ||
+                    ""
+                )}
+              >
+                <a>
+                  <AvatarContainer>
+                    <Avatar
+                      src={
+                        (userQuery &&
+                          userQuery.Me &&
+                          userQuery.Me.user &&
+                          userQuery.Me.user.profilePhoto) ||
+                        "/static/demo.jpg"
+                      }
+                    />
+                    Profile
+                  </AvatarContainer>
+                </a>
+              </Link>
             )}
-            as={routes.asUserDetail(
-              (user && user.Me && user.Me.user && user.Me.user.username) || ""
-            )}
-          >
-            <a>
-              <AvatarContainer>
-                <Avatar
-                  src={
-                    (user &&
-                      user.Me &&
-                      user.Me.user &&
-                      user.Me.user.profilePhoto) ||
-                    "/static/demo.jpg"
-                  }
-                />
-                Profile
-              </AvatarContainer>
-            </a>
-          </Link>
+          </Consumer>
         )}
       </FlexWidthContainer>
     </Wrapper>
