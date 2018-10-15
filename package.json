@@ -26,6 +26,7 @@
   "homepage": "https://github.com/serranoarevalo/indie-makers#readme",
   "dependencies": {
     "apollo-boost": "^0.1.16",
+    "axios": "^0.18.0",
     "compression": "^1.7.3",
     "express": "^4.16.3",
     "graphql": "^14.0.2",
@@ -44,7 +45,8 @@
     "react-facebook-login": "^4.1.0",
     "react-markdown": "^3.4.1",
     "react-toastify": "^4.3.1",
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.3.3",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/next": "^6.0.4",

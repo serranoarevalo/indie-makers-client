@@ -50,6 +50,7 @@ interface IProps {
   className?: string;
   shadowColor?: string;
   onClick?: (any) => void;
+  disabled?: boolean;
 }
 
 const Button: React.SFC<IProps> = ({
@@ -59,7 +60,8 @@ const Button: React.SFC<IProps> = ({
   size = "md",
   className,
   shadowColor = "rgba(219,233,241,1)",
-  onClick
+  onClick,
+  disabled = false
 }) => (
   <Container
     className={className}
@@ -68,6 +70,7 @@ const Button: React.SFC<IProps> = ({
     size={size}
     shadowColor={shadowColor}
     onClick={onClick}
+    disabled={disabled}
   >
     {text}
   </Container>
