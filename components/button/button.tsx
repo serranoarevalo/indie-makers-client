@@ -3,7 +3,7 @@ import styled from "../../typed-components";
 
 type sizeType = "md" | "xs";
 
-const Container = styled<
+export const StyledElement = styled<
   {
     accent: boolean;
     fontSize: number;
@@ -63,7 +63,7 @@ const Button: React.SFC<IProps> = ({
   onClick,
   disabled = false
 }) => (
-  <Container
+  <StyledElement
     className={className}
     accent={accent}
     fontSize={fontSize}
@@ -73,7 +73,7 @@ const Button: React.SFC<IProps> = ({
     disabled={disabled}
   >
     {text}
-  </Container>
+  </StyledElement>
 );
 
 export default Button;

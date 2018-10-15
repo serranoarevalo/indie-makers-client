@@ -281,6 +281,38 @@ export interface filterMakersVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: addProduct
+// ====================================================
+
+export interface addProduct_CreateProduct_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+}
+
+export interface addProduct_CreateProduct {
+  __typename: "CreateProductResponse";
+  ok: boolean;
+  error: string | null;
+  product: addProduct_CreateProduct_product | null;
+}
+
+export interface addProduct {
+  CreateProduct: addProduct_CreateProduct;
+}
+
+export interface addProductVariables {
+  name: string;
+  description: string;
+  needsHelp: boolean;
+  website?: string | null;
+  logo?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getProduct
 // ====================================================
 

@@ -53,25 +53,26 @@ const FileInput = styled.input`
 interface IProps {
   name: string;
   description: string;
-  needHelp: boolean;
-  homepage: string;
+  needsHelp: boolean;
+  website: string;
   logo: string;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   uploadImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
   canUpload: boolean;
   status: string | null;
+  handleSubmit: () => void;
 }
 
 const NewPresenter: React.SFC<IProps> = ({
   handleInputChange,
   name,
   description,
-  needHelp,
-  homepage,
+  needsHelp,
+  website,
   logo,
   uploadImage,
-  canUpload,
-  status
+  status,
+  handleSubmit
 }) => (
   <Wrapper>
     <Head>
@@ -80,7 +81,7 @@ const NewPresenter: React.SFC<IProps> = ({
     <Container>
       <ETitle>Add a new product</ETitle>
       <Card>
-        <EForm>
+        <EForm onSubmit={handleSubmit}>
           <Label htmlFor="file">
             <UploadedImage src={logo || "/static/photoPlaceholder.jpg"} />
           </Label>
@@ -110,14 +111,22 @@ const NewPresenter: React.SFC<IProps> = ({
             <EInput
               required={true}
               type={"url"}
-              name={"homepage"}
+              name={"website"}
               placeholder={"Website"}
-              value={homepage}
+              value={website}
               onChange={handleInputChange}
             />
+            <input
+              onChange={handleInputChange}
+              id={"help"}
+              type={"checkbox"}
+              name={"needsHelp"}
+              checked={needsHelp}
+            />
+            <label htmlFor="help">I need help with to finish this</label>
           </FormInputs>
           {status && status}
-          <Button text={"Create Product"} accent={true} disabled={canUpload} />
+          <Button text={"Add Product"} onClick={handleSubmit} accent={true} />
         </EForm>
       </Card>
     </Container>

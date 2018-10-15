@@ -1,45 +1,118 @@
 import React from "react";
 import Axios from "axios";
 import uuid from "uuid/v1";
+import { withRouter } from "next/router";
+import { Mutation, MutationFn } from "react-apollo";
 import NewPresenter from "./newPresenter";
 import { AWS_URL } from "../../configs";
 import { toast } from "react-toastify";
+import { addProduct, addProductVariables } from "types/api";
+import { ADD_PRODUCT } from "./newQueries";
 
 interface IState {
   name: string;
   description: string;
-  needHelp: boolean;
-  homepage: string;
+  needsHelp: boolean;
+  website: string;
   logo: string;
   status: string | null;
   canUpload: boolean;
 }
 
-class NewContainer extends React.Component<{}, IState> {
+class AddProductMutaton extends Mutation<addProduct, addProductVariables> {}
+
+class NewContainer extends React.Component<any, IState> {
+  public addProduct: MutationFn<addProduct>;
   constructor(props) {
     super(props);
     this.state = {
       name: "",
       description: "",
-      needHelp: false,
-      homepage: "",
+      needsHelp: false,
+      website: "",
       logo: "",
       status: null,
       canUpload: true
     };
   }
   render() {
-    const { canUpload, status } = this.state;
+    const {
+      canUpload,
+      status,
+      name,
+      description,
+      website,
+      logo,
+      needsHelp
+    } = this.state;
     return (
-      <NewPresenter
-        {...this.state}
-        canUpload={canUpload}
-        handleInputChange={this.handleInputChange}
-        uploadImage={this.handleImageUpload}
-        status={status}
-      />
+      <AddProductMutaton
+        mutation={ADD_PRODUCT}
+        variables={{ name, description, website, logo, needsHelp }}
+        onCompleted={this.onAddCompleted}
+      >
+        {addProduct => {
+          this.addProduct = addProduct;
+          return (
+            <NewPresenter
+              {...this.state}
+              canUpload={canUpload}
+              handleInputChange={this.handleInputChange}
+              uploadImage={this.handleImageUpload}
+              handleSubmit={this.handleSubmit}
+              status={status}
+            />
+          );
+        }}
+      </AddProductMutaton>
     );
   }
+  public handleInputChange: React.ChangeEventHandler<
+    HTMLInputElement
+  > = event => {
+    const {
+      target: { name, value }
+    } = event;
+    if (name === "needsHelp") {
+      this.setState(prevState => {
+        return {
+          needsHelp: !prevState.needsHelp
+        };
+      });
+    } else {
+      this.setState({
+        [name]: value
+      } as any);
+    }
+  };
+  public handleSubmit = () => {
+    const { canUpload, name, description } = this.state;
+
+    if (!canUpload) {
+      toast.error("Wait until the image has uploaded");
+      return;
+    } else if (name === "" && description === "") {
+      toast.error("Fill up the required fields");
+      return;
+    }
+    this.addProduct();
+  };
+  public onAddCompleted = (data: addProduct) => {
+    const { router } = this.props;
+    const { name } = this.state;
+    const {
+      CreateProduct: { ok, product, error }
+    } = data;
+    if (!ok && error) {
+      toast.error(error);
+      return;
+    } else {
+      toast.success(`${name} created!`);
+      if (product) {
+        router.push(`/product/${product.slug}`);
+      }
+    }
+  };
   public handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -48,7 +121,7 @@ class NewContainer extends React.Component<{}, IState> {
     } = event;
     if (files) {
       const file = files[0];
-      if (file.size > 699050) {
+      if (file.size > 524288) {
         toast.error("File is too big");
       } else {
         this.setState({
@@ -76,11 +149,9 @@ class NewContainer extends React.Component<{}, IState> {
       "Content-Type": file.type
     };
     try {
-      console.log(signedUrl, file, headers);
-      const request = await Axios.put(signedUrl, file, {
+      await Axios.put(signedUrl, file, {
         headers
       });
-      console.log(request);
       this.setState({
         logo: fileUrl,
         status: null,
@@ -90,17 +161,6 @@ class NewContainer extends React.Component<{}, IState> {
       console.log(error);
     }
   };
-
-  public handleInputChange: React.ChangeEventHandler<
-    HTMLInputElement
-  > = event => {
-    const {
-      target: { name, value }
-    } = event;
-    this.setState({
-      [name]: value
-    } as any);
-  };
 }
 
-export default NewContainer;
+export default withRouter(NewContainer);

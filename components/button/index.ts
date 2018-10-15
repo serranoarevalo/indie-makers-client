@@ -1,2 +1,3 @@
-import Button from "./button";
+import Button, { StyledElement } from "./button";
+export { StyledElement };
 export default Button;
