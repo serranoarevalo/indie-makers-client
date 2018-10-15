@@ -1,40 +1,69 @@
 import React from "react";
 import DashboardPresenter from "./DashboardPresenter";
-import { Query } from "react-apollo";
-import { getDashboard } from "types/api";
+import { Query, Mutation, MutationFn } from "react-apollo";
+import { getDashboard, createGoal, createGoalVariables } from "types/api";
 import { GET_DASHBOARD } from "./DashboardQueries";
+import { toast } from "react-toastify";
+import { ADD_GOAL } from "../../sharedQueries";
 
 interface IState {
   newToDo: string;
-  product: string;
+  productId: number;
 }
 
 class DashboardQuery extends Query<getDashboard> {}
+class AddTodoMutation extends Mutation<createGoal, createGoalVariables> {}
 
 class DashboardContainer extends React.Component<{}, IState> {
+  public addToDo: MutationFn<createGoal, createGoalVariables>;
   constructor(props) {
     super(props);
     this.state = {
       newToDo: "",
-      product: "none"
+      productId: 0
     };
   }
   render() {
-    const { newToDo, product } = this.state;
+    const { newToDo, productId } = this.state;
     return (
       <DashboardQuery query={GET_DASHBOARD}>
         {({ data, loading }) => (
-          <DashboardPresenter
-            inputValue={newToDo}
-            handleInputChange={this.handleInputChange}
-            product={product}
-            loading={loading}
-            data={data}
-          />
+          <AddTodoMutation
+            mutation={ADD_GOAL}
+            variables={{ text: newToDo, productId }}
+            refetchQueries={[{ query: GET_DASHBOARD }]}
+          >
+            {addToDo => {
+              this.addToDo = addToDo;
+              return (
+                <DashboardPresenter
+                  inputValue={newToDo}
+                  handleInputChange={this.handleInputChange}
+                  productId={productId}
+                  loading={loading}
+                  data={data}
+                  handleSubmit={this.handleSubmit}
+                />
+              );
+            }}
+          </AddTodoMutation>
         )}
       </DashboardQuery>
     );
   }
+  public handleSubmit = () => {
+    const { productId, newToDo } = this.state;
+    if (productId === 0) {
+      toast.error("Select a product");
+    } else if (newToDo === "") {
+      toast.error("You have to write a goal!");
+    } else {
+      this.addToDo();
+      this.setState({
+        newToDo: ""
+      });
+    }
+  };
   public handleInputChange: React.ChangeEventHandler<
     HTMLInputElement | HTMLSelectElement
   > = event => {

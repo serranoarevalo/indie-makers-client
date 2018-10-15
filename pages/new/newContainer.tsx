@@ -8,6 +8,7 @@ import { AWS_URL } from "../../configs";
 import { toast } from "react-toastify";
 import { addProduct, addProductVariables } from "types/api";
 import { ADD_PRODUCT } from "./newQueries";
+import { GET_DASHBOARD } from "../../components/dashboard/DashboardQueries";
 
 interface IState {
   name: string;
@@ -50,6 +51,7 @@ class NewContainer extends React.Component<any, IState> {
         mutation={ADD_PRODUCT}
         variables={{ name, description, website, logo, needsHelp }}
         onCompleted={this.onAddCompleted}
+        refetchQueries={[{ query: GET_DASHBOARD }]}
       >
         {addProduct => {
           this.addProduct = addProduct;

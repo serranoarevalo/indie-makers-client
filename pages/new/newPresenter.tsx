@@ -123,7 +123,7 @@ const NewPresenter: React.SFC<IProps> = ({
               name={"needsHelp"}
               checked={needsHelp}
             />
-            <label htmlFor="help">I need help with to finish this</label>
+            <label htmlFor="help">I need help to finish this</label>
           </FormInputs>
           {status && status}
           <Button text={"Add Product"} onClick={handleSubmit} accent={true} />

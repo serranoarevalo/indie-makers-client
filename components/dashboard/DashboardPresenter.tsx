@@ -84,9 +84,10 @@ interface IProps {
   handleInputChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  product: string;
+  productId: number;
   loading: boolean;
   data?: getDashboard;
+  handleSubmit: () => void;
 }
 
 const getTime = () => {
@@ -106,8 +107,9 @@ const getTime = () => {
 const DashboardPresenter: React.SFC<IProps> = ({
   inputValue,
   handleInputChange,
-  product,
-  data
+  productId,
+  data,
+  handleSubmit
 }) => (
   <Container>
     <Head>
@@ -122,7 +124,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
           </HTitle>
           <Subtitle>What are you gonna accomplish today?</Subtitle>
           <List>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <AddContainer>
                 <Input
                   fontSize={"22px"}
@@ -130,11 +132,11 @@ const DashboardPresenter: React.SFC<IProps> = ({
                   value={inputValue}
                   name={"newToDo"}
                   onChange={handleInputChange}
-                  placeholder={"Type a goal"}
+                  placeholder={"Type a goal and press 'Enter'"}
                 />
                 <Select
-                  name={"product"}
-                  value={product}
+                  name={"productId"}
+                  value={String(productId)}
                   onChange={handleInputChange}
                 >
                   <Product value={"none"}>Add to</Product>

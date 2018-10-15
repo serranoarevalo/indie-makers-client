@@ -33,3 +33,16 @@ export const GET_ME = gql`
     }
   }
 `;
+
+export const ADD_GOAL = gql`
+  mutation createGoal($text: String!, $productId: Int!) {
+    CreateGoal(text: $text, productId: $productId) {
+      ok
+      error
+      goal {
+        ...GoalParts
+      }
+    }
+  }
+  ${GOAL_FRAGMENT}
+`;
