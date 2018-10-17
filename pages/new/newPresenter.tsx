@@ -7,6 +7,7 @@ import Input from "../../components/input";
 import Title from "../../components/title";
 import Form from "../../components/form/from";
 import Button from "../../components/button";
+import { lighten } from "polished";
 
 const Container = styled.div`
   max-width: 500px;
@@ -29,7 +30,27 @@ const EForm = styled(Form)`
 
 const EInput = styled(Input)`
   &:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+  }
+`;
+
+const Description = styled.textarea`
+  width: 100%;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid ${props => lighten(0.1, props.theme.greyColor)};
+  font-size: 14px;
+  margin-bottom: 30px;
+  &::placeholder {
+    font-weight: 300;
+  }
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  &:focus {
+    outline: none;
+    border-bottom-color: ${props => props.theme.blackColor};
   }
 `;
 
@@ -44,7 +65,16 @@ const UploadedImage = styled.img`
   border: 2px ${props => props.theme.blackColor} dashed;
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25px;
+  & ${UploadedImage} {
+    margin-bottom: 10px;
+  }
+  color: ${props => props.theme.greyColor};
+`;
 
 const FileInput = styled.input`
   display: none;
@@ -56,7 +86,9 @@ interface IProps {
   needsHelp: boolean;
   website: string;
   logo: string;
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInputChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   uploadImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
   canUpload: boolean;
   status: string | null;
@@ -84,6 +116,7 @@ const NewPresenter: React.SFC<IProps> = ({
         <EForm onSubmit={handleSubmit}>
           <Label htmlFor="file">
             <UploadedImage src={logo || "/static/photoPlaceholder.jpg"} />
+            (not required)
           </Label>
           <FileInput
             id={"file"}
@@ -100,13 +133,13 @@ const NewPresenter: React.SFC<IProps> = ({
               value={name}
               onChange={handleInputChange}
             />
-            <EInput
+            <Description
               required={true}
-              type={"text"}
               name={"description"}
-              placeholder={"What is it about? *"}
+              placeholder={"What is it about? * (140 max)"}
               value={description}
               onChange={handleInputChange}
+              maxLength={140}
             />
             <EInput
               required={true}

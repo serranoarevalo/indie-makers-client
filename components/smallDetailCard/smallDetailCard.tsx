@@ -3,6 +3,7 @@ import styled from "../../typed-components";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
 import Card from "../card";
+import ImagePlaceholder from "../imagePlaceholder";
 
 const Container = styled.div`
   display: grid;
@@ -22,8 +23,8 @@ const Column = styled.div`
 `;
 
 const Avatar = styled(RoundImage)`
-  height: 100%;
-  width: 100%;
+  height: 40px;
+  width: 40px;
 `;
 
 const Name = styled.h5`
@@ -52,7 +53,7 @@ const Badges = styled.div`
 `;
 
 interface IPresenterProps {
-  icon: string;
+  icon?: string;
   title: string;
   subtitle?: string;
   streakNumber?: number;
@@ -76,7 +77,11 @@ const DetailContent: React.SFC<IPresenterProps> = ({
 }) => (
   <Container className={className}>
     <Column>
-      <Avatar src={icon} />
+      {icon ? (
+        <Avatar src={icon} />
+      ) : (
+        <ImagePlaceholder size={40} letter={title[0]} />
+      )}
     </Column>
     <Column>
       <NameContainer>
@@ -102,7 +107,11 @@ const DetailContent: React.SFC<IPresenterProps> = ({
           {needsHelp && <Badge text={"Needs help"} icon={"⚠️"} />}
         </Badges>
       </NameContainer>
-      {subtitle && <UserName light={lightSubtitle}>{subtitle}</UserName>}
+      {subtitle && (
+        <UserName light={lightSubtitle}>
+          {subtitle.length > 50 ? `${subtitle.substring(0, 50)}...` : subtitle}
+        </UserName>
+      )}
     </Column>
   </Container>
 );

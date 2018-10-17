@@ -29,6 +29,7 @@ interface IProps {
   name: string;
   required?: boolean;
   className?: string;
+  maxLength?: number;
 }
 
 const Input: React.SFC<IProps> = ({
@@ -40,7 +41,8 @@ const Input: React.SFC<IProps> = ({
   fontSize = "16px",
   name,
   required,
-  className
+  className,
+  maxLength
 }) => (
   <Container
     className={className}
@@ -52,6 +54,7 @@ const Input: React.SFC<IProps> = ({
     onChange={onChange}
     value={value}
     fontSize={fontSize}
+    maxLength={maxLength}
   />
 );
 

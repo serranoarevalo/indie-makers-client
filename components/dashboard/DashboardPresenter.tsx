@@ -238,7 +238,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
                       product && (
                         <SmallDetailCard
                           key={product.id}
-                          icon={product.logo || "/static/demo.jpg"}
+                          icon={product.logo || undefined}
                           title={product.name}
                           subtitle={product.description}
                           isLink={true}

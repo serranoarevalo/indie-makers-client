@@ -70,7 +70,7 @@ class NewContainer extends React.Component<any, IState> {
     );
   }
   public handleInputChange: React.ChangeEventHandler<
-    HTMLInputElement
+    HTMLInputElement | HTMLTextAreaElement
   > = event => {
     const {
       target: { name, value }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled from "../../typed-components";
 import Badge from "../badge";
 import RoundImage from "../roundImage";
+import ImagePlaceholder from "../imagePlaceholder";
 
 const Span = styled.span``;
 
@@ -20,10 +21,13 @@ const Container = styled.div`
   }
 `;
 
+const IconContainer = styled.div`
+  margin-bottom: 15px;
+`;
+
 const Icon = styled(RoundImage)`
   height: 80px;
   display: block;
-  margin-bottom: 15px;
 `;
 
 const Title = styled.h4`
@@ -89,7 +93,13 @@ const CardContent: React.SFC<IPresenterProps> = ({
   underTitle
 }) => (
   <React.Fragment>
-    <Icon src={icon} />
+    <IconContainer>
+      {icon ? (
+        <Icon src={icon} />
+      ) : (
+        <ImagePlaceholder letter={title[0]} size={80} />
+      )}
+    </IconContainer>
     <Title>{title}</Title>
     {underTitle && <Small>{underTitle}</Small>}
     {showSubtitle && <Pitch>{subtitle}</Pitch>}
