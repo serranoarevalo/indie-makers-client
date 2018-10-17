@@ -22,6 +22,8 @@ const PhotoContainers = styled.div`
 
 const ProductContainer = styled.div`
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 const Photo = styled.img`
@@ -56,7 +58,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.userDetail(goal.maker!.username || "")}
         as={routes.asUserDetail(goal.maker!.username || "")}
       >
-        <a>
+        <a style={{ height: "35px" }}>
           <Photo src={(goal.maker && goal.maker.profilePhoto) || ""} />
         </a>
       </Link>
@@ -65,7 +67,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.productDetail(goal.product!.slug || "")}
         as={routes.asProductDetail(goal.product!.slug || "")}
       >
-        <a style={{ display: "flex", alignItems: "center" }}>
+        <a>
           {goal && goal.product && goal.product.logo ? (
             <Photo src={(goal.product && goal.product.logo) || ""} />
           ) : (
