@@ -11,7 +11,7 @@ export default class extends React.Component {
     return (
       <CompletedQuery query={COMPLETED_GOALS}>
         {({ data, loading }) =>
-          !loading ? <CompletedGoalsPresenter data={data} /> : null
+          !loading ? <CompletedGoalsPresenter data={data!} /> : null
         }
       </CompletedQuery>
     );

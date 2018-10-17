@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "../../typed-components";
 import Wrapper from "../wrapper";
 import Input from "../input";
-import Form from "../form/from";
+import Form from "../form";
 import Select from "../select";
 import GoalText from "../goalText";
 import Section from "../section";

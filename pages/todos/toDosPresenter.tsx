@@ -1,45 +1,18 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import Wrapper from "../../components/wrapper";
 import Tabs from "../../components/tabs";
 import Tab from "../../components/tab";
-import GoalText from "../../components/goalText";
 import Card from "../../components/card";
 import { filterToDos } from "types/api";
 import Pagination from "../../components/pagination";
+import GoalFeed from "../../components/goalFeed";
 
 const Goals = styled.div`
   width: 100%;
   margin-bottom: 60px;
-`;
-
-const Goal = styled.div`
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const PhotoContainers = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Photo = styled.img`
-  width: 35px;
-  border-radius: 50%;
-  &:first-child {
-    margin-right: 10px;
-  }
-  &:last-child {
-    margin-left: 10px;
-  }
 `;
 
 interface IProps {
@@ -73,47 +46,7 @@ const ToDosPresenter: React.SFC<IProps> = ({
     {goals &&
       goals.length !== 0 && (
         <Goals>
-          <Card>
-            {goals.map(
-              goal =>
-                goal && (
-                  <Goal key={goal.id}>
-                    <GoalText
-                      key={goal.id}
-                      lineThrough={false}
-                      isCompleted={goal.isCompleted}
-                      text={goal.text}
-                      productName={goal.product!.name}
-                      productSlug={goal.product!.slug}
-                      timeStamp={goal.createdAt || ""}
-                    />
-                    <PhotoContainers>
-                      <Link
-                        href={routes.userDetail(goal.maker!.username || "")}
-                        as={routes.asUserDetail(goal.maker!.username || "")}
-                      >
-                        <a>
-                          <Photo
-                            src={(goal.maker && goal.maker.profilePhoto) || ""}
-                          />
-                        </a>
-                      </Link>
-                      👉🏻
-                      <Link
-                        href={routes.productDetail(goal.product!.slug || "")}
-                        as={routes.asProductDetail(goal.product!.slug || "")}
-                      >
-                        <a>
-                          <Photo
-                            src={(goal.product && goal.product.logo) || ""}
-                          />
-                        </a>
-                      </Link>
-                    </PhotoContainers>
-                  </Goal>
-                )
-            )}
-          </Card>
+          <Card>{goals.map(goal => goal && <GoalFeed goal={goal} />)}</Card>
         </Goals>
       )}
     {goals &&

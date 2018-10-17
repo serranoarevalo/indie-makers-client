@@ -8,7 +8,9 @@ import SmallDetailCard from "../../components/smallDetailCard";
 import BigDetailCard from "../../components/bigDetailCard";
 import GoalText from "../../components/goalText";
 import Button from "../../components/button";
+import AddToDo from "../../components/addToDo";
 import { getProduct } from "types/api";
+import { Consumer } from "../../lib/context";
 
 const Container = styled.div`
   margin: 50px 0px;
@@ -101,6 +103,19 @@ const ProductPresenter: React.SFC<IProps> = ({
               needsHelp={product.needsHelp}
             />
             <Divider />
+            <Consumer>
+              {value => {
+                const { userQuery } = value;
+                const makerId = product.maker && product.maker.id;
+                const loggedId =
+                  userQuery && userQuery.Me.user && userQuery.Me.user.id;
+                if (makerId === loggedId) {
+                  return <AddToDo productId={product.id} />;
+                }
+                return null;
+              }}
+            </Consumer>
+            <Divider />
             {product.website && (
               <a href={product.website} target={"_blank"}>
                 <LinkBtn accent={false} text={"Visit Website"} />
@@ -170,7 +185,7 @@ const ProductPresenter: React.SFC<IProps> = ({
           </Card>
         </React.Fragment>
       ) : (
-        <h1 className={"thickText"}>This product does not exists</h1>
+        <h1 className={"thickText"}>This product does not exist.</h1>
       )}
     </Container>
   </Wrapper>

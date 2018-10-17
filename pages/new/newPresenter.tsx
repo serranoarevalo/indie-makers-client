@@ -5,9 +5,9 @@ import Wrapper from "../../components/wrapper";
 import Card from "../../components/card";
 import Input from "../../components/input";
 import Title from "../../components/title";
-import Form from "../../components/form/from";
+import Form from "../../components/form";
 import Button from "../../components/button";
-import { lighten } from "polished";
+import TextArea from "../../components/textArea";
 
 const Container = styled.div`
   max-width: 500px;
@@ -31,26 +31,6 @@ const EForm = styled(Form)`
 const EInput = styled(Input)`
   &:not(:last-child) {
     margin-bottom: 30px;
-  }
-`;
-
-const Description = styled.textarea`
-  width: 100%;
-  resize: none;
-  border: none;
-  border-bottom: 1px solid ${props => lighten(0.1, props.theme.greyColor)};
-  font-size: 14px;
-  margin-bottom: 30px;
-  &::placeholder {
-    font-weight: 300;
-  }
-  &:focus,
-  &:active {
-    outline: none;
-  }
-  &:focus {
-    outline: none;
-    border-bottom-color: ${props => props.theme.blackColor};
   }
 `;
 
@@ -133,13 +113,14 @@ const NewPresenter: React.SFC<IProps> = ({
               value={name}
               onChange={handleInputChange}
             />
-            <Description
+            <TextArea
               required={true}
               name={"description"}
               placeholder={"What is it about? * (140 max)"}
               value={description}
               onChange={handleInputChange}
               maxLength={140}
+              marginBottom={"30px"}
             />
             <EInput
               required={true}

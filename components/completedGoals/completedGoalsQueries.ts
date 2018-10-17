@@ -6,6 +6,10 @@ export const COMPLETED_GOALS = gql`
     FilterGoals(status: COMPLETED) {
       goals {
         ...GoalParts
+        maker {
+          username
+          profilePhoto
+        }
       }
     }
   }

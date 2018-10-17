@@ -12,6 +12,12 @@ export interface completedGoals_FilterGoals_goals_product {
   name: string;
 }
 
+export interface completedGoals_FilterGoals_goals_maker {
+  __typename: "User";
+  username: string | null;
+  profilePhoto: string;
+}
+
 export interface completedGoals_FilterGoals_goals {
   __typename: "Goal";
   id: number;
@@ -20,6 +26,7 @@ export interface completedGoals_FilterGoals_goals {
   product: completedGoals_FilterGoals_goals_product | null;
   createdAt: string;
   completedAt: string | null;
+  maker: completedGoals_FilterGoals_goals_maker | null;
 }
 
 export interface completedGoals_FilterGoals {
@@ -353,7 +360,9 @@ export interface getProduct_GetProduct_product {
   website: string | null;
   maker: getProduct_GetProduct_product_maker | null;
   pendingGoals: (getProduct_GetProduct_product_pendingGoals | null)[] | null;
-  completedGoals: (getProduct_GetProduct_product_completedGoals | null)[] | null;
+  completedGoals:
+    | (getProduct_GetProduct_product_completedGoals | null)[]
+    | null;
 }
 
 export interface getProduct_GetProduct {
@@ -618,7 +627,7 @@ export interface ProductParts {
 
 export enum GoalStatus {
   COMPLETED = "COMPLETED",
-  PENDING = "PENDING",
+  PENDING = "PENDING"
 }
 
 export enum ProductState {
@@ -626,13 +635,13 @@ export enum ProductState {
   HELP = "HELP",
   LAUNCHED = "LAUNCHED",
   NEW = "NEW",
-  UPDATED = "UPDATED",
+  UPDATED = "UPDATED"
 }
 
 export enum UserState {
   FIRE = "FIRE",
   SHIPPED = "SHIPPED",
-  UPDATED = "UPDATED",
+  UPDATED = "UPDATED"
 }
 
 //==============================================================

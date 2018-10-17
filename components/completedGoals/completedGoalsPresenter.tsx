@@ -2,12 +2,11 @@ import Link from "next/link";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import Card from "../card";
-import Goal from "../goal";
-import GoalText from "../goalText";
 import Section from "../section";
 import Title from "../title";
 import FakeLink from "../fakeLink";
 import { completedGoals } from "../../types/api";
+import GoalFeed from "../goalFeed";
 
 const Goals = styled.div`
   display: flex;
@@ -21,13 +20,13 @@ const Goals = styled.div`
 `;
 
 interface IProps {
-  data?: completedGoals;
+  data: completedGoals;
 }
 
 const CompletedGoals: React.SFC<IProps> = ({
-  data: { FilterGoals: { makers = [] } = {} } = {}
+  data: { FilterGoals: { goals = [] } = {} } = {}
 }) =>
-  makers && makers.length !== 0 ? (
+  goals && goals.length !== 0 ? (
     <Section
       titleElements={[
         <Title key={1}>Completed Goals</Title>,
@@ -39,30 +38,7 @@ const CompletedGoals: React.SFC<IProps> = ({
       ]}
     >
       <Card padding={"0px 20px"}>
-        {makers.map(
-          maker =>
-            maker && (
-              <Goal maker={maker} key={maker.id}>
-                <Goals>
-                  {maker.goals &&
-                    maker.goals.map(
-                      goal =>
-                        goal && (
-                          <GoalText
-                            key={goal.id}
-                            lineThrough={false}
-                            isCompleted={goal.isCompleted}
-                            text={goal.text}
-                            productName={goal.product!.name}
-                            productSlug={goal.product!.slug}
-                            timeStamp={goal.completedAt || ""}
-                          />
-                        )
-                    )}
-                </Goals>
-              </Goal>
-            )
-        )}
+        <Goals>{goals.map(goal => goal && <GoalFeed goal={goal} />)}</Goals>
       </Card>
     </Section>
   ) : null;
