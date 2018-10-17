@@ -4,6 +4,7 @@ import { createGoal, createGoalVariables } from "types/api";
 import { ADD_GOAL } from "../../sharedQueries";
 import AddToDoPresenter from "./addToDoPresenter";
 import { toast } from "react-toastify";
+import { GET_PRODUCT } from "../../pages/product/productQuery";
 
 interface IState {
   text: string;
@@ -11,6 +12,7 @@ interface IState {
 
 interface IProps {
   productId: number;
+  slug: string;
 }
 
 class AddToDoMutation extends Mutation<createGoal, createGoalVariables> {}
@@ -21,10 +23,14 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
     text: ""
   };
   render() {
-    const { productId } = this.props;
+    const { productId, slug } = this.props;
     const { text } = this.state;
     return (
-      <AddToDoMutation mutation={ADD_GOAL} variables={{ productId, text }}>
+      <AddToDoMutation
+        mutation={ADD_GOAL}
+        variables={{ productId, text }}
+        refetchQueries={[{ query: GET_PRODUCT, variables: { slug } }]}
+      >
         {addToDo => {
           this.addToDo = addToDo;
           return (
@@ -53,6 +59,9 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
       toast.error("You have to type a goal");
       return;
     }
+    this.setState({
+      text: ""
+    });
     this.addToDo();
   };
 }

@@ -110,7 +110,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                 const loggedId =
                   userQuery && userQuery.Me.user && userQuery.Me.user.id;
                 if (makerId === loggedId) {
-                  return <AddToDo productId={product.id} />;
+                  return <AddToDo slug={product.slug} productId={product.id} />;
                 }
                 return null;
               }}
