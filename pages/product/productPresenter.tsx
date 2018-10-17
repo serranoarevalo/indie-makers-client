@@ -162,12 +162,15 @@ const ProductPresenter: React.SFC<IProps> = ({
                                 <GoalText
                                   key={goal.id}
                                   lineThrough={false}
-                                  isCompleted={false}
+                                  isCompleted={goal.isCompleted}
                                   text={goal.text}
                                   onProductPage={true}
                                   timeStamp={goal.createdAt}
                                   isMine={isMine}
                                   goalId={goal.id}
+                                  productSlug={
+                                    (goal.product && goal.product.slug) || ""
+                                  }
                                 />
                               )
                           )}
@@ -187,10 +190,14 @@ const ProductPresenter: React.SFC<IProps> = ({
                                   key={goal.id}
                                   goalId={goal.id}
                                   lineThrough={false}
-                                  isCompleted={true}
+                                  isCompleted={goal.isCompleted}
                                   text={goal.text}
                                   timeStamp={goal.completedAt!}
                                   onProductPage={true}
+                                  isMine={isMine}
+                                  productSlug={
+                                    (goal.product && goal.product.slug) || ""
+                                  }
                                 />
                               )
                           )}

@@ -46,7 +46,9 @@ const ToDosPresenter: React.SFC<IProps> = ({
     {goals &&
       goals.length !== 0 && (
         <Goals>
-          <Card>{goals.map(goal => goal && <GoalFeed goal={goal} />)}</Card>
+          <Card>
+            {goals.map(goal => goal && <GoalFeed key={goal.id} goal={goal} />)}
+          </Card>
         </Goals>
       )}
     {goals &&

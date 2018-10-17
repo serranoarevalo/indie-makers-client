@@ -6,7 +6,7 @@ import GoalTextPresenter from "./goalTextPresenter";
 import { toggleToDo, toggleToDoVariables } from "types/api";
 import { TOGGLE_TODO } from "./goalTextQueries";
 import { GOAL_FRAGMENT } from "../../fragments";
-import { consolidateStreamedStyles } from "styled-components";
+import { GET_PRODUCT } from "../../pages/product/productQuery";
 
 class ToggleMutation extends Mutation<toggleToDo, toggleToDoVariables> {}
 
@@ -26,12 +26,15 @@ interface IProps {
 
 export default class GoalTextContainer extends React.Component<IProps> {
   render() {
-    const { isMine, goalId, isCompleted } = this.props;
+    const { isMine, goalId, isCompleted, productSlug } = this.props;
     return (
       <ToggleMutation
         mutation={TOGGLE_TODO}
         variables={{ goalId, isCompleted: !isCompleted }}
         update={this.handleAfterToggle}
+        refetchQueries={[
+          { query: GET_PRODUCT, variables: { slug: productSlug } }
+        ]}
       >
         {toggleToDo => (
           <GoalTextPresenter
@@ -62,7 +65,6 @@ export default class GoalTextContainer extends React.Component<IProps> {
           id,
           fragment: GOAL_FRAGMENT
         });
-        console.log({ ...goal, isCompleted: !isCompleted });
         if (goal) {
           cache.writeFragment({
             id,

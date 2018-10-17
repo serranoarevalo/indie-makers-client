@@ -355,17 +355,37 @@ export interface getProduct_GetProduct_product_maker {
   launchedProductCount: number;
 }
 
+export interface getProduct_GetProduct_product_pendingGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
 export interface getProduct_GetProduct_product_pendingGoals {
   __typename: "Goal";
   id: number;
   text: string;
+  isCompleted: boolean;
+  product: getProduct_GetProduct_product_pendingGoals_product | null;
   createdAt: string;
+  completedAt: string | null;
+}
+
+export interface getProduct_GetProduct_product_completedGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
 }
 
 export interface getProduct_GetProduct_product_completedGoals {
   __typename: "Goal";
   id: number;
   text: string;
+  isCompleted: boolean;
+  product: getProduct_GetProduct_product_completedGoals_product | null;
+  createdAt: string;
   completedAt: string | null;
 }
 

@@ -21,11 +21,11 @@ const Text = styled<
   color: ${props => props.theme.blackColor};
 `;
 
-const Icon = styled.span`
+const Icon = styled<any, any>("span")`
   width: 25px;
   text-align: center;
   margin-right: 10px;
-  cursor: pointer;
+  cursor: ${props => (props.isMine ? "pointer" : "default")};
 `;
 
 const Goal = styled.span`
@@ -71,7 +71,9 @@ const GoalText: React.SFC<IProps> = ({
   toggleCompleted
 }) => (
   <Container className={className} fontSize={fontSize}>
-    <Icon onClick={toggleCompleted}>{isCompleted ? "✅" : "◻️"}</Icon>
+    <Icon onClick={toggleCompleted} isMine={isMine}>
+      {isCompleted ? "✅" : "◻️"}
+    </Icon>
     <Text isCompleted={isCompleted} lineThrough={lineThrough}>
       {text}
     </Text>{" "}

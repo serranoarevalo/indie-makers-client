@@ -1,5 +1,9 @@
 import gql from "graphql-tag";
-import { PRODUCT_FRAGMENT, MAKER_FRAGMENT } from "../../fragments";
+import {
+  PRODUCT_FRAGMENT,
+  MAKER_FRAGMENT,
+  GOAL_FRAGMENT
+} from "../../fragments";
 
 export const GET_PRODUCT = gql`
   query getProduct($slug: String!) {
@@ -11,18 +15,15 @@ export const GET_PRODUCT = gql`
           ...MakerParts
         }
         pendingGoals {
-          id
-          text
-          createdAt
+          ...GoalParts
         }
         completedGoals {
-          id
-          text
-          completedAt
+          ...GoalParts
         }
       }
     }
   }
+  ${GOAL_FRAGMENT}
   ${PRODUCT_FRAGMENT}
   ${MAKER_FRAGMENT}
 `;
