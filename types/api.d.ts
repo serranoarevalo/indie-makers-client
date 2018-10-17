@@ -143,6 +143,28 @@ export interface fireMakers {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: toggleToDo
+// ====================================================
+
+export interface toggleToDo_EditGoal {
+  __typename: "EditGoalResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface toggleToDo {
+  EditGoal: toggleToDo_EditGoal;
+}
+
+export interface toggleToDoVariables {
+  isCompleted: boolean;
+  goalId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: addedRecently
 // ====================================================
 
@@ -360,9 +382,7 @@ export interface getProduct_GetProduct_product {
   website: string | null;
   maker: getProduct_GetProduct_product_maker | null;
   pendingGoals: (getProduct_GetProduct_product_pendingGoals | null)[] | null;
-  completedGoals:
-    | (getProduct_GetProduct_product_completedGoals | null)[]
-    | null;
+  completedGoals: (getProduct_GetProduct_product_completedGoals | null)[] | null;
 }
 
 export interface getProduct_GetProduct {
@@ -627,7 +647,7 @@ export interface ProductParts {
 
 export enum GoalStatus {
   COMPLETED = "COMPLETED",
-  PENDING = "PENDING"
+  PENDING = "PENDING",
 }
 
 export enum ProductState {
@@ -635,13 +655,13 @@ export enum ProductState {
   HELP = "HELP",
   LAUNCHED = "LAUNCHED",
   NEW = "NEW",
-  UPDATED = "UPDATED"
+  UPDATED = "UPDATED",
 }
 
 export enum UserState {
   FIRE = "FIRE",
   SHIPPED = "SHIPPED",
-  UPDATED = "UPDATED"
+  UPDATED = "UPDATED",
 }
 
 //==============================================================

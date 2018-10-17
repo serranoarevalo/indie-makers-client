@@ -1,2 +1,2 @@
-import GoalText from "./goalText";
+import GoalText from "./goalTextContainer";
 export default GoalText;

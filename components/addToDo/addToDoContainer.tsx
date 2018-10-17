@@ -5,6 +5,7 @@ import { ADD_GOAL } from "../../sharedQueries";
 import AddToDoPresenter from "./addToDoPresenter";
 import { toast } from "react-toastify";
 import { GET_PRODUCT } from "../../pages/product/productQuery";
+import { GET_DASHBOARD } from "../dashboard/DashboardQueries";
 
 interface IState {
   text: string;
@@ -29,7 +30,10 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
       <AddToDoMutation
         mutation={ADD_GOAL}
         variables={{ productId, text }}
-        refetchQueries={[{ query: GET_PRODUCT, variables: { slug } }]}
+        refetchQueries={[
+          { query: GET_PRODUCT, variables: { slug } },
+          { query: GET_DASHBOARD }
+        ]}
       >
         {addToDo => {
           this.addToDo = addToDo;

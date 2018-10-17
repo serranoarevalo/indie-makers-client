@@ -25,6 +25,7 @@ const Icon = styled.span`
   width: 25px;
   text-align: center;
   margin-right: 10px;
+  cursor: pointer;
 `;
 
 const Goal = styled.span`
@@ -53,6 +54,7 @@ interface IProps {
   isMine?: boolean;
   timeStamp?: string;
   productSlug?: string;
+  toggleCompleted: any;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -65,10 +67,11 @@ const GoalText: React.SFC<IProps> = ({
   className,
   isMine = false,
   timeStamp,
-  productSlug
+  productSlug,
+  toggleCompleted
 }) => (
   <Container className={className} fontSize={fontSize}>
-    <Icon>{isCompleted ? "✅" : "◻️"}</Icon>
+    <Icon onClick={toggleCompleted}>{isCompleted ? "✅" : "◻️"}</Icon>
     <Text isCompleted={isCompleted} lineThrough={lineThrough}>
       {text}
     </Text>{" "}

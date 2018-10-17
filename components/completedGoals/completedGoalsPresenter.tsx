@@ -11,6 +11,7 @@ import GoalFeed from "../goalFeed";
 const Goals = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 20px 0px;
   & > span {
     margin-bottom: 10px;
     &:last-child {
@@ -38,7 +39,9 @@ const CompletedGoals: React.SFC<IProps> = ({
       ]}
     >
       <Card padding={"0px 20px"}>
-        <Goals>{goals.map(goal => goal && <GoalFeed goal={goal} />)}</Goals>
+        <Goals>
+          {goals.map(goal => goal && <GoalFeed key={goal.id} goal={goal} />)}
+        </Goals>
       </Card>
     </Section>
   ) : null;

@@ -42,6 +42,7 @@ interface IProps {
 const GoalFeed: React.SFC<IProps> = ({ goal }) => (
   <Goal key={goal.id}>
     <GoalText
+      goalId={goal.id}
       key={goal.id}
       lineThrough={false}
       isCompleted={goal.isCompleted}
@@ -64,7 +65,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.productDetail(goal.product!.slug || "")}
         as={routes.asProductDetail(goal.product!.slug || "")}
       >
-        <a>
+        <a style={{ display: "flex", alignItems: "center" }}>
           {goal && goal.product && goal.product.logo ? (
             <Photo src={(goal.product && goal.product.logo) || ""} />
           ) : (

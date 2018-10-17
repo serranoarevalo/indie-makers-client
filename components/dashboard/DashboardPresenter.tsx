@@ -189,6 +189,9 @@ const DashboardPresenter: React.SFC<IProps> = ({
                         productName={(goal.product && goal.product.name) || ""}
                         text={goal.text}
                         timeStamp={goal.createdAt}
+                        goalId={goal.id}
+                        isCompleted={goal.isCompleted}
+                        productSlug={(goal.product && goal.product.slug) || ""}
                       />
                     )
                 )}

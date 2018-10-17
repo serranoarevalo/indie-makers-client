@@ -90,100 +90,119 @@ const ProductPresenter: React.SFC<IProps> = ({
     </Head>
     <Container>
       {product ? (
-        <React.Fragment>
-          <DetailsContainer>
-            <BigDetailCard
-              isLink={false}
-              icon={product.logo || ""}
-              title={product.name}
-              showSubtitle={true}
-              toDoNumber={`${product.completedGoalCount}/${product.goalCount}`}
-              subtitle={product.description}
-              hasAuthor={false}
-              needsHelp={product.needsHelp}
-            />
-            <Divider />
-            <Consumer>
-              {value => {
-                const { userQuery } = value;
-                const makerId = product.maker && product.maker.id;
-                const loggedId =
-                  userQuery && userQuery.Me.user && userQuery.Me.user.id;
-                if (makerId === loggedId) {
-                  return <AddToDo slug={product.slug} productId={product.id} />;
-                }
-                return null;
-              }}
-            </Consumer>
-            <Divider />
-            {product.website && (
-              <a href={product.website} target={"_blank"}>
-                <LinkBtn accent={false} text={"Visit Website"} />
-              </a>
-            )}
-            <Divider />
-            {product.maker && (
-              <SmallDetailCard
-                icon={product.maker.profilePhoto}
-                title={product.maker.fullName}
-                subtitle={product.maker.username || ""}
-                streakNumber={product.maker.streak}
-                isLink={true}
-                link={routes.userDetail(product.maker.username || "")}
-                linkAs={routes.asUserDetail(product.maker.username || "")}
-                isCard={true}
-              />
-            )}
-          </DetailsContainer>
-          <Card>
-            <ToDos>
-              <ToDosColumn>
-                <Header>
-                  <Title>Doing</Title>
-                </Header>
-                <GoalsContainer>
-                  {product.pendingGoals &&
-                    product.pendingGoals.map(
-                      goal =>
-                        goal && (
-                          <GoalText
-                            key={goal.id}
-                            lineThrough={false}
-                            isCompleted={false}
-                            text={goal.text}
-                            onProductPage={true}
-                            timeStamp={goal.createdAt}
-                          />
-                        )
-                    )}
-                </GoalsContainer>
-                <GoalsFooter />
-              </ToDosColumn>
-              <ToDosColumn>
-                <Header>
-                  <Title>Done</Title>
-                </Header>
-                <GoalsContainer>
-                  {product.completedGoals &&
-                    product.completedGoals.map(
-                      goal =>
-                        goal && (
-                          <GoalText
-                            key={goal.id}
-                            lineThrough={false}
-                            isCompleted={true}
-                            text={goal.text}
-                            timeStamp={goal.completedAt!}
-                            onProductPage={true}
-                          />
-                        )
-                    )}
-                </GoalsContainer>
-                <GoalsFooter />
-              </ToDosColumn>
-            </ToDos>
-          </Card>
-        </React.Fragment>
+        <Consumer>
+          {value => {
+            const { userQuery } = value;
+            const makerId = product.maker && product.maker.id;
+
+            const loggedId =
+              userQuery &&
+              userQuery.Me &&
+              userQuery.Me &&
+              userQuery.Me.user &&
+              userQuery.Me.user.id;
+
+            const isMine = makerId === loggedId;
+            return (
+              <>
+                <DetailsContainer>
+                  <BigDetailCard
+                    isLink={false}
+                    icon={product.logo || ""}
+                    title={product.name}
+                    showSubtitle={true}
+                    toDoNumber={`${product.completedGoalCount}/${
+                      product.goalCount
+                    }`}
+                    subtitle={product.description}
+                    hasAuthor={false}
+                    needsHelp={product.needsHelp}
+                  />
+                  <Divider />
+
+                  {isMine && (
+                    <>
+                      <AddToDo productId={product.id} slug={product.slug} />
+                      <Divider />
+                    </>
+                  )}
+
+                  {product.website && (
+                    <>
+                      <a href={product.website} target={"_blank"}>
+                        <LinkBtn accent={false} text={"Visit Website"} />
+                      </a>
+                      <Divider />
+                    </>
+                  )}
+                  {product.maker && (
+                    <SmallDetailCard
+                      icon={product.maker.profilePhoto}
+                      title={product.maker.fullName}
+                      subtitle={product.maker.username || ""}
+                      streakNumber={product.maker.streak}
+                      isLink={true}
+                      link={routes.userDetail(product.maker.username || "")}
+                      linkAs={routes.asUserDetail(product.maker.username || "")}
+                      isCard={true}
+                    />
+                  )}
+                </DetailsContainer>
+                <Card>
+                  <ToDos>
+                    <ToDosColumn>
+                      <Header>
+                        <Title>Doing</Title>
+                      </Header>
+                      <GoalsContainer>
+                        {product.pendingGoals &&
+                          product.pendingGoals.map(
+                            goal =>
+                              goal && (
+                                <GoalText
+                                  key={goal.id}
+                                  lineThrough={false}
+                                  isCompleted={false}
+                                  text={goal.text}
+                                  onProductPage={true}
+                                  timeStamp={goal.createdAt}
+                                  isMine={isMine}
+                                  goalId={goal.id}
+                                />
+                              )
+                          )}
+                      </GoalsContainer>
+                      <GoalsFooter />
+                    </ToDosColumn>
+                    <ToDosColumn>
+                      <Header>
+                        <Title>Done</Title>
+                      </Header>
+                      <GoalsContainer>
+                        {product.completedGoals &&
+                          product.completedGoals.map(
+                            goal =>
+                              goal && (
+                                <GoalText
+                                  key={goal.id}
+                                  goalId={goal.id}
+                                  lineThrough={false}
+                                  isCompleted={true}
+                                  text={goal.text}
+                                  timeStamp={goal.completedAt!}
+                                  onProductPage={true}
+                                />
+                              )
+                          )}
+                      </GoalsContainer>
+                      <GoalsFooter />
+                    </ToDosColumn>
+                  </ToDos>
+                </Card>
+              </>
+            );
+          }}
+        </Consumer>
       ) : (
         <h1 className={"thickText"}>This product does not exist.</h1>
       )}

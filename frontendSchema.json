@@ -1943,7 +1943,7 @@
             "description": "",
             "args": [
               {
-                "name": "goaldId",
+                "name": "goalId",
                 "description": "",
                 "type": {
                   "kind": "NON_NULL",
