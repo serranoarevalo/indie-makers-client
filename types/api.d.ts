@@ -110,46 +110,6 @@ export interface getDashboard {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: createGoal
-// ====================================================
-
-export interface createGoal_CreateGoal_goal_product {
-  __typename: "Product";
-  id: number;
-  slug: string;
-  name: string;
-}
-
-export interface createGoal_CreateGoal_goal {
-  __typename: "Goal";
-  id: number;
-  text: string;
-  isCompleted: boolean;
-  product: createGoal_CreateGoal_goal_product | null;
-  createdAt: string;
-  completedAt: string | null;
-}
-
-export interface createGoal_CreateGoal {
-  __typename: "CreateGoalResponse";
-  ok: boolean;
-  error: string | null;
-  goal: createGoal_CreateGoal_goal | null;
-}
-
-export interface createGoal {
-  CreateGoal: createGoal_CreateGoal;
-}
-
-export interface createGoalVariables {
-  text: string;
-  productId: number;
-}
-
-/* tslint:disable */
-// This file was automatically generated and should not be edited.
-
-// ====================================================
 // GraphQL query operation: fireMakers
 // ====================================================
 
@@ -547,6 +507,46 @@ export interface getMe_Me {
 
 export interface getMe {
   Me: getMe_Me;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: createGoal
+// ====================================================
+
+export interface createGoal_CreateGoal_goal_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface createGoal_CreateGoal_goal {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  product: createGoal_CreateGoal_goal_product | null;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface createGoal_CreateGoal {
+  __typename: "CreateGoalResponse";
+  ok: boolean;
+  error: string | null;
+  goal: createGoal_CreateGoal_goal | null;
+}
+
+export interface createGoal {
+  CreateGoal: createGoal_CreateGoal;
+}
+
+export interface createGoalVariables {
+  text: string;
+  productId: number;
 }
 
 /* tslint:disable */

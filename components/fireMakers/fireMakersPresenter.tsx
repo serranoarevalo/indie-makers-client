@@ -18,27 +18,28 @@ interface IProps {
 
 const FireMakers: React.SFC<IProps> = ({
   data: { FilterUsers: { makers = [] } = {} } = {}
-}) => (
-  <Section titleElements={<Title>Makers on 🔥</Title>}>
-    <Container>
-      {makers &&
-        makers.map(
-          maker =>
-            maker && (
-              <SmallDetailCard
-                key={maker.id}
-                icon={maker.profilePhoto}
-                title={maker.fullName}
-                subtitle={maker.username || ""}
-                streakNumber={maker.streak}
-                isLink={true}
-                link={routes.userDetail(maker.username!)}
-                linkAs={routes.asUserDetail(maker.username!)}
-                isCard={true}
-              />
-            )
-        )}
-    </Container>
-  </Section>
-);
+}) =>
+  makers!.length > 0 ? (
+    <Section titleElements={<Title>Makers on 🔥</Title>}>
+      <Container>
+        {makers &&
+          makers.map(
+            maker =>
+              maker && (
+                <SmallDetailCard
+                  key={maker.id}
+                  icon={maker.profilePhoto}
+                  title={maker.fullName}
+                  subtitle={maker.username || ""}
+                  streakNumber={maker.streak}
+                  isLink={true}
+                  link={routes.userDetail(maker.username!)}
+                  linkAs={routes.asUserDetail(maker.username!)}
+                  isCard={true}
+                />
+              )
+          )}
+      </Container>
+    </Section>
+  ) : null;
 export default FireMakers;

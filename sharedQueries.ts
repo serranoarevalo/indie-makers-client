@@ -1,4 +1,5 @@
 import { gql } from "apollo-boost";
+import { GOAL_FRAGMENT } from "./fragments";
 
 export const LOG_USER_IN = gql`
   mutation logUserIn(

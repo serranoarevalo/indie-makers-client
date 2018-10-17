@@ -79,6 +79,12 @@ const FLink = styled.span`
   margin-left: 10px;
 `;
 
+const AddLink = styled.span`
+  color: ${props => props.theme.blackColor};
+  font-weight: 600;
+  text-decoration: underline;
+`;
+
 interface IProps {
   inputValue: string;
   handleInputChange: (
@@ -124,36 +130,51 @@ const DashboardPresenter: React.SFC<IProps> = ({
           </HTitle>
           <Subtitle>What are you gonna accomplish today?</Subtitle>
           <List>
-            <Form onSubmit={handleSubmit}>
-              <AddContainer>
-                <Input
-                  fontSize={"22px"}
-                  type={"text"}
-                  value={inputValue}
-                  name={"newToDo"}
-                  onChange={handleInputChange}
-                  placeholder={"Type a goal and press 'Enter'"}
-                />
-                <Select
-                  name={"productId"}
-                  value={String(productId)}
-                  onChange={handleInputChange}
-                >
-                  <Product value={"none"}>Add to</Product>
-                  {data &&
-                    data.GetAllProducts &&
-                    data.GetAllProducts.products &&
-                    data.GetAllProducts.products.map(
-                      product =>
-                        product && (
-                          <Product value={product.id} key={product.id}>
-                            {product.name}
-                          </Product>
-                        )
-                    )}
-                </Select>
-              </AddContainer>
-            </Form>
+            {data &&
+            data.GetLatestProducts &&
+            data.GetLatestProducts.products &&
+            data.GetLatestProducts.products.length > 0 ? (
+              <Form onSubmit={handleSubmit}>
+                <AddContainer>
+                  <Input
+                    fontSize={"22px"}
+                    type={"text"}
+                    value={inputValue}
+                    name={"newToDo"}
+                    onChange={handleInputChange}
+                    placeholder={"Type a goal and press 'Enter'"}
+                  />
+                  <Select
+                    name={"productId"}
+                    value={String(productId)}
+                    onChange={handleInputChange}
+                  >
+                    <Product value={"none"}>Add to</Product>
+                    {data &&
+                      data.GetAllProducts &&
+                      data.GetAllProducts.products &&
+                      data.GetAllProducts.products.map(
+                        product =>
+                          product && (
+                            <Product value={product.id} key={product.id}>
+                              {product.name}
+                            </Product>
+                          )
+                      )}
+                  </Select>
+                </AddContainer>
+              </Form>
+            ) : (
+              <span>
+                To add a 'To Do' you first need to{" "}
+                <Link href={routes.addProduct} key={2}>
+                  <a>
+                    <AddLink>create a product</AddLink>
+                  </a>
+                </Link>
+              </span>
+            )}
+
             <Goals>
               {data &&
                 data.GetLatestGoals &&
@@ -209,8 +230,9 @@ const DashboardPresenter: React.SFC<IProps> = ({
             >
               <Products>
                 {data &&
-                  data.GetLatestProducts &&
-                  data.GetLatestProducts.products &&
+                data.GetLatestProducts &&
+                data.GetLatestProducts.products &&
+                data.GetLatestProducts.products.length > 0 ? (
                   data.GetLatestProducts.products.map(
                     product =>
                       product && (
@@ -229,7 +251,17 @@ const DashboardPresenter: React.SFC<IProps> = ({
                           }`}
                         />
                       )
-                  )}
+                  )
+                ) : (
+                  <span>
+                    No products here 😭.{" "}
+                    <Link href={routes.addProduct}>
+                      <a>
+                        <AddLink>Add one now</AddLink>
+                      </a>
+                    </Link>
+                  </span>
+                )}
               </Products>
             </Section>
           )}
