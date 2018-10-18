@@ -17,3 +17,12 @@ export const DELETE_TODO = gql`
     }
   }
 `;
+
+export const EDIT_TODO = gql`
+  mutation editToDo($text: String!, $goalId: Int!) {
+    EditGoal(text: $text, goalId: $goalId) {
+      ok
+      error
+    }
+  }
+`;

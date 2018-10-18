@@ -186,6 +186,28 @@ export interface deleteGoalVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: editToDo
+// ====================================================
+
+export interface editToDo_EditGoal {
+  __typename: "EditGoalResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface editToDo {
+  EditGoal: editToDo_EditGoal;
+}
+
+export interface editToDoVariables {
+  text: string;
+  goalId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: addedRecently
 // ====================================================
 

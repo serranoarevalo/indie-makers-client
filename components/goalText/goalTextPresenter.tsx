@@ -3,6 +3,8 @@ import Link from "next/link";
 import routes from "../../routes";
 import styled from "../../typed-components";
 import timeAgo from "../../lib/timeAgo";
+import Input from "../input";
+import Form from "../form";
 
 const Container = styled<{ fontSize: string }, "span">("span")`
   font-size: ${props => props.fontSize};
@@ -43,6 +45,12 @@ const EditBtn = styled.span`
   cursor: pointer;
 `;
 
+const FormContainer = styled.span`
+  & form {
+    display: inline;
+  }
+`;
+
 interface IProps {
   text: string;
   isCompleted?: boolean;
@@ -56,6 +64,11 @@ interface IProps {
   productSlug?: string;
   toggleCompleted: any;
   deleteGoal: () => void;
+  isEditing: boolean;
+  editingText: string;
+  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  toggleEditing: () => void;
+  onSubmit: () => void;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -70,15 +83,36 @@ const GoalText: React.SFC<IProps> = ({
   timeStamp,
   productSlug,
   toggleCompleted,
-  deleteGoal
+  deleteGoal,
+  isEditing,
+  editingText,
+  handleInputChange,
+  toggleEditing,
+  onSubmit
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon onClick={toggleCompleted} isMine={isMine}>
       {isCompleted ? "✅" : "◻️"}
     </Icon>
-    <Text isCompleted={isCompleted} lineThrough={lineThrough}>
-      {text}
-    </Text>{" "}
+    {isEditing ? (
+      <FormContainer>
+        <Form onSubmit={onSubmit} width={"80%"}>
+          <Input
+            value={editingText}
+            onChange={handleInputChange}
+            type={"text"}
+            placeholder={"Edit your To Do"}
+            name={"text"}
+            width={"50%"}
+            autofocus={true}
+          />
+        </Form>
+      </FormContainer>
+    ) : (
+      <Text isCompleted={isCompleted} lineThrough={lineThrough}>
+        {text}
+      </Text>
+    )}{" "}
     {!onProductPage && (
       <React.Fragment>
         on{" "}
@@ -93,8 +127,35 @@ const GoalText: React.SFC<IProps> = ({
       </React.Fragment>
     )}
     <Timestamp>{timeAgo.format(Date.parse(timeStamp || ""))}</Timestamp>
-    {isMine && <EditBtn>✏️</EditBtn>}
-    {isMine && <EditBtn onClick={deleteGoal}>❌</EditBtn>}
+    {isEditing ? (
+      isMine && (
+        <>
+          {isMine && (
+            <EditBtn title={"Save"} onClick={onSubmit}>
+              ✅
+            </EditBtn>
+          )}
+          {isMine && (
+            <EditBtn title={"Cancel"} onClick={toggleEditing}>
+              ❌
+            </EditBtn>
+          )}
+        </>
+      )
+    ) : (
+      <>
+        {isMine && (
+          <EditBtn onClick={toggleEditing} title={"Edit"}>
+            ✏️
+          </EditBtn>
+        )}
+        {isMine && (
+          <EditBtn onClick={deleteGoal} title={"Delete"}>
+            🗑
+          </EditBtn>
+        )}
+      </>
+    )}
   </Container>
 );
 

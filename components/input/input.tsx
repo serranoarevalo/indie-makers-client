@@ -2,13 +2,13 @@ import React from "react";
 import { lighten } from "polished";
 import styled from "../../typed-components";
 
-const Container = styled<{ fontSize: string }, "input">("input")`
+const Container = styled<{ fontSize: string; width: string }, "input">("input")`
   font-size: ${props => props.fontSize};
   border: 0;
   border-bottom: 1px solid ${props => lighten(0.1, props.theme.greyColor)};
   transition: border-bottom-color 0.2s linear;
   padding: 5px 0px;
-  width: 100%;
+  width: ${props => props.width};
   &::placeholder {
     color: ${props => props.theme.greyColor};
     font-weight: 300;
@@ -30,6 +30,8 @@ interface IProps {
   required?: boolean;
   className?: string;
   maxLength?: number;
+  width?: string;
+  autofocus?: boolean;
 }
 
 const Input: React.SFC<IProps> = ({
@@ -42,7 +44,9 @@ const Input: React.SFC<IProps> = ({
   name,
   required,
   className,
-  maxLength
+  maxLength,
+  width = "100%",
+  autofocus
 }) => (
   <Container
     className={className}
@@ -55,6 +59,8 @@ const Input: React.SFC<IProps> = ({
     value={value}
     fontSize={fontSize}
     maxLength={maxLength}
+    width={width}
+    autoFocus={autofocus}
   />
 );
 
