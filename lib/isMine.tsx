@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Consumer } from "./context";
 
 interface IProps {
   otherId: any;
-  children: (isMine: boolean) => void;
+  children: (isMine: boolean) => ReactNode;
 }
 
 export default class IsMine extends React.Component<IProps> {

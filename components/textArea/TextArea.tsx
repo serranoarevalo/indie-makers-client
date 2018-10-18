@@ -7,9 +7,11 @@ const Container = styled.textarea`
   resize: none;
   border: none;
   border-bottom: 1px solid ${props => lighten(0.1, props.theme.greyColor)};
-  font-size: 14px;
+  font-size: 16px;
   &::placeholder {
+    color: ${props => props.theme.greyColor};
     font-weight: 300;
+    font-size: 16px;
   }
   &:focus,
   &:active {
@@ -30,6 +32,7 @@ interface IProps {
   maxLength?: number;
   minLength?: number;
   marginBottom?: any;
+  id?: string;
 }
 
 const TextArea: React.SFC<IProps> = ({
@@ -40,7 +43,8 @@ const TextArea: React.SFC<IProps> = ({
   name,
   maxLength,
   minLength,
-  marginBottom
+  marginBottom,
+  id
 }) => (
   <Container
     name={name}
@@ -51,6 +55,7 @@ const TextArea: React.SFC<IProps> = ({
     maxLength={maxLength}
     minLength={minLength}
     style={{ marginBottom }}
+    id={id}
   />
 );
 

@@ -243,6 +243,29 @@ export interface addedRecently {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: editProfile
+// ====================================================
+
+export interface editProfile_EditUser {
+  __typename: "EditUserResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface editProfile {
+  EditUser: editProfile_EditUser;
+}
+
+export interface editProfileVariables {
+  username?: string | null;
+  homepage?: string | null;
+  bio?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: getMaker
 // ====================================================
 

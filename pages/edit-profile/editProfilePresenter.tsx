@@ -21,16 +21,41 @@ const ETitle = styled(Title)`
   margin-bottom: 20px;
 `;
 
+const EInput = styled(Input)`
+  margin-bottom: 30px;
+`;
+
+const EForm = styled(Form)`
+  margin-bottom: 50px;
+`;
+
+const Label = styled.label`
+  font-weight: 600;
+  display: block;
+  margin-bottom: 15px;
+  cursor: pointer;
+`;
+
+const ECard = styled(Card)`
+  margin-bottom: 50px;
+`;
+
 interface IProps {
   bio?: string | null;
   username?: string | null;
   homepage?: string | null;
+  handleInputChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleSubmit: () => void;
 }
 
 const EditProfilePresenter: React.SFC<IProps> = ({
   bio = "",
   username = "",
-  homepage = ""
+  homepage = "",
+  handleInputChange,
+  handleSubmit
 }) => (
   <>
     <Head>
@@ -39,16 +64,40 @@ const EditProfilePresenter: React.SFC<IProps> = ({
     <Wrapper>
       <Container>
         <ETitle>Edit Profile</ETitle>
-        <Card>
-          <Form>
-            <Input
+        <ECard>
+          <EForm onSubmit={handleSubmit}>
+            <Label htmlFor={"username"}>Username</Label>
+            <EInput
+              name={"username"}
+              value={username || ""}
+              onChange={handleInputChange}
+              placeholder={"Username"}
+              required={true}
+              type={"text"}
+              id={"username"}
+            />
+            <Label htmlFor={"homepage"}>Homepage</Label>
+            <EInput
+              name={"homepage"}
+              value={homepage || ""}
+              onChange={handleInputChange}
+              placeholder={"Where can people contact you?"}
+              required={true}
+              type={"url"}
+              id={"homepage"}
+            />
+            <Label htmlFor={"bio"}>Bio</Label>
+            <TextArea
+              id={"bio"}
               value={bio || ""}
               name={"bio"}
-              placeholder={"Bio"}
-              type={"text"}
+              placeholder={"Who are you?"}
+              required={false}
+              onChange={handleInputChange}
             />
-          </Form>
-        </Card>
+          </EForm>
+        </ECard>
+        <Button onClick={handleSubmit} text={"Save Profile"} />
       </Container>
     </Wrapper>
   </>

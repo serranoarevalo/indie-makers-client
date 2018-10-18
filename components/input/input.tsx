@@ -32,10 +32,12 @@ interface IProps {
   maxLength?: number;
   width?: string;
   autofocus?: boolean;
+  id?: string;
 }
 
 const Input: React.SFC<IProps> = ({
   type,
+  id,
   placeholder,
   onBlur,
   onChange,
@@ -61,6 +63,7 @@ const Input: React.SFC<IProps> = ({
     maxLength={maxLength}
     width={width}
     autoFocus={autofocus}
+    id={id}
   />
 );
 
