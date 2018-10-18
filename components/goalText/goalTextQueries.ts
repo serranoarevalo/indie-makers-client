@@ -8,3 +8,12 @@ export const TOGGLE_TODO = gql`
     }
   }
 `;
+
+export const DELETE_TODO = gql`
+  mutation deleteGoal($goalId: Int!) {
+    DeleteGoal(goalId: $goalId) {
+      ok
+      error
+    }
+  }
+`;

@@ -3,12 +3,19 @@ import { Mutation, FetchResult } from "react-apollo";
 import { DataProxy } from "apollo-cache";
 import { toast } from "react-toastify";
 import GoalTextPresenter from "./goalTextPresenter";
-import { toggleToDo, toggleToDoVariables } from "types/api";
-import { TOGGLE_TODO } from "./goalTextQueries";
+import {
+  toggleToDo,
+  toggleToDoVariables,
+  deleteGoal,
+  deleteGoalVariables
+} from "../../types/api";
+import { TOGGLE_TODO, DELETE_TODO } from "./goalTextQueries";
 import { GOAL_FRAGMENT } from "../../fragments";
 import { GET_PRODUCT } from "../../pages/product/productQuery";
+import { GET_DASHBOARD } from "../../components/dashboard/DashboardQueries";
 
 class ToggleMutation extends Mutation<toggleToDo, toggleToDoVariables> {}
+class DeleteMutation extends Mutation<deleteGoal, deleteGoalVariables> {}
 
 interface IProps {
   text: string;
@@ -37,10 +44,22 @@ export default class GoalTextContainer extends React.Component<IProps> {
         ]}
       >
         {toggleToDo => (
-          <GoalTextPresenter
-            {...this.props}
-            toggleCompleted={isMine ? toggleToDo : null}
-          />
+          <DeleteMutation
+            mutation={DELETE_TODO}
+            variables={{ goalId }}
+            refetchQueries={[
+              { query: GET_PRODUCT, variables: { slug: productSlug } },
+              { query: GET_DASHBOARD }
+            ]}
+          >
+            {deleteGoal => (
+              <GoalTextPresenter
+                {...this.props}
+                toggleCompleted={isMine ? toggleToDo : null}
+                deleteGoal={deleteGoal}
+              />
+            )}
+          </DeleteMutation>
         )}
       </ToggleMutation>
     );

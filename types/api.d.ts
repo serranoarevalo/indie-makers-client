@@ -165,6 +165,27 @@ export interface toggleToDoVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: deleteGoal
+// ====================================================
+
+export interface deleteGoal_DeleteGoal {
+  __typename: "DeleteGoalResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deleteGoal {
+  DeleteGoal: deleteGoal_DeleteGoal;
+}
+
+export interface deleteGoalVariables {
+  goalId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: addedRecently
 // ====================================================
 

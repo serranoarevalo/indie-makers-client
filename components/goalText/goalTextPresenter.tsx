@@ -55,6 +55,7 @@ interface IProps {
   timeStamp?: string;
   productSlug?: string;
   toggleCompleted: any;
+  deleteGoal: () => void;
 }
 
 const GoalText: React.SFC<IProps> = ({
@@ -68,7 +69,8 @@ const GoalText: React.SFC<IProps> = ({
   isMine = false,
   timeStamp,
   productSlug,
-  toggleCompleted
+  toggleCompleted,
+  deleteGoal
 }) => (
   <Container className={className} fontSize={fontSize}>
     <Icon onClick={toggleCompleted} isMine={isMine}>
@@ -92,6 +94,7 @@ const GoalText: React.SFC<IProps> = ({
     )}
     <Timestamp>{timeAgo.format(Date.parse(timeStamp || ""))}</Timestamp>
     {isMine && <EditBtn>✏️</EditBtn>}
+    {isMine && <EditBtn onClick={deleteGoal}>❌</EditBtn>}
   </Container>
 );
 

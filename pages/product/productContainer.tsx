@@ -18,7 +18,11 @@ export default class extends React.Component<IProps> {
   render() {
     const { slug } = this.props;
     return (
-      <ProductQuery query={GET_PRODUCT} variables={{ slug }}>
+      <ProductQuery
+        query={GET_PRODUCT}
+        variables={{ slug }}
+        fetchPolicy={"cache-and-network"}
+      >
         {({ data, loading }) =>
           !loading ? <ProductPresenter data={data} /> : null
         }
