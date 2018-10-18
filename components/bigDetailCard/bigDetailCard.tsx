@@ -7,12 +7,12 @@ import ImagePlaceholder from "../imagePlaceholder";
 
 const Span = styled.span``;
 
-const Container = styled.div`
+const Container = styled<{ isLink: boolean }, any>("div")`
   border-radius: ${props => props.theme.borderRadius};
   padding: 20px;
   ${props => props.theme.cardShadow};
   background-color: white;
-  cursor: pointer;
+  cursor: ${props => (props.isLink ? "pointer" : "default")};
   width: 100%;
   & ${Span} {
     display: flex;
@@ -150,7 +150,7 @@ const BigDetailCardContainer: React.SFC<IContainerProps & IPresenterProps> = ({
 }) => {
   if (!isLink) {
     return (
-      <Container>
+      <Container isLink={isLink}>
         <Span>
           <CardContent {...rest} />
         </Span>
@@ -158,7 +158,7 @@ const BigDetailCardContainer: React.SFC<IContainerProps & IPresenterProps> = ({
     );
   } else {
     return (
-      <Container>
+      <Container isLink={isLink}>
         <Link href={link} as={linkAs}>
           <a>
             <Span>

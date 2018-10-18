@@ -80,15 +80,29 @@ const MakerPresenter: React.SFC<IProps> = ({
               launchedNumber={maker.launchedProductCount}
               underTitle={maker.username!}
             />
-            <Divider />
-            <IsMine otherId={maker.id}>
-              {isMine => (
-                <Link href={routes.editProfile}>
+
+            {maker.homepage && (
+              <>
+                <Divider />
+                <Link href={`https://${maker.homepage}`}>
                   <a>
-                    <Button text={"Edit Profile"} />
+                    <Button text={`Contact ${maker.fullName!.split(" ")[0]}`} />
                   </a>
                 </Link>
-              )}
+              </>
+            )}
+
+            <Divider />
+            <IsMine otherId={maker.id}>
+              {isMine =>
+                isMine && (
+                  <Link href={routes.editProfile}>
+                    <a>
+                      <Button text={`Edit Profile`} />
+                    </a>
+                  </Link>
+                )
+              }
             </IsMine>
           </Column>
           <Column>

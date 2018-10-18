@@ -7,6 +7,7 @@ export const GET_MAKER = gql`
       maker {
         ...MakerParts
         bio
+        homepage
         products {
           id
           slug

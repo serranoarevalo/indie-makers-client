@@ -321,6 +321,7 @@ export interface getMaker_GetMaker_maker {
   streak: number;
   launchedProductCount: number;
   bio: string | null;
+  homepage: string | null;
   products: (getMaker_GetMaker_maker_products | null)[] | null;
   completedGoals: (getMaker_GetMaker_maker_completedGoals | null)[] | null;
   pendingGoals: (getMaker_GetMaker_maker_pendingGoals | null)[] | null;

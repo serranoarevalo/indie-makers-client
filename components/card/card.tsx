@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
 interface IProps {
@@ -20,10 +19,5 @@ const Card: React.SFC<IProps> = ({ children, className, padding = "20px" }) => (
     {children}
   </Container>
 );
-
-Card.propTypes = {
-  className: PropTypes.string,
-  padding: PropTypes.string
-};
 
 export default Card;

@@ -7,6 +7,7 @@ import { EDIT_USER } from "./editProfileQueries";
 import { toast } from "react-toastify";
 
 interface IState {
+  id: number;
   homepage: string | undefined | null;
   bio: string | undefined | null;
   username: string | undefined | null;
@@ -26,6 +27,7 @@ export default class CompleteProfileContainer extends React.Component<
   state = {
     homepage: "",
     bio: "",
+    id: 0,
     username: "",
     currentHomepage: "",
     currentBio: "",
@@ -36,13 +38,15 @@ export default class CompleteProfileContainer extends React.Component<
     return (
       <MeQuery
         query={GET_ME}
-        fetchPolicy={"network-only"}
+        fetchPolicy={"cache-and-network"}
         onCompleted={this.handleMeQuery}
       >
         {() => (
           <EditProfileMutation
             variables={{ username, bio, homepage }}
             mutation={EDIT_USER}
+            onCompleted={this.handleOnComplete}
+            refetchQueries={[{ query: GET_ME }]}
           >
             {editUser => {
               this.editUser = editUser;
@@ -67,8 +71,9 @@ export default class CompleteProfileContainer extends React.Component<
         Me: { user }
       } = data;
       if (user) {
-        const { homepage, bio, username } = user;
+        const { homepage, bio, username, id } = user;
         this.setState({
+          id,
           homepage,
           bio,
           username,
@@ -91,10 +96,30 @@ export default class CompleteProfileContainer extends React.Component<
     } as any);
   };
   public handleSubmit = () => {
-    const { username, homepage, bio } = this.state;
+    const { username } = this.state;
     if (username === "") {
       toast.error("Username can't be empty");
     }
     this.editUser();
+  };
+  public handleOnComplete = (data: {} | editProfile) => {
+    if (data && "EditUser" in data) {
+      const {
+        EditUser: { ok, error }
+      } = data;
+      if (!ok && error) {
+        toast.error(error);
+        this.setState(prev => {
+          return {
+            homepage: prev.currentHomepage,
+            bio: prev.currentBio,
+            username: prev.currentUsername
+          };
+        });
+        return;
+      } else {
+        toast.success("Profile Updated");
+      }
+    }
   };
 }
