@@ -590,6 +590,7 @@ export interface getMe_Me_user {
   username: string | null;
   profilePhoto: string;
   bio: string | null;
+  homepage: string | null;
 }
 
 export interface getMe_Me {

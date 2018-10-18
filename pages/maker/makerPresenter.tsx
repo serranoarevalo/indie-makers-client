@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import styled from "../../typed-components";
 import routes from "../../routes";
 import Wrapper from "../../components/wrapper";
@@ -10,6 +11,8 @@ import Tab from "../../components/tab";
 import Card from "../../components/card";
 import GoalText from "../../components/goalText";
 import { getMaker } from "../../types/api";
+import IsMine from "../../lib/isMine";
+import Button from "../../components/button";
 
 const Container = styled.div`
   display: grid;
@@ -21,6 +24,10 @@ const Column = styled.div`
   &:first-child {
     margin: 50px 0px;
   }
+`;
+
+const Divider = styled.div`
+  margin-bottom: 50px;
 `;
 
 const Grid = styled.div`
@@ -73,6 +80,16 @@ const MakerPresenter: React.SFC<IProps> = ({
               launchedNumber={maker.launchedProductCount}
               underTitle={maker.username!}
             />
+            <Divider />
+            <IsMine otherId={maker.id}>
+              {isMine => (
+                <Link href={routes.editProfile}>
+                  <a>
+                    <Button text={"Edit Profile"} />
+                  </a>
+                </Link>
+              )}
+            </IsMine>
           </Column>
           <Column>
             <Tabs>
@@ -136,6 +153,7 @@ const MakerPresenter: React.SFC<IProps> = ({
                             productName={goal.product!.name}
                             productSlug={goal.product!.slug}
                             timeStamp={goal.completedAt!}
+                            goalId={goal.id}
                           />
                         )
                     )}
@@ -159,6 +177,7 @@ const MakerPresenter: React.SFC<IProps> = ({
                             productSlug={goal.product!.slug}
                             isCompleted={false}
                             timeStamp={goal.createdAt}
+                            goalId={goal.id}
                           />
                         )
                     )}

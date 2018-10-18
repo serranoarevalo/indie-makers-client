@@ -8,6 +8,7 @@ export default {
   blog: "/reviews",
   products: "/products",
   todos: "/todos",
+  editProfile: "/edit-profile",
   blogDetail: (name: string) => `/review?slug=${name}`,
   asBlogDetail: (name: string) => `/review/${name}`,
   new: "/new",

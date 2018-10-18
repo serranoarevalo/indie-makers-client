@@ -30,6 +30,7 @@ export const GET_ME = gql`
         username
         profilePhoto
         bio
+        homepage
       }
     }
   }
