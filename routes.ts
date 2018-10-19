@@ -9,6 +9,8 @@ export default {
   products: "/products",
   todos: "/todos",
   editProfile: "/edit-profile",
+  editProduct: (name: string) => `/edit-product?slug=${name}`,
+  asEditProduct: (name: string) => `/edit-product/${name}`,
   blogDetail: (name: string) => `/review?slug=${name}`,
   asBlogDetail: (name: string) => `/review/${name}`,
   new: "/new",

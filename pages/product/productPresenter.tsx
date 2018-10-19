@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import styled from "../../typed-components";
 import routes from "../../routes";
 import Wrapper from "../../components/wrapper";
@@ -111,6 +112,15 @@ const ProductPresenter: React.SFC<IProps> = ({
                 {isMine && (
                   <>
                     <AddToDo productId={product.id} slug={product.slug} />
+                    <Divider />
+                    <Link
+                      href={routes.editProduct(product.slug)}
+                      as={routes.asEditProduct(product.slug)}
+                    >
+                      <a>
+                        <Button text={"Edit Product"} />
+                      </a>
+                    </Link>
                     <Divider />
                   </>
                 )}

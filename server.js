@@ -61,6 +61,13 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    server.get("/edit-product/:slug", (req, res) => {
+      const actualPage = "/edit-product";
+      const { params } = req;
+      const queryParams = { slug: params.slug };
+      app.render(req, res, actualPage, queryParams);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
