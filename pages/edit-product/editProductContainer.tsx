@@ -31,7 +31,12 @@ class EditProductContainer extends React.Component<any> {
               <IsMine otherId={data.GetProduct.product.maker.id}>
                 {isMine => {
                   if (isMine) {
-                    return <EditProductPresenter data={data} />;
+                    return (
+                      <EditProductPresenter
+                        updateProduct={this.updateProduct}
+                        data={data}
+                      />
+                    );
                   } else {
                     router.push(`/product/${slug}`);
                     return null;
@@ -46,6 +51,13 @@ class EditProductContainer extends React.Component<any> {
       </GetProductQuery>
     );
   }
+  public updateProduct = (
+    name: string,
+    description: string,
+    logoUrl?: string,
+    website?: string,
+    needsHelp?: boolean
+  ) => {};
 }
 
 export default withRouter(EditProductContainer);

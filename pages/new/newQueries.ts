@@ -19,6 +19,7 @@ export const ADD_PRODUCT = gql`
       error
       product {
         id
+        name
         slug
       }
     }

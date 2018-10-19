@@ -1,4 +1,8 @@
 import React from "react";
+import Axios from "axios";
+import uuid from "uuid/v1";
+import { toast } from "react-toastify";
+import { AWS_URL } from "../../configs";
 import ProductEditorPresenter from "./productEditorPresenter";
 
 interface IProps {
@@ -14,6 +18,7 @@ interface IProps {
     website?: string,
     needsHelp?: boolean
   ) => void;
+  title: string;
 }
 
 interface IState {
@@ -34,16 +39,44 @@ export default class ProductEditorContainer extends React.Component<
   IProps,
   IState
 > {
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      logoUrl: props.logoUrl || "",
+      prevLogoUrl: props.logoUrl || "",
+      name: props.name || "",
+      prevName: props.name || "",
+      description: props.description || "",
+      prevDescription: props.description || "",
+      website: props.website || "",
+      prevWebsite: props.website || "",
+      needsHelp: props.needsHelp || false,
+      prevNeedsHelp: false,
+      isUploading: false
+    };
+  }
   render() {
-    const { logoUrl, isUploading, website, name, description } = this.state;
+    const {
+      logoUrl,
+      isUploading,
+      website,
+      name,
+      description,
+      needsHelp
+    } = this.state;
+    const { title } = this.props;
     return (
       <ProductEditorPresenter
         logoUrl={logoUrl}
+        needsHelp={needsHelp}
         isUploading={isUploading}
         website={website}
         name={name}
+        title={title}
         description={description}
         handleInputChange={this.handleInputChange}
+        handleSubmit={this.handleSubmit}
+        handleImageUpload={this.handleImageUpload}
       />
     );
   }
@@ -57,5 +90,66 @@ export default class ProductEditorContainer extends React.Component<
       [name]: value
     } as any);
   };
-  public handleSubmit = () => {};
+  public handleSubmit = () => {
+    const {
+      logoUrl,
+      website,
+      name,
+      description,
+      isUploading,
+      needsHelp
+    } = this.state;
+    const { onSaveFn } = this.props;
+    if (name !== "" && description !== "" && !isUploading) {
+      onSaveFn(name, description, logoUrl, website, needsHelp);
+    } else if (isUploading) {
+      toast.error("Wait until the photo stuff finished uploading");
+    }
+  };
+  public handleImageUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const {
+      target: { files }
+    } = event;
+    if (files) {
+      const file = files[0];
+      if (file.size > 524288) {
+        toast.error("File is too big");
+      } else {
+        this.setState({
+          isUploading: true
+        });
+        this.signUrl(file);
+      }
+    }
+  };
+  private signUrl = async (file: File) => {
+    const {
+      data: { fileUrl, signedUrl }
+    }: any = await Axios.get(
+      `${AWS_URL}?name=${encodeURIComponent(uuid())}&type=${file.type}`
+    );
+    this.uploadImage(file, signedUrl, fileUrl);
+  };
+  private uploadImage = async (
+    file: File,
+    signedUrl: string,
+    fileUrl: string
+  ) => {
+    const headers = {
+      "Content-Type": file.type
+    };
+    try {
+      await Axios.put(signedUrl, file, {
+        headers
+      });
+      this.setState({
+        logoUrl: fileUrl,
+        isUploading: false
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

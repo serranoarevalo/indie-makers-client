@@ -383,6 +383,7 @@ export interface filterMakersVariables {
 export interface addProduct_CreateProduct_product {
   __typename: "Product";
   id: number;
+  name: string;
   slug: string;
 }
 
