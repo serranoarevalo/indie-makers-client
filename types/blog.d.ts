@@ -17,7 +17,7 @@ export interface getFeatured_productReviews {
   __typename: "ProductReview";
   id: string;
   name: string;
-  intro: string;
+  intro: string | null;
   slug: string;
   heroImage: getFeatured_productReviews_heroImage | null;
 }
@@ -46,7 +46,7 @@ export interface getLatest_productReviews {
   id: string;
   slug: string;
   name: string;
-  intro: string;
+  intro: string | null;
   logo: getLatest_productReviews_logo | null;
 }
 
@@ -83,12 +83,12 @@ export interface getReview_productReview {
   __typename: "ProductReview";
   id: string;
   name: string;
-  intro: string;
+  intro: string | null;
   heroImage: getReview_productReview_heroImage | null;
   timeToMarket: string;
   projectTypes: getReview_productReview_projectTypes[] | null;
   tech: getReview_productReview_tech[] | null;
-  review: string;
+  review: string | null;
 }
 
 export interface getReview {
@@ -119,7 +119,7 @@ export interface getBlog_posts {
   id: string;
   slug: string;
   name: string;
-  intro: string;
+  intro: string | null;
   logo: getBlog_posts_logo | null;
 }
 
@@ -136,7 +136,7 @@ export interface getBlog_featured {
   id: string;
   slug: string;
   name: string;
-  intro: string;
+  intro: string | null;
   heroImage: getBlog_featured_heroImage | null;
 }
 

@@ -46,7 +46,11 @@ class ProductContainer extends React.Component<IProps & WithRouterProps> {
                 {
                   query: GET_MAKER,
                   variables: {
-                    username: data!.GetProduct.product!.maker!.username
+                    username:
+                      (data.GetProduct.product &&
+                        data.GetProduct.product.maker &&
+                        data.GetProduct.product.maker.username) ||
+                      ""
                   }
                 }
               ]}

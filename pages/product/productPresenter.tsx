@@ -93,10 +93,12 @@ interface IProps {
 }
 
 const ProductPresenter: React.SFC<IProps> = ({
+  data,
   data: { GetProduct: { product = null } = {} } = {},
   confirmDeletion
 }) => (
   <Wrapper>
+    {console.log(data)}
     <Head>
       <title>
         {product ? product.name : "Product Not Found"} | Indie Makers

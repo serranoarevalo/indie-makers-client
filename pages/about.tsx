@@ -1,10 +1,9 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import styled from "../typed-components";
 import Wrapper from "../components/wrapper";
 import Button from "../components/button";
-import routes from "../routes";
+import withLogin from "../lib/withLogin";
 
 const Container = styled.div`
   height: 50vh;
@@ -46,14 +45,18 @@ const SellPoint = styled.div`
   }
 `;
 
-const SellPointImage = styled<{ bg: string }, "div">("div")`
+const SellPointImage = styled<
+  { bg: string; bgH?: string; bgV?: string },
+  "div"
+>("div")`
   border-radius: 50%;
   height: 400px;
   width: 400px;
   background-image: url(${props => props.bg});
   border: 5px solid ${props => props.theme.darkBlueColor};
   background-size: cover;
-  background-position: center center;
+  background-position: ${props =>
+    props.bgH && props.bgV ? `${props.bgH} ${props.bgV}` : "center center"};
 `;
 
 const SellPointTitle = styled.h4`
@@ -72,7 +75,7 @@ const JoinHero = styled.div`
   margin-bottom: 100px;
 `;
 
-const About = () => (
+const About = ({ fbLogin }) => (
   <React.Fragment>
     <Head>
       <title>About | Indie Makers</title>
@@ -87,57 +90,52 @@ const About = () => (
       </Container>
       <SellPoints>
         <SellPoint>
-          <SellPointImage bg={"/static/appDemo.png"} />
+          <SellPointImage bg={"/static/aboutOne.png"} />
           <SellPointColumn>
-            <SellPointTitle>See products</SellPointTitle>
+            <SellPointTitle>Track your progress</SellPointTitle>
             <SellPointText>
-              Class aptent taciti sociosqu ad litora torquent per conubia
-              nostra, per inceptos himenaeos. Praesent commodo sem est, sed
-              pretium nunc mollis sed. Maecenas quis ultrices mi, in ultricies
-              turpis. Aliquam et dolor massa. Etiam eu arcu lacus. Pellentesque
-              tempus arcu vel aliquet facilisis. Maecenas interdum porta velit
-              ut feugiat.
+              Share what you're working on and track your progress by using
+              simple To Do lists to organize your goals.
             </SellPointText>
           </SellPointColumn>
         </SellPoint>
         <SellPoint>
           <SellPointColumn>
-            <SellPointTitle>See products</SellPointTitle>
+            <SellPointTitle>Discover</SellPointTitle>
             <SellPointText>
-              Class aptent taciti sociosqu ad litora torquent per conubia
-              nostra, per inceptos himenaeos. Praesent commodo sem est, sed
-              pretium nunc mollis sed. Maecenas quis ultrices mi, in ultricies
-              turpis. Aliquam et dolor massa. Etiam eu arcu lacus. Pellentesque
-              tempus arcu vel aliquet facilisis. Maecenas interdum porta velit
-              ut feugiat.
+              See what others are working on and check out their progress,
+              discover projects that need a cofounder or just get in touch with
+              like-minded makers.
             </SellPointText>
           </SellPointColumn>
-          <SellPointImage bg={"/static/appDemo.png"} />
+          <SellPointImage
+            bg={"/static/aboutTwo.png"}
+            bgH={"bottom"}
+            bgV={"bottom"}
+          />
         </SellPoint>
         <SellPoint>
-          <SellPointImage bg={"/static/appDemo.png"} />
+          <SellPointImage bg={"/static/aboutThree.png"} />
           <SellPointColumn>
-            <SellPointTitle>See products</SellPointTitle>
+            <SellPointTitle>Launch together</SellPointTitle>
             <SellPointText>
-              Class aptent taciti sociosqu ad litora torquent per conubia
-              nostra, per inceptos himenaeos. Praesent commodo sem est, sed
-              pretium nunc mollis sed. Maecenas quis ultrices mi, in ultricies
-              turpis. Aliquam et dolor massa. Etiam eu arcu lacus. Pellentesque
-              tempus arcu vel aliquet facilisis. Maecenas interdum porta velit
-              ut feugiat.
+              Use Indie Makers to keep you accountable and motivated when making
+              products, join a community focused on FINISHING and launching
+              beautiful products.
             </SellPointText>
           </SellPointColumn>
         </SellPoint>
       </SellPoints>
       <JoinHero>
-        <Link href={routes.join} as={routes.asJoin}>
-          <a>
-            <Button accent={true} text={"Join Indie Makers"} fontSize={32} />
-          </a>
-        </Link>
+        <Button
+          accent={true}
+          text={"Join Indie Makers"}
+          fontSize={32}
+          onClick={fbLogin}
+        />
       </JoinHero>
     </Wrapper>
   </React.Fragment>
 );
 
-export default About;
+export default withLogin(About);

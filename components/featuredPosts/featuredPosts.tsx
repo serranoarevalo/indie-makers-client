@@ -58,7 +58,7 @@ const FeaturedPosts = () => (
                 <BlogPost
                   slug={slug}
                   featuredImage={heroImage!.url}
-                  intro={intro}
+                  intro={intro || ""}
                   name={name}
                   featured={true}
                 />
@@ -88,7 +88,7 @@ const FeaturedPosts = () => (
                           key={review.id}
                           slug={review.slug}
                           name={review.name}
-                          intro={review.intro}
+                          intro={review.intro || ""}
                           logo={review.logo!.url}
                         />
                       )
