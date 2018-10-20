@@ -13,6 +13,7 @@ const MakersGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   grid-gap: 50px;
+  margin-bottom: 50px;
 `;
 
 interface IProps {
@@ -68,11 +69,11 @@ const MakersPresenter: React.SFC<IProps> = ({
               />
             )
         )}
-      {makers &&
-        makers.length === 0 && (
-          <h1 className={"thickText"}>There are no makers to show now.</h1>
-        )}
     </MakersGrid>
+    {makers &&
+      makers.length === 0 && (
+        <h1 className={"thickText"}>There are no makers to show now.</h1>
+      )}
     {makers &&
       makers.length !== 0 && (
         <Pagination

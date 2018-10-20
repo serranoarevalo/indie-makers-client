@@ -19,7 +19,7 @@ interface IProps {
 const FireMakers: React.SFC<IProps> = ({
   data: { FilterUsers: { makers = [] } = {} } = {}
 }) =>
-  makers!.length > 0 ? (
+  makers && makers.length > 0 ? (
     <Section titleElements={<Title>Makers on 🔥</Title>}>
       <Container>
         {makers &&

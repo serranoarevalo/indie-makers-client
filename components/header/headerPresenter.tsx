@@ -26,6 +26,7 @@ const Logo = styled.h1`
 const Navigation = styled.nav`
   & ul {
     display: flex;
+    align-items: center;
     & li {
       margin-right: 25px;
     }
@@ -121,37 +122,48 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
         {isLoggedIn && (
           <Consumer>
             {({ userQuery }) => (
-              <Link
-                href={routes.userDetail(
-                  (userQuery &&
-                    userQuery.Me &&
-                    userQuery.Me.user &&
-                    userQuery.Me.user.username) ||
-                    ""
-                )}
-                as={routes.asUserDetail(
-                  (userQuery &&
-                    userQuery.Me &&
-                    userQuery.Me.user &&
-                    userQuery.Me.user.username) ||
-                    ""
-                )}
-              >
-                <a>
-                  <AvatarContainer>
-                    <Avatar
-                      src={
+              <Navigation>
+                <ul>
+                  <li>
+                    <Link
+                      href={routes.userDetail(
                         (userQuery &&
                           userQuery.Me &&
                           userQuery.Me.user &&
-                          userQuery.Me.user.profilePhoto) ||
-                        "/static/demo.jpg"
-                      }
-                    />
-                    Profile
-                  </AvatarContainer>
-                </a>
-              </Link>
+                          userQuery.Me.user.username) ||
+                          ""
+                      )}
+                      as={routes.asUserDetail(
+                        (userQuery &&
+                          userQuery.Me &&
+                          userQuery.Me.user &&
+                          userQuery.Me.user.username) ||
+                          ""
+                      )}
+                    >
+                      <a>
+                        <AvatarContainer>
+                          <Avatar
+                            src={
+                              (userQuery &&
+                                userQuery.Me &&
+                                userQuery.Me.user &&
+                                userQuery.Me.user.profilePhoto) ||
+                              "/static/demo.jpg"
+                            }
+                          />
+                          Products
+                        </AvatarContainer>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={routes.new}>
+                      <a>Add Prodcut</a>
+                    </Link>
+                  </li>
+                </ul>
+              </Navigation>
             )}
           </Consumer>
         )}
