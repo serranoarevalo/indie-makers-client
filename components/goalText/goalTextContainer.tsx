@@ -41,6 +41,7 @@ interface IState {
 
 export default class GoalTextContainer extends React.Component<IProps, IState> {
   public editToDo: MutationFn<editToDo, editToDoVariables>;
+  public deleteGoal: MutationFn<deleteGoal, deleteGoalVariables>;
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -69,29 +70,32 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
               { query: GET_DASHBOARD }
             ]}
           >
-            {deleteGoal => (
-              <EditMutation
-                mutation={EDIT_TODO}
-                variables={{ text, goalId }}
-                update={this.handleEditToDo}
-              >
-                {editToDo => {
-                  this.editToDo = editToDo;
-                  return (
-                    <GoalTextPresenter
-                      {...this.props}
-                      toggleCompleted={isMine ? toggleToDo : null}
-                      deleteGoal={deleteGoal}
-                      isEditing={isEditing}
-                      editingText={text}
-                      handleInputChange={this.handleInputChange}
-                      toggleEditing={this.toggleEditing}
-                      onSubmit={this.onSubmit}
-                    />
-                  );
-                }}
-              </EditMutation>
-            )}
+            {deleteGoal => {
+              this.deleteGoal = deleteGoal;
+              return (
+                <EditMutation
+                  mutation={EDIT_TODO}
+                  variables={{ text, goalId }}
+                  update={this.handleEditToDo}
+                >
+                  {editToDo => {
+                    this.editToDo = editToDo;
+                    return (
+                      <GoalTextPresenter
+                        {...this.props}
+                        toggleCompleted={isMine ? toggleToDo : null}
+                        deleteGoal={this.handleDeleteGoal}
+                        isEditing={isEditing}
+                        editingText={text}
+                        handleInputChange={this.handleInputChange}
+                        toggleEditing={this.toggleEditing}
+                        onSubmit={this.onSubmit}
+                      />
+                    );
+                  }}
+                </EditMutation>
+              );
+            }}
           </DeleteMutation>
         )}
       </ToggleMutation>
@@ -190,6 +194,13 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
         }
         return;
       }
+    }
+  };
+  public handleDeleteGoal = () => {
+    const confirmation = confirm("Are you sure you want to delete this goal?");
+    if (confirmation) {
+      this.deleteGoal();
+      toast.success("To Do Deleted");
     }
   };
 }
