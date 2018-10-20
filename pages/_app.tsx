@@ -1,5 +1,7 @@
 import App, { Container } from "next/app";
 import { ApolloProvider } from "react-apollo";
+import Router from "next/router";
+import withGA from "next-ga";
 import { ToastContainer, toast } from "react-toastify";
 import React from "react";
 import { parseCookies } from "nookies";
@@ -68,4 +70,6 @@ class MyApp extends App<any> {
   }
 }
 
-export default withNProgress()(withApollo(MyApp));
+export default withNProgress()(
+  withApollo(withGA("UA-123061558-2", Router)(MyApp))
+);

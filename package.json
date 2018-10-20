@@ -1,5 +1,5 @@
 {
-  "name": "indie-makers",
+  "name": "indie-makers-client",
   "version": "1.0.0",
   "description": "A community for people that build beautiful things on the internet.",
   "scripts": {
@@ -34,6 +34,7 @@
     "javascript-time-ago": "^1.0.31",
     "js-cookie": "^2.2.0",
     "next": "^7.0.0",
+    "next-ga": "^2.3.1",
     "next-nprogress": "^1.1.0",
     "next-with-apollo": "^3.1.3",
     "nookies": "^1.1.1",
@@ -57,5 +58,9 @@
     "tslint-config-prettier": "^1.14.0",
     "tslint-react": "^3.6.0",
     "typescript": "^2.9.2"
+  },
+  "now": {
+    "name": "indie-makers-client",
+    "alias": "indie-api"
   }
 }
