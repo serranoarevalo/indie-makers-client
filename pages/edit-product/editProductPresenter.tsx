@@ -33,6 +33,7 @@ const EditProductPresenter: React.SFC<IProps> = ({
         needsHelp={product.needsHelp}
         onSaveFn={updateProduct}
         title={`Edit ${product.name}`}
+        buttonText={"Update Product"}
       />
     </>
   );

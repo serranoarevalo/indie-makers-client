@@ -17,7 +17,11 @@ const NewPresenter: React.SFC<IProps> = ({ handleSubmit }) => (
     <Head>
       <title>Add Product | Indie Maker</title>
     </Head>
-    <ProductEditor onSaveFn={handleSubmit} title={"Add new product"} />
+    <ProductEditor
+      onSaveFn={handleSubmit}
+      title={"Add new product"}
+      buttonText={"Add Product"}
+    />
   </>
 );
 

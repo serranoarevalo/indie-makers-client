@@ -19,6 +19,7 @@ interface IProps {
     needsHelp?: boolean
   ) => void;
   title: string;
+  buttonText: string;
 }
 
 interface IState {
@@ -64,7 +65,7 @@ export default class ProductEditorContainer extends React.Component<
       description,
       needsHelp
     } = this.state;
-    const { title } = this.props;
+    const { title, buttonText } = this.props;
     return (
       <ProductEditorPresenter
         logoUrl={logoUrl}
@@ -77,6 +78,8 @@ export default class ProductEditorContainer extends React.Component<
         handleInputChange={this.handleInputChange}
         handleSubmit={this.handleSubmit}
         handleImageUpload={this.handleImageUpload}
+        buttonText={buttonText}
+        handleCheckbox={this.handleCheckbox}
       />
     );
   }
@@ -90,6 +93,15 @@ export default class ProductEditorContainer extends React.Component<
       [name]: value
     } as any);
   };
+
+  public handleCheckbox = () => {
+    this.setState(prev => {
+      return {
+        needsHelp: !prev.needsHelp
+      };
+    });
+  };
+
   public handleSubmit = () => {
     const {
       logoUrl,
@@ -100,10 +112,12 @@ export default class ProductEditorContainer extends React.Component<
       needsHelp
     } = this.state;
     const { onSaveFn } = this.props;
-    if (name !== "" && description !== "" && !isUploading) {
-      onSaveFn(name, description, logoUrl, website, needsHelp);
+    if (name === "" || description === "") {
+      toast.error("Name and description are required");
     } else if (isUploading) {
       toast.error("Wait until the photo stuff finished uploading");
+    } else {
+      onSaveFn(name, description, logoUrl, website, needsHelp);
     }
   };
   public handleImageUpload = async (

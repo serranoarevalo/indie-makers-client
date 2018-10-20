@@ -243,6 +243,33 @@ export interface addedRecently {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: editProduct
+// ====================================================
+
+export interface editProduct_EditProduct {
+  __typename: "EditProductResponse";
+  ok: boolean;
+  error: string | null;
+  newSlug: string | null;
+}
+
+export interface editProduct {
+  EditProduct: editProduct_EditProduct;
+}
+
+export interface editProductVariables {
+  slug: string;
+  name?: string | null;
+  description?: string | null;
+  needsHelp?: boolean | null;
+  website?: string | null;
+  logo?: string | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: editProfile
 // ====================================================
 
@@ -476,6 +503,7 @@ export interface getProduct_GetProduct_product {
 export interface getProduct_GetProduct {
   __typename: "GetProductResponse";
   product: getProduct_GetProduct_product | null;
+  error: string | null;
 }
 
 export interface getProduct {

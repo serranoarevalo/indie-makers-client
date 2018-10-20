@@ -1,14 +1,27 @@
 import React from "react";
 import EditProductPresenter from "./editProductPresenter";
 import IsMine from "../../lib/isMine";
-import { Query } from "react-apollo";
-import { getProduct, getProductVariables } from "types/api";
+import { Query, Mutation, MutationFn } from "react-apollo";
+import {
+  getProduct,
+  getProductVariables,
+  editProduct,
+  editProductVariables
+} from "types/api";
 import { GET_PRODUCT } from "../../pages/product/productQuery";
-import { withRouter } from "next/router";
+import { withRouter, WithRouterProps } from "next/router";
+import { EDIT_PRODUCT } from "./editProductQueries";
+import { toast } from "react-toastify";
 
 class GetProductQuery extends Query<getProduct, getProductVariables> {}
+class EditProductMutation extends Mutation<editProduct, editProductVariables> {}
 
-class EditProductContainer extends React.Component<any> {
+interface IProps {
+  slug: string;
+}
+
+class EditProductContainer extends React.Component<WithRouterProps & IProps> {
+  public updateFn: MutationFn<editProduct, editProductVariables>;
   static getInitialProps(props) {
     const {
       query: { slug }
@@ -32,10 +45,20 @@ class EditProductContainer extends React.Component<any> {
                 {isMine => {
                   if (isMine) {
                     return (
-                      <EditProductPresenter
-                        updateProduct={this.updateProduct}
-                        data={data}
-                      />
+                      <EditProductMutation
+                        mutation={EDIT_PRODUCT}
+                        onCompleted={this.onCompleted}
+                      >
+                        {updateFn => {
+                          this.updateFn = updateFn;
+                          return (
+                            <EditProductPresenter
+                              updateProduct={this.updateProduct}
+                              data={data}
+                            />
+                          );
+                        }}
+                      </EditProductMutation>
                     );
                   } else {
                     router.push(`/product/${slug}`);
@@ -57,7 +80,24 @@ class EditProductContainer extends React.Component<any> {
     logoUrl?: string,
     website?: string,
     needsHelp?: boolean
-  ) => {};
+  ) => {
+    const { slug } = this.props;
+    this.updateFn({
+      variables: { slug, name, description, logo: logoUrl, website, needsHelp }
+    });
+  };
+  public onCompleted = (data: editProduct) => {
+    const {
+      EditProduct: { ok, error }
+    } = data;
+    const { router, slug } = this.props;
+    if (!ok && error) {
+      toast.error(error);
+    } else {
+      toast.success("Product updated!");
+      setTimeout(() => router.push(`/product/${slug}`), 2000);
+    }
+  };
 }
 
 export default withRouter(EditProductContainer);

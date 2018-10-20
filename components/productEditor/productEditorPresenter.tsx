@@ -75,6 +75,8 @@ interface IProps {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   title: string;
+  buttonText: string;
+  handleCheckbox: () => void;
 }
 
 const ProductEditorPresenter: React.SFC<IProps> = ({
@@ -87,7 +89,9 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
   handleInputChange,
   handleSubmit,
   handleImageUpload,
-  title
+  title,
+  buttonText,
+  handleCheckbox
 }) => (
   <Wrapper>
     <Head>
@@ -134,7 +138,7 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
               onChange={handleInputChange}
             />
             <input
-              onChange={handleInputChange}
+              onChange={handleCheckbox}
               id={"help"}
               type={"checkbox"}
               name={"needsHelp"}
@@ -143,7 +147,7 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
             <label htmlFor="help">I need help to finish this</label>
           </FormInputs>
           {isUploading && "Uploading photo"}
-          <Button text={"Add Product"} onClick={handleSubmit} accent={true} />
+          <Button text={buttonText} onClick={handleSubmit} accent={true} />
         </EForm>
       </Card>
     </Container>

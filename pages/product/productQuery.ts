@@ -21,6 +21,7 @@ export const GET_PRODUCT = gql`
           ...GoalParts
         }
       }
+      error
     }
   }
   ${GOAL_FRAGMENT}
