@@ -118,7 +118,7 @@ const CardContent: React.SFC<IPresenterProps> = ({
               bgColor={"#FEF48B"}
               text={streakNumber}
               icon={"🔥"}
-              title={"Daily Streak"}
+              title={"To Dos Completed"}
             />
           )}
           {launchedNumber !== undefined && (
