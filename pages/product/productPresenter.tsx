@@ -173,24 +173,26 @@ const ProductPresenter: React.SFC<IProps> = ({
                     </Header>
                     <GoalsContainer>
                       {product.pendingGoals &&
-                        product.pendingGoals.map(
-                          goal =>
-                            goal && (
-                              <GoalText
-                                key={goal.id}
-                                lineThrough={false}
-                                isCompleted={goal.isCompleted}
-                                text={goal.text}
-                                onProductPage={true}
-                                timeStamp={goal.createdAt}
-                                isMine={isMine}
-                                goalId={goal.id}
-                                productSlug={
-                                  (goal.product && goal.product.slug) || ""
-                                }
-                              />
-                            )
-                        )}
+                        product.pendingGoals
+                          .reverse()
+                          .map(
+                            goal =>
+                              goal && (
+                                <GoalText
+                                  key={goal.id}
+                                  lineThrough={false}
+                                  isCompleted={goal.isCompleted}
+                                  text={goal.text}
+                                  onProductPage={true}
+                                  timeStamp={goal.createdAt}
+                                  isMine={isMine}
+                                  goalId={goal.id}
+                                  productSlug={
+                                    (goal.product && goal.product.slug) || ""
+                                  }
+                                />
+                              )
+                          )}
                     </GoalsContainer>
                     <GoalsFooter />
                   </ToDosColumn>
