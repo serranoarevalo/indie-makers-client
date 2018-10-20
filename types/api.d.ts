@@ -250,7 +250,6 @@ export interface editProduct_EditProduct {
   __typename: "EditProductResponse";
   ok: boolean;
   error: string | null;
-  newSlug: string | null;
 }
 
 export interface editProduct {
@@ -512,6 +511,27 @@ export interface getProduct {
 
 export interface getProductVariables {
   slug: string;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: deleteProduct
+// ====================================================
+
+export interface deleteProduct_DeleteProduct {
+  __typename: "DeleteProductResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deleteProduct {
+  DeleteProduct: deleteProduct_DeleteProduct;
+}
+
+export interface deleteProductVariables {
+  productId: number;
 }
 
 /* tslint:disable */

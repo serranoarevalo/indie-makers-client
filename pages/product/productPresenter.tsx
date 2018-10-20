@@ -76,12 +76,25 @@ const LinkBtn = styled(Button)`
   display: block;
 `;
 
+const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const RedText = styled.span`
+  color: ${props => props.theme.redColor};
+`;
+
 interface IProps {
   data?: getProduct;
+  confirmDeletion: () => void;
 }
 
 const ProductPresenter: React.SFC<IProps> = ({
-  data: { GetProduct: { product = null } = {} } = {}
+  data: { GetProduct: { product = null } = {} } = {},
+  confirmDeletion
 }) => (
   <Wrapper>
     <Head>
@@ -113,14 +126,20 @@ const ProductPresenter: React.SFC<IProps> = ({
                   <>
                     <AddToDo productId={product.id} slug={product.slug} />
                     <Divider />
-                    <Link
-                      href={routes.editProduct(product.slug)}
-                      as={routes.asEditProduct(product.slug)}
-                    >
-                      <a>
-                        <Button text={"Edit Product"} />
-                      </a>
-                    </Link>
+                    <ButtonContainer>
+                      <Link
+                        href={routes.editProduct(product.slug)}
+                        as={routes.asEditProduct(product.slug)}
+                      >
+                        <a>
+                          <Button text={"Edit Product"} />
+                        </a>
+                      </Link>
+                      <Button
+                        onClick={confirmDeletion}
+                        text={<RedText>Delete Product</RedText>}
+                      />
+                    </ButtonContainer>
                     <Divider />
                   </>
                 )}

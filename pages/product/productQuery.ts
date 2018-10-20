@@ -28,3 +28,12 @@ export const GET_PRODUCT = gql`
   ${PRODUCT_FRAGMENT}
   ${MAKER_FRAGMENT}
 `;
+
+export const DELETE_PRODUCT = gql`
+  mutation deleteProduct($productId: Int!) {
+    DeleteProduct(productId: $productId) {
+      ok
+      error
+    }
+  }
+`;
