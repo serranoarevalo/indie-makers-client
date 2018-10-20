@@ -11,7 +11,7 @@ export const GET_BLOG = gql`
         url
       }
     }
-    featured: productReviews(where: { featured: true }) {
+    featured: productReviews(where: { featured: true }, orderBy: id_DESC) {
       id
       slug
       name

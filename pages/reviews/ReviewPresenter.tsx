@@ -16,6 +16,7 @@ const HeroContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  grid-gap: 50px;
 `;
 
 const FeaturedImage = styled<{ bg: string }, "div">("div")`
@@ -37,7 +38,9 @@ const FeaturedTitle = styled.h3`
   font-size: 32px;
 `;
 
-const FeaturedSubtitle = styled.p``;
+const FeaturedSubtitle = styled.p`
+  max-width: 60%;
+`;
 
 const Posts = styled.div`
   padding: 50px 0px;
@@ -47,7 +50,6 @@ const Posts = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 120px;
   grid-gap: 30px;
 `;
 
@@ -64,7 +66,7 @@ const LatestPosts = styled.div`
 const LatestPostsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  grid-gap: 100px;
 `;
 
 interface IProps {

@@ -16,7 +16,7 @@ import { getFeatured, getLatest } from "types/blog";
 const PostGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr minmax(340px, 1fr);
-  grid-auto-rows: 500px;
+  grid-auto-rows: 525px;
   grid-gap: 50px;
 `;
 

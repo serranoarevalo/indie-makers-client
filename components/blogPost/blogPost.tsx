@@ -55,11 +55,12 @@ const Container = styled.div`
   cursor: pointer;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 15px;
+  grid-template-rows: 100%;
+  grid-gap: 25px;
   height: 100%;
   align-items: center;
   justify-items: center;
-  padding: 0px 10px;
+  padding: 20px;
 `;
 
 const Icon = styled(RoundImage)`
