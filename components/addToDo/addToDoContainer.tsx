@@ -6,6 +6,9 @@ import AddToDoPresenter from "./addToDoPresenter";
 import { toast } from "react-toastify";
 import { GET_PRODUCT } from "../../pages/product/productQuery";
 import { GET_DASHBOARD } from "../dashboard/DashboardQueries";
+import { DataProxy } from "apollo-cache";
+import { FetchResult } from "apollo-link";
+import { FULL_PRODUCT_FRAGMENT } from "../../fragments";
 
 interface IState {
   text: string;
@@ -30,10 +33,8 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
       <AddToDoMutation
         mutation={ADD_GOAL}
         variables={{ productId, text }}
-        refetchQueries={[
-          { query: GET_PRODUCT, variables: { slug } },
-          { query: GET_DASHBOARD }
-        ]}
+        refetchQueries={[{ query: GET_DASHBOARD }]}
+        update={this.onUpdate}
       >
         {addToDo => {
           this.addToDo = addToDo;
@@ -67,5 +68,41 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
       text: ""
     });
     this.addToDo();
+  };
+
+  public onUpdate = (
+    cache: DataProxy,
+    { data }: FetchResult<createGoal, Record<string, any>>
+  ) => {
+    console.log(data);
+    const { productId } = this.props;
+    if (data && "CreateGoal" in data) {
+      const {
+        CreateGoal: { ok, error, goal }
+      } = data;
+      if (!ok && error) {
+        toast.error(error);
+        return;
+      } else if (ok && !error) {
+        const id = `Product:${productId}`;
+        const product: any = cache.readFragment({
+          id,
+          fragment: FULL_PRODUCT_FRAGMENT,
+          fragmentName: "FullProductParts"
+        });
+        if (product) {
+          cache.writeFragment({
+            id,
+            fragment: FULL_PRODUCT_FRAGMENT,
+            data: {
+              ...product,
+              pendingGoals: [...product.pendingGoals, goal]
+            },
+            fragmentName: "FullProductParts"
+          });
+        }
+        return;
+      }
+    }
   };
 }

@@ -96,145 +96,145 @@ const ProductPresenter: React.SFC<IProps> = ({
   data,
   data: { GetProduct: { product = null } = {} } = {},
   confirmDeletion
-}) => (
-  <Wrapper>
-    {console.log(data)}
-    <Head>
-      <title>
-        {product ? product.name : "Product Not Found"} | Indie Makers
-      </title>
-    </Head>
-    <Container>
-      {product ? (
-        <IsMine otherId={product.maker && product.maker.id}>
-          {isMine => (
-            <>
-              <DetailsContainer>
-                <BigDetailCard
-                  isLink={false}
-                  icon={product.logo || ""}
-                  title={product.name}
-                  showSubtitle={true}
-                  toDoNumber={`${product.completedGoalCount}/${
-                    product.goalCount
-                  }`}
-                  subtitle={product.description}
-                  hasAuthor={false}
-                  needsHelp={product.needsHelp}
-                />
-                <Divider />
-
-                {isMine && (
-                  <>
-                    <AddToDo productId={product.id} slug={product.slug} />
-                    <Divider />
-                    <ButtonContainer>
-                      <Link
-                        href={routes.editProduct(product.slug)}
-                        as={routes.asEditProduct(product.slug)}
-                      >
-                        <a>
-                          <Button text={"Edit Product"} />
-                        </a>
-                      </Link>
-                      <Button
-                        onClick={confirmDeletion}
-                        text={<RedText>Delete Product</RedText>}
-                      />
-                    </ButtonContainer>
-                    <Divider />
-                  </>
-                )}
-
-                {product.website && (
-                  <>
-                    <a href={product.website} target={"_blank"}>
-                      <LinkBtn accent={false} text={"Visit Website"} />
-                    </a>
-                    <Divider />
-                  </>
-                )}
-                {product.maker && (
-                  <SmallDetailCard
-                    icon={product.maker.profilePhoto}
-                    title={product.maker.fullName}
-                    subtitle={product.maker.username || ""}
-                    streakNumber={product.maker.streak}
-                    isLink={true}
-                    link={routes.userDetail(product.maker.username || "")}
-                    linkAs={routes.asUserDetail(product.maker.username || "")}
-                    isCard={true}
+}) =>
+  product ? (
+    <Wrapper>
+      <Head>
+        <title>
+          {product ? product.name : "Product Not Found"} | Indie Makers
+        </title>
+      </Head>
+      <Container>
+        {product ? (
+          <IsMine otherId={product.maker && product.maker.id}>
+            {isMine => (
+              <>
+                <DetailsContainer>
+                  <BigDetailCard
+                    isLink={false}
+                    icon={product.logo || ""}
+                    title={product.name}
+                    showSubtitle={true}
+                    toDoNumber={`${product.completedGoalCount}/${
+                      product.goalCount
+                    }`}
+                    subtitle={product.description}
+                    hasAuthor={false}
+                    needsHelp={product.needsHelp}
                   />
-                )}
-              </DetailsContainer>
-              <Card>
-                <ToDos>
-                  <ToDosColumn>
-                    <Header>
-                      <Title>Doing</Title>
-                    </Header>
-                    <GoalsContainer>
-                      {product.pendingGoals &&
-                        product.pendingGoals
-                          .reverse()
-                          .map(
+                  <Divider />
+
+                  {isMine && (
+                    <>
+                      <AddToDo productId={product.id} slug={product.slug} />
+                      <Divider />
+                      <ButtonContainer>
+                        <Link
+                          href={routes.editProduct(product.slug)}
+                          as={routes.asEditProduct(product.slug)}
+                        >
+                          <a>
+                            <Button text={"Edit Product"} />
+                          </a>
+                        </Link>
+                        <Button
+                          onClick={confirmDeletion}
+                          text={<RedText>Delete Product</RedText>}
+                        />
+                      </ButtonContainer>
+                      <Divider />
+                    </>
+                  )}
+
+                  {product.website && (
+                    <>
+                      <a href={product.website} target={"_blank"}>
+                        <LinkBtn accent={false} text={"Visit Website"} />
+                      </a>
+                      <Divider />
+                    </>
+                  )}
+                  {product.maker && (
+                    <SmallDetailCard
+                      icon={product.maker.profilePhoto}
+                      title={product.maker.fullName}
+                      subtitle={product.maker.username || ""}
+                      streakNumber={product.maker.streak}
+                      isLink={true}
+                      link={routes.userDetail(product.maker.username || "")}
+                      linkAs={routes.asUserDetail(product.maker.username || "")}
+                      isCard={true}
+                    />
+                  )}
+                </DetailsContainer>
+                <Card>
+                  <ToDos>
+                    <ToDosColumn>
+                      <Header>
+                        <Title>Doing</Title>
+                      </Header>
+                      <GoalsContainer>
+                        {product.pendingGoals &&
+                          product.pendingGoals
+                            .reverse()
+                            .map(
+                              goal =>
+                                goal && (
+                                  <GoalText
+                                    key={goal.id}
+                                    lineThrough={false}
+                                    isCompleted={goal.isCompleted}
+                                    text={goal.text}
+                                    onProductPage={true}
+                                    timeStamp={goal.createdAt}
+                                    isMine={isMine}
+                                    goalId={goal.id}
+                                    productSlug={
+                                      (goal.product && goal.product.slug) || ""
+                                    }
+                                  />
+                                )
+                            )}
+                      </GoalsContainer>
+                      <GoalsFooter />
+                    </ToDosColumn>
+                    <ToDosColumn>
+                      <Header>
+                        <Title>Done</Title>
+                      </Header>
+                      <GoalsContainer>
+                        {product.completedGoals &&
+                          product.completedGoals.map(
                             goal =>
                               goal && (
                                 <GoalText
                                   key={goal.id}
+                                  goalId={goal.id}
                                   lineThrough={false}
                                   isCompleted={goal.isCompleted}
                                   text={goal.text}
+                                  timeStamp={goal.completedAt!}
                                   onProductPage={true}
-                                  timeStamp={goal.createdAt}
                                   isMine={isMine}
-                                  goalId={goal.id}
                                   productSlug={
                                     (goal.product && goal.product.slug) || ""
                                   }
                                 />
                               )
                           )}
-                    </GoalsContainer>
-                    <GoalsFooter />
-                  </ToDosColumn>
-                  <ToDosColumn>
-                    <Header>
-                      <Title>Done</Title>
-                    </Header>
-                    <GoalsContainer>
-                      {product.completedGoals &&
-                        product.completedGoals.map(
-                          goal =>
-                            goal && (
-                              <GoalText
-                                key={goal.id}
-                                goalId={goal.id}
-                                lineThrough={false}
-                                isCompleted={goal.isCompleted}
-                                text={goal.text}
-                                timeStamp={goal.completedAt!}
-                                onProductPage={true}
-                                isMine={isMine}
-                                productSlug={
-                                  (goal.product && goal.product.slug) || ""
-                                }
-                              />
-                            )
-                        )}
-                    </GoalsContainer>
-                    <GoalsFooter />
-                  </ToDosColumn>
-                </ToDos>
-              </Card>
-            </>
-          )}
-        </IsMine>
-      ) : (
-        <h1 className={"thickText"}>This product does not exist.</h1>
-      )}
-    </Container>
-  </Wrapper>
-);
+                      </GoalsContainer>
+                      <GoalsFooter />
+                    </ToDosColumn>
+                  </ToDos>
+                </Card>
+              </>
+            )}
+          </IsMine>
+        ) : (
+          <h1 className={"thickText"}>This product does not exist.</h1>
+        )}
+      </Container>
+    </Wrapper>
+  ) : null;
 
 export default ProductPresenter;

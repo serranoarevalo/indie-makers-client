@@ -65,6 +65,7 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
           <DeleteMutation
             mutation={DELETE_TODO}
             variables={{ goalId }}
+            awaitRefetchQueries={true}
             refetchQueries={[
               { query: GET_PRODUCT, variables: { slug: productSlug } },
               { query: GET_DASHBOARD }

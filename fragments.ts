@@ -38,3 +38,22 @@ export const PRODUCT_FRAGMENT = gql`
     needsHelp
   }
 `;
+
+export const FULL_PRODUCT_FRAGMENT = gql`
+  fragment FullProductParts on Product {
+    ...ProductParts
+    website
+    maker {
+      ...MakerParts
+    }
+    pendingGoals {
+      ...GoalParts
+    }
+    completedGoals {
+      ...GoalParts
+    }
+  }
+  ${PRODUCT_FRAGMENT}
+  ${GOAL_FRAGMENT}
+  ${MAKER_FRAGMENT}
+`;
