@@ -116,7 +116,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
                       featured={true}
                       slug={post.slug}
                       name={post.name}
-                      intro={post.intro}
+                      intro={post.intro || ""}
                       featuredImage={post.heroImage!.url}
                     />
                   )
@@ -137,7 +137,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
                         key={post.id}
                         slug={post.slug}
                         name={post.name}
-                        intro={post.intro}
+                        intro={post.intro || ""}
                         logo={post.logo!.url}
                       />
                     )

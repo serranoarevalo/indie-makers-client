@@ -59,7 +59,18 @@ const withLogin = Component =>
       if (!ok && error) {
         toast.error(error);
       } else if (ok && token) {
-        Cookie.set("X-JWT", token);
+        if (process.env.NODE_ENV === "production") {
+          Cookie.set("X-JWT", token, {
+            domain: ".indiemakers.net"
+          });
+        } else {
+          Cookie.set("X-JWT", token, {
+            domain: ".localtunnel.me"
+          });
+          Cookie.set("X-JWT", token, {
+            domain: "127.0.0.1"
+          });
+        }
         toast.success("Welcome, we are loggin you in 👋🏻");
         setTimeout(() => window.location.reload(), 2000);
       }

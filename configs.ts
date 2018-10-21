@@ -1,7 +1,7 @@
 export const GRAPHQL_URL =
   process.env.NODE_ENV === "production"
-    ? "https://indie-api.now.sh/graphql/"
-    : "http://127.0.0.1:4000/graphql/";
+    ? "https://api.indiemakers.net/graphql/"
+    : "https://popular-dodo-99.localtunnel.me/graphql/";
 export const GRAPHQLCMS_URL =
   "https://api-apeast.graphcms.com/v1/cjl84xx290azv01fzax9fajt0/master";
 export const FB_APP_ID =
@@ -10,5 +10,5 @@ export const FB_APP_ID =
     : "1844359489017417";
 export const AWS_URL =
   process.env.NODE_ENV === "production"
-    ? "https://indie-api.now.sh/aws/"
+    ? "https://api.indiemakers.net/aws/"
     : "http://127.0.0.1:4000/aws/";

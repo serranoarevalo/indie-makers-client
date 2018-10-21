@@ -15,7 +15,7 @@ interface IProps {
 const NewPresenter: React.SFC<IProps> = ({ handleSubmit }) => (
   <>
     <Head>
-      <title>Add Product | Indie Maker</title>
+      <title>Add Product | Indie Makers</title>
     </Head>
     <ProductEditor
       onSaveFn={handleSubmit}
