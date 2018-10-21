@@ -160,7 +160,7 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
                   pendingGoals: product.pendingGoals.filter(
                     goal => goal.id !== goalId
                   ),
-                  completedGoals: [newGoal, ...product.completedGoals]
+                  completedGoals: [...product.completedGoals, newGoal]
                 },
                 fragmentName: "FullProductParts"
               });
@@ -174,7 +174,7 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
                   completedGoals: product.completedGoals.filter(
                     goal => goal.id !== goalId
                   ),
-                  pendingGoals: [newGoal, ...product.pendingGoals]
+                  pendingGoals: [...product.pendingGoals, newGoal]
                 },
                 fragmentName: "FullProductParts"
               });
