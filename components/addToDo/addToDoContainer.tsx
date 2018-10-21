@@ -4,7 +4,6 @@ import { createGoal, createGoalVariables } from "types/api";
 import { ADD_GOAL } from "../../sharedQueries";
 import AddToDoPresenter from "./addToDoPresenter";
 import { toast } from "react-toastify";
-import { GET_PRODUCT } from "../../pages/product/productQuery";
 import { GET_DASHBOARD } from "../dashboard/DashboardQueries";
 import { DataProxy } from "apollo-cache";
 import { FetchResult } from "apollo-link";
@@ -17,6 +16,7 @@ interface IState {
 interface IProps {
   productId: number;
   slug: string;
+  name: string;
 }
 
 class AddToDoMutation extends Mutation<createGoal, createGoalVariables> {}
@@ -27,7 +27,7 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
     text: ""
   };
   render() {
-    const { productId, slug } = this.props;
+    const { productId, slug, name } = this.props;
     const { text } = this.state;
     return (
       <AddToDoMutation
@@ -35,6 +35,27 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
         variables={{ productId, text }}
         refetchQueries={[{ query: GET_DASHBOARD }]}
         update={this.onUpdate}
+        optimisticResponse={{
+          CreateGoal: {
+            __typename: "Mutation",
+            ok: true,
+            error: null,
+            goal: {
+              completedAt: null,
+              createdAt: String(new Date()),
+              id: Date.now(),
+              isCompleted: false,
+              product: {
+                id: productId,
+                slug,
+                name,
+                __typename: "Product"
+              },
+              text: text,
+              __typename: "Goal"
+            }
+          }
+        }}
       >
         {addToDo => {
           this.addToDo = addToDo;
@@ -74,7 +95,6 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
     cache: DataProxy,
     { data }: FetchResult<createGoal, Record<string, any>>
   ) => {
-    console.log(data);
     const { productId } = this.props;
     if (data && "CreateGoal" in data) {
       const {

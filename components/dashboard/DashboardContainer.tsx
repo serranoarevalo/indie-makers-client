@@ -64,6 +64,7 @@ class DashboardContainer extends React.Component<{}, IState> {
       });
     }
   };
+
   public handleInputChange: React.ChangeEventHandler<
     HTMLInputElement | HTMLSelectElement
   > = event => {

@@ -12,9 +12,8 @@ import {
   editToDoVariables
 } from "../../types/api";
 import { TOGGLE_TODO, DELETE_TODO, EDIT_TODO } from "./goalTextQueries";
-import { GOAL_FRAGMENT } from "../../fragments";
+import { GOAL_FRAGMENT, FULL_PRODUCT_FRAGMENT } from "../../fragments";
 import { GET_PRODUCT } from "../../pages/product/productQuery";
-import { GET_DASHBOARD } from "../../components/dashboard/DashboardQueries";
 
 class ToggleMutation extends Mutation<toggleToDo, toggleToDoVariables> {}
 class DeleteMutation extends Mutation<deleteGoal, deleteGoalVariables> {}
@@ -31,6 +30,7 @@ interface IProps {
   isMine?: boolean;
   timeStamp?: string;
   productSlug?: string;
+  productId?: number;
   goalId: number;
 }
 
@@ -57,6 +57,14 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
         mutation={TOGGLE_TODO}
         variables={{ goalId, isCompleted: !isCompleted }}
         update={this.handleAfterToggle}
+        optimisticResponse={{
+          EditGoal: {
+            __typename: "Mutation",
+            ok: true,
+            error: null,
+            isCompleted: !isCompleted
+          }
+        }}
         refetchQueries={[
           { query: GET_PRODUCT, variables: { slug: productSlug } }
         ]}
@@ -65,10 +73,9 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
           <DeleteMutation
             mutation={DELETE_TODO}
             variables={{ goalId }}
-            awaitRefetchQueries={true}
+            update={this.handleDelete}
             refetchQueries={[
-              { query: GET_PRODUCT, variables: { slug: productSlug } },
-              { query: GET_DASHBOARD }
+              { query: GET_PRODUCT, variables: { slug: productSlug } }
             ]}
           >
             {deleteGoal => {
@@ -78,6 +85,9 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
                   mutation={EDIT_TODO}
                   variables={{ text, goalId }}
                   update={this.handleEditToDo}
+                  refetchQueries={[
+                    { query: GET_PRODUCT, variables: { slug: productSlug } }
+                  ]}
                 >
                   {editToDo => {
                     this.editToDo = editToDo;
@@ -107,10 +117,10 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
     cache: DataProxy,
     { data }: FetchResult<toggleToDo, Record<string, any>>
   ) => {
-    const { goalId, isCompleted } = this.props;
+    const { goalId, productId } = this.props;
     if (data) {
       const {
-        EditGoal: { ok, error }
+        EditGoal: { ok, error, isCompleted }
       } = data;
       if (error) {
         toast.error(error);
@@ -123,13 +133,92 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
           fragment: GOAL_FRAGMENT
         });
         if (goal) {
+          const newGoal = {
+            ...goal,
+            __typename: "Goal",
+            isCompleted
+          };
           cache.writeFragment({
             id,
             fragment: GOAL_FRAGMENT,
-            data: {
-              ...goal,
-              isCompleted: !isCompleted
+            data: { ...newGoal }
+          });
+          const pId = `Product:${productId}`;
+          const product: any = cache.readFragment({
+            id: pId,
+            fragment: FULL_PRODUCT_FRAGMENT,
+            fragmentName: "FullProductParts"
+          });
+          if (product) {
+            if (isCompleted) {
+              cache.writeFragment({
+                id: pId,
+                fragment: FULL_PRODUCT_FRAGMENT,
+                data: {
+                  __typename: "Product",
+                  ...product,
+                  pendingGoals: product.pendingGoals.filter(
+                    goal => goal.id !== goalId
+                  ),
+                  completedGoals: [newGoal, ...product.completedGoals]
+                },
+                fragmentName: "FullProductParts"
+              });
+            } else {
+              cache.writeFragment({
+                id: pId,
+                fragment: FULL_PRODUCT_FRAGMENT,
+                data: {
+                  __typename: "Product",
+                  ...product,
+                  completedGoals: product.completedGoals.filter(
+                    goal => goal.id !== goalId
+                  ),
+                  pendingGoals: [newGoal, ...product.pendingGoals]
+                },
+                fragmentName: "FullProductParts"
+              });
             }
+          }
+        }
+        return;
+      }
+    }
+  };
+  public handleDelete = (
+    cache: DataProxy,
+    { data }: FetchResult<deleteGoal, Record<string, any>>
+  ) => {
+    const { goalId, productId } = this.props;
+    if (data) {
+      const {
+        DeleteGoal: { ok, error }
+      } = data;
+      if (error) {
+        toast.error(error);
+        return;
+      }
+      if (ok) {
+        const id = `Product:${productId}`;
+        const product: any = cache.readFragment({
+          id,
+          fragment: FULL_PRODUCT_FRAGMENT,
+          fragmentName: "FullProductParts"
+        });
+        if (product) {
+          cache.writeFragment({
+            id,
+            fragment: FULL_PRODUCT_FRAGMENT,
+            data: {
+              ...product,
+              pendingGoals: product.pendingGoals.filter(
+                goal => goal.id !== goalId
+              ),
+              completedGoals: product.completedGoals.filter(
+                goal => goal.id !== goalId
+              )
+            },
+            fragmentName: "FullProductParts"
           });
         }
         return;
@@ -201,7 +290,7 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
     const confirmation = confirm("Are you sure you want to delete this goal?");
     if (confirmation) {
       this.deleteGoal();
-      toast.success("To Do Deleted");
+      // toast.info("Deleting To Do");
     }
   };
 }

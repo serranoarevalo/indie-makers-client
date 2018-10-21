@@ -126,7 +126,11 @@ const ProductPresenter: React.SFC<IProps> = ({
 
                   {isMine && (
                     <>
-                      <AddToDo productId={product.id} slug={product.slug} />
+                      <AddToDo
+                        productId={product.id}
+                        slug={product.slug}
+                        name={product.name}
+                      />
                       <Divider />
                       <ButtonContainer>
                         <Link
@@ -192,6 +196,9 @@ const ProductPresenter: React.SFC<IProps> = ({
                                     productSlug={
                                       (goal.product && goal.product.slug) || ""
                                     }
+                                    productId={
+                                      (goal.product && goal.product.id) || 0
+                                    }
                                   />
                                 )
                             )}
@@ -218,6 +225,9 @@ const ProductPresenter: React.SFC<IProps> = ({
                                   isMine={isMine}
                                   productSlug={
                                     (goal.product && goal.product.slug) || ""
+                                  }
+                                  productId={
+                                    (goal.product && goal.product.id) || 0
                                   }
                                 />
                               )

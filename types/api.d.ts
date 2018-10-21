@@ -150,6 +150,7 @@ export interface toggleToDo_EditGoal {
   __typename: "EditGoalResponse";
   ok: boolean;
   error: string | null;
+  isCompleted: boolean | null;
 }
 
 export interface toggleToDo {
@@ -773,6 +774,73 @@ export interface ProductParts {
   goalCount: number;
   completedGoalCount: number;
   needsHelp: boolean;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL fragment: FullProductParts
+// ====================================================
+
+export interface FullProductParts_maker {
+  __typename: "User";
+  id: number;
+  fullName: string;
+  profilePhoto: string;
+  username: string | null;
+  streak: number;
+  launchedProductCount: number;
+}
+
+export interface FullProductParts_pendingGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface FullProductParts_pendingGoals {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  product: FullProductParts_pendingGoals_product | null;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface FullProductParts_completedGoals_product {
+  __typename: "Product";
+  id: number;
+  slug: string;
+  name: string;
+}
+
+export interface FullProductParts_completedGoals {
+  __typename: "Goal";
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  product: FullProductParts_completedGoals_product | null;
+  createdAt: string;
+  completedAt: string | null;
+}
+
+export interface FullProductParts {
+  __typename: "Product";
+  id: number;
+  logo: string | null;
+  name: string;
+  slug: string;
+  description: string;
+  goalCount: number;
+  completedGoalCount: number;
+  needsHelp: boolean;
+  website: string | null;
+  maker: FullProductParts_maker | null;
+  pendingGoals: (FullProductParts_pendingGoals | null)[] | null;
+  completedGoals: (FullProductParts_completedGoals | null)[] | null;
 }
 
 /* tslint:disable */

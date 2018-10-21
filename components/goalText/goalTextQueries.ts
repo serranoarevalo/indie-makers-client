@@ -5,6 +5,7 @@ export const TOGGLE_TODO = gql`
     EditGoal(isCompleted: $isCompleted, goalId: $goalId) {
       ok
       error
+      isCompleted
     }
   }
 `;
