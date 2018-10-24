@@ -17,8 +17,7 @@ import { Consumer } from "../../lib/context";
 
 const Container = styled.div`
   margin: 50px 0px;
-
-  padding: 15vh 0px;
+  padding: 10vh 0px;
 `;
 
 const Grid = styled.div`

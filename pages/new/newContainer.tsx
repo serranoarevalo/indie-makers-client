@@ -7,10 +7,18 @@ import { addProduct, addProductVariables } from "types/api";
 import { ADD_PRODUCT } from "./newQueries";
 import { GET_DASHBOARD } from "../../components/dashboard/DashboardQueries";
 
+interface IState {
+  canSubmit: boolean;
+}
+
 class AddProductMutaton extends Mutation<addProduct, addProductVariables> {}
 
-class NewContainer extends React.Component<WithRouterProps> {
+class NewContainer extends React.Component<WithRouterProps, IState> {
   public addProduct: MutationFn<addProduct, addProductVariables>;
+  public toastId: number;
+  state = {
+    canSubmit: true
+  };
   render() {
     return (
       <AddProductMutaton
@@ -32,19 +40,30 @@ class NewContainer extends React.Component<WithRouterProps> {
     website?: string,
     needsHelp?: boolean
   ) => {
+    const { canSubmit } = this.state;
     if (name === "" && description === "") {
       toast.error("Fill up the required fields");
       return;
     }
-    this.addProduct({
-      variables: {
-        name,
-        description,
-        website,
-        logo: logoUrl,
-        needsHelp: needsHelp || false
-      }
-    });
+    if (canSubmit) {
+      this.setState(
+        {
+          canSubmit: false
+        },
+        () => {
+          this.toastId = toast.info("Creating product");
+          this.addProduct({
+            variables: {
+              name,
+              description,
+              website,
+              logo: logoUrl,
+              needsHelp: needsHelp || false
+            }
+          });
+        }
+      );
+    }
   };
   public onAddCompleted = (data: addProduct) => {
     const { router } = this.props;
@@ -56,7 +75,10 @@ class NewContainer extends React.Component<WithRouterProps> {
       return;
     } else {
       if (product) {
-        toast.success(`${product.name} created!`);
+        toast.update(this.toastId, {
+          render: `${product.name} created!`,
+          type: toast.TYPE.SUCCESS
+        });
         setTimeout(() => router.push(`/product/${product.slug}`), 2000);
       }
     }
