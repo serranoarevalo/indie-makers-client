@@ -42,6 +42,7 @@ interface IState {
 export default class GoalTextContainer extends React.Component<IProps, IState> {
   public editToDo: MutationFn<editToDo, editToDoVariables>;
   public deleteGoal: MutationFn<deleteGoal, deleteGoalVariables>;
+  public toastId: number;
   constructor(props: IProps) {
     super(props);
     this.state = {
@@ -243,10 +244,13 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
   public onSubmit = () => {
     const { text } = this.state;
     if (text === "") {
-      toast.error("Goal cant be empty, try to delete it first");
+      toast.error("Goal cant be empty, try to delete it if you want.");
       return;
     }
-
+    this.setState({
+      isEditing: false
+    });
+    this.toastId = toast.info("Updating...");
     this.editToDo();
   };
   public handleEditToDo = (
@@ -278,8 +282,9 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
               text
             }
           });
-          this.setState({
-            isEditing: false
+          toast.update(this.toastId, {
+            render: `Updated!`,
+            type: toast.TYPE.SUCCESS
           });
         }
         return;

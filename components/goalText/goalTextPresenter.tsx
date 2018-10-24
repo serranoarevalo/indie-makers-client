@@ -110,7 +110,7 @@ const GoalText: React.SFC<IProps> = ({
       </FormContainer>
     ) : (
       <Text isCompleted={isCompleted} lineThrough={lineThrough}>
-        {text}
+        {editingText ? editingText : text}
       </Text>
     )}{" "}
     {!onProductPage && (
