@@ -210,7 +210,7 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
     this.setState({
       isEditing: false
     });
-    this.toastId = toast.info("Updating...");
+    // this.toastId = toast.info("Updating...");
     this.editToDo();
   };
   public handleEditToDo = (
@@ -242,10 +242,10 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
               text
             }
           });
-          toast.update(this.toastId, {
+          /* toast.update(this.toastId, {
             render: `Updated!`,
             type: toast.TYPE.SUCCESS
-          });
+          }); */
         }
         return;
       }
@@ -297,6 +297,8 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
             render: `Deleted!`,
             type: toast.TYPE.SUCCESS
           });
+        } else {
+          window.location.reload();
         }
         return;
       }

@@ -16,6 +16,7 @@ class AddTodoMutation extends Mutation<createGoal, createGoalVariables> {}
 
 class DashboardContainer extends React.Component<{}, IState> {
   public addToDo: MutationFn<createGoal, createGoalVariables>;
+  public toastId: number;
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +33,7 @@ class DashboardContainer extends React.Component<{}, IState> {
             mutation={ADD_GOAL}
             variables={{ text: newToDo, productId }}
             refetchQueries={[{ query: GET_DASHBOARD }]}
+            onCompleted={this.onAddCompleted}
           >
             {addToDo => {
               this.addToDo = addToDo;
@@ -59,9 +61,7 @@ class DashboardContainer extends React.Component<{}, IState> {
       toast.error("You have to write a goal!");
     } else {
       this.addToDo();
-      this.setState({
-        newToDo: ""
-      });
+      this.toastId = toast.info("Adding To Do");
     }
   };
 
@@ -74,6 +74,16 @@ class DashboardContainer extends React.Component<{}, IState> {
     this.setState({
       [name]: value
     } as any);
+  };
+
+  public onAddCompleted = () => {
+    this.setState({
+      newToDo: ""
+    });
+    toast.update(this.toastId, {
+      render: `Created!`,
+      type: toast.TYPE.SUCCESS
+    });
   };
 }
 
