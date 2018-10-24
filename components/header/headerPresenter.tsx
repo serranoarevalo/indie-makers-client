@@ -173,7 +173,7 @@ const Header: React.SFC<IProps> = ({
                   </li>
                   <li>
                     <Link prefetch href={routes.new}>
-                      <a>Add Prodcut</a>
+                      <a>Add Product</a>
                     </Link>
                   </li>
                   <li>

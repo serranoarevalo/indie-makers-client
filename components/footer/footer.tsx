@@ -67,7 +67,7 @@ const Footer = () => (
             </SLink>
             <SLink>
               <Link prefetch href={routes.blog}>
-                <a>Blog</a>
+                <a>Launched</a>
               </Link>
             </SLink>
           </List>
