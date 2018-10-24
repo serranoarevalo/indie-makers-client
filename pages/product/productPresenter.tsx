@@ -58,12 +58,12 @@ const Header = styled.div`
 
 const GoalsContainer = styled.div`
   padding: 20px 10px;
-  display: grid;
-  grid-auto-rows: 40px;
   height: 60vh;
   max-height: 60vh;
   overflow: scroll;
-  grid-gap: 10px;
+  & > span {
+    margin-bottom: 20px;
+  }
 `;
 
 const GoalsFooter = styled.div`

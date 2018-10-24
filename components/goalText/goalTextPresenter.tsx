@@ -41,8 +41,10 @@ const Timestamp = styled.span`
 `;
 
 const EditBtn = styled.span`
-  margin-left: 10px;
   cursor: pointer;
+  &:last-child {
+    margin-left: 10px;
+  }
 `;
 
 const FormContainer = styled.span`
@@ -51,7 +53,7 @@ const FormContainer = styled.span`
   }
 `;
 
-const ActionContainers = styled.div`
+const ButtonContainer = styled.div`
   display: block;
   margin-top: 10px;
 `;
@@ -133,35 +135,37 @@ const GoalText: React.SFC<IProps> = ({
       </React.Fragment>
     )}
     <Timestamp>{timeAgo.format(Date.parse(timeStamp || ""))}</Timestamp>
-    {isEditing ? (
-      isMine && (
+    <ButtonContainer>
+      {isEditing ? (
+        isMine && (
+          <>
+            {isMine && (
+              <EditBtn title={"Save"} onClick={onSubmit}>
+                ✅
+              </EditBtn>
+            )}
+            {isMine && (
+              <EditBtn title={"Cancel"} onClick={toggleEditing}>
+                ❌
+              </EditBtn>
+            )}
+          </>
+        )
+      ) : (
         <>
           {isMine && (
-            <EditBtn title={"Save"} onClick={onSubmit}>
-              ✅
+            <EditBtn onClick={toggleEditing} title={"Edit"}>
+              ✏️
             </EditBtn>
           )}
           {isMine && (
-            <EditBtn title={"Cancel"} onClick={toggleEditing}>
-              ❌
+            <EditBtn onClick={deleteGoal} title={"Delete"}>
+              🗑
             </EditBtn>
           )}
         </>
-      )
-    ) : (
-      <ActionContainers>
-        {isMine && (
-          <EditBtn onClick={toggleEditing} title={"Edit"}>
-            ✏️
-          </EditBtn>
-        )}
-        {isMine && (
-          <EditBtn onClick={deleteGoal} title={"Delete"}>
-            🗑
-          </EditBtn>
-        )}
-      </ActionContainers>
-    )}
+      )}
+    </ButtonContainer>
   </Container>
 );
 
