@@ -65,6 +65,7 @@ const Container = styled.div`
 
 const Icon = styled(RoundImage)`
   height: 60px;
+  width: 60px;
 `;
 
 const Title = styled.h4`
@@ -104,7 +105,7 @@ const BlogPost: React.SFC<IProps> = ({
         </FContainer>
       ) : (
         <Container>
-          <Icon src={logo} />
+          <Icon alt={"Post"} src={logo} />
           <span>
             <Title>{name}</Title>
             <p>{intro}</p>

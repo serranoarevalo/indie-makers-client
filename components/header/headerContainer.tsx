@@ -1,9 +1,9 @@
 import React from "react";
-import Cookie from "js-cookie";
 import Header, { FixedHeader } from "./headerPresenter";
 import withLogin from "../../lib/withLogin";
 import { getMe } from "types/api";
 import { toast } from "react-toastify";
+import logOut from "../../lib/logOut";
 
 interface IState {
   scrolled: boolean;
@@ -59,10 +59,7 @@ class HeaderContainer extends React.Component<IProps, IState> {
   public onLogOutClick = () => {
     toast.info("See you later! 👋🏻");
     setTimeout(() => {
-      Cookie.remove("X-JWT", {
-        domain: ".localtunnel.me"
-      });
-      window.location.href = "/";
+      logOut();
     }, 1000);
   };
 }

@@ -1,7 +1,7 @@
 import withApollo from "next-with-apollo";
 import ApolloClient from "apollo-boost";
-import Cookie from "js-cookie";
 import { GRAPHQL_URL } from "../configs";
+import logOut from "./logOut";
 
 export default withApollo(
   ({ headers }) =>
@@ -14,10 +14,7 @@ export default withApollo(
             try {
               const JSONError = JSON.parse(error.message);
               if (JSONError.status === 401) {
-                Cookie.remove("X-JWT", {
-                  domain: ".localtunnel.me"
-                });
-                window.location.href = "/";
+                logOut();
               }
             } catch (error) {
               console.log(error);
