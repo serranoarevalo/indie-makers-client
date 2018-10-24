@@ -14,7 +14,7 @@ import withApollo from "../lib/withApollo";
 import WithUser from "../lib/withUser";
 
 const theme = {
-  greyColor: "#95a5a6",
+  greyColor: "#7a8889",
   whiteColor: "white",
   yellowColor: "#FEF48B",
   redColor: "#E8674A",

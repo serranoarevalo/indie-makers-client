@@ -84,11 +84,17 @@ const MakerPresenter: React.SFC<IProps> = ({
             {maker.homepage && (
               <>
                 <Divider />
-                <Link href={`https://${maker.homepage}`}>
-                  <a>
-                    <Button text={`Contact ${maker.fullName!.split(" ")[0]}`} />
-                  </a>
-                </Link>
+
+                <a
+                  href={
+                    maker.homepage.substring(0, 4) === "http"
+                      ? maker.homepage
+                      : `http://${maker.homepage}`
+                  }
+                  target={"_blank"}
+                >
+                  <Button text={`Contact ${maker.fullName!.split(" ")[0]}`} />
+                </a>
               </>
             )}
 

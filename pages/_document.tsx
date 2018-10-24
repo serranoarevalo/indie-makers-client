@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <html lang="en">
         <Head>
           <title>Indie Makers | Build products, together</title>
           <link href="/static/global.css" rel="stylesheet" />
@@ -86,6 +86,16 @@ export default class MyDocument extends Document {
             type="image/png"
             sizes="16x16"
             href="/static/favicon-16x16.png"
+          />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta name="theme-color" content={"#34495E"} />
+          <link rel="manifest" href={"/static/manifest.json"} />
+          <meta
+            name="description"
+            content={"Indie Makers: Building beautiful products together!"}
           />
         </Head>
         <body>

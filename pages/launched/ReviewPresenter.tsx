@@ -105,7 +105,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
       <Wrapper>
         {featured.length > 1 && (
           <LatestPosts>
-            <PostsTitle>Latest Reviews</PostsTitle>
+            <PostsTitle>Latest Posts</PostsTitle>
             <LatestPostsGrid>
               {featured.map((post, index) => {
                 if (index < 1) return;
@@ -127,7 +127,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
         )}
         {posts.length > 0 && (
           <React.Fragment>
-            <PostsTitle>All Reviews</PostsTitle>
+            <PostsTitle>All Posts</PostsTitle>
             <Grid>
               {posts &&
                 posts.map(

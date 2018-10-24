@@ -1,7 +1,9 @@
 import React from "react";
+import Cookies from "js-cookie";
 import Header, { FixedHeader } from "./headerPresenter";
 import withLogin from "../../lib/withLogin";
 import { getMe } from "types/api";
+import { toast } from "react-toastify";
 
 interface IState {
   scrolled: boolean;
@@ -36,13 +38,31 @@ class HeaderContainer extends React.Component<IProps, IState> {
 
     return (
       <React.Fragment>
-        <Header fbLogin={fbLogin} isLoggedIn={isLoggedIn} user={user} />
+        <Header
+          fbLogin={fbLogin}
+          isLoggedIn={isLoggedIn}
+          user={user}
+          onLogOutClick={this.onLogOutClick}
+        />
         {scrolled && (
-          <FixedHeader fbLogin={fbLogin} isLoggedIn={isLoggedIn} user={user} />
+          <FixedHeader
+            fbLogin={fbLogin}
+            isLoggedIn={isLoggedIn}
+            user={user}
+            onLogOutClick={this.onLogOutClick}
+          />
         )}
       </React.Fragment>
     );
   }
+
+  public onLogOutClick = () => {
+    toast.info("See you later! 👋🏻");
+    setTimeout(() => {
+      Cookies.remove("X-JWT");
+      window.location.href = "/";
+    }, 1000);
+  };
 }
 
 export default withLogin(HeaderContainer);

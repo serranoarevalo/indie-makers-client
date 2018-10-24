@@ -152,7 +152,14 @@ const ProductPresenter: React.SFC<IProps> = ({
 
                   {product.website && (
                     <>
-                      <a href={product.website} target={"_blank"}>
+                      <a
+                        href={
+                          product.website.substring(0, 4) === "http"
+                            ? product.website
+                            : `http://${product.website}`
+                        }
+                        target={"_blank"}
+                      >
                         <LinkBtn accent={false} text={"Visit Website"} />
                       </a>
                       <Divider />

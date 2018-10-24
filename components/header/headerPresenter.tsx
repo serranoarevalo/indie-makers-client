@@ -68,9 +68,15 @@ interface IProps {
   fbLogin: () => void;
   isLoggedIn: boolean;
   user: getMe;
+  onLogOutClick: () => void;
 }
 
-const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
+const Header: React.SFC<IProps> = ({
+  fbLogin,
+  isLoggedIn,
+  user,
+  onLogOutClick
+}) => (
   <Container>
     <Wrapper>
       <FlexWidthContainer>
@@ -104,7 +110,7 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
               </li>
               <li>
                 <Link href={routes.blog}>
-                  <a>Blog</a>
+                  <a>Launched</a>
                 </Link>
               </li>
             </ul>
@@ -161,6 +167,11 @@ const Header: React.SFC<IProps> = ({ fbLogin, isLoggedIn, user }) => (
                     <Link href={routes.new}>
                       <a>Add Prodcut</a>
                     </Link>
+                  </li>
+                  <li>
+                    <span style={{ cursor: "pointer" }} onClick={onLogOutClick}>
+                      Log Out
+                    </span>
                   </li>
                 </ul>
               </Navigation>

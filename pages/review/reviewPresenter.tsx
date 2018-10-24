@@ -136,7 +136,7 @@ const ReviewPresenter: React.SFC<IProps> = ({ data }) => {
               </ColumnText>
             </Column>
             <Column>
-              <ColumnTitle>Website</ColumnTitle>
+              <ColumnTitle>Type</ColumnTitle>
               <ColumnText>
                 {projectTypes &&
                   projectTypes.map((project, index) => {
@@ -158,12 +158,13 @@ const ReviewPresenter: React.SFC<IProps> = ({ data }) => {
         <Content>
           <EWrapper>
             <Markdown
-              source={review}
+              source={review || ""}
               renderers={{
                 heading: QuestionTitle,
                 paragraph: QuestionAnswer,
                 image: Image
               }}
+              linkTarget={"_blank"}
             />
           </EWrapper>
         </Content>

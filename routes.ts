@@ -5,7 +5,7 @@ export default {
   login: "/login",
   makers: "/makers",
   about: "/about",
-  blog: "/reviews",
+  blog: "/launched",
   products: "/products",
   todos: "/todos",
   editProfile: "/edit-profile",

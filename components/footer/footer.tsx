@@ -40,6 +40,10 @@ const Text = styled.div`
   display: block;
 `;
 
+const FLink = styled.a`
+  text-decoration: underline;
+`;
+
 const Footer = () => (
   <Container>
     <Wrapper>
@@ -70,7 +74,12 @@ const Footer = () => (
         </Nav>
         <Copyright>
           <Text>Build beautiful things.</Text>
-          <Text>&copy; {`${new Date().getFullYear()}`} Nomadcoders</Text>
+          <Text>
+            &copy; {`${new Date().getFullYear()}`}{" "}
+            <FLink href={"https://nomadcoders.co/"} target={"_blank"}>
+              Nomadcoders
+            </FLink>
+          </Text>
         </Copyright>
       </Grid>
     </Wrapper>

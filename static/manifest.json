@@ -1,0 +1,19 @@
+{
+  "name": "Indie Makers",
+  "short_name": "Indie Makers",
+  "theme_color": "#34495E",
+  "background_color": "#f0f2f5",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/static/android-icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

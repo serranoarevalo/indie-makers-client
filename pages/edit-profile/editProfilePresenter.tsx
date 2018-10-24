@@ -76,7 +76,7 @@ const EditProfilePresenter: React.SFC<IProps> = ({
               type={"text"}
               id={"username"}
             />
-            <Label htmlFor={"homepage"}>Homepage (no http://)</Label>
+            <Label htmlFor={"homepage"}>Homepage</Label>
             <EInput
               name={"homepage"}
               value={homepage || ""}
