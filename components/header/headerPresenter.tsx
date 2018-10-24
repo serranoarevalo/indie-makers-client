@@ -158,6 +158,13 @@ const Header: React.SFC<IProps> = ({
                                 userQuery.Me.user.profilePhoto) ||
                               "/static/demo.jpg"
                             }
+                            alt={
+                              (userQuery &&
+                                userQuery.Me &&
+                                userQuery.Me.user &&
+                                userQuery.Me.user.username) ||
+                              "Profile"
+                            }
                           />
                           Products
                         </AvatarContainer>

@@ -85,7 +85,9 @@ const QuestionAnswer = styled.p`
   margin-bottom: 30px;
 `;
 
-const Image = styled.img`
+const Image = styled.img.attrs({
+  alt: "Product Review"
+})`
   width: 100%;
   margin: 25px 0px;
   border-radius: ${props => props.theme.borderRadius};

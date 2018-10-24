@@ -8,11 +8,12 @@ const RoundImage = styled.img`
 
 interface IProps {
   src?: string;
+  alt: string;
   className?: string;
 }
 
-const RoundImageC: React.SFC<IProps> = ({ src, className }) => (
-  <RoundImage src={src} className={className} />
+const RoundImageC: React.SFC<IProps> = ({ src, className, alt }) => (
+  <RoundImage src={src} alt={alt} className={className} />
 );
 
 export default RoundImageC;

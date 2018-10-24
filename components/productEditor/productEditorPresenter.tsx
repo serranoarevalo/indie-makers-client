@@ -102,7 +102,10 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
       <Card>
         <EForm onSubmit={handleSubmit}>
           <Label htmlFor="file">
-            <UploadedImage src={logoUrl || "/static/photoPlaceholder.jpg"} />
+            <UploadedImage
+              alt={"Add a photo"}
+              src={logoUrl || "/static/photoPlaceholder.jpg"}
+            />
             (not required)
           </Label>
           <FileInput

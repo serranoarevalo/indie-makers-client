@@ -27,6 +27,7 @@ const IconContainer = styled.div`
 
 const Icon = styled(RoundImage)`
   height: 80px;
+  width: 80px;
   display: block;
 `;
 
@@ -95,7 +96,7 @@ const CardContent: React.SFC<IPresenterProps> = ({
   <React.Fragment>
     <IconContainer>
       {icon ? (
-        <Icon src={icon} />
+        <Icon src={icon} alt={title} />
       ) : (
         <ImagePlaceholder letter={title[0]} size={80} />
       )}
@@ -131,7 +132,7 @@ const CardContent: React.SFC<IPresenterProps> = ({
           )}
         </React.Fragment>
       </Badges>
-      {hasAuthor && <Maker src={authorAvatar!} />}
+      {hasAuthor && <Maker alt={title} src={authorAvatar!} />}
     </Footer>
   </React.Fragment>
 );

@@ -91,7 +91,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <meta name="theme-color" content={"#34495E"} />
+          <meta name="theme-color" content={"#F6F9FC"} />
           <link rel="manifest" href={"/static/manifest.json"} />
           <meta
             name="description"

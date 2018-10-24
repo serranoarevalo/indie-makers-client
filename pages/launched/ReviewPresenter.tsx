@@ -78,7 +78,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
 }) => (
   <React.Fragment>
     <Head>
-      <title>Blog | Indie Makers</title>
+      <title>Launched | Indie Makers</title>
     </Head>
     <Hero>
       <Wrapper>

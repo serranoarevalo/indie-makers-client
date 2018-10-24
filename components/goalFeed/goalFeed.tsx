@@ -60,7 +60,10 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         as={routes.asUserDetail(goal.maker!.username || "")}
       >
         <a style={{ height: "35px" }}>
-          <Photo src={(goal.maker && goal.maker.profilePhoto) || ""} />
+          <Photo
+            alt={(goal.maker && goal.maker.username) || "Profile"}
+            src={(goal.maker && goal.maker.profilePhoto) || ""}
+          />
         </a>
       </Link>
       👉🏻

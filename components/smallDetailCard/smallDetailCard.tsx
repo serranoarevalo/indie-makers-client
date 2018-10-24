@@ -78,7 +78,7 @@ const DetailContent: React.SFC<IPresenterProps> = ({
   <Container className={className}>
     <Column>
       {icon ? (
-        <Avatar src={icon} />
+        <Avatar alt={title} src={icon} />
       ) : (
         <ImagePlaceholder size={40} letter={title[0]} />
       )}
