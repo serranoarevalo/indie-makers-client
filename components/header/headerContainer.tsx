@@ -1,5 +1,5 @@
 import React from "react";
-import Cookies from "js-cookie";
+import Cookie from "js-cookie";
 import Header, { FixedHeader } from "./headerPresenter";
 import withLogin from "../../lib/withLogin";
 import { getMe } from "types/api";
@@ -59,7 +59,9 @@ class HeaderContainer extends React.Component<IProps, IState> {
   public onLogOutClick = () => {
     toast.info("See you later! 👋🏻");
     setTimeout(() => {
-      Cookies.remove("X-JWT");
+      Cookie.remove("X-JWT", {
+        domain: ".localtunnel.me"
+      });
       window.location.href = "/";
     }, 1000);
   };

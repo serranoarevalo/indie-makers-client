@@ -1,9 +1,12 @@
 import styled from "../../typed-components";
 
-const RoundImage = styled.img`
-  border-radius: 50%;
+const RoundImage = styled<any, any>("div")`
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center center;
   border: 1px solid ${props => props.theme.darkBlueColor};
   max-width: 100%;
+  border-radius: 50%;
 `;
 
 interface IProps {
