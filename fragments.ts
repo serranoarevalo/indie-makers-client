@@ -20,6 +20,7 @@ export const GOAL_FRAGMENT = gql`
       id
       slug
       name
+      logo
     }
     createdAt
     completedAt

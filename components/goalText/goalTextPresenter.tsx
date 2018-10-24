@@ -51,6 +51,11 @@ const FormContainer = styled.span`
   }
 `;
 
+const ActionContainers = styled.div`
+  display: block;
+  margin-top: 10px;
+`;
+
 interface IProps {
   text: string;
   isCompleted?: boolean;
@@ -144,7 +149,7 @@ const GoalText: React.SFC<IProps> = ({
         </>
       )
     ) : (
-      <>
+      <ActionContainers>
         {isMine && (
           <EditBtn onClick={toggleEditing} title={"Edit"}>
             ✏️
@@ -155,7 +160,7 @@ const GoalText: React.SFC<IProps> = ({
             🗑
           </EditBtn>
         )}
-      </>
+      </ActionContainers>
     )}
   </Container>
 );

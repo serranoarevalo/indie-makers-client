@@ -28,13 +28,8 @@ const ProductContainer = styled.div`
 
 const Photo = styled.img`
   width: 35px;
+  height: 35px;
   border-radius: 50%;
-  &:first-child {
-    margin-right: 10px;
-  }
-  &:last-child {
-    margin-left: 10px;
-  }
 `;
 
 interface IProps {
@@ -59,7 +54,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.userDetail(goal.maker!.username || "")}
         as={routes.asUserDetail(goal.maker!.username || "")}
       >
-        <a style={{ height: "35px" }}>
+        <a style={{ height: "35px", marginRight: "10px" }}>
           <Photo
             alt={(goal.maker && goal.maker.username) || "Profile"}
             src={(goal.maker && goal.maker.profilePhoto) || ""}
@@ -74,7 +69,9 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
       >
         <a>
           {goal && goal.product && goal.product.logo ? (
-            <Photo src={(goal.product && goal.product.logo) || ""} />
+            <ProductContainer>
+              <Photo src={(goal.product && goal.product.logo) || ""} />
+            </ProductContainer>
           ) : (
             <ProductContainer>
               <ImagePlaceholder letter={goal.product.name[0]} size={35} />

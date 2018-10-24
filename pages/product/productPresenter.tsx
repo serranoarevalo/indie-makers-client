@@ -63,6 +63,7 @@ const GoalsContainer = styled.div`
   height: 60vh;
   max-height: 60vh;
   overflow: scroll;
+  grid-gap: 10px;
 `;
 
 const GoalsFooter = styled.div`
@@ -219,27 +220,29 @@ const ProductPresenter: React.SFC<IProps> = ({
                       </Header>
                       <GoalsContainer>
                         {product.completedGoals &&
-                          product.completedGoals.map(
-                            goal =>
-                              goal && (
-                                <GoalText
-                                  key={goal.id}
-                                  goalId={goal.id}
-                                  lineThrough={false}
-                                  isCompleted={goal.isCompleted}
-                                  text={goal.text}
-                                  timeStamp={goal.completedAt!}
-                                  onProductPage={true}
-                                  isMine={isMine}
-                                  productSlug={
-                                    (goal.product && goal.product.slug) || ""
-                                  }
-                                  productId={
-                                    (goal.product && goal.product.id) || 0
-                                  }
-                                />
-                              )
-                          )}
+                          product.completedGoals
+                            .reverse()
+                            .map(
+                              goal =>
+                                goal && (
+                                  <GoalText
+                                    key={goal.id}
+                                    goalId={goal.id}
+                                    lineThrough={false}
+                                    isCompleted={goal.isCompleted}
+                                    text={goal.text}
+                                    timeStamp={goal.completedAt!}
+                                    onProductPage={true}
+                                    isMine={isMine}
+                                    productSlug={
+                                      (goal.product && goal.product.slug) || ""
+                                    }
+                                    productId={
+                                      (goal.product && goal.product.id) || 0
+                                    }
+                                  />
+                                )
+                            )}
                       </GoalsContainer>
                       <GoalsFooter />
                     </ToDosColumn>

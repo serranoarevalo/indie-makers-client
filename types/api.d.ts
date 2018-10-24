@@ -10,6 +10,7 @@ export interface completedGoals_FilterGoals_goals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface completedGoals_FilterGoals_goals_maker {
@@ -78,6 +79,7 @@ export interface getDashboard_GetLatestGoals_goals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface getDashboard_GetLatestGoals_goals {
@@ -310,6 +312,7 @@ export interface getMaker_GetMaker_maker_completedGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface getMaker_GetMaker_maker_completedGoals {
@@ -327,6 +330,7 @@ export interface getMaker_GetMaker_maker_pendingGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface getMaker_GetMaker_maker_pendingGoals {
@@ -455,6 +459,7 @@ export interface getProduct_GetProduct_product_pendingGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface getProduct_GetProduct_product_pendingGoals {
@@ -472,6 +477,7 @@ export interface getProduct_GetProduct_product_completedGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface getProduct_GetProduct_product_completedGoals {
@@ -688,6 +694,7 @@ export interface createGoal_CreateGoal_goal_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface createGoal_CreateGoal_goal {
@@ -745,6 +752,7 @@ export interface GoalParts_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface GoalParts {
@@ -798,6 +806,7 @@ export interface FullProductParts_pendingGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface FullProductParts_pendingGoals {
@@ -815,6 +824,7 @@ export interface FullProductParts_completedGoals_product {
   id: number;
   slug: string;
   name: string;
+  logo: string | null;
 }
 
 export interface FullProductParts_completedGoals {
