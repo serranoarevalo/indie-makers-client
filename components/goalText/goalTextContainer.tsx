@@ -186,46 +186,6 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
       }
     }
   };
-  public handleDelete = (
-    cache: DataProxy,
-    { data }: FetchResult<deleteGoal, Record<string, any>>
-  ) => {
-    const { goalId, productId } = this.props;
-    if (data) {
-      const {
-        DeleteGoal: { ok, error }
-      } = data;
-      if (error) {
-        toast.error(error);
-        return;
-      }
-      if (ok) {
-        const id = `Product:${productId}`;
-        const product: any = cache.readFragment({
-          id,
-          fragment: FULL_PRODUCT_FRAGMENT,
-          fragmentName: "FullProductParts"
-        });
-        if (product) {
-          cache.writeFragment({
-            id,
-            fragment: FULL_PRODUCT_FRAGMENT,
-            data: {
-              ...product,
-              pendingGoals: product.pendingGoals.filter(
-                goal => goal.id !== goalId
-              ),
-              completedGoals: product.completedGoals.filter(
-                goal => goal.id !== goalId
-              )
-            },
-            fragmentName: "FullProductParts"
-          });
-        }
-        return;
-      }
-    }
-  };
   public handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value }
@@ -295,7 +255,51 @@ export default class GoalTextContainer extends React.Component<IProps, IState> {
     const confirmation = confirm("Are you sure you want to delete this goal?");
     if (confirmation) {
       this.deleteGoal();
-      // toast.info("Deleting To Do");
+      this.toastId = toast.info("Deleting To Do");
+    }
+  };
+  public handleDelete = (
+    cache: DataProxy,
+    { data }: FetchResult<deleteGoal, Record<string, any>>
+  ) => {
+    const { goalId, productId } = this.props;
+    if (data) {
+      const {
+        DeleteGoal: { ok, error }
+      } = data;
+      if (error) {
+        toast.error(error);
+        return;
+      }
+      if (ok) {
+        const id = `Product:${productId}`;
+        const product: any = cache.readFragment({
+          id,
+          fragment: FULL_PRODUCT_FRAGMENT,
+          fragmentName: "FullProductParts"
+        });
+        if (product) {
+          cache.writeFragment({
+            id,
+            fragment: FULL_PRODUCT_FRAGMENT,
+            data: {
+              ...product,
+              pendingGoals: product.pendingGoals.filter(
+                goal => goal.id !== goalId
+              ),
+              completedGoals: product.completedGoals.filter(
+                goal => goal.id !== goalId
+              )
+            },
+            fragmentName: "FullProductParts"
+          });
+          toast.update(this.toastId, {
+            render: `Deleted!`,
+            type: toast.TYPE.SUCCESS
+          });
+        }
+        return;
+      }
     }
   };
 }

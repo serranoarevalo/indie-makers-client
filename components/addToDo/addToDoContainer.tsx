@@ -23,6 +23,7 @@ class AddToDoMutation extends Mutation<createGoal, createGoalVariables> {}
 
 export default class AddToDoContainer extends React.Component<IProps, IState> {
   public addToDo: MutationFn<createGoal, createGoalVariables>;
+  public toastId: number;
   state = {
     text: ""
   };
@@ -88,6 +89,7 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
     this.setState({
       text: ""
     });
+    this.toastId = toast.info("Adding To Do...");
     this.addToDo();
   };
 
@@ -119,6 +121,10 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
               pendingGoals: [...product.pendingGoals, goal]
             },
             fragmentName: "FullProductParts"
+          });
+          toast.update(this.toastId, {
+            render: `Created!`,
+            type: toast.TYPE.SUCCESS
           });
         }
         return;
