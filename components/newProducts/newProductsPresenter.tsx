@@ -29,12 +29,12 @@ const NewProductsPresenter: React.SFC<IProps> = ({
     <Section
       titleElements={[
         <Title key={1}>Products added recently</Title>,
-        <Link key={3} href={routes.new}>
+        <Link prefetch key={3} href={routes.new}>
           <a>
             <AddButton accent={false} text={"Add yours now"} size={"xs"} />
           </a>
         </Link>,
-        <Link key={2} href={routes.products}>
+        <Link prefetch key={2} href={routes.products}>
           <a>
             <FakeLink>See more</FakeLink>
           </a>

@@ -31,7 +31,7 @@ const CompletedGoals: React.SFC<IProps> = ({
     <Section
       titleElements={[
         <Title key={1}>Completed Goals</Title>,
-        <Link key={2} href={routes.todos}>
+        <Link prefetch key={2} href={routes.todos}>
           <a>
             <FakeLink key={2}>See more</FakeLink>
           </a>

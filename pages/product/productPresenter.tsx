@@ -134,6 +134,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                       <Divider />
                       <ButtonContainer>
                         <Link
+                          prefetch
                           href={routes.editProduct(product.slug)}
                           as={routes.asEditProduct(product.slug)}
                         >

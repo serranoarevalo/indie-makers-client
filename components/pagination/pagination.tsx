@@ -50,7 +50,7 @@ const Pagination: React.SFC<IProps> = ({
 }) => (
   <Container>
     {hasPrevious && (
-      <Link href={previousLink} as={asPreviousLink}>
+      <Link prefetch href={previousLink} as={asPreviousLink}>
         <a>
           <Btn>👈🏻</Btn>
         </a>
@@ -60,7 +60,7 @@ const Pagination: React.SFC<IProps> = ({
     <Divider>/</Divider>
     <Page>{totalPages}</Page>
     {hasNext && (
-      <Link href={nextLink} as={asNextLink}>
+      <Link prefetch href={nextLink} as={asNextLink}>
         <a>
           <Btn>👉🏻</Btn>
         </a>

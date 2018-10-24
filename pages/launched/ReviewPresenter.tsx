@@ -84,6 +84,7 @@ const ReviewPresenter: React.SFC<IProps> = ({
       <Wrapper>
         {featured && (
           <Link
+            prefetch
             href={routes.blogDetail(featured[0]!.slug)}
             as={routes.asBlogDetail(featured[0]!.slug)}
           >

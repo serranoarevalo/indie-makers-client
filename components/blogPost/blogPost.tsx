@@ -90,7 +90,7 @@ const BlogPost: React.SFC<IProps> = ({
   logo,
   featuredImage = ""
 }) => (
-  <Link href={routes.blogDetail(slug)} as={routes.asBlogDetail(slug)}>
+  <Link prefetch href={routes.blogDetail(slug)} as={routes.asBlogDetail(slug)}>
     <a>
       {featured ? (
         <FContainer>

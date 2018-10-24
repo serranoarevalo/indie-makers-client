@@ -118,6 +118,7 @@ const GoalText: React.SFC<IProps> = ({
         on{" "}
         <Goal>
           <Link
+            prefetch
             href={routes.productDetail(`${productSlug}`)}
             as={routes.asProductDetail(`${productSlug}`)}
           >

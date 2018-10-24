@@ -48,7 +48,7 @@ const Hero: React.SFC<IProps> = ({ fbLogin }) => (
         fontSize={28}
         onClick={fbLogin}
       />
-      <Link href={routes.about}>
+      <Link prefetch href={routes.about}>
         <a>
           <FakeLink>Learn more</FakeLink>
         </a>

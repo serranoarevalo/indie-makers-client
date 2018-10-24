@@ -55,6 +55,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
     />
     <PhotoContainers>
       <Link
+        prefetch
         href={routes.userDetail(goal.maker!.username || "")}
         as={routes.asUserDetail(goal.maker!.username || "")}
       >
@@ -64,6 +65,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
       </Link>
       👉🏻
       <Link
+        prefetch
         href={routes.productDetail(goal.product!.slug || "")}
         as={routes.asProductDetail(goal.product!.slug || "")}
       >

@@ -51,22 +51,22 @@ const Footer = () => (
         <Nav>
           <List>
             <SLink>
-              <Link href={routes.products}>
+              <Link prefetch href={routes.products}>
                 <a>Products</a>
               </Link>
             </SLink>
             <SLink>
-              <Link href={routes.todos}>
+              <Link prefetch href={routes.todos}>
                 <a>Goals</a>
               </Link>
             </SLink>
             <SLink>
-              <Link href={routes.makers}>
+              <Link prefetch href={routes.makers}>
                 <a>Makers</a>
               </Link>
             </SLink>
             <SLink>
-              <Link href={routes.blog}>
+              <Link prefetch href={routes.blog}>
                 <a>Blog</a>
               </Link>
             </SLink>

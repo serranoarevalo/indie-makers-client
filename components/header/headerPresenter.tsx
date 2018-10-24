@@ -82,34 +82,34 @@ const Header: React.SFC<IProps> = ({
       <FlexWidthContainer>
         <NavColumn>
           <Logo>
-            <Link href={routes.home}>
+            <Link prefetch href={routes.home}>
               <a>Indie Makers</a>
             </Link>
           </Logo>
           <Navigation>
             <ul>
               <li>
-                <Link href={routes.about}>
+                <Link prefetch href={routes.about}>
                   <a>About</a>
                 </Link>
               </li>
               <li>
-                <Link href={routes.products}>
+                <Link prefetch href={routes.products}>
                   <a>Products</a>
                 </Link>
               </li>
               <li>
-                <Link href={routes.todos}>
+                <Link prefetch href={routes.todos}>
                   <a>Goals</a>
                 </Link>
               </li>
               <li>
-                <Link href={routes.makers}>
+                <Link prefetch href={routes.makers}>
                   <a>Makers</a>
                 </Link>
               </li>
               <li>
-                <Link href={routes.blog}>
+                <Link prefetch href={routes.blog}>
                   <a>Launched</a>
                 </Link>
               </li>
@@ -132,6 +132,7 @@ const Header: React.SFC<IProps> = ({
                 <ul>
                   <li>
                     <Link
+                      prefetch
                       href={routes.userDetail(
                         (userQuery &&
                           userQuery.Me &&
@@ -164,7 +165,7 @@ const Header: React.SFC<IProps> = ({
                     </Link>
                   </li>
                   <li>
-                    <Link href={routes.new}>
+                    <Link prefetch href={routes.new}>
                       <a>Add Prodcut</a>
                     </Link>
                   </li>

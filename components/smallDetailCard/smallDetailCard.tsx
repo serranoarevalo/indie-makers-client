@@ -134,7 +134,7 @@ const SmallDetailContainer: React.SFC<IContainerProps & IPresenterProps> = ({
   if (isCard) {
     if (isLink) {
       return (
-        <Link href={link} as={linkAs}>
+        <Link prefetch href={link} as={linkAs}>
           <a>
             <Card padding={"15px"}>
               <DetailContent {...rest} />
@@ -152,7 +152,7 @@ const SmallDetailContainer: React.SFC<IContainerProps & IPresenterProps> = ({
   } else {
     if (isLink) {
       return (
-        <Link href={link} as={linkAs}>
+        <Link prefetch href={link} as={linkAs}>
           <a>
             <DetailContent {...rest} />
           </a>

@@ -35,7 +35,7 @@ const FeaturedPosts = () => (
   <Section
     titleElements={[
       <Title key={1}>Launched Products</Title>,
-      <Link key={2} href={routes.blog}>
+      <Link prefetch key={2} href={routes.blog}>
         <a>
           <FakeLink>See more</FakeLink>
         </a>

@@ -166,7 +166,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
             ) : (
               <span>
                 To add a 'To Do' you first need to{" "}
-                <Link href={routes.addProduct} key={2}>
+                <Link prefetch href={routes.addProduct} key={2}>
                   <a>
                     <AddLink>create a product</AddLink>
                   </a>
@@ -202,12 +202,13 @@ const DashboardPresenter: React.SFC<IProps> = ({
             <Section
               titleElements={[
                 <Title key={1}>Your products </Title>,
-                <Link href={routes.addProduct} key={2}>
+                <Link prefetch href={routes.addProduct} key={2}>
                   <a>
                     <Button size={"xs"} text={"Add one"} />
                   </a>
                 </Link>,
                 <Link
+                  prefetch
                   href={routes.userDetail(
                     (userQuery &&
                       userQuery.Me &&
@@ -257,7 +258,7 @@ const DashboardPresenter: React.SFC<IProps> = ({
                 ) : (
                   <span>
                     No products here 😭.{" "}
-                    <Link href={routes.addProduct}>
+                    <Link prefetch href={routes.addProduct}>
                       <a>
                         <AddLink>Add one now</AddLink>
                       </a>

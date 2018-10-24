@@ -102,7 +102,7 @@ const MakerPresenter: React.SFC<IProps> = ({
             <IsMine otherId={maker.id}>
               {isMine =>
                 isMine && (
-                  <Link href={routes.editProfile}>
+                  <Link prefetch href={routes.editProfile}>
                     <a>
                       <Button text={`Edit Profile`} />
                     </a>

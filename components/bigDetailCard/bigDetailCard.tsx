@@ -159,7 +159,7 @@ const BigDetailCardContainer: React.SFC<IContainerProps & IPresenterProps> = ({
   } else {
     return (
       <Container isLink={isLink}>
-        <Link href={link} as={linkAs}>
+        <Link prefetch href={link} as={linkAs}>
           <a>
             <Span>
               <CardContent {...rest} />
