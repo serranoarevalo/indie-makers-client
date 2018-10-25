@@ -49,6 +49,9 @@ const TechCard = styled.div`
   padding: 20px 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 550px) {
+    padding: 10px;
+  }
 `;
 
 const Column = styled.div`
