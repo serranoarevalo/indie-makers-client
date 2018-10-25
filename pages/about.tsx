@@ -34,13 +34,26 @@ const SellPoint = styled.div`
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-items: center;
-  margin-bottom: 30px;
+  grid-gap: 30px;
+  margin-bottom: 80px;
   &:nth-child(even) {
     & ${SellPointColumn} {
       display: flex;
       align-items: flex-end;
       flex-direction: column;
       text-align: right;
+    }
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+
+    &:nth-child(even) {
+      & ${SellPointColumn} {
+        order: 1;
+        display: block;
+        text-align: left;
+      }
     }
   }
 `;
@@ -52,11 +65,16 @@ const SellPointImage = styled<
   border-radius: 50%;
   height: 400px;
   width: 400px;
+  height: 400px;
   background-image: url(${props => props.bg});
   border: 5px solid ${props => props.theme.darkBlueColor};
   background-size: cover;
   background-position: ${props =>
     props.bgH && props.bgV ? `${props.bgH} ${props.bgV}` : "center center"};
+  @media (max-width: 800px) {
+    width: 300px;
+    height: 300px;
+  }
 `;
 
 const SellPointTitle = styled.h4`
