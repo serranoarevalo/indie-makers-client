@@ -13,8 +13,11 @@ const Container = styled.div``;
 
 const IndexColumns = styled.div`
   display: grid;
-  grid-template-columns: 3fr minmax(340px, 1fr);
+  grid-template-columns: 3fr minmax(320px, 1fr);
   grid-gap: 50px;
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const HeroWrapper = styled.div`

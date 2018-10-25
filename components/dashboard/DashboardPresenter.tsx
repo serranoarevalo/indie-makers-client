@@ -18,9 +18,9 @@ import { Consumer } from "../../lib/context";
 const Container = styled.div`
   margin: 50px 0px;
   padding: 10vh 0px;
-  @media (max-width: 1400px) {
-    padding: 0px 25px;
-    box-sizing: border-box;
+  @media (max-width: 1000px) {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
   }
 `;
 
@@ -30,6 +30,13 @@ const Grid = styled.div`
   grid-gap: 50px;
   & > *:last-child {
     margin-top: 87px;
+  }
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    grid-gap: 25px;
+    & > *:last-child {
+      margin-top: 10px;
+    }
   }
 `;
 
@@ -59,6 +66,9 @@ const AddContainer = styled.div`
   align-items: center;
   grid-gap: 20px;
   margin-bottom: 30px;
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Products = styled.div`

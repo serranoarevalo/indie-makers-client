@@ -10,12 +10,19 @@ import { addedRecently } from "types/api";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   grid-gap: 30px;
+  grid-auto-flow: row;
+  @media (max-width: 800px) {
+    grid-auto-columns: 300px;
+  }
 `;
 
 const AddButton = styled(Button)`
   margin-left: 30px;
+  @media (max-width: 700px) {
+    margin: 0;
+  }
 `;
 
 interface IProps {

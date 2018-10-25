@@ -13,6 +13,10 @@ const Goal = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const PhotoContainers = styled.div`

@@ -2,7 +2,6 @@ import Link from "next/link";
 import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
 import Button from "../button";
-import Wrapper from "../wrapper";
 import RoundImage from "../roundImage";
 import { getMe } from "types/api";
 import { Consumer } from "../../lib/context";
@@ -32,7 +31,7 @@ const Navigation = styled.nav`
     display: flex;
     align-items: center;
     & li {
-      margin-left: 25px;
+      margin-right: 25px;
     }
   }
 `;
@@ -63,6 +62,9 @@ const FlexWidthContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
   @media (max-width: 785px) {
     flex-direction: column;
     align-items: flex-start;
@@ -74,6 +76,9 @@ const FlexWidthContainer = styled.div`
         margin-bottom: 15px;
       }
     }
+  }
+  @media (max-width: 1400px) {
+    padding: 0px 25px;
   }
 `;
 
@@ -102,115 +107,109 @@ const Header: React.SFC<IProps> = ({
   onLogOutClick
 }) => (
   <Container>
-    <Wrapper>
-      <FlexWidthContainer>
+    <FlexWidthContainer>
+      <NavColumn>
+        <Logo>
+          <Link prefetch href={routes.home}>
+            <a>Indie Makers</a>
+          </Link>
+        </Logo>
+        <Navigation>
+          <ul>
+            <li>
+              <Link prefetch href={routes.about}>
+                <a>About</a>
+              </Link>
+            </li>
+            <li>
+              <Link prefetch href={routes.products}>
+                <a>Products</a>
+              </Link>
+            </li>
+            <li>
+              <Link prefetch href={routes.todos}>
+                <a>Goals</a>
+              </Link>
+            </li>
+            <li>
+              <Link prefetch href={routes.makers}>
+                <a>Makers</a>
+              </Link>
+            </li>
+            <li>
+              <Link prefetch href={routes.blog}>
+                <a>Launched</a>
+              </Link>
+            </li>
+          </ul>
+        </Navigation>
+      </NavColumn>
+      {!isLoggedIn && (
         <NavColumn>
-          <Logo>
-            <Link prefetch href={routes.home}>
-              <a>Indie Makers</a>
-            </Link>
-          </Logo>
-          <Navigation>
-            <ul>
-              <li>
-                <Link prefetch href={routes.about}>
-                  <a>About</a>
-                </Link>
-              </li>
-              <li>
-                <Link prefetch href={routes.products}>
-                  <a>Products</a>
-                </Link>
-              </li>
-              <li>
-                <Link prefetch href={routes.todos}>
-                  <a>Goals</a>
-                </Link>
-              </li>
-              <li>
-                <Link prefetch href={routes.makers}>
-                  <a>Makers</a>
-                </Link>
-              </li>
-              <li>
-                <Link prefetch href={routes.blog}>
-                  <a>Launched</a>
-                </Link>
-              </li>
-            </ul>
-          </Navigation>
+          <Button accent={true} onClick={fbLogin} text={`Join Indie Makers`} />
         </NavColumn>
-        {!isLoggedIn && (
-          <NavColumn>
-            <Button
-              accent={true}
-              onClick={fbLogin}
-              text={`Join Indie Makers`}
-            />
-          </NavColumn>
-        )}
-        {isLoggedIn && (
-          <Consumer>
-            {({ userQuery }) => (
-              <Navigation>
-                <ul>
-                  <li>
-                    <Link
-                      prefetch
-                      href={routes.userDetail(
-                        (userQuery &&
-                          userQuery.Me &&
-                          userQuery.Me.user &&
-                          userQuery.Me.user.username) ||
-                          ""
-                      )}
-                      as={routes.asUserDetail(
-                        (userQuery &&
-                          userQuery.Me &&
-                          userQuery.Me.user &&
-                          userQuery.Me.user.username) ||
-                          ""
-                      )}
-                    >
-                      <a>
-                        <AvatarContainer>
-                          <Avatar
-                            src={
-                              (userQuery &&
-                                userQuery.Me &&
-                                userQuery.Me.user &&
-                                userQuery.Me.user.profilePhoto) ||
-                              "/static/demo.jpg"
-                            }
-                            alt={
-                              (userQuery &&
-                                userQuery.Me &&
-                                userQuery.Me.user &&
-                                userQuery.Me.user.username) ||
-                              "Profile"
-                            }
-                          />
-                        </AvatarContainer>
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link prefetch href={routes.new}>
-                      <a>Add Product</a>
-                    </Link>
-                  </li>
-                  <li>
-                    <span style={{ cursor: "pointer" }} onClick={onLogOutClick}>
-                      Log Out
-                    </span>
-                  </li>
-                </ul>
-              </Navigation>
-            )}
-          </Consumer>
-        )}
-      </FlexWidthContainer>
-    </Wrapper>
+      )}
+      {isLoggedIn && (
+        <Consumer>
+          {({ userQuery }) => (
+            <Navigation>
+              <ul>
+                <li>
+                  <Link
+                    prefetch
+                    href={routes.userDetail(
+                      (userQuery &&
+                        userQuery.Me &&
+                        userQuery.Me.user &&
+                        userQuery.Me.user.username) ||
+                        ""
+                    )}
+                    as={routes.asUserDetail(
+                      (userQuery &&
+                        userQuery.Me &&
+                        userQuery.Me.user &&
+                        userQuery.Me.user.username) ||
+                        ""
+                    )}
+                  >
+                    <a>
+                      <AvatarContainer>
+                        <Avatar
+                          src={
+                            (userQuery &&
+                              userQuery.Me &&
+                              userQuery.Me.user &&
+                              userQuery.Me.user.profilePhoto) ||
+                            "/static/demo.jpg"
+                          }
+                          alt={
+                            (userQuery &&
+                              userQuery.Me &&
+                              userQuery.Me.user &&
+                              userQuery.Me.user.username) ||
+                            "Profile"
+                          }
+                        />
+                      </AvatarContainer>
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link prefetch href={routes.new}>
+                    <a>Add Product</a>
+                  </Link>
+                </li>
+                <li>
+                  <span style={{ cursor: "pointer" }} onClick={onLogOutClick}>
+                    Log Out
+                  </span>
+                </li>
+              </ul>
+            </Navigation>
+          )}
+        </Consumer>
+      )}
+    </FlexWidthContainer>
   </Container>
 );
 
