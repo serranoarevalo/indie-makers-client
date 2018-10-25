@@ -11,6 +11,10 @@ const Container = styled.div`
   align-items: flex-start;
   width: 75%;
   line-height: 1.5;
+  @media (max-width: 1400px) {
+    padding: 0px 25px;
+    box-sizing: border-box;
+  }
 `;
 
 const Title = styled.h2`

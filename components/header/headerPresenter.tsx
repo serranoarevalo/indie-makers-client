@@ -12,6 +12,10 @@ const Container = styled("header")`
   padding: 20px 5px;
   background-color: white;
   box-shadow: 0px 0px 30px 0px rgba(219, 233, 241, 0.8);
+  @media (max-width: 785px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 `;
 
 const Logo = styled.h1`

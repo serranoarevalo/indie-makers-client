@@ -18,6 +18,10 @@ import { Consumer } from "../../lib/context";
 const Container = styled.div`
   margin: 50px 0px;
   padding: 10vh 0px;
+  @media (max-width: 1400px) {
+    padding: 0px 25px;
+    box-sizing: border-box;
+  }
 `;
 
 const Grid = styled.div`
