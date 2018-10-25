@@ -12,8 +12,10 @@ const Container = styled.div`
   width: 75%;
   line-height: 1.5;
   @media (max-width: 1400px) {
-    padding: 0px 25px;
     box-sizing: border-box;
+  }
+  @media (max-width: 1400px) {
+    width: 100%;
   }
 `;
 
@@ -33,6 +35,16 @@ const CTAs = styled.div`
   margin-top: 50px;
   display: flex;
   align-items: center;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+    & * {
+      margin: 0 !important;
+      &:last-child {
+        margin-top: 10px !important;
+      }
+    }
+  }
 `;
 
 interface IProps {

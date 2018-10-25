@@ -18,6 +18,10 @@ const PostGrid = styled.div`
   grid-template-columns: 3fr minmax(340px, 1fr);
   grid-auto-rows: 525px;
   grid-gap: 50px;
+  @media (max-width: 1050px) {
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const GridColumn = styled.div``;
@@ -26,6 +30,10 @@ const PostsColumn = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
+  @media (max-width: 1050px) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: auto;
+  }
 `;
 
 class FeaturedQuery extends Query<getFeatured> {}

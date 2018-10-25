@@ -3,7 +3,7 @@ import styled from "../../typed-components";
 const Container = styled.div`
   margin-bottom: 100px;
   @media (max-width: 1000px) {
-    margin-bottom: 25px;
+    margin-bottom: 50px;
   }
 `;
 
@@ -11,6 +11,7 @@ const TitleContainer = styled.div`
   display: flex;
   margin-bottom: 30px;
   align-items: center;
+  flex-wrap: wrap;
   & > *:first-child {
     margin-right: 10px;
   }
