@@ -14,6 +14,9 @@ const ProductGrid = styled.div`
   grid-template-columns: repeat(auto-fill, 320px);
   grid-gap: 40px;
   margin-bottom: 60px;
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 `;
 
 interface IProps {

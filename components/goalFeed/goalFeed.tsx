@@ -6,7 +6,7 @@ import routes from "../../routes";
 import ImagePlaceholder from "../../components/imagePlaceholder";
 
 const Goal = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;

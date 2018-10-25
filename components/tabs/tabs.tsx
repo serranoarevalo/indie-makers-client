@@ -2,9 +2,15 @@ import styled from "../../typed-components";
 
 const Container = styled.header`
   display: flex;
+  flex-wrap: wrap;
   margin: 50px 0;
   & > * {
     margin-right: 20px;
+  }
+  @media (max-width: 550px) {
+    & > * {
+      margin-bottom: 20px;
+    }
   }
 `;
 
