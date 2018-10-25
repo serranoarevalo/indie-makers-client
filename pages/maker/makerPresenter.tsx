@@ -18,11 +18,19 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 320px 3fr;
   grid-gap: 50px;
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Column = styled.div`
   &:first-child {
     margin: 50px 0px;
+  }
+  @media (max-width: 750px) {
+    &:first-child {
+      margin-bottom: 0px;
+    }
   }
 `;
 
@@ -35,6 +43,9 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-template-rows: 85px;
   grid-gap: 40px;
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Goals = styled.div`
