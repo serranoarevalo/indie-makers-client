@@ -18,12 +18,18 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 320px 3fr;
   grid-gap: 50px;
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ToDos = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const DetailsContainer = styled.div`
