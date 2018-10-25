@@ -28,7 +28,7 @@ const Navigation = styled.nav`
     display: flex;
     align-items: center;
     & li {
-      margin-right: 25px;
+      margin-left: 25px;
     }
   }
 `;
@@ -42,6 +42,13 @@ const NavColumn = styled.div`
     & > *:first-child {
       margin-right: 30px;
     }
+    @media (max-width: 785px) {
+      align-self: center;
+      justify-content: center;
+      & > *:first-child {
+        margin-right: 0px;
+      }
+    }
   }
   span {
     cursor: pointer;
@@ -52,6 +59,18 @@ const FlexWidthContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 785px) {
+    flex-direction: column;
+    align-items: flex-start;
+    & ${Logo} {
+      display: none;
+    }
+    & ${NavColumn} {
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+  }
 `;
 
 const Avatar = styled(RoundImage)`
@@ -167,7 +186,6 @@ const Header: React.SFC<IProps> = ({
                               "Profile"
                             }
                           />
-                          Products
                         </AvatarContainer>
                       </a>
                     </Link>

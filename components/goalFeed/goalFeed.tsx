@@ -26,7 +26,10 @@ const ProductContainer = styled.div`
   align-items: center;
 `;
 
-const Photo = styled.img`
+const Photo = styled<any, any>("div")`
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center center;
   width: 35px;
   height: 35px;
   border-radius: 50%;
