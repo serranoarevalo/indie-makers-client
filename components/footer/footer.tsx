@@ -76,7 +76,7 @@ const Footer = () => (
           </List>
         </Nav>
         <Copyright>
-          <Text>Build beautiful things.</Text>
+          <Text>Build beautiful things 💖.</Text>
           <Text>
             &copy; {`${new Date().getFullYear()}`}{" "}
             <FLink href={"https://nomadcoders.co/"} target={"_blank"}>

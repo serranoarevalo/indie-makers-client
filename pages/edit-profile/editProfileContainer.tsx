@@ -91,9 +91,15 @@ export default class CompleteProfileContainer extends React.Component<
       target: { value, name }
     } = event;
 
-    this.setState({
-      [name]: value
-    } as any);
+    if (name === "username") {
+      this.setState({
+        [name]: value.toLowerCase().replace(" ", ".")
+      } as any);
+    } else {
+      this.setState({
+        [name]: value
+      } as any);
+    }
   };
   public handleSubmit = () => {
     const { username } = this.state;

@@ -82,7 +82,7 @@ class EditProductContainer extends React.Component<WithRouterProps & IProps> {
     needsHelp?: boolean
   ) => {
     const { slug } = this.props;
-    console.log(logoUrl);
+    console.log(website);
     this.updateFn({
       variables: { slug, name, description, logo: logoUrl, website, needsHelp }
     });
