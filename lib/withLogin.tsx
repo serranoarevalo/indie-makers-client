@@ -24,6 +24,7 @@ const withLogin = Component =>
               <FacebookLogin
                 appId={FB_APP_ID}
                 autoLoad={false}
+                isMobile={true}
                 callback={this.postFacebookLogin}
                 fields="name,first_name,last_name,email"
                 render={renderProps => (
@@ -72,7 +73,7 @@ const withLogin = Component =>
           });
         }
         toast.success("Welcome, we are loggin you in 👋🏻");
-        setTimeout(() => window.location.reload(), 2000);
+        setTimeout(() => (window.location.href = "/"), 2000);
       }
     };
   };

@@ -1,6 +1,7 @@
 const express = require("express");
 const next = require("next");
 const compression = require("compression");
+const path = require("path");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev, quiet: false });
@@ -11,6 +12,11 @@ app
   .then(() => {
     const server = express();
     server.use(compression());
+
+    server.get("/service-worker.js", (req, res) => {
+      const filePath = path.join(__dirname, ".next/service-worker.js");
+      app.serveStatic(req, res, filePath);
+    });
 
     server.get("/product/:slug", (req, res) => {
       const actualPage = "/product";
