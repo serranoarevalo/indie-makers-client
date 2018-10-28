@@ -79,7 +79,11 @@ const Footer = () => (
           <Text>Build beautiful things 💖.</Text>
           <Text>
             &copy; {`${new Date().getFullYear()}`}{" "}
-            <FLink href={"https://nomadcoders.co/"} target={"_blank"}>
+            <FLink
+              href={"https://nomadcoders.co/"}
+              rel="noopener"
+              target={"_blank"}
+            >
               Nomadcoders
             </FLink>
           </Text>

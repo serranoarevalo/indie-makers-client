@@ -55,7 +55,7 @@ const Container = styled.div`
   cursor: pointer;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 100%;
+
   grid-gap: 25px;
   height: 100%;
   align-items: center;

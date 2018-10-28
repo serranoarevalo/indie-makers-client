@@ -66,7 +66,7 @@ const Hero: React.SFC<IProps> = ({ fbLogin }) => (
       />
       <Link prefetch href={routes.about}>
         <a>
-          <FakeLink>Learn more</FakeLink>
+          <FakeLink>About Indie Makers</FakeLink>
         </a>
       </Link>
     </CTAs>

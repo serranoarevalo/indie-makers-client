@@ -61,7 +61,10 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.userDetail(goal.maker!.username || "")}
         as={routes.asUserDetail(goal.maker!.username || "")}
       >
-        <a style={{ height: "35px", marginRight: "10px" }}>
+        <a
+          style={{ height: "35px", marginRight: "10px" }}
+          aria-label={goal.maker.username}
+        >
           <Photo
             alt={(goal.maker && goal.maker.username) || "Profile"}
             src={(goal.maker && goal.maker.profilePhoto) || ""}
@@ -74,7 +77,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         href={routes.productDetail(goal.product!.slug || "")}
         as={routes.asProductDetail(goal.product!.slug || "")}
       >
-        <a>
+        <a aria-label={goal.product.name}>
           {goal && goal.product && goal.product.logo ? (
             <ProductContainer>
               <Photo src={(goal.product && goal.product.logo) || ""} />
