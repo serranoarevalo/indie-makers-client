@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import LazyLoad from "react-lazyload";
 import styled from "../../typed-components";
 import GoalText from "../goalText";
 import routes from "../../routes";
@@ -65,10 +66,12 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
           style={{ height: "35px", marginRight: "10px" }}
           aria-label={goal.maker.username}
         >
-          <Photo
-            alt={(goal.maker && goal.maker.username) || "Profile"}
-            src={(goal.maker && goal.maker.profilePhoto) || ""}
-          />
+          <LazyLoad height={35} once>
+            <Photo
+              alt={(goal.maker && goal.maker.username) || "Profile"}
+              src={(goal.maker && goal.maker.profilePhoto) || ""}
+            />
+          </LazyLoad>
         </a>
       </Link>
       👉🏻
@@ -78,15 +81,17 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
         as={routes.asProductDetail(goal.product!.slug || "")}
       >
         <a aria-label={goal.product.name}>
-          {goal && goal.product && goal.product.logo ? (
-            <ProductContainer>
-              <Photo src={(goal.product && goal.product.logo) || ""} />
-            </ProductContainer>
-          ) : (
-            <ProductContainer>
-              <ImagePlaceholder letter={goal.product.name[0]} size={35} />
-            </ProductContainer>
-          )}
+          <LazyLoad height={35} once>
+            {goal && goal.product && goal.product.logo ? (
+              <ProductContainer>
+                <Photo src={(goal.product && goal.product.logo) || ""} />
+              </ProductContainer>
+            ) : (
+              <ProductContainer>
+                <ImagePlaceholder letter={goal.product.name[0]} size={35} />
+              </ProductContainer>
+            )}
+          </LazyLoad>
         </a>
       </Link>
     </PhotoContainers>

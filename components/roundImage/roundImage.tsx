@@ -17,7 +17,7 @@ interface IProps {
 }
 
 const RoundImageC: React.SFC<IProps> = ({ src, className, alt }) => (
-  <LazyLoad once>
+  <LazyLoad once height={"80px"}>
     <RoundImage src={src} alt={alt} className={className} />
   </LazyLoad>
 );

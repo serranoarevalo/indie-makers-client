@@ -30,8 +30,19 @@ const Navigation = styled.nav`
   & ul {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     & li {
       margin-right: 25px;
+    }
+  }
+  @media (max-width: 785px) {
+    width: 100%;
+    & ul {
+      width: 100%;
+      justify-content: space-between;
+      & li {
+        margin: 0;
+      }
     }
   }
 `;
@@ -48,6 +59,8 @@ const NavColumn = styled.div`
     @media (max-width: 785px) {
       align-self: center;
       justify-content: center;
+      flex-wrap: nowrap;
+
       & > *:first-child {
         margin-right: 0px;
       }
@@ -56,6 +69,10 @@ const NavColumn = styled.div`
   span {
     cursor: pointer;
   }
+`;
+
+const MobileHome = styled.div`
+  display: none;
 `;
 
 const FlexWidthContainer = styled.div`
@@ -73,8 +90,12 @@ const FlexWidthContainer = styled.div`
     }
     & ${NavColumn} {
       &:first-child {
+        width: 100%;
         margin-bottom: 15px;
       }
+    }
+    & ${MobileHome} {
+      display: block;
     }
   }
   @media (max-width: 1400px) {
@@ -116,6 +137,11 @@ const Header: React.SFC<IProps> = ({
         </Logo>
         <Navigation>
           <ul>
+            <li>
+              <Link prefetch href={routes.home}>
+                <a>Home</a>
+              </Link>
+            </li>
             <li>
               <Link prefetch href={routes.about}>
                 <a>About</a>

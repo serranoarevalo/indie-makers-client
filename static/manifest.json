@@ -2,7 +2,8 @@
   "name": "Indie Makers",
   "short_name": "Indie Makers",
   "theme_color": "#34495E",
-  "background_color": "#f0f2f5",
+  "background_color": "#fff",
+  "start_url": "../",
   "display": "standalone",
   "icons": [
     {
