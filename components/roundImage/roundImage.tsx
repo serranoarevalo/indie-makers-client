@@ -1,3 +1,4 @@
+import LazyLoad from "react-lazyload";
 import styled from "../../typed-components";
 
 const RoundImage = styled<any, any>("div")`
@@ -16,7 +17,9 @@ interface IProps {
 }
 
 const RoundImageC: React.SFC<IProps> = ({ src, className, alt }) => (
-  <RoundImage src={src} alt={alt} className={className} />
+  <LazyLoad once>
+    <RoundImage src={src} alt={alt} className={className} />
+  </LazyLoad>
 );
 
 export default RoundImageC;

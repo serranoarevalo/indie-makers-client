@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LazyLoad from "react-lazyload";
 import styled from "../../typed-components";
 import RoundImage from "../roundImage";
 import routes from "../../routes";
@@ -96,7 +97,9 @@ const BlogPost: React.SFC<IProps> = ({
       {featured ? (
         <FContainer>
           <Column>
-            <FImage src={featuredImage} />
+            <LazyLoad height={"100%"} once>
+              <FImage src={featuredImage} />
+            </LazyLoad>
           </Column>
           <FText>
             <FTitle>{name}</FTitle>
