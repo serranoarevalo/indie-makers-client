@@ -1,18 +1,20 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { Mutation, MutationFn } from "react-apollo";
-import Cookie from "js-cookie";
 import { LOG_USER_IN } from "../sharedQueries";
 import { logUserIn, logUserInVariables } from "types/api";
 import { toast } from "react-toastify";
 import { FB_APP_ID } from "../configs";
+import logIn from "./logIn";
 
 class LoginMutation extends Mutation<logUserIn, logUserInVariables> {}
 
 const withLogin = Component =>
   class extends React.Component<any> {
     public facebookLogin: MutationFn<logUserIn, logUserInVariables>;
+    public toastId: number;
     render() {
+      const { isLoggedIn } = this.props;
       return (
         <LoginMutation
           mutation={LOG_USER_IN}
@@ -23,7 +25,7 @@ const withLogin = Component =>
             return (
               <FacebookLogin
                 appId={FB_APP_ID}
-                autoLoad={false}
+                autoLoad={!isLoggedIn}
                 isMobile={true}
                 callback={this.postFacebookLogin}
                 fields="name,first_name,last_name,email"
@@ -43,6 +45,7 @@ const withLogin = Component =>
         email,
         id: fbId
       } = response;
+      this.toastId = toast.info("Loggin you in");
       this.facebookLogin({
         variables: {
           firstName,
@@ -58,22 +61,16 @@ const withLogin = Component =>
         ConnectFB: { ok, error, token }
       } = data;
       if (!ok && error) {
-        toast.error(error);
+        toast.update(this.toastId, {
+          render: `${error}`,
+          type: toast.TYPE.ERROR
+        });
       } else if (ok && token) {
-        if (process.env.NODE_ENV === "production") {
-          Cookie.set("X-JWT", token, {
-            domain: ".indiemakers.net"
-          });
-        } else {
-          Cookie.set("X-JWT", token, {
-            domain: ".localtunnel.me"
-          });
-          Cookie.set("X-JWT", token, {
-            domain: "127.0.0.1"
-          });
-        }
-        toast.success("Welcome, we are loggin you in 👋🏻");
-        setTimeout(() => (window.location.href = "/"), 2000);
+        logIn(token);
+        toast.update(this.toastId, {
+          render: `Done! You're logged in!👋🏻`,
+          type: toast.TYPE.SUCCESS
+        });
       }
     };
   };
