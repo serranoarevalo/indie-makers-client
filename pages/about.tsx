@@ -97,6 +97,7 @@ const About = ({ fbLogin }) => (
   <React.Fragment>
     <Head>
       <title>About | Indie Makers</title>
+      <meta name="description" content={"What's Indie Makers all about?"} />
     </Head>
     <Wrapper>
       <Container>

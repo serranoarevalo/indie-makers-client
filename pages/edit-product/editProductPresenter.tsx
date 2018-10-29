@@ -24,6 +24,7 @@ const EditProductPresenter: React.SFC<IProps> = ({
     <>
       <Head>
         <title>Editing {product.name} | Nomad Coders</title>
+        <meta name="description" content={`Editing ${product.name}`} />
       </Head>
       <ProductEditor
         logoUrl={product.logo || undefined}

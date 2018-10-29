@@ -16,6 +16,7 @@ const NewPresenter: React.SFC<IProps> = ({ handleSubmit }) => (
   <>
     <Head>
       <title>Add Product | Indie Makers</title>
+      <meta name="description" content={"Submit a product to Indie Makers"} />
     </Head>
     <ProductEditor
       onSaveFn={handleSubmit}

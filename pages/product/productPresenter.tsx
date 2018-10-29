@@ -110,6 +110,9 @@ const ProductPresenter: React.SFC<IProps> = ({
         <title>
           {product ? product.name : "Product Not Found"} | Indie Makers
         </title>
+        {product && (
+          <meta name="description" content={`${product.description}`} />
+        )}
       </Head>
       <Container>
         {product ? (

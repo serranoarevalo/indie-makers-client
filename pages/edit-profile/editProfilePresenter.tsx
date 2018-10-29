@@ -60,6 +60,7 @@ const EditProfilePresenter: React.SFC<IProps> = ({
   <>
     <Head>
       <title>Edit Profile | Indie Makers</title>
+      <meta name="description" content={"Edit your profile"} />
     </Head>
     <Wrapper>
       <Container>

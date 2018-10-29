@@ -75,6 +75,16 @@ const MakerPresenter: React.SFC<IProps> = ({
         <title>
           {maker ? maker.fullName : "Maker Not Found"} | Indie Makers
         </title>
+        {maker && (
+          <meta
+            name="description"
+            content={`${
+              maker.bio
+                ? maker.bio
+                : `Follow ${maker.fullName.split(" ")[0]}'s progress.`
+            }`}
+          />
+        )}
       </Head>
       {maker ? (
         <React.Fragment>

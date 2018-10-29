@@ -117,6 +117,10 @@ const ReviewPresenter: React.SFC<IProps> = ({ data }) => {
       <Container>
         <Head>
           <title>{name} | Indie Makers</title>
+          <meta
+            name="description"
+            content={`Product Review: Read ${name}'s story.`}
+          />
         </Head>
         <Header bg={heroImage ? heroImage.url : ""}>
           <EWrapper>

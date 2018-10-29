@@ -30,6 +30,10 @@ const MakersPresenter: React.SFC<IProps> = ({
   <Wrapper>
     <Head>
       <title>Makers | Indie Makers</title>
+      <meta
+        name="description"
+        content={"See all the awesome people building things on Indie Makers"}
+      />
     </Head>
     <Tabs>
       <Tab

@@ -88,6 +88,12 @@ const ReviewPresenter: React.SFC<IProps> = ({
   <React.Fragment>
     <Head>
       <title>Launched | Indie Makers</title>
+      <meta
+        name="description"
+        content={
+          "Reviews of all the launched products on Indie Makers, by their creators."
+        }
+      />
     </Head>
     <Hero>
       <Wrapper>

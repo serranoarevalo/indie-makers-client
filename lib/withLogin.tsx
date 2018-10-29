@@ -14,7 +14,6 @@ const withLogin = Component =>
     public facebookLogin: MutationFn<logUserIn, logUserInVariables>;
     public toastId: number;
     render() {
-      const { isLoggedIn } = this.props;
       return (
         <LoginMutation
           mutation={LOG_USER_IN}
@@ -25,7 +24,7 @@ const withLogin = Component =>
             return (
               <FacebookLogin
                 appId={FB_APP_ID}
-                autoLoad={!isLoggedIn}
+                autoLoad={false}
                 isMobile={true}
                 callback={this.postFacebookLogin}
                 fields="name,first_name,last_name,email"

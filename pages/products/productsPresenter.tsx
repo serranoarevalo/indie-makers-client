@@ -33,6 +33,10 @@ const ProductsPresenter: React.SFC<IProps> = ({
   <Wrapper>
     <Head>
       <title>Products | Indie Makers</title>
+      <meta
+        name="description"
+        content={`See all the awesome products being built on Indie Makers`}
+      />
     </Head>
     <Tabs>
       <Tab

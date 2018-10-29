@@ -93,10 +93,6 @@ export default class MyDocument extends Document {
           />
           <meta name="theme-color" content={"#F6F9FC"} />
           <link rel="manifest" href={"/static/manifest.json"} />
-          <meta
-            name="description"
-            content={"Indie Makers: Building beautiful products together!"}
-          />
         </Head>
         <body>
           <Main />

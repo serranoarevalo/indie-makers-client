@@ -41,6 +41,10 @@ export default class extends React.Component<IProps> {
       <Container>
         <Head>
           <title>Indie Makers | Build products, together.</title>
+          <meta
+            name="description"
+            content={"Indie Makers: Building beautiful products together!"}
+          />
         </Head>
         {isLoggedIn ? (
           <Dashboard />

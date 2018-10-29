@@ -29,6 +29,7 @@ const ToDosPresenter: React.SFC<IProps> = ({
   <Wrapper>
     <Head>
       <title>Todo's | Indie Makers</title>
+      <meta name="description" content={`See all the Todo's on Indie Makers`} />
     </Head>
     <Tabs>
       <Tab
