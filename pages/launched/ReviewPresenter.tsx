@@ -6,6 +6,7 @@ import Wrapper from "../../components/wrapper";
 import BlogPost from "../../components/blogPost";
 import routes from "../../routes";
 import { getBlog } from "types/blog";
+import Button from "../../components/button";
 
 const Hero = styled.div`
   padding: 50px 0px;
@@ -76,6 +77,12 @@ const LatestPostsGrid = styled.div`
   @media (max-width: 1000px) {
     grid-template-columns: 1fr;
   }
+`;
+
+const ButtonContainer = styled.div`
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
 `;
 
 interface IProps {
@@ -161,6 +168,14 @@ const ReviewPresenter: React.SFC<IProps> = ({
             </Grid>
           </React.Fragment>
         )}
+        <ButtonContainer>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfdxrK5PhCn-WNXZBdZ9VWM5qtuxbLhjiy9RPHm-h3yJ-KRuw/viewform"
+            target={"_blank"}
+          >
+            <Button text={"Add Your Story"} accent={true} fontSize={22} />
+          </a>
+        </ButtonContainer>
       </Wrapper>
     </Posts>
   </React.Fragment>
