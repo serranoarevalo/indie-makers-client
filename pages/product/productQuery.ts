@@ -20,6 +20,14 @@ export const GET_PRODUCT = gql`
         completedGoals {
           ...GoalParts
         }
+        comments {
+          id
+          text
+          maker {
+            username
+            profilePhoto
+          }
+        }
       }
       error
     }

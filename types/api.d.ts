@@ -2,6 +2,43 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: addComment
+// ====================================================
+
+export interface addComment_CreateComment_comment_maker {
+  __typename: "User";
+  profilePhoto: string;
+  username: string | null;
+}
+
+export interface addComment_CreateComment_comment {
+  __typename: "Comment";
+  id: number;
+  text: string;
+  createdAt: string;
+  maker: addComment_CreateComment_comment_maker;
+}
+
+export interface addComment_CreateComment {
+  __typename: "CreateCommentResponse";
+  ok: boolean;
+  error: string | null;
+  comment: addComment_CreateComment_comment | null;
+}
+
+export interface addComment {
+  CreateComment: addComment_CreateComment;
+}
+
+export interface addCommentVariables {
+  text: string;
+  productId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL query operation: completedGoals
 // ====================================================
 
@@ -490,6 +527,19 @@ export interface getProduct_GetProduct_product_completedGoals {
   completedAt: string | null;
 }
 
+export interface getProduct_GetProduct_product_comments_maker {
+  __typename: "User";
+  username: string | null;
+  profilePhoto: string;
+}
+
+export interface getProduct_GetProduct_product_comments {
+  __typename: "Comment";
+  id: number;
+  text: string;
+  maker: getProduct_GetProduct_product_comments_maker;
+}
+
 export interface getProduct_GetProduct_product {
   __typename: "Product";
   id: number;
@@ -504,6 +554,7 @@ export interface getProduct_GetProduct_product {
   maker: getProduct_GetProduct_product_maker | null;
   pendingGoals: (getProduct_GetProduct_product_pendingGoals | null)[] | null;
   completedGoals: (getProduct_GetProduct_product_completedGoals | null)[] | null;
+  comments: (getProduct_GetProduct_product_comments | null)[] | null;
 }
 
 export interface getProduct_GetProduct {

@@ -40,7 +40,6 @@ const Title = styled.h4`
 const Pitch = styled.p``;
 
 const Badges = styled.div`
-  width: 100%;
   display: flex;
 `;
 
@@ -48,7 +47,7 @@ const Footer = styled.footer`
   margin-top: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 `;
 

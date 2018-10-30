@@ -7,6 +7,7 @@ import Wrapper from "../../components/wrapper";
 import Card from "../../components/card";
 import SmallDetailCard from "../../components/smallDetailCard";
 import BigDetailCard from "../../components/bigDetailCard";
+import Comments from "../../components/comments";
 import GoalText from "../../components/goalText";
 import Button from "../../components/button";
 import AddToDo from "../../components/addToDo";
@@ -97,12 +98,14 @@ const RedText = styled.span`
 interface IProps {
   data?: getProduct;
   confirmDeletion: () => void;
+  isLoggedIn: boolean;
 }
 
 const ProductPresenter: React.SFC<IProps> = ({
   data,
   data: { GetProduct: { product = null } = {} } = {},
-  confirmDeletion
+  confirmDeletion,
+  isLoggedIn
 }) =>
   product ? (
     <Wrapper>
@@ -189,74 +192,83 @@ const ProductPresenter: React.SFC<IProps> = ({
                     />
                   )}
                 </DetailsContainer>
-                <Card>
-                  <ToDos>
-                    <ToDosColumn>
-                      <Header>
-                        <Title>Doing</Title>
-                      </Header>
-                      <GoalsContainer>
-                        {product.pendingGoals &&
-                          product.pendingGoals
-                            .reverse()
-                            .map(
-                              goal =>
-                                goal && (
-                                  <GoalText
-                                    key={goal.id}
-                                    lineThrough={false}
-                                    isCompleted={goal.isCompleted}
-                                    text={goal.text}
-                                    onProductPage={true}
-                                    timeStamp={goal.createdAt}
-                                    isMine={isMine}
-                                    goalId={goal.id}
-                                    productSlug={
-                                      (goal.product && goal.product.slug) || ""
-                                    }
-                                    productId={
-                                      (goal.product && goal.product.id) || 0
-                                    }
-                                  />
-                                )
-                            )}
-                      </GoalsContainer>
-                      <GoalsFooter />
-                    </ToDosColumn>
-                    <ToDosColumn>
-                      <Header>
-                        <Title>Done</Title>
-                      </Header>
-                      <GoalsContainer>
-                        {product.completedGoals &&
-                          product.completedGoals
-                            .reverse()
-                            .map(
-                              goal =>
-                                goal && (
-                                  <GoalText
-                                    key={goal.id}
-                                    goalId={goal.id}
-                                    lineThrough={false}
-                                    isCompleted={goal.isCompleted}
-                                    text={goal.text}
-                                    timeStamp={goal.completedAt!}
-                                    onProductPage={true}
-                                    isMine={isMine}
-                                    productSlug={
-                                      (goal.product && goal.product.slug) || ""
-                                    }
-                                    productId={
-                                      (goal.product && goal.product.id) || 0
-                                    }
-                                  />
-                                )
-                            )}
-                      </GoalsContainer>
-                      <GoalsFooter />
-                    </ToDosColumn>
-                  </ToDos>
-                </Card>
+                <span>
+                  <Card>
+                    <ToDos>
+                      <ToDosColumn>
+                        <Header>
+                          <Title>Doing</Title>
+                        </Header>
+                        <GoalsContainer>
+                          {product.pendingGoals &&
+                            product.pendingGoals
+                              .reverse()
+                              .map(
+                                goal =>
+                                  goal && (
+                                    <GoalText
+                                      key={goal.id}
+                                      lineThrough={false}
+                                      isCompleted={goal.isCompleted}
+                                      text={goal.text}
+                                      onProductPage={true}
+                                      timeStamp={goal.createdAt}
+                                      isMine={isMine}
+                                      goalId={goal.id}
+                                      productSlug={
+                                        (goal.product && goal.product.slug) ||
+                                        ""
+                                      }
+                                      productId={
+                                        (goal.product && goal.product.id) || 0
+                                      }
+                                    />
+                                  )
+                              )}
+                        </GoalsContainer>
+                        <GoalsFooter />
+                      </ToDosColumn>
+                      <ToDosColumn>
+                        <Header>
+                          <Title>Done</Title>
+                        </Header>
+                        <GoalsContainer>
+                          {product.completedGoals &&
+                            product.completedGoals
+                              .reverse()
+                              .map(
+                                goal =>
+                                  goal && (
+                                    <GoalText
+                                      key={goal.id}
+                                      goalId={goal.id}
+                                      lineThrough={false}
+                                      isCompleted={goal.isCompleted}
+                                      text={goal.text}
+                                      timeStamp={goal.completedAt!}
+                                      onProductPage={true}
+                                      isMine={isMine}
+                                      productSlug={
+                                        (goal.product && goal.product.slug) ||
+                                        ""
+                                      }
+                                      productId={
+                                        (goal.product && goal.product.id) || 0
+                                      }
+                                    />
+                                  )
+                              )}
+                        </GoalsContainer>
+                        <GoalsFooter />
+                      </ToDosColumn>
+                    </ToDos>
+                  </Card>
+                  <Comments
+                    comments={product.comments}
+                    productId={product.id}
+                    isLoggedIn={isLoggedIn}
+                  />
+                </span>
               </>
             )}
           </IsMine>

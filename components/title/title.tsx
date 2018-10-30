@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
 interface IProps {
@@ -23,9 +22,5 @@ const Title: React.SFC<IProps> = ({
     {children}
   </Container>
 );
-
-Title.propTypes = {
-  marginBottom: PropTypes.number
-};
 
 export default Title;

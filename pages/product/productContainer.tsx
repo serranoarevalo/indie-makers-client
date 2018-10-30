@@ -15,6 +15,7 @@ import { GET_MAKER } from "../../pages/maker/makerQueries";
 
 interface IProps {
   slug: string;
+  isLoggedIn: boolean;
 }
 
 class ProductQuery extends Query<getProduct, getProductVariables> {}
@@ -30,7 +31,7 @@ class ProductContainer extends React.Component<IProps & WithRouterProps> {
     return { slug };
   }
   render() {
-    const { slug } = this.props;
+    const { slug, isLoggedIn } = this.props;
     return (
       <ProductQuery
         query={GET_PRODUCT}
@@ -65,6 +66,7 @@ class ProductContainer extends React.Component<IProps & WithRouterProps> {
                   <ProductPresenter
                     data={data}
                     confirmDeletion={this.confirmDeletion}
+                    isLoggedIn={isLoggedIn}
                   />
                 );
               }}
