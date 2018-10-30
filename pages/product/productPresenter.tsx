@@ -267,6 +267,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                     comments={product.comments}
                     productId={product.id}
                     isLoggedIn={isLoggedIn}
+                    productSlug={product.slug}
                   />
                 </span>
               </>

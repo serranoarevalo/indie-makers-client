@@ -2,6 +2,7 @@ import React from "react";
 import TextArea from "react-textarea-autosize";
 import styled from "../../typed-components";
 import Title from "../title";
+import Comment from "../comment";
 import Card from "../card";
 import Form from "../form";
 import Button from "../button";
@@ -34,6 +35,11 @@ const AddComment = styled(TextArea)`
   all: unset;
   width: 100%;
   font-size: 16px;
+`;
+
+const Comments = styled.div`
+  width: 100%;
+  max-width: 400px;
 `;
 
 interface IProps {
@@ -76,6 +82,21 @@ const CommentsPresenter: React.SFC<IProps> = ({
         onClick={isLoggedIn ? sendComment : fbLogin}
       />
     </AddCommentForm>
+    <Comments>
+      {comments.map(
+        comment =>
+          comment && (
+            <Comment
+              key={comment.id}
+              text={comment.text}
+              id={comment.id}
+              profilePhoto={comment.maker.profilePhoto}
+              createdAt={comment.createdAt}
+              username={comment.maker.username || ""}
+            />
+          )
+      )}
+    </Comments>
   </Container>
 );
 

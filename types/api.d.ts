@@ -536,6 +536,7 @@ export interface getProduct_GetProduct_product_comments_maker {
 export interface getProduct_GetProduct_product_comments {
   __typename: "Comment";
   id: number;
+  createdAt: string;
   text: string;
   maker: getProduct_GetProduct_product_comments_maker;
 }

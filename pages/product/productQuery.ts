@@ -22,6 +22,7 @@ export const GET_PRODUCT = gql`
         }
         comments {
           id
+          createdAt
           text
           maker {
             username

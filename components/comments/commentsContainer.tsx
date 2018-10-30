@@ -1,5 +1,6 @@
 import React from "react";
 import { Mutation, MutationFn } from "react-apollo";
+import { toast } from "react-toastify";
 import withLogin from "../../lib/withLogin";
 import CommentsPresenter from "./commentsPresenter";
 import {
@@ -8,13 +9,14 @@ import {
   addCommentVariables
 } from "types/api";
 import { ADD_COMMENT } from "./commentsQuery";
-import { toast } from "react-toastify";
+import { GET_PRODUCT } from "../../pages/product/productQuery";
 
 interface IProps {
   isLoggedIn: boolean;
   fbLogin: any;
   productId: number;
   comments: getProduct_GetProduct_product_comments[];
+  productSlug: string;
 }
 
 interface IState {
@@ -36,11 +38,22 @@ class Comments extends React.Component<IProps, IState> {
   };
   render() {
     const { comment, posting } = this.state;
-    const { comments, fbLogin, isLoggedIn, productId } = this.props;
+    const {
+      comments,
+      fbLogin,
+      isLoggedIn,
+      productId,
+      productSlug
+    } = this.props;
     return (
       <AddCommentMutation
         variables={{ productId, text: comment }}
         mutation={ADD_COMMENT}
+        refetchQueries={[
+          { query: GET_PRODUCT, variables: { slug: productSlug } }
+        ]}
+        onCompleted={this.handleCompleted}
+        awaitRefetchQueries={true}
       >
         {postComment => {
           this.postComment = postComment;
@@ -79,6 +92,27 @@ class Comments extends React.Component<IProps, IState> {
       this.setState({ posting: true });
       this.postComment();
       this.toastId = toast.info("Posting ");
+    }
+  };
+
+  public handleCompleted = (data: addComment) => {
+    const {
+      CreateComment: { ok, error }
+    } = data;
+    if (!ok && error) {
+      toast.update(this.toastId, {
+        render: error,
+        type: toast.TYPE.ERROR
+      });
+    } else {
+      this.setState({
+        posting: false,
+        comment: ""
+      });
+      toast.update(this.toastId, {
+        render: "Comment Created",
+        type: toast.TYPE.SUCCESS
+      });
     }
   };
 }
