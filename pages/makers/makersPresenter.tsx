@@ -81,7 +81,7 @@ const MakersPresenter: React.SFC<IProps> = ({
     {makers &&
       makers.length !== 0 && (
         <Pagination
-          hasNext={page > totalPages}
+          hasNext={page < totalPages}
           currentPage={`${page + 1}`}
           totalPages={`${totalPages + 1}`}
           previousLink={routes.makersFn(page - 1, tab)}

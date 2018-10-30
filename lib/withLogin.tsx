@@ -26,6 +26,7 @@ const withLogin = Component =>
                 appId={FB_APP_ID}
                 autoLoad={false}
                 isMobile={true}
+                redirectUri={"https://indiemakers.net/"}
                 callback={this.postFacebookLogin}
                 fields="name,first_name,last_name,email"
                 render={renderProps => (

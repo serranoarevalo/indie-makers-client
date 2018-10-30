@@ -94,7 +94,7 @@ const ProductsPresenter: React.SFC<IProps> = ({
     {products &&
       products.length !== 0 && (
         <Pagination
-          hasNext={page > totalPages}
+          hasNext={page < totalPages}
           currentPage={`${page + 1}`}
           totalPages={`${totalPages + 1}`}
           previousLink={routes.productsFn(page - 1, tab)}

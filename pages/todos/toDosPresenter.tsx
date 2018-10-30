@@ -59,7 +59,7 @@ const ToDosPresenter: React.SFC<IProps> = ({
     {goals &&
       goals.length !== 0 && (
         <Pagination
-          hasNext={page > totalPages}
+          hasNext={page < totalPages}
           currentPage={`${page + 1}`}
           totalPages={`${totalPages + 1}`}
           previousLink={routes.toDosFn(page - 1, tab)}
