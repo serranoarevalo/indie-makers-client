@@ -149,6 +149,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                     <Vote
                       productId={product.id}
                       initialValue={product.voteCount}
+                      productSlug={product.slug}
                     />
                     {product.website && (
                       <a

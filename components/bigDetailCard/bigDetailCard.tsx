@@ -80,6 +80,7 @@ interface IPresenterProps {
   isFinished?: boolean;
   underTitle?: string;
   commentNumber?: number;
+  voteNumber?: number;
 }
 
 const CardContent: React.SFC<IPresenterProps> = ({
@@ -95,7 +96,8 @@ const CardContent: React.SFC<IPresenterProps> = ({
   launchedNumber,
   isFinished,
   underTitle,
-  commentNumber
+  commentNumber,
+  voteNumber
 }) => (
   <React.Fragment>
     <IconContainer>
@@ -119,6 +121,8 @@ const CardContent: React.SFC<IPresenterProps> = ({
             needsHelp && <Badge text={"Need Help!"} icon={"⚠️"} />}
           {commentNumber !== undefined &&
             commentNumber > 0 && <Badge text={commentNumber} icon={"💬"} />}
+          {voteNumber !== undefined &&
+            voteNumber > 0 && <Badge text={voteNumber} icon={"👏🏻"} />}
           {streakNumber !== undefined && (
             <Badge
               bgColor={"#FEF48B"}

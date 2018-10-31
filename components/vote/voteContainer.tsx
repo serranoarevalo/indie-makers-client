@@ -3,10 +3,12 @@ import { Mutation, MutationFn } from "react-apollo";
 import VotePresenter from "./votePresenter";
 import { voteVariables, vote } from "types/api";
 import { VOTE } from "./VoteQueries";
+import { GET_PRODUCT } from "pages/product/productQuery";
 
 interface IProps {
   productId: number;
   initialValue: number;
+  productSlug: string;
 }
 
 interface IState {
@@ -25,9 +27,15 @@ class VoteContainer extends React.Component<IProps, IState> {
   }
   render() {
     const { value } = this.state;
-    const { productId } = this.props;
+    const { productId, productSlug } = this.props;
     return (
-      <VoteMutation mutation={VOTE} variables={{ productId }}>
+      <VoteMutation
+        mutation={VOTE}
+        variables={{ productId }}
+        refetchQueries={[
+          { query: GET_PRODUCT, variables: { slug: productSlug } }
+        ]}
+      >
         {voteMutation => {
           this.vote = voteMutation;
           return <VotePresenter value={value} vote={this.handleVote} />;
