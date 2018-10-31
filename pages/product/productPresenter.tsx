@@ -134,6 +134,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                     subtitle={product.description}
                     hasAuthor={false}
                     needsHelp={product.needsHelp}
+                    commentNumber={product.commentCount}
                   />
                   <Divider />
 

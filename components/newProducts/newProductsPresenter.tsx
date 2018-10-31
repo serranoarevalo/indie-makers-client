@@ -10,7 +10,7 @@ import { addedRecently } from "types/api";
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 30px;
   grid-auto-flow: row;
   @media (max-width: 800px) {
@@ -68,6 +68,7 @@ const NewProductsPresenter: React.SFC<IProps> = ({
                   subtitle={product.description}
                   hasAuthor={true}
                   needsHelp={product.needsHelp}
+                  commentNumber={product.commentCount}
                 />
               )
           )}

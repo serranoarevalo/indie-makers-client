@@ -36,6 +36,8 @@ export const PRODUCT_FRAGMENT = gql`
     description
     goalCount
     completedGoalCount
+    commentCount
+    voteCount
     needsHelp
   }
 `;

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import styled from "../../typed-components";
 
 interface IProps {
@@ -28,6 +27,7 @@ const Container = styled<{ bgColor: any }, any>("div")`
   & *:first-child {
     margin-right: 5px;
   }
+  margin-bottom: 10px;
 `;
 
 const Badge: React.SFC<IProps> = ({
@@ -40,11 +40,5 @@ const Badge: React.SFC<IProps> = ({
     {icon} {text}
   </Container>
 );
-
-Badge.propTypes = {
-  bgColor: PropTypes.any,
-  text: PropTypes.any,
-  icon: PropTypes.any
-};
 
 export default Badge;

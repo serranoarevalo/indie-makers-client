@@ -125,6 +125,8 @@ export interface getDashboard_GetLatestProducts_products {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
 }
 
@@ -288,6 +290,8 @@ export interface addedRecently_FilterProducts_products {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
   maker: addedRecently_FilterProducts_products_maker | null;
 }
@@ -573,6 +577,8 @@ export interface getProduct_GetProduct_product {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
   website: string | null;
   maker: getProduct_GetProduct_product_maker | null;
@@ -638,6 +644,8 @@ export interface filterProducts_FilterProducts_products {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
   maker: filterProducts_FilterProducts_products_maker | null;
 }
@@ -856,6 +864,8 @@ export interface ProductParts {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
 }
 
@@ -921,6 +931,8 @@ export interface FullProductParts {
   description: string;
   goalCount: number;
   completedGoalCount: number;
+  commentCount: number;
+  voteCount: number;
   needsHelp: boolean;
   website: string | null;
   maker: FullProductParts_maker | null;

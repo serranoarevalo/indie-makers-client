@@ -41,6 +41,9 @@ const Pitch = styled.p``;
 
 const Badges = styled.div`
   display: flex;
+  align-items: flex-start;
+  width: 90%;
+  flex-wrap: wrap;
 `;
 
 const Footer = styled.footer`
@@ -53,7 +56,7 @@ const Footer = styled.footer`
 
 const Maker = styled(RoundImage)`
   height: 30px;
-  width: 30px;
+  min-width: 30px;
   border: 0;
 `;
 
@@ -76,6 +79,7 @@ interface IPresenterProps {
   authorUsername?: string;
   isFinished?: boolean;
   underTitle?: string;
+  commentNumber?: number;
 }
 
 const CardContent: React.SFC<IPresenterProps> = ({
@@ -90,7 +94,8 @@ const CardContent: React.SFC<IPresenterProps> = ({
   toDoNumber,
   launchedNumber,
   isFinished,
-  underTitle
+  underTitle,
+  commentNumber
 }) => (
   <React.Fragment>
     <IconContainer>
@@ -107,12 +112,13 @@ const CardContent: React.SFC<IPresenterProps> = ({
       <Badges>
         <React.Fragment>
           {!isFinished &&
-            toDoNumber !== undefined && <Badge text={toDoNumber} icon={"✅"} />}
+            toDoNumber !== undefined &&
+            parseInt(toDoNumber) > 0 && <Badge text={toDoNumber} icon={"✅"} />}
           {isFinished && <Badge text={"Finished"} icon={"🚀"} />}
           {!isFinished &&
             needsHelp && <Badge text={"Need Help!"} icon={"⚠️"} />}
-        </React.Fragment>
-        <React.Fragment>
+          {commentNumber !== undefined &&
+            commentNumber > 0 && <Badge text={commentNumber} icon={"💬"} />}
           {streakNumber !== undefined && (
             <Badge
               bgColor={"#FEF48B"}

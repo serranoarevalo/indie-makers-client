@@ -45,7 +45,6 @@ export default class CommentContainer extends React.Component<IProps> {
           { query: GET_PRODUCT, variables: { slug: productSlug } }
         ]}
         onCompleted={this.handleCompleted}
-        awaitRefetchQueries={true}
       >
         {deleteComment => {
           this.deleteComment = deleteComment;

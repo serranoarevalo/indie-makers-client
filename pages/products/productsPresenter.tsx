@@ -83,6 +83,7 @@ const ProductsPresenter: React.SFC<IProps> = ({
                 subtitle={product.description}
                 hasAuthor={true}
                 needsHelp={product.needsHelp}
+                commentNumber={product.commentCount}
               />
             )
         )}
