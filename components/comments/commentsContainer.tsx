@@ -17,6 +17,7 @@ interface IProps {
   productId: number;
   comments: getProduct_GetProduct_product_comments[];
   productSlug: string;
+  canDelete: boolean;
 }
 
 interface IState {
@@ -43,7 +44,8 @@ class Comments extends React.Component<IProps, IState> {
       fbLogin,
       isLoggedIn,
       productId,
-      productSlug
+      productSlug,
+      canDelete
     } = this.props;
     return (
       <AddCommentMutation
@@ -59,8 +61,10 @@ class Comments extends React.Component<IProps, IState> {
           this.postComment = postComment;
           return (
             <CommentsPresenter
+              canDelete={canDelete}
               comment={comment}
               comments={comments}
+              productSlug={productSlug}
               fbLogin={fbLogin}
               isLoggedIn={isLoggedIn}
               handleComment={this.handleComment}

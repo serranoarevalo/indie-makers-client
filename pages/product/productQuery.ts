@@ -25,6 +25,7 @@ export const GET_PRODUCT = gql`
           createdAt
           text
           maker {
+            id
             username
             profilePhoto
           }

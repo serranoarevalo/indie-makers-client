@@ -10,6 +10,7 @@ export const ADD_COMMENT = gql`
         text
         createdAt
         maker {
+          id
           profilePhoto
           username
         }

@@ -50,6 +50,8 @@ interface IProps {
   comments: getProduct_GetProduct_product_comments[];
   posting: boolean;
   sendComment: () => void;
+  canDelete: boolean;
+  productSlug: string;
 }
 
 const CommentsPresenter: React.SFC<IProps> = ({
@@ -59,7 +61,9 @@ const CommentsPresenter: React.SFC<IProps> = ({
   posting,
   handleComment,
   comments,
-  sendComment
+  sendComment,
+  canDelete,
+  productSlug
 }) => (
   <Container>
     <STitle>Comments {comments.length > 1 && `(${comments.length})`}</STitle>
@@ -87,12 +91,15 @@ const CommentsPresenter: React.SFC<IProps> = ({
         comment =>
           comment && (
             <Comment
+              productSlug={productSlug}
               key={comment.id}
               text={comment.text}
               id={comment.id}
               profilePhoto={comment.maker.profilePhoto}
               createdAt={comment.createdAt}
               username={comment.maker.username || ""}
+              canDelete={canDelete}
+              makerId={comment.maker.id}
             />
           )
       )}

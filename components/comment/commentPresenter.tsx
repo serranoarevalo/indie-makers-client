@@ -19,7 +19,19 @@ const Text = styled(Card)`
 const ARound = styled(RoundImage)`
   height: 30px;
   width: 30px;
+  margin-bottom: 20px;
+`;
+
+const Actions = styled.div`
+  display: flex;
   margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  all: unset;
+  cursor: pointer;
 `;
 
 interface IProps {
@@ -27,21 +39,33 @@ interface IProps {
   createdAt: string;
   profilePhoto: string;
   username: string;
+  canDelete: boolean;
+  isAuthor: boolean;
+  handleDelete: () => void;
 }
 
 const CommentPresenter: React.SFC<IProps> = ({
   text,
   profilePhoto,
-  username
+  username,
+  canDelete,
+  isAuthor,
+  handleDelete
 }) => (
   <Container>
-    <Link href={routes.userDetail(username)} as={routes.asUserDetail(username)}>
-      <a style={{ width: 30, height: 30, marginRight: 20 }}>
-        <LazyLoad height={30} once>
-          <ARound src={profilePhoto} alt={text} />
-        </LazyLoad>
-      </a>
-    </Link>
+    <Actions>
+      <Link
+        href={routes.userDetail(username)}
+        as={routes.asUserDetail(username)}
+      >
+        <a style={{ width: 30, height: 30, marginBottom: 20 }}>
+          <LazyLoad height={30} once>
+            <ARound src={profilePhoto} alt={text} />
+          </LazyLoad>
+        </a>
+      </Link>
+      {canDelete || (isAuthor && <Button onClick={handleDelete}>❌</Button>)}
+    </Actions>
     <Text>{text}</Text>
   </Container>
 );

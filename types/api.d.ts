@@ -2,13 +2,35 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: deleteComment
+// ====================================================
+
+export interface deleteComment_DeleteComment {
+  __typename: "DeleteCommentResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface deleteComment {
+  DeleteComment: deleteComment_DeleteComment;
+}
+
+export interface deleteCommentVariables {
+  commentId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: addComment
 // ====================================================
 
 export interface addComment_CreateComment_comment_maker {
   __typename: "User";
+  id: number;
   profilePhoto: string;
-  username: string | null;
+  username: string;
 }
 
 export interface addComment_CreateComment_comment {
@@ -52,7 +74,7 @@ export interface completedGoals_FilterGoals_goals_product {
 
 export interface completedGoals_FilterGoals_goals_maker {
   __typename: "User";
-  username: string | null;
+  username: string;
   profilePhoto: string;
 }
 
@@ -164,7 +186,7 @@ export interface fireMakers_FilterUsers_makers {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
 }
@@ -385,7 +407,7 @@ export interface getMaker_GetMaker_maker {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
   bio: string | null;
@@ -420,7 +442,7 @@ export interface filterMakers_FilterUsers_makers {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
 }
@@ -486,7 +508,7 @@ export interface getProduct_GetProduct_product_maker {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
 }
@@ -529,7 +551,8 @@ export interface getProduct_GetProduct_product_completedGoals {
 
 export interface getProduct_GetProduct_product_comments_maker {
   __typename: "User";
-  username: string | null;
+  id: number;
+  username: string;
   profilePhoto: string;
 }
 
@@ -652,7 +675,7 @@ export interface filterToDos_FilterGoals_goals_product {
 
 export interface filterToDos_FilterGoals_goals_maker {
   __typename: "User";
-  username: string | null;
+  username: string;
   profilePhoto: string;
 }
 
@@ -719,7 +742,7 @@ export interface logUserInVariables {
 export interface getMe_Me_user {
   __typename: "User";
   id: number;
-  username: string | null;
+  username: string;
   profilePhoto: string;
   bio: string | null;
   homepage: string | null;
@@ -787,7 +810,7 @@ export interface MakerParts {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
 }
@@ -848,7 +871,7 @@ export interface FullProductParts_maker {
   id: number;
   fullName: string;
   profilePhoto: string;
-  username: string | null;
+  username: string;
   streak: number;
   launchedProductCount: number;
 }
