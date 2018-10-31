@@ -309,6 +309,27 @@ export interface addedRecently {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: vote
+// ====================================================
+
+export interface vote_ToggleVote {
+  __typename: "ToggleVoteResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface vote {
+  ToggleVote: vote_ToggleVote;
+}
+
+export interface voteVariables {
+  productId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: editProduct
 // ====================================================
 

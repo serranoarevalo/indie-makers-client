@@ -11,6 +11,7 @@ import Comments from "../../components/comments";
 import GoalText from "../../components/goalText";
 import Button from "../../components/button";
 import AddToDo from "../../components/addToDo";
+import Vote from "../../components/vote";
 import { getProduct } from "types/api";
 import IsMine from "../../lib/isMine";
 
@@ -95,6 +96,13 @@ const RedText = styled.span`
   color: ${props => props.theme.redColor};
 `;
 
+const VoteContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 25px;
+`;
+
 interface IProps {
   data?: getProduct;
   confirmDeletion: () => void;
@@ -137,7 +145,25 @@ const ProductPresenter: React.SFC<IProps> = ({
                     commentNumber={product.commentCount}
                   />
                   <Divider />
-
+                  <VoteContainer>
+                    <Vote
+                      productId={product.id}
+                      initialValue={product.voteCount}
+                    />
+                    {product.website && (
+                      <a
+                        href={
+                          product.website.substring(0, 4) === "http"
+                            ? product.website
+                            : `http://${product.website}`
+                        }
+                        target={"_blank"}
+                      >
+                        <LinkBtn accent={false} text={"Visit Website"} />
+                      </a>
+                    )}
+                  </VoteContainer>
+                  <Divider />
                   {isMine && (
                     <>
                       <AddToDo
@@ -165,21 +191,6 @@ const ProductPresenter: React.SFC<IProps> = ({
                     </>
                   )}
 
-                  {product.website && (
-                    <>
-                      <a
-                        href={
-                          product.website.substring(0, 4) === "http"
-                            ? product.website
-                            : `http://${product.website}`
-                        }
-                        target={"_blank"}
-                      >
-                        <LinkBtn accent={false} text={"Visit Website"} />
-                      </a>
-                      <Divider />
-                    </>
-                  )}
                   {product.maker && (
                     <SmallDetailCard
                       icon={product.maker.profilePhoto}

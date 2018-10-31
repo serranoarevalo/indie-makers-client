@@ -118,7 +118,7 @@ export default class AddToDoContainer extends React.Component<IProps, IState> {
             fragment: FULL_PRODUCT_FRAGMENT,
             data: {
               ...product,
-              pendingGoals: [...product.pendingGoals, goal]
+              pendingGoals: [goal, ...product.pendingGoals]
             },
             fragmentName: "FullProductParts"
           });
