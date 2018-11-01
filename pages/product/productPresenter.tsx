@@ -218,27 +218,30 @@ const ProductPresenter: React.SFC<IProps> = ({
                         </Header>
                         <GoalsContainer>
                           {product.pendingGoals &&
-                            product.pendingGoals.map(
-                              goal =>
-                                goal && (
-                                  <GoalText
-                                    key={goal.id}
-                                    lineThrough={false}
-                                    isCompleted={goal.isCompleted}
-                                    text={goal.text}
-                                    onProductPage={true}
-                                    timeStamp={goal.createdAt}
-                                    isMine={isMine}
-                                    goalId={goal.id}
-                                    productSlug={
-                                      (goal.product && goal.product.slug) || ""
-                                    }
-                                    productId={
-                                      (goal.product && goal.product.id) || 0
-                                    }
-                                  />
-                                )
-                            )}
+                            product.pendingGoals
+                              .reverse()
+                              .map(
+                                goal =>
+                                  goal && (
+                                    <GoalText
+                                      key={goal.id}
+                                      lineThrough={false}
+                                      isCompleted={goal.isCompleted}
+                                      text={goal.text}
+                                      onProductPage={true}
+                                      timeStamp={goal.createdAt}
+                                      isMine={isMine}
+                                      goalId={goal.id}
+                                      productSlug={
+                                        (goal.product && goal.product.slug) ||
+                                        ""
+                                      }
+                                      productId={
+                                        (goal.product && goal.product.id) || 0
+                                      }
+                                    />
+                                  )
+                              )}
                         </GoalsContainer>
                         <GoalsFooter />
                       </ToDosColumn>
@@ -248,27 +251,30 @@ const ProductPresenter: React.SFC<IProps> = ({
                         </Header>
                         <GoalsContainer>
                           {product.completedGoals &&
-                            product.completedGoals.map(
-                              goal =>
-                                goal && (
-                                  <GoalText
-                                    key={goal.id}
-                                    goalId={goal.id}
-                                    lineThrough={false}
-                                    isCompleted={goal.isCompleted}
-                                    text={goal.text}
-                                    timeStamp={goal.completedAt!}
-                                    onProductPage={true}
-                                    isMine={isMine}
-                                    productSlug={
-                                      (goal.product && goal.product.slug) || ""
-                                    }
-                                    productId={
-                                      (goal.product && goal.product.id) || 0
-                                    }
-                                  />
-                                )
-                            )}
+                            product.completedGoals
+                              .reverse()
+                              .map(
+                                goal =>
+                                  goal && (
+                                    <GoalText
+                                      key={goal.id}
+                                      goalId={goal.id}
+                                      lineThrough={false}
+                                      isCompleted={goal.isCompleted}
+                                      text={goal.text}
+                                      timeStamp={goal.completedAt!}
+                                      onProductPage={true}
+                                      isMine={isMine}
+                                      productSlug={
+                                        (goal.product && goal.product.slug) ||
+                                        ""
+                                      }
+                                      productId={
+                                        (goal.product && goal.product.id) || 0
+                                      }
+                                    />
+                                  )
+                              )}
                         </GoalsContainer>
                         <GoalsFooter />
                       </ToDosColumn>
