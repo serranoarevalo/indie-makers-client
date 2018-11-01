@@ -14,6 +14,7 @@ const Container = styled.div`
 
 const Text = styled(Card)`
   width: 100%;
+  margin-right: 20px;
 `;
 
 const ARound = styled(RoundImage)`
@@ -32,6 +33,10 @@ const Actions = styled.div`
 const Button = styled.button`
   all: unset;
   cursor: pointer;
+`;
+
+const Comment = styled.div`
+  display: flex;
 `;
 
 interface IProps {
@@ -66,7 +71,10 @@ const CommentPresenter: React.SFC<IProps> = ({
       </Link>
       {canDelete || (isAuthor && <Button onClick={handleDelete}>❌</Button>)}
     </Actions>
-    <Text>{text}</Text>
+    <Comment>
+      <Text>{text}</Text>
+      <Button>💬</Button>
+    </Comment>
   </Container>
 );
 

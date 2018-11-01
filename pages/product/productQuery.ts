@@ -5,6 +5,19 @@ import {
   GOAL_FRAGMENT
 } from "../../fragments";
 
+const COMMENT_FRAGMENT = gql`
+  fragment ComentParts on Comment {
+    id
+    createdAt
+    text
+    maker {
+      id
+      username
+      profilePhoto
+    }
+  }
+`;
+
 export const GET_PRODUCT = gql`
   query getProduct($slug: String!) {
     GetProduct(slug: $slug) {
@@ -21,13 +34,9 @@ export const GET_PRODUCT = gql`
           ...GoalParts
         }
         comments {
-          id
-          createdAt
-          text
-          maker {
-            id
-            username
-            profilePhoto
+          ...ComentParts
+          childComments {
+            ...ComentParts
           }
         }
       }
@@ -38,6 +47,7 @@ export const GET_PRODUCT = gql`
   ${GOAL_FRAGMENT}
   ${PRODUCT_FRAGMENT}
   ${MAKER_FRAGMENT}
+  ${COMMENT_FRAGMENT}
 `;
 
 export const DELETE_PRODUCT = gql`

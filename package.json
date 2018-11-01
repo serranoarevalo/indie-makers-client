@@ -33,6 +33,7 @@
     "graphql-tag": "^2.9.2",
     "javascript-time-ago": "^1.0.31",
     "js-cookie": "^2.2.0",
+    "lodash.sortby": "^4.7.0",
     "next": "^7.0.0",
     "next-ga": "^2.3.1",
     "next-nprogress": "^1.1.0",

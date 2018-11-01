@@ -1,6 +1,7 @@
 import React from "react";
 import { Mutation, MutationFn } from "react-apollo";
 import { toast } from "react-toastify";
+import sortBy from "lodash.sortby";
 import withLogin from "../../lib/withLogin";
 import CommentsPresenter from "./commentsPresenter";
 import {
@@ -63,7 +64,7 @@ class Comments extends React.Component<IProps, IState> {
             <CommentsPresenter
               canDelete={canDelete}
               comment={comment}
-              comments={comments}
+              comments={sortBy(comments, ["id"])}
               productSlug={productSlug}
               fbLogin={fbLogin}
               isLoggedIn={isLoggedIn}
