@@ -5,6 +5,7 @@ export const VOTE = gql`
     ToggleVote(productId: $productId) {
       ok
       error
+      add
     }
   }
 `;

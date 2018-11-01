@@ -115,7 +115,7 @@ const ProductPresenter: React.SFC<IProps> = ({
   confirmDeletion,
   isLoggedIn
 }) =>
-  product ? (
+  data && product ? (
     <Wrapper>
       <Head>
         <title>
@@ -143,14 +143,18 @@ const ProductPresenter: React.SFC<IProps> = ({
                     hasAuthor={false}
                     needsHelp={product.needsHelp}
                     commentNumber={product.commentCount}
+                    voteNumber={product.voteCount}
                   />
                   <Divider />
                   <VoteContainer>
-                    <Vote
-                      productId={product.id}
-                      initialValue={product.voteCount}
-                      productSlug={product.slug}
-                    />
+                    {isLoggedIn && (
+                      <Vote
+                        productId={product.id}
+                        initialValue={product.voteCount}
+                        productSlug={product.slug}
+                        clapped={data.GetProduct.clapped!}
+                      />
+                    )}
                     {product.website && (
                       <a
                         href={

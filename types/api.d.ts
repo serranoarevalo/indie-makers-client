@@ -316,6 +316,7 @@ export interface vote_ToggleVote {
   __typename: "ToggleVoteResponse";
   ok: boolean;
   error: string | null;
+  add: boolean;
 }
 
 export interface vote {
@@ -611,6 +612,7 @@ export interface getProduct_GetProduct_product {
 export interface getProduct_GetProduct {
   __typename: "GetProductResponse";
   product: getProduct_GetProduct_product | null;
+  clapped: boolean | null;
   error: string | null;
 }
 

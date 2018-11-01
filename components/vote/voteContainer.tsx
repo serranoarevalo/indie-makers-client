@@ -3,12 +3,13 @@ import { Mutation, MutationFn } from "react-apollo";
 import VotePresenter from "./votePresenter";
 import { voteVariables, vote } from "types/api";
 import { VOTE } from "./VoteQueries";
-import { GET_PRODUCT } from "pages/product/productQuery";
+import { GET_PRODUCT } from "../../pages/product/productQuery";
 
 interface IProps {
   productId: number;
   initialValue: number;
   productSlug: string;
+  clapped: boolean;
 }
 
 interface IState {
@@ -44,17 +45,33 @@ class VoteContainer extends React.Component<IProps, IState> {
     );
   }
   public handleVote = () => {
-    const { initialValue } = this.props;
+    const { initialValue, clapped } = this.props;
     const { value } = this.state;
     this.vote();
-    if (initialValue === value) {
-      this.setState({
-        value: initialValue + 1
-      });
+    if (value === initialValue) {
+      if (!clapped) {
+        this.setState({
+          value: initialValue + 1
+        });
+      } else {
+        this.setState({
+          value: initialValue - 1
+        });
+      }
     } else {
-      this.setState({
-        value: initialValue
-      });
+      if (value === initialValue - 1) {
+        this.setState(prev => {
+          return {
+            value: prev.value + 1
+          };
+        });
+      } else if (value === initialValue + 1) {
+        this.setState(prev => {
+          return {
+            value: prev.value - 1
+          };
+        });
+      }
     }
   };
 }
