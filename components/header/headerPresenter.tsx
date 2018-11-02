@@ -1,6 +1,7 @@
 import Link from "next/link";
 import routes from "../../routes";
 import styled, { keyframes } from "../../typed-components";
+import Notifications from "../notifications";
 import Button from "../button";
 import RoundImage from "../roundImage";
 import { getMe } from "types/api";
@@ -231,6 +232,7 @@ const Header: React.SFC<IProps> = ({
                   </span>
                 </li>
               </ul>
+              <Notifications />
             </Navigation>
           )}
         </Consumer>

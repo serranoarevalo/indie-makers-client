@@ -87,25 +87,27 @@ const CommentsPresenter: React.SFC<IProps> = ({
       />
     </AddCommentForm>
     <Comments>
-      {comments.map(
-        comment =>
-          comment && (
-            <Comment
-              productSlug={productSlug}
-              key={comment.id}
-              text={comment.text}
-              id={comment.id}
-              profilePhoto={comment.maker.profilePhoto}
-              createdAt={comment.createdAt}
-              username={comment.maker.username || ""}
-              canDelete={canDelete}
-              makerId={comment.maker.id}
-              isLoggedIn={isLoggedIn}
-              replies={comment.childComments as any}
-              isReply={false}
-            />
-          )
-      )}
+      {comments
+        .reverse()
+        .map(
+          comment =>
+            comment && (
+              <Comment
+                productSlug={productSlug}
+                key={comment.id}
+                text={comment.text}
+                id={comment.id}
+                profilePhoto={comment.maker.profilePhoto}
+                createdAt={comment.createdAt}
+                username={comment.maker.username || ""}
+                canDelete={canDelete}
+                makerId={comment.maker.id}
+                isLoggedIn={isLoggedIn}
+                replies={comment.childComments as any}
+                isReply={false}
+              />
+            )
+        )}
     </Comments>
   </Container>
 );
