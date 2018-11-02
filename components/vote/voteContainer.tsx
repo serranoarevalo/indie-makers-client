@@ -28,7 +28,7 @@ class VoteContainer extends React.Component<IProps, IState> {
   }
   render() {
     const { value } = this.state;
-    const { productId, productSlug } = this.props;
+    const { productId, productSlug, clapped } = this.props;
     return (
       <VoteMutation
         mutation={VOTE}
@@ -39,7 +39,13 @@ class VoteContainer extends React.Component<IProps, IState> {
       >
         {voteMutation => {
           this.vote = voteMutation;
-          return <VotePresenter value={value} vote={this.handleVote} />;
+          return (
+            <VotePresenter
+              value={value}
+              vote={this.handleVote}
+              clapped={clapped}
+            />
+          );
         }}
       </VoteMutation>
     );

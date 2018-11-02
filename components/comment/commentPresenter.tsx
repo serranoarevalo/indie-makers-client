@@ -130,6 +130,7 @@ const CommentPresenter: React.SFC<IProps> = ({
                   value={reply}
                   onChange={handleChange}
                   placeholder={"Reply..."}
+                  autofocus={true}
                 />
               </Form>
             </AddText>
