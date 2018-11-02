@@ -2,21 +2,9 @@ import gql from "graphql-tag";
 import {
   PRODUCT_FRAGMENT,
   MAKER_FRAGMENT,
-  GOAL_FRAGMENT
+  GOAL_FRAGMENT,
+  COMMENT_FRAGMENT
 } from "../../fragments";
-
-const COMMENT_FRAGMENT = gql`
-  fragment ComentParts on Comment {
-    id
-    createdAt
-    text
-    maker {
-      id
-      username
-      profilePhoto
-    }
-  }
-`;
 
 export const GET_PRODUCT = gql`
   query getProduct($slug: String!) {

@@ -31,7 +31,7 @@ const AddCommentForm = styled(Form)`
   margin-bottom: 50px;
 `;
 
-const AddComment = styled(TextArea)`
+export const AddComment = styled(TextArea)`
   all: unset;
   width: 100%;
   font-size: 16px;
@@ -100,6 +100,9 @@ const CommentsPresenter: React.SFC<IProps> = ({
               username={comment.maker.username || ""}
               canDelete={canDelete}
               makerId={comment.maker.id}
+              isLoggedIn={isLoggedIn}
+              replies={comment.childComments as any}
+              isReply={false}
             />
           )
       )}

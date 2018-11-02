@@ -60,3 +60,16 @@ export const FULL_PRODUCT_FRAGMENT = gql`
   ${GOAL_FRAGMENT}
   ${MAKER_FRAGMENT}
 `;
+
+export const COMMENT_FRAGMENT = gql`
+  fragment ComentParts on Comment {
+    id
+    createdAt
+    text
+    maker {
+      id
+      username
+      profilePhoto
+    }
+  }
+`;

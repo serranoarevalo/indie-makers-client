@@ -23,6 +23,44 @@ export interface deleteCommentVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: replyComment
+// ====================================================
+
+export interface replyComment_CreateComment_comment_maker {
+  __typename: "User";
+  id: number;
+  username: string;
+  profilePhoto: string;
+}
+
+export interface replyComment_CreateComment_comment {
+  __typename: "Comment";
+  id: number;
+  createdAt: string;
+  text: string;
+  maker: replyComment_CreateComment_comment_maker;
+}
+
+export interface replyComment_CreateComment {
+  __typename: "CreateCommentResponse";
+  ok: boolean;
+  error: string | null;
+  comment: replyComment_CreateComment_comment | null;
+}
+
+export interface replyComment {
+  CreateComment: replyComment_CreateComment;
+}
+
+export interface replyCommentVariables {
+  text: string;
+  commentId: number;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: addComment
 // ====================================================
 
@@ -582,12 +620,28 @@ export interface getProduct_GetProduct_product_comments_maker {
   profilePhoto: string;
 }
 
+export interface getProduct_GetProduct_product_comments_childComments_maker {
+  __typename: "User";
+  id: number;
+  username: string;
+  profilePhoto: string;
+}
+
+export interface getProduct_GetProduct_product_comments_childComments {
+  __typename: "Comment";
+  id: number;
+  createdAt: string;
+  text: string;
+  maker: getProduct_GetProduct_product_comments_childComments_maker;
+}
+
 export interface getProduct_GetProduct_product_comments {
   __typename: "Comment";
   id: number;
   createdAt: string;
   text: string;
   maker: getProduct_GetProduct_product_comments_maker;
+  childComments: (getProduct_GetProduct_product_comments_childComments | null)[];
 }
 
 export interface getProduct_GetProduct_product {
@@ -961,6 +1015,28 @@ export interface FullProductParts {
   maker: FullProductParts_maker | null;
   pendingGoals: (FullProductParts_pendingGoals | null)[] | null;
   completedGoals: (FullProductParts_completedGoals | null)[] | null;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL fragment: ComentParts
+// ====================================================
+
+export interface ComentParts_maker {
+  __typename: "User";
+  id: number;
+  username: string;
+  profilePhoto: string;
+}
+
+export interface ComentParts {
+  __typename: "Comment";
+  id: number;
+  createdAt: string;
+  text: string;
+  maker: ComentParts_maker;
 }
 
 /* tslint:disable */

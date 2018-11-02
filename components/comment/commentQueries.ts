@@ -8,3 +8,12 @@ export const DELETE_COMMENT = gql`
     }
   }
 `;
+
+export const REPLY_TO_COMMENT = gql`
+  mutation replyComment($text: String!, $commentId: Int!) {
+    CreateComment(text: $text, commentId: $commentId) {
+      ok
+      error
+    }
+  }
+`;
