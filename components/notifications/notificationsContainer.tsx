@@ -1,4 +1,5 @@
 import React from "react";
+import clickOutside from "react-click-outside";
 import NotificationsPresenter from "./notificationsPresenter";
 import { Query, Mutation, MutationFn } from "react-apollo";
 import { getNotifications, markAsRead } from "types/api";
@@ -44,10 +45,15 @@ class NotificationsContainer extends React.Component<{}, IState> {
         isOpen: !prev.isOpen
       };
     });
-    if (notifNumber > 0) {
+    /* if (notifNumber > 0) {
       this.markAsRead();
-    }
+    } */
+  };
+  public handleClickOutside = () => {
+    this.setState({
+      isOpen: false
+    });
   };
 }
 
-export default NotificationsContainer;
+export default clickOutside(NotificationsContainer);

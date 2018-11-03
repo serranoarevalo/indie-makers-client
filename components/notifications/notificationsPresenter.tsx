@@ -1,6 +1,6 @@
 import React from "react";
 import { getNotifications } from "types/api";
-import styled from "../../typed-components";
+import styled, { keyframes } from "../../typed-components";
 import Card from "../card";
 
 const IconContainer = styled.span`
@@ -46,11 +46,23 @@ const RelativeContainer = styled.div`
   position: relative;
 `;
 
+const fadeIn = keyframes`
+  from{
+    opacity:0;
+    transform:translateY(10px)
+  }
+  to {
+    opacity:1;
+    transform:none;
+  }
+`;
+
 const NotificationsContainer = styled(Card)`
   position: absolute;
   width: 300px;
   top: 40px;
   left: -280px;
+  animation: ${fadeIn} 0.2s ease-in-out;
 `;
 
 interface IProps {
@@ -68,7 +80,7 @@ const NotificationsPresenter: React.SFC<IProps> = ({
 }) =>
   !loading && data ? (
     <RelativeContainer>
-      <Icon number={data.GetNotifications.unseen || 6} onClick={toggleOpen} />
+      <Icon number={data.GetNotifications.unseen || 0} onClick={toggleOpen} />
       {isOpen && <NotificationsContainer>stuff</NotificationsContainer>}
     </RelativeContainer>
   ) : (
