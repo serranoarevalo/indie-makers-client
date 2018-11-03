@@ -231,8 +231,8 @@ const Header: React.SFC<IProps> = ({
                     Log Out
                   </span>
                 </li>
+                <Notifications />
               </ul>
-              <Notifications />
             </Navigation>
           )}
         </Consumer>

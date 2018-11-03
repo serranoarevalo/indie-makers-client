@@ -26,26 +26,10 @@ export interface deleteCommentVariables {
 // GraphQL mutation operation: replyComment
 // ====================================================
 
-export interface replyComment_CreateComment_comment_maker {
-  __typename: "User";
-  id: number;
-  username: string;
-  profilePhoto: string;
-}
-
-export interface replyComment_CreateComment_comment {
-  __typename: "Comment";
-  id: number;
-  createdAt: string;
-  text: string;
-  maker: replyComment_CreateComment_comment_maker;
-}
-
 export interface replyComment_CreateComment {
   __typename: "CreateCommentResponse";
   ok: boolean;
   error: string | null;
-  comment: replyComment_CreateComment_comment | null;
 }
 
 export interface replyComment {
@@ -341,6 +325,51 @@ export interface addedRecently_FilterProducts {
 
 export interface addedRecently {
   FilterProducts: addedRecently_FilterProducts;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: getNotifications
+// ====================================================
+
+export interface getNotifications_GetNotifications_notifications {
+  __typename: "Notification";
+  id: string;
+  actor: string;
+  target: string;
+  verb: string;
+  object: string;
+  time: string;
+  isSeen: boolean;
+}
+
+export interface getNotifications_GetNotifications {
+  __typename: "GetNotificationsResponse";
+  ok: boolean;
+  notifications: (getNotifications_GetNotifications_notifications | null)[] | null;
+  unseen: number | null;
+}
+
+export interface getNotifications {
+  GetNotifications: getNotifications_GetNotifications;
+}
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: markAsRead
+// ====================================================
+
+export interface markAsRead_MarkAsRead {
+  __typename: "MarkAsReadResponse";
+  ok: boolean;
+}
+
+export interface markAsRead {
+  MarkAsRead: markAsRead_MarkAsRead;
 }
 
 /* tslint:disable */
