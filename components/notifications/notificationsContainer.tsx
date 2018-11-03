@@ -20,9 +20,12 @@ class NotificationsContainer extends React.Component<{}, IState> {
   render() {
     const { isOpen } = this.state;
     return (
-      <GetNotificationsQuery query={GET_NOTIFICATIONS}>
+      <GetNotificationsQuery query={GET_NOTIFICATIONS} pollInterval={5000}>
         {({ data, loading }) => (
-          <MarkAsReadMutation mutation={MARK_AS_READ}>
+          <MarkAsReadMutation
+            mutation={MARK_AS_READ}
+            refetchQueries={[{ query: GET_NOTIFICATIONS }]}
+          >
             {markAsRead => {
               this.markAsRead = markAsRead;
               return (
@@ -45,9 +48,9 @@ class NotificationsContainer extends React.Component<{}, IState> {
         isOpen: !prev.isOpen
       };
     });
-    /* if (notifNumber > 0) {
+    if (notifNumber > 0) {
       this.markAsRead();
-    } */
+    }
   };
   public handleClickOutside = () => {
     this.setState({

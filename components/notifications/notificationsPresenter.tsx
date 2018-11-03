@@ -2,6 +2,7 @@ import React from "react";
 import { getNotifications } from "types/api";
 import styled, { keyframes } from "../../typed-components";
 import Card from "../card";
+import Notification from "../notification";
 
 const IconContainer = styled.span`
   cursor: pointer;
@@ -12,7 +13,7 @@ const IconNumber = styled.div`
   position: absolute;
   right: -10px;
   top: -10px;
-  background-color: #e74c3c;
+  background-color: ${props => props.theme.redColor};
   color: white;
   width: 20px;
   justify-content: center;
@@ -29,7 +30,7 @@ interface IIConProps {
 }
 
 const Icon: React.SFC<IIConProps> = ({ number = 0, onClick }) => (
-  <IconContainer onClick={() => onClick!(number)}>
+  <IconContainer onClick={onClick ? () => onClick!(number) : (null as any)}>
     {number > 0 && <IconNumber>{number}</IconNumber>}
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +64,10 @@ const NotificationsContainer = styled(Card)`
   top: 40px;
   left: -280px;
   animation: ${fadeIn} 0.2s ease-in-out;
+  padding: 0;
+  overflow: hidden;
+  max-height: 500px;
+  overflow: scroll;
 `;
 
 interface IProps {
@@ -81,7 +86,36 @@ const NotificationsPresenter: React.SFC<IProps> = ({
   !loading && data ? (
     <RelativeContainer>
       <Icon number={data.GetNotifications.unseen || 0} onClick={toggleOpen} />
-      {isOpen && <NotificationsContainer>stuff</NotificationsContainer>}
+      {isOpen &&
+        data.GetNotifications.notifications &&
+        data.GetNotifications.notifications.length > 0 && (
+          <NotificationsContainer>
+            {data.GetNotifications.notifications.map(notification => {
+              if (notification) {
+                try {
+                  const product = JSON.parse(notification.object);
+                  const formattedUsername = notification.actor.replace(
+                    /\-/g,
+                    "."
+                  );
+                  return (
+                    <Notification
+                      key={notification.id}
+                      username={formattedUsername}
+                      verb={notification.verb}
+                      productName={product.title}
+                      productSlug={product.slug}
+                      isSeen={notification.isSeen}
+                    />
+                  );
+                } catch (error) {
+                  return;
+                }
+              }
+              return;
+            })}
+          </NotificationsContainer>
+        )}
     </RelativeContainer>
   ) : (
     <Icon />
