@@ -113,12 +113,10 @@ const CardContent: React.SFC<IPresenterProps> = ({
     <Footer>
       <Badges>
         <React.Fragment>
-          {!isFinished &&
-            toDoNumber !== undefined &&
+          {toDoNumber !== undefined &&
             parseInt(toDoNumber) > 0 && <Badge text={toDoNumber} icon={"✅"} />}
           {isFinished && <Badge text={"Finished"} icon={"🚀"} />}
-          {!isFinished &&
-            needsHelp && <Badge text={"Need Help!"} icon={"⚠️"} />}
+          {needsHelp && <Badge text={"Need Help!"} icon={"⚠️"} />}
           {commentNumber !== undefined &&
             commentNumber > 0 && <Badge text={commentNumber} icon={"💬"} />}
           {voteNumber !== undefined &&

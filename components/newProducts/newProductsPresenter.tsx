@@ -70,6 +70,7 @@ const NewProductsPresenter: React.SFC<IProps> = ({
                   needsHelp={product.needsHelp}
                   commentNumber={product.commentCount}
                   voteNumber={product.voteCount}
+                  isFinished={product.isLaunched}
                 />
               )
           )}

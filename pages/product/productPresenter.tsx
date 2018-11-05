@@ -144,6 +144,7 @@ const ProductPresenter: React.SFC<IProps> = ({
                     needsHelp={product.needsHelp}
                     commentNumber={product.commentCount}
                     voteNumber={product.voteCount}
+                    isFinished={product.isLaunched}
                   />
                   <Divider />
                   <VoteContainer>
