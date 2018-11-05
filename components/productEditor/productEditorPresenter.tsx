@@ -60,6 +60,10 @@ const FileInput = styled.input`
   display: none;
 `;
 
+const CheckboxContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
 interface IProps {
   logoUrl?: string;
   name: string;
@@ -76,7 +80,8 @@ interface IProps {
   ) => void;
   title: string;
   buttonText: string;
-  handleCheckbox: () => void;
+  handleCheckbox: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isLaunched: boolean;
 }
 
 const ProductEditorPresenter: React.SFC<IProps> = ({
@@ -91,7 +96,8 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
   handleImageUpload,
   title,
   buttonText,
-  handleCheckbox
+  handleCheckbox,
+  isLaunched
 }) => (
   <Wrapper>
     <Head>
@@ -140,14 +146,26 @@ const ProductEditorPresenter: React.SFC<IProps> = ({
               value={website}
               onChange={handleInputChange}
             />
-            <input
-              onChange={handleCheckbox}
-              id={"help"}
-              type={"checkbox"}
-              name={"needsHelp"}
-              checked={needsHelp}
-            />
-            <label htmlFor="help">I need help to finish this</label>
+            <CheckboxContainer>
+              <input
+                onChange={handleCheckbox}
+                id={"help"}
+                type={"checkbox"}
+                name={"needsHelp"}
+                checked={needsHelp}
+              />
+              <label htmlFor="help">I need help to finish this</label>
+            </CheckboxContainer>
+            <CheckboxContainer>
+              <input
+                onChange={handleCheckbox}
+                id={"launched"}
+                type={"checkbox"}
+                name={"isLaunched"}
+                checked={isLaunched}
+              />
+              <label htmlFor="launched">This product is launched</label>
+            </CheckboxContainer>
           </FormInputs>
           {isUploading && "Uploading photo"}
           <Button text={buttonText} onClick={handleSubmit} accent={true} />

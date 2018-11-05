@@ -150,6 +150,7 @@ export interface getDashboard_GetLatestProducts_products {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
 }
 
 export interface getDashboard_GetLatestProducts {
@@ -315,6 +316,7 @@ export interface addedRecently_FilterProducts_products {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
   maker: addedRecently_FilterProducts_products_maker | null;
 }
 
@@ -418,6 +420,7 @@ export interface editProductVariables {
   needsHelp?: boolean | null;
   website?: string | null;
   logo?: string | null;
+  isLaunched?: boolean | null;
 }
 
 /* tslint:disable */
@@ -587,6 +590,7 @@ export interface addProductVariables {
   needsHelp: boolean;
   website?: string | null;
   logo?: string | null;
+  isLaunched?: boolean | null;
 }
 
 /* tslint:disable */
@@ -685,6 +689,7 @@ export interface getProduct_GetProduct_product {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
   website: string | null;
   maker: getProduct_GetProduct_product_maker | null;
   pendingGoals: (getProduct_GetProduct_product_pendingGoals | null)[] | null;
@@ -753,6 +758,7 @@ export interface filterProducts_FilterProducts_products {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
   maker: filterProducts_FilterProducts_products_maker | null;
 }
 
@@ -973,6 +979,7 @@ export interface ProductParts {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
 }
 
 /* tslint:disable */
@@ -1040,6 +1047,7 @@ export interface FullProductParts {
   commentCount: number;
   voteCount: number;
   needsHelp: boolean;
+  isLaunched: boolean;
   website: string | null;
   maker: FullProductParts_maker | null;
   pendingGoals: (FullProductParts_pendingGoals | null)[] | null;

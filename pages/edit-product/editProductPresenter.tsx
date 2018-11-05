@@ -10,7 +10,8 @@ interface IProps {
     description: string,
     logoUrl?: string,
     website?: string,
-    needsHelp?: boolean
+    needsHelp?: boolean,
+    isLaunched?: boolean
   ) => void;
 }
 
@@ -34,6 +35,7 @@ const EditProductPresenter: React.SFC<IProps> = ({
         needsHelp={product.needsHelp}
         onSaveFn={updateProduct}
         title={`Edit ${product.name}`}
+        isLaunched={product.isLaunched}
         buttonText={"Update Product"}
       />
     </>

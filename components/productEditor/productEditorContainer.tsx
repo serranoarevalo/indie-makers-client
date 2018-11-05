@@ -11,12 +11,14 @@ interface IProps {
   description?: string;
   website?: string;
   needsHelp?: boolean;
+  isLaunched?: boolean;
   onSaveFn: (
     name: string,
     description: string,
     logoUrl?: string,
     website?: string,
-    needsHelp?: boolean
+    needsHelp?: boolean,
+    isLaunched?: boolean
   ) => void;
   title: string;
   buttonText: string;
@@ -34,6 +36,7 @@ interface IState {
   needsHelp: boolean;
   prevNeedsHelp: boolean;
   isUploading: boolean;
+  isLaunched: boolean;
 }
 
 export default class ProductEditorContainer extends React.Component<
@@ -52,6 +55,7 @@ export default class ProductEditorContainer extends React.Component<
       website: props.website || "",
       prevWebsite: props.website || "",
       needsHelp: props.needsHelp || false,
+      isLaunched: props.isLaunched || false,
       prevNeedsHelp: false,
       isUploading: false
     };
@@ -63,7 +67,8 @@ export default class ProductEditorContainer extends React.Component<
       website,
       name,
       description,
-      needsHelp
+      needsHelp,
+      isLaunched
     } = this.state;
     const { title, buttonText } = this.props;
     return (
@@ -75,6 +80,7 @@ export default class ProductEditorContainer extends React.Component<
         name={name}
         title={title}
         description={description}
+        isLaunched={isLaunched}
         handleInputChange={this.handleInputChange}
         handleSubmit={this.handleSubmit}
         handleImageUpload={this.handleImageUpload}
@@ -94,12 +100,23 @@ export default class ProductEditorContainer extends React.Component<
     } as any);
   };
 
-  public handleCheckbox = () => {
-    this.setState(prev => {
-      return {
-        needsHelp: !prev.needsHelp
-      };
-    });
+  public handleCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name }
+    } = event;
+    if (name === "needsHelp") {
+      this.setState(prev => {
+        return {
+          needsHelp: !prev.needsHelp
+        };
+      });
+    } else {
+      this.setState(prev => {
+        return {
+          isLaunched: !prev.isLaunched
+        };
+      });
+    }
   };
 
   public handleSubmit = () => {
@@ -109,7 +126,8 @@ export default class ProductEditorContainer extends React.Component<
       name,
       description,
       isUploading,
-      needsHelp
+      needsHelp,
+      isLaunched
     } = this.state;
     const { onSaveFn } = this.props;
     if (name === "" || description === "") {
@@ -117,7 +135,7 @@ export default class ProductEditorContainer extends React.Component<
     } else if (isUploading) {
       toast.error("Wait until the photo stuff finished uploading");
     } else {
-      onSaveFn(name, description, logoUrl, website, needsHelp);
+      onSaveFn(name, description, logoUrl, website, needsHelp, isLaunched);
     }
   };
   public handleImageUpload = async (

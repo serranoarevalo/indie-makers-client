@@ -2755,6 +2755,16 @@
                 "defaultValue": null
               },
               {
+                "name": "isLaunched",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "website",
                 "description": "",
                 "type": {

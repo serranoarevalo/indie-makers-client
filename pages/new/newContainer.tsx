@@ -38,7 +38,8 @@ class NewContainer extends React.Component<WithRouterProps, IState> {
     description: string,
     logoUrl?: string,
     website?: string,
-    needsHelp?: boolean
+    needsHelp?: boolean,
+    isLaunched?: boolean
   ) => {
     const { canSubmit } = this.state;
     if (name === "" && description === "") {
@@ -58,7 +59,8 @@ class NewContainer extends React.Component<WithRouterProps, IState> {
               description,
               website,
               logo: logoUrl,
-              needsHelp: needsHelp || false
+              needsHelp: needsHelp || false,
+              isLaunched: isLaunched || false
             }
           });
         }

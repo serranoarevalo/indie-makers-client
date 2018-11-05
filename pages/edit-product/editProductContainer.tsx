@@ -79,12 +79,20 @@ class EditProductContainer extends React.Component<WithRouterProps & IProps> {
     description: string,
     logoUrl?: string,
     website?: string,
-    needsHelp?: boolean
+    needsHelp?: boolean,
+    isLaunched?: boolean
   ) => {
     const { slug } = this.props;
-    console.log(website);
     this.updateFn({
-      variables: { slug, name, description, logo: logoUrl, website, needsHelp }
+      variables: {
+        slug,
+        name,
+        description,
+        logo: logoUrl,
+        website,
+        needsHelp,
+        isLaunched
+      }
     });
   };
   public onCompleted = (data: editProduct) => {

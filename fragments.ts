@@ -39,6 +39,7 @@ export const PRODUCT_FRAGMENT = gql`
     commentCount
     voteCount
     needsHelp
+    isLaunched
   }
 `;
 

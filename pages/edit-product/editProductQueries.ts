@@ -8,6 +8,7 @@ export const EDIT_PRODUCT = gql`
     $needsHelp: Boolean
     $website: String
     $logo: String
+    $isLaunched: Boolean
   ) {
     EditProduct(
       slug: $slug
@@ -16,6 +17,7 @@ export const EDIT_PRODUCT = gql`
       needsHelp: $needsHelp
       website: $website
       logo: $logo
+      isLaunched: $isLaunched
     ) {
       ok
       error

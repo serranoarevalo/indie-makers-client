@@ -8,7 +8,8 @@ interface IProps {
     description: string,
     logoUrl?: string,
     website?: string,
-    needsHelp?: boolean
+    needsHelp?: boolean,
+    isLaunched?: boolean
   ) => void;
 }
 
