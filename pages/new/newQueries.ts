@@ -7,7 +7,7 @@ export const ADD_PRODUCT = gql`
     $needsHelp: Boolean!
     $website: String
     $logo: String
-    $isLaunched: Boolean
+    $isLaunched: Boolean!
   ) {
     CreateProduct(
       name: $name
