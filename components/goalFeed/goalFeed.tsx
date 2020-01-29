@@ -54,7 +54,7 @@ const GoalFeed: React.SFC<IProps> = ({ goal }) => (
       text={goal.text}
       productName={goal.product!.name}
       productSlug={goal.product!.slug}
-      timeStamp={goal.createdAt || ""}
+      timeStamp={goal.completedAt || goal.createdAt}
     />
     <PhotoContainers>
       <Link

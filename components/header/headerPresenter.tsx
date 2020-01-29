@@ -173,7 +173,15 @@ const Header: React.SFC<IProps> = ({
       </NavColumn>
       {!isLoggedIn && (
         <NavColumn>
-          <Button accent={true} onClick={fbLogin} text={`Join Indie Makers`} />
+          <div
+            className="fb-login-button"
+            data-width=""
+            data-size="large"
+            data-button-type="continue_with"
+            data-auto-logout-link="false"
+            data-use-continue-as="false"
+            onClick={fbLogin}
+          ></div>
         </NavColumn>
       )}
       {isLoggedIn && (
